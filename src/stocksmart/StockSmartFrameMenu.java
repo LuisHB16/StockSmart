@@ -15,12 +15,19 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
+        Font customFontBold3 = FontLoader.customFontBold3;
+        
+        
     /**
      * Creates new form StockSmartFrameMenu
      */
     public StockSmartFrameMenu() {
+        
        
         initComponents();
+      
+       this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -35,42 +42,19 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
         panelLogin1 = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
         panelLogin2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         logoLoginIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         panelLogin1.setBackground(new java.awt.Color(50, 130, 233));
 
@@ -82,405 +66,216 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
 
         panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel3.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel3FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel3FocusLost(evt);
-            }
-        });
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel3MouseExited(evt);
-            }
-        });
-        jPanel3.setLayout(null);
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(customFontBold2);
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Clientes");
-        jPanel3.add(jLabel5);
-        jLabel5.setBounds(60, 20, 70, 20);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon2.png"))); // NOI18N
-        jPanel3.add(jLabel6);
-        jLabel6.setBounds(10, 0, 70, 60);
-
-        jPanel2.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel2FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel2FocusLost(evt);
+        jButton1.setBackground(new java.awt.Color(50, 130, 233));
+        jButton1.setFont(customFontBold3);
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/ventas-icon_google24.png"))); // NOI18N
+        jButton1.setText("Ventas");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setIconTextGap(6);
+        jButton1.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/ventas-icon_google20.png"))); // NOI18N
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel2MouseExited(evt);
+
+        jButton2.setBackground(new java.awt.Color(50, 130, 233));
+        jButton2.setFont(customFontBold3);
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon24.png"))); // NOI18N
+        jButton2.setText("Pedidos");
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setIconTextGap(6);
+        jButton2.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon20.png"))); // NOI18N
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.setLayout(null);
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(customFontBold2);
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Pedidos");
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(60, 20, 70, 20);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/pedidos-icon2.png"))); // NOI18N
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(10, 0, 70, 60);
-
-        jPanel1.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel1FocusLost(evt);
+        jButton3.setBackground(new java.awt.Color(50, 130, 233));
+        jButton3.setFont(customFontBold3);
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon24.png"))); // NOI18N
+        jButton3.setText("Clientes");
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setIconTextGap(6);
+        jButton3.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        jButton3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon20.png"))); // NOI18N
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel1MouseExited(evt);
+
+        jButton4.setBackground(new java.awt.Color(50, 130, 233));
+        jButton4.setFont(customFontBold3);
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/inventory-icon-24.png"))); // NOI18N
+        jButton4.setText("Productos");
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setIconTextGap(6);
+        jButton4.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        jButton4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/inventory-icon-20.png"))); // NOI18N
+        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.setLayout(null);
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(customFontBold2);
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Ventas");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(60, 20, 70, 20);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/ventas-icon2.png"))); // NOI18N
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 0, 70, 60);
-
-        jPanel5.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel5.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel5FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel5FocusLost(evt);
+        jButton5.setBackground(new java.awt.Color(50, 130, 233));
+        jButton5.setFont(customFontBold3);
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/proveedores-icon24.png"))); // NOI18N
+        jButton5.setText("Proveedores");
+        jButton5.setBorder(null);
+        jButton5.setBorderPainted(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setIconTextGap(6);
+        jButton5.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        jButton5.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/proveedores-icon20.png"))); // NOI18N
+        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
             }
         });
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel5MouseExited(evt);
+
+        jButton6.setBackground(new java.awt.Color(50, 130, 233));
+        jButton6.setFont(customFontBold3);
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuarios-icon24.png"))); // NOI18N
+        jButton6.setText("Usuarios");
+        jButton6.setBorder(null);
+        jButton6.setBorderPainted(false);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setIconTextGap(6);
+        jButton6.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuarios-icon20.png"))); // NOI18N
+        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
         });
-        jPanel5.setLayout(null);
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(customFontBold2);
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Productos");
-        jPanel5.add(jLabel9);
-        jLabel9.setBounds(60, 20, 70, 20);
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/productos-icon2.png"))); // NOI18N
-        jPanel5.add(jLabel10);
-        jLabel10.setBounds(10, 0, 70, 60);
-
-        jPanel6.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel6.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel6FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel6FocusLost(evt);
+        jButton7.setBackground(new java.awt.Color(50, 130, 233));
+        jButton7.setFont(customFontBold3);
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos24.png"))); // NOI18N
+        jButton7.setText("Reporte Pedidos");
+        jButton7.setBorder(null);
+        jButton7.setBorderPainted(false);
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.setIconTextGap(6);
+        jButton7.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        jButton7.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos20.png"))); // NOI18N
+        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
             }
         });
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
+
+        jButton8.setBackground(new java.awt.Color(50, 130, 233));
+        jButton8.setFont(customFontBold3);
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos24.png"))); // NOI18N
+        jButton8.setText("Reporte Ventas");
+        jButton8.setBorder(null);
+        jButton8.setBorderPainted(false);
+        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton8.setIconTextGap(6);
+        jButton8.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        jButton8.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos20.png"))); // NOI18N
+        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
             }
         });
-        jPanel6.setLayout(null);
 
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(customFontBold2);
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Provedores");
-        jPanel6.add(jLabel11);
-        jLabel11.setBounds(60, 20, 80, 20);
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/proveedores-icon2.png"))); // NOI18N
-        jPanel6.add(jLabel12);
-        jLabel12.setBounds(10, 0, 70, 60);
-
-        jPanel7.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel7.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel7FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel7FocusLost(evt);
+        jButton9.setBackground(new java.awt.Color(50, 130, 233));
+        jButton9.setFont(customFontBold3);
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon24.png"))); // NOI18N
+        jButton9.setText("Configuracion");
+        jButton9.setBorder(null);
+        jButton9.setBorderPainted(false);
+        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton9.setIconTextGap(6);
+        jButton9.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        jButton9.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon20.png"))); // NOI18N
+        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
             }
         });
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel7MouseExited(evt);
-            }
-        });
-        jPanel7.setLayout(null);
-
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(customFontBold2);
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Usuarios");
-        jPanel7.add(jLabel13);
-        jLabel13.setBounds(60, 20, 70, 20);
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuario-icon2.png"))); // NOI18N
-        jPanel7.add(jLabel14);
-        jLabel14.setBounds(10, 0, 70, 60);
-
-        jPanel8.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel8.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel8FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel8FocusLost(evt);
-            }
-        });
-        jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel8MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel8MouseExited(evt);
-            }
-        });
-        jPanel8.setLayout(null);
-
-        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel15.setFont(customFontBold2);
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Ventas");
-        jPanel8.add(jLabel15);
-        jLabel15.setBounds(60, 20, 70, 20);
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/ventas-icon2.png"))); // NOI18N
-        jPanel8.add(jLabel16);
-        jLabel16.setBounds(10, 0, 70, 60);
-
-        jPanel7.add(jPanel8);
-        jPanel8.setBounds(0, 0, 0, 0);
-        AbstractBorder brdr = new TextBubbleBorder(new Color(50, 130, 250),2,20,0);
-        jPanel1.setBorder(brdr);
-
-        jPanel9.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel9.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel9FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel9FocusLost(evt);
-            }
-        });
-        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel9MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel9MouseExited(evt);
-            }
-        });
-        jPanel9.setLayout(null);
-
-        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel17.setFont(customFontBold2);
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Reporte de Pedidos");
-        jPanel9.add(jLabel17);
-        jLabel17.setBounds(0, 60, 150, 20);
-
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reportePedidos-icon2.png"))); // NOI18N
-        jPanel9.add(jLabel18);
-        jLabel18.setBounds(10, 0, 70, 60);
-
-        jPanel10.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel10.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel10FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel10FocusLost(evt);
-            }
-        });
-        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel10MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel10MouseExited(evt);
-            }
-        });
-        jPanel10.setLayout(null);
-
-        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel19.setFont(customFontBold2);
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Reporte de Ventas");
-        jPanel10.add(jLabel19);
-        jLabel19.setBounds(10, 60, 140, 20);
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reportePedidos-icon2.png"))); // NOI18N
-        jPanel10.add(jLabel20);
-        jLabel20.setBounds(10, 0, 70, 60);
-
-        jPanel11.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel11.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel11FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel11FocusLost(evt);
-            }
-        });
-        jPanel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel11MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel11MouseExited(evt);
-            }
-        });
-        jPanel11.setLayout(null);
-
-        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel21.setFont(customFontBold2);
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Configuracion");
-        jPanel11.add(jLabel21);
-        jLabel21.setBounds(10, 60, 140, 20);
-
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuracion-icon2.png"))); // NOI18N
-        jPanel11.add(jLabel22);
-        jLabel22.setBounds(10, 0, 70, 60);
-
-        jPanel12.setBackground(new java.awt.Color(50, 130, 233));
-        jPanel12.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel12FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanel12FocusLost(evt);
-            }
-        });
-        jPanel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel12MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel12MouseExited(evt);
-            }
-        });
-        jPanel12.setLayout(null);
-
-        jLabel23.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel23.setFont(customFontBold2);
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Ventas");
-        jPanel12.add(jLabel23);
-        jLabel23.setBounds(60, 20, 70, 20);
-
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/ventas-icon2.png"))); // NOI18N
-        jPanel12.add(jLabel24);
-        jLabel24.setBounds(10, 0, 70, 60);
-
-        jPanel11.add(jPanel12);
-        jPanel12.setBounds(0, 0, 0, 0);
 
         javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
         panelLogin2.setLayout(panelLogin2Layout);
         panelLogin2Layout.setHorizontalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLogin2Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(47, 47, 47)
-                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelLogin2Layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(panelLogin2Layout.createSequentialGroup()
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(86, 86, 86))
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelLogin2Layout.createSequentialGroup()
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(40, 40, 40)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(41, 41, 41)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelLogin2Layout.createSequentialGroup()
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(40, 40, 40)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(41, 41, 41)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         panelLogin2Layout.setVerticalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(52, 52, 52)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(66, 66, 66)
+                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62))
         );
-
-        jPanel3.setBorder(brdr);
-        jPanel2.setBorder(brdr);
-        jPanel1.setBorder(brdr);
-        jPanel5.setBorder(brdr);
-        jPanel6.setBorder(brdr);
-        jPanel7.setBorder(brdr);
-        jPanel9.setBorder(brdr);
-        jPanel10.setBorder(brdr);
-        jPanel11.setBorder(brdr);
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart.png"))); // NOI18N
 
@@ -491,24 +286,26 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
             .addGroup(panelLogin1Layout.createSequentialGroup()
                 .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLogin1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(logoLoginIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE))
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
+                    .addGroup(panelLogin1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(logoLoginIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)))
                 .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelLogin1Layout.setVerticalGroup(
             panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin1Layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoLoginIcon)
                 .addGap(31, 31, 31)
                 .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-            .addComponent(panelLogin2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(133, 133, 133))
+            .addGroup(panelLogin1Layout.createSequentialGroup()
+                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         //AbstractBorder brdr1 = new TextBubbleBorder(new Color(255, 255, 255),4,25,0);
@@ -518,7 +315,9 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,207 +327,41 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jPanel1FocusGained
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jPanel1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusLost
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jPanel1FocusLost
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel1MouseEntered
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        jPanel1.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel1MouseExited
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jPanel2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel2FocusGained
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel2FocusGained
+    }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jPanel2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel2FocusLost
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel2FocusLost
+    }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-         jPanel2.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel2MouseEntered
+    }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        jPanel2.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel2MouseExited
+    }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jPanel3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel3FocusGained
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel3FocusGained
-
-    private void jPanel3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel3FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel3FocusLost
-
-    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-        // TODO add your handling code here:
-         jPanel3.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel3MouseEntered
-
-    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-        // TODO add your handling code here:
-        jPanel3.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel3MouseExited
-
-    private void jPanel5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel5FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel5FocusGained
-
-    private void jPanel5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel5FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel5FocusLost
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        // TODO add your handling code here:
-         jPanel5.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        // TODO add your handling code here:
-        jPanel5.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel5MouseExited
-
-    private void jPanel6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel6FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6FocusGained
-
-    private void jPanel6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel6FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel6FocusLost
-
-    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        // TODO add your handling code here:
-         jPanel6.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel6MouseEntered
-
-    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        // TODO add your handling code here:
-        jPanel6.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel6MouseExited
-
-    private void jPanel8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel8FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel8FocusGained
-
-    private void jPanel8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel8FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel8FocusLost
-
-    private void jPanel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseEntered
-        // TODO add your handling code here:
-         jPanel8.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel8MouseEntered
-
-    private void jPanel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseExited
-        // TODO add your handling code here:
-        jPanel8.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel8MouseExited
-
-    private void jPanel7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel7FocusGained
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jPanel7FocusGained
-
-    private void jPanel7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel7FocusLost
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jPanel7FocusLost
-
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        // TODO add your handling code here:
-         jPanel7.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel7MouseEntered
-
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        // TODO add your handling code here:
-        jPanel7.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel7MouseExited
-
-    private void jPanel9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel9FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel9FocusGained
-
-    private void jPanel9FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel9FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel9FocusLost
-
-    private void jPanel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseEntered
-        // TODO add your handling code here:
-         jPanel9.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel9MouseEntered
-
-    private void jPanel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseExited
-        // TODO add your handling code here:
-        jPanel9.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel9MouseExited
-
-    private void jPanel10FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel10FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel10FocusGained
-
-    private void jPanel10FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel10FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel10FocusLost
-
-    private void jPanel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseEntered
-        // TODO add your handling code here:
-         jPanel10.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel10MouseEntered
-
-    private void jPanel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseExited
-        // TODO add your handling code here:
-        jPanel10.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel10MouseExited
-
-    private void jPanel12FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel12FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel12FocusGained
-
-    private void jPanel12FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel12FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel12FocusLost
-
-    private void jPanel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseEntered
-        // TODO add your handling code here:
-         jPanel12.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel12MouseEntered
-
-    private void jPanel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseExited
-        // TODO add your handling code here:
-        jPanel12.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel12MouseExited
-
-    private void jPanel11FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel11FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel11FocusGained
-
-    private void jPanel11FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel11FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel11FocusLost
-
-    private void jPanel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseEntered
-        // TODO add your handling code here:
-         jPanel11.setBackground(new Color(50,110,220));
-    }//GEN-LAST:event_jPanel11MouseEntered
-
-    private void jPanel11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseExited
-        // TODO add your handling code here:
-        jPanel11.setBackground(new Color(50,130,233));
-    }//GEN-LAST:event_jPanel11MouseExited
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -766,39 +399,15 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
