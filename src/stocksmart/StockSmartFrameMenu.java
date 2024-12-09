@@ -42,15 +42,15 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
         panelLogin1 = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
         panelLogin2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        botonVentas = new javax.swing.JButton();
+        botonPedidos = new javax.swing.JButton();
+        botonClientes = new javax.swing.JButton();
+        botonProductos = new javax.swing.JButton();
+        botonProveedores = new javax.swing.JButton();
+        botonUsuarios = new javax.swing.JButton();
+        botonReportePedidos = new javax.swing.JButton();
+        botonReporteVentas = new javax.swing.JButton();
+        botonConfiguracion = new javax.swing.JButton();
         logoLoginIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,165 +66,165 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
 
         panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(50, 130, 233));
-        jButton1.setFont(customFontBold3);
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/ventas-icon_google24.png"))); // NOI18N
-        jButton1.setText("Ventas");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setIconTextGap(6);
-        jButton1.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/ventas-icon_google20.png"))); // NOI18N
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonVentas.setBackground(new java.awt.Color(50, 130, 233));
+        botonVentas.setFont(customFontBold3);
+        botonVentas.setForeground(new java.awt.Color(255, 255, 255));
+        botonVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/ventas-icon_google24.png"))); // NOI18N
+        botonVentas.setText("Ventas");
+        botonVentas.setBorder(null);
+        botonVentas.setBorderPainted(false);
+        botonVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonVentas.setIconTextGap(6);
+        botonVentas.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonVentas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/ventas-icon_google20.png"))); // NOI18N
+        botonVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonVentasActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(50, 130, 233));
-        jButton2.setFont(customFontBold3);
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon24.png"))); // NOI18N
-        jButton2.setText("Pedidos");
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setIconTextGap(6);
-        jButton2.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon20.png"))); // NOI18N
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonPedidos.setBackground(new java.awt.Color(50, 130, 233));
+        botonPedidos.setFont(customFontBold3);
+        botonPedidos.setForeground(new java.awt.Color(255, 255, 255));
+        botonPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon24.png"))); // NOI18N
+        botonPedidos.setText("Pedidos");
+        botonPedidos.setBorder(null);
+        botonPedidos.setBorderPainted(false);
+        botonPedidos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonPedidos.setIconTextGap(6);
+        botonPedidos.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonPedidos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon20.png"))); // NOI18N
+        botonPedidos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonPedidosActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(50, 130, 233));
-        jButton3.setFont(customFontBold3);
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon24.png"))); // NOI18N
-        jButton3.setText("Clientes");
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setIconTextGap(6);
-        jButton3.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        jButton3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon20.png"))); // NOI18N
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonClientes.setBackground(new java.awt.Color(50, 130, 233));
+        botonClientes.setFont(customFontBold3);
+        botonClientes.setForeground(new java.awt.Color(255, 255, 255));
+        botonClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon24.png"))); // NOI18N
+        botonClientes.setText("Clientes");
+        botonClientes.setBorder(null);
+        botonClientes.setBorderPainted(false);
+        botonClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonClientes.setIconTextGap(6);
+        botonClientes.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonClientes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon20.png"))); // NOI18N
+        botonClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonClientesActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(50, 130, 233));
-        jButton4.setFont(customFontBold3);
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/inventory-icon-24.png"))); // NOI18N
-        jButton4.setText("Productos");
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setIconTextGap(6);
-        jButton4.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        jButton4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/inventory-icon-20.png"))); // NOI18N
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonProductos.setBackground(new java.awt.Color(50, 130, 233));
+        botonProductos.setFont(customFontBold3);
+        botonProductos.setForeground(new java.awt.Color(255, 255, 255));
+        botonProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/inventory-icon-24.png"))); // NOI18N
+        botonProductos.setText("Productos");
+        botonProductos.setBorder(null);
+        botonProductos.setBorderPainted(false);
+        botonProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonProductos.setIconTextGap(6);
+        botonProductos.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonProductos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/inventory-icon-20.png"))); // NOI18N
+        botonProductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonProductosActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(50, 130, 233));
-        jButton5.setFont(customFontBold3);
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/proveedores-icon24.png"))); // NOI18N
-        jButton5.setText("Proveedores");
-        jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setIconTextGap(6);
-        jButton5.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        jButton5.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/proveedores-icon20.png"))); // NOI18N
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        botonProveedores.setBackground(new java.awt.Color(50, 130, 233));
+        botonProveedores.setFont(customFontBold3);
+        botonProveedores.setForeground(new java.awt.Color(255, 255, 255));
+        botonProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/proveedores-icon24.png"))); // NOI18N
+        botonProveedores.setText("Proveedores");
+        botonProveedores.setBorder(null);
+        botonProveedores.setBorderPainted(false);
+        botonProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonProveedores.setIconTextGap(6);
+        botonProveedores.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonProveedores.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/proveedores-icon20.png"))); // NOI18N
+        botonProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                botonProveedoresActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(50, 130, 233));
-        jButton6.setFont(customFontBold3);
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuarios-icon24.png"))); // NOI18N
-        jButton6.setText("Usuarios");
-        jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setIconTextGap(6);
-        jButton6.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuarios-icon20.png"))); // NOI18N
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        botonUsuarios.setBackground(new java.awt.Color(50, 130, 233));
+        botonUsuarios.setFont(customFontBold3);
+        botonUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        botonUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuarios-icon24.png"))); // NOI18N
+        botonUsuarios.setText("Usuarios");
+        botonUsuarios.setBorder(null);
+        botonUsuarios.setBorderPainted(false);
+        botonUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonUsuarios.setIconTextGap(6);
+        botonUsuarios.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonUsuarios.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuarios-icon20.png"))); // NOI18N
+        botonUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                botonUsuariosActionPerformed(evt);
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(50, 130, 233));
-        jButton7.setFont(customFontBold3);
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos24.png"))); // NOI18N
-        jButton7.setText("Reporte Pedidos");
-        jButton7.setBorder(null);
-        jButton7.setBorderPainted(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setIconTextGap(6);
-        jButton7.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        jButton7.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos20.png"))); // NOI18N
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        botonReportePedidos.setBackground(new java.awt.Color(50, 130, 233));
+        botonReportePedidos.setFont(customFontBold3);
+        botonReportePedidos.setForeground(new java.awt.Color(255, 255, 255));
+        botonReportePedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos24.png"))); // NOI18N
+        botonReportePedidos.setText("Reporte Pedidos");
+        botonReportePedidos.setBorder(null);
+        botonReportePedidos.setBorderPainted(false);
+        botonReportePedidos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonReportePedidos.setIconTextGap(6);
+        botonReportePedidos.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonReportePedidos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos20.png"))); // NOI18N
+        botonReportePedidos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonReportePedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                botonReportePedidosActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(50, 130, 233));
-        jButton8.setFont(customFontBold3);
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos24.png"))); // NOI18N
-        jButton8.setText("Reporte Ventas");
-        jButton8.setBorder(null);
-        jButton8.setBorderPainted(false);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.setIconTextGap(6);
-        jButton8.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        jButton8.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos20.png"))); // NOI18N
-        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        botonReporteVentas.setBackground(new java.awt.Color(50, 130, 233));
+        botonReporteVentas.setFont(customFontBold3);
+        botonReporteVentas.setForeground(new java.awt.Color(255, 255, 255));
+        botonReporteVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos24.png"))); // NOI18N
+        botonReporteVentas.setText("Reporte Ventas");
+        botonReporteVentas.setBorder(null);
+        botonReporteVentas.setBorderPainted(false);
+        botonReporteVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonReporteVentas.setIconTextGap(6);
+        botonReporteVentas.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonReporteVentas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos20.png"))); // NOI18N
+        botonReporteVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonReporteVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                botonReporteVentasActionPerformed(evt);
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(50, 130, 233));
-        jButton9.setFont(customFontBold3);
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon24.png"))); // NOI18N
-        jButton9.setText("Configuracion");
-        jButton9.setBorder(null);
-        jButton9.setBorderPainted(false);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setIconTextGap(6);
-        jButton9.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        jButton9.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon20.png"))); // NOI18N
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        botonConfiguracion.setBackground(new java.awt.Color(50, 130, 233));
+        botonConfiguracion.setFont(customFontBold3);
+        botonConfiguracion.setForeground(new java.awt.Color(255, 255, 255));
+        botonConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon24.png"))); // NOI18N
+        botonConfiguracion.setText("Configuracion");
+        botonConfiguracion.setBorder(null);
+        botonConfiguracion.setBorderPainted(false);
+        botonConfiguracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonConfiguracion.setIconTextGap(6);
+        botonConfiguracion.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonConfiguracion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon20.png"))); // NOI18N
+        botonConfiguracion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                botonConfiguracionActionPerformed(evt);
             }
         });
 
@@ -236,24 +236,24 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
                 .addGap(107, 107, 107)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonReportePedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonReporteVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(botonConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelLogin2Layout.createSequentialGroup()
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(40, 40, 40)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(41, 41, 41)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(botonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(panelLogin2Layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(40, 40, 40)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(41, 41, 41)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(botonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         panelLogin2Layout.setVerticalGroup(
@@ -261,19 +261,19 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
             .addGroup(panelLogin2Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonReportePedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonReporteVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(62, 62, 62))
         );
 
@@ -327,41 +327,41 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVentasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonVentasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedidosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonPedidosActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonClientesActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botonProductosActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void botonProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedoresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_botonProveedoresActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void botonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUsuariosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_botonUsuariosActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void botonReportePedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportePedidosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_botonReportePedidosActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void botonReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReporteVentasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_botonReporteVentasActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void botonConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfiguracionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_botonConfiguracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,15 +399,15 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton botonClientes;
+    private javax.swing.JButton botonConfiguracion;
+    private javax.swing.JButton botonPedidos;
+    private javax.swing.JButton botonProductos;
+    private javax.swing.JButton botonProveedores;
+    private javax.swing.JButton botonReportePedidos;
+    private javax.swing.JButton botonReporteVentas;
+    private javax.swing.JButton botonUsuarios;
+    private javax.swing.JButton botonVentas;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
