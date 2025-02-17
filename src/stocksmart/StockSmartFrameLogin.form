@@ -97,7 +97,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//AbstractBorder brdr1 = new TextBubbleBorder(new Color(255, 255, 255),4,25,0);&#xa;//panelLogin2.setBorder(brdr1);&#xa;AbstractBorder brdr3 = new TextBubbleBorder(new Color(50, 130, 250),4,39,0);&#xa;panelLogin2.setBorder(brdr3);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//AbstractBorder brdr1 = new TextBubbleBorder(new Color(255, 255, 255),4,25,0);&#xa;//panelLogin2.setBorder(brdr1);"/>
           </AuxValues>
 
           <Layout>

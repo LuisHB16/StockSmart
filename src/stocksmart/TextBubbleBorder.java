@@ -76,7 +76,7 @@ class TextBubbleBorder extends AbstractBorder {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        int bottomLineY = height - thickness - pointerSize;
+        int bottomLineY = height - thickness - pointerSize ;
 
         RoundRectangle2D.Double bubble = new RoundRectangle2D.Double(
                 0 + strokePad,

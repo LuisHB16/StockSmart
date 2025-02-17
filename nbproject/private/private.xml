@@ -4,10 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameMenu.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameVentas.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameLogin.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FontLoader.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/ConnectionDB.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/TextBubbleBorder.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmart.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/assests/icons/clases/PlusIcon.java</file>
         </group>
     </open-files>
 </project-private>
