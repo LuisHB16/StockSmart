@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package stocksmart;
 
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.border.AbstractBorder;
-/**
- *
- * @author alanm
- */
+
 public class StockSmartFrameMenu extends javax.swing.JFrame {
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
@@ -23,7 +16,6 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
      */
     public StockSmartFrameMenu() {
         
-       
         initComponents();
       
        this.setLocationRelativeTo(null);
@@ -51,6 +43,7 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
         botonReportePedidos = new javax.swing.JButton();
         botonReporteVentas = new javax.swing.JButton();
         botonConfiguracion = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         logoLoginIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -228,12 +221,17 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(50, 130, 233));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Menú");
+
         javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
         panelLogin2.setLayout(panelLogin2Layout);
         panelLogin2Layout.setHorizontalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
+                .addContainerGap(159, Short.MAX_VALUE)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLogin2Layout.createSequentialGroup()
                         .addComponent(botonReportePedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,12 +252,18 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
                             .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(41, 41, 41)
                             .addComponent(botonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(162, 162, 162))
+            .addGroup(panelLogin2Layout.createSequentialGroup()
+                .addGap(433, 433, 433)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLogin2Layout.setVerticalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(26, 26, 26)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botonVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,12 +273,12 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
                     .addComponent(botonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(57, 57, 57)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botonReportePedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonReporteVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62))
+                .addGap(34, 34, 34))
         );
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart.png"))); // NOI18N
@@ -292,20 +296,18 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
                     .addGroup(panelLogin1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(logoLoginIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)))
                 .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelLogin1Layout.setVerticalGroup(
             panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(264, Short.MAX_VALUE)
                 .addComponent(logoLoginIcon)
                 .addGap(31, 31, 31)
                 .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(133, 133, 133))
-            .addGroup(panelLogin1Layout.createSequentialGroup()
-                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelLogin2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         //AbstractBorder brdr1 = new TextBubbleBorder(new Color(255, 255, 255),4,25,0);
@@ -315,9 +317,7 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,6 +408,7 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
     private javax.swing.JButton botonReporteVentas;
     private javax.swing.JButton botonUsuarios;
     private javax.swing.JButton botonVentas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
