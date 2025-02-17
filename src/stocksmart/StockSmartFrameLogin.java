@@ -22,7 +22,7 @@ import javax.swing.border.AbstractBorder;
 public class StockSmartFrameLogin extends javax.swing.JFrame {
 
     
-     
+     ConnectionDB connectionDB = null;
      Font customFont = FontLoader.customFont;
      Font customFontBold = FontLoader.customFontBold;
      Font customFontBold2 = FontLoader.customFontBold2;
@@ -195,8 +195,6 @@ public class StockSmartFrameLogin extends javax.swing.JFrame {
 
         //AbstractBorder brdr1 = new TextBubbleBorder(new Color(255, 255, 255),4,25,0);
         //panelLogin2.setBorder(brdr1);
-        AbstractBorder brdr3 = new TextBubbleBorder(new Color(50, 130, 250),4,39,0);
-        panelLogin2.setBorder(brdr3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,15 +236,14 @@ public class StockSmartFrameLogin extends javax.swing.JFrame {
     
 
     public void connectionDB(){
-        String url = "jdbc:mysql://localhost:3306/tlapaleria";
-        String username = "root";
-        String password = "";
+        
         try{
             
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url,username,password);
-            Statement statment = connection.createStatement();
-            ResultSet result = statment.executeQuery("SELECT * FROM usuario");
+            
+            connectionDB = new ConnectionDB();
+            Connection connection = connectionDB.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM usuario");
          
             if (result.next()) {
             
@@ -254,13 +251,15 @@ public class StockSmartFrameLogin extends javax.swing.JFrame {
             this.passwordBD = result.getString("ContraseÃ±a"); 
            
         }
-            
+            result.close();
+            statement.close();
             
             
            
         }catch(Exception e){
               System.out.println(e);
         }
+        
     }
     public static void main(String args[]) {
         

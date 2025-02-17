@@ -12,16 +12,26 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author alanm
  */
 public class StockSmartFrameVentas extends javax.swing.JFrame {
- Font customFont = FontLoader.customFont;
+       ConnectionDB connectionDB = null;
+        Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
         Font customFontBold3 = FontLoader.customFontBold3;
@@ -30,8 +40,10 @@ private Border originalBorder;
     /**
      * Creates new form StockSmartFrameVentas
      */
-    public StockSmartFrameVentas() {
+    public StockSmartFrameVentas() throws SQLException {
+        
         initComponents();
+        connectionDB();
     }
 
     /**
@@ -47,7 +59,7 @@ private Border originalBorder;
         stockSmartLoginLabel = new javax.swing.JLabel();
         panelLogin2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaVentas = new JTable();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -106,19 +118,17 @@ private Border originalBorder;
 
         panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaVentas.setAutoCreateRowSorter(true);
+        tablaVentas.setFont(customFontBold2);
+        tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+            new String [] {"Id_Ventas", "Id_Clientes", "Fecha", "Total", "Id_Vendedor", "Id_Repartidor", "Status"}
+
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tablaVentas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaVentas);
 
         jLabel2.setFont(customFontBold2);
         jLabel2.setText("Vendedor");
@@ -292,6 +302,30 @@ private Border originalBorder;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void connectionDB() throws SQLException{
+        connectionDB = new ConnectionDB();
+        Connection connection = connectionDB.getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet result = statement.executeQuery("SELECT Id_Ventas, Id_Clientes, Fecha, Total, Id_Vendedor, Id_Repartidor, Status FROM venta");
+        DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaVentas.getModel();
+        while(result.next()){
+            int idVentas = result.getInt("Id_Ventas");
+                int idClientes = result.getInt("Id_Clientes");
+                String fecha = result.getString("Fecha");
+                double total = result.getDouble("Total");
+                String idVendedor = result.getString("Id_Vendedor");
+                int idRepartidor = result.getInt("Id_Repartidor");
+                String status = result.getString("Status");
+               
+                tablaVentas1.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
+        }
+        
+        result.close();
+        statement.close();
+            
+        
+        
+    }
     private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
         // TODO add your handlings code here:
   
@@ -347,7 +381,11 @@ private Border originalBorder;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StockSmartFrameVentas().setVisible(true);
+                try {
+                    new StockSmartFrameVentas().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(StockSmartFrameVentas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -363,11 +401,11 @@ private Border originalBorder;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
     private javax.swing.JLabel stockSmartLoginLabel;
+    private javax.swing.JTable tablaVentas;
     // End of variables declaration//GEN-END:variables
 }
