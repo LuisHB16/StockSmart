@@ -68,7 +68,7 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtNombre = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        btnRegistroCliente = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -139,16 +139,16 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(txtNombre);
 
-        jButton1.setBackground(new java.awt.Color(50, 130, 233));
-        jButton1.setFont(customFontBold2);
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Nuevo Cliente");
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.setIconTextGap(10);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistroCliente.setBackground(new java.awt.Color(50, 130, 233));
+        btnRegistroCliente.setFont(customFontBold2);
+        btnRegistroCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistroCliente.setText("Nuevo Cliente");
+        btnRegistroCliente.setBorderPainted(false);
+        btnRegistroCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnRegistroCliente.setIconTextGap(10);
+        btnRegistroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistroClienteActionPerformed(evt);
             }
         });
 
@@ -209,7 +209,7 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(btnBuscar)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnRegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
@@ -222,7 +222,7 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRegistroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
@@ -232,8 +232,8 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        jButton1.setIcon(new PlusIcon(18, 18, Color.WHITE));
-        jButton1.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnRegistroCliente.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnRegistroCliente.setIcon(new PlusIcon(18, 18, Color.WHITE));
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
@@ -353,11 +353,17 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void btnRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroClienteActionPerformed
+        try {
+            // TODO add your handling code here:
+            new StockSmartFrameRegistroClientes().setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(StockSmartFrameClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
          
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegistroClienteActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
         // TODO add your handling code here:
@@ -399,9 +405,7 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
     }
 
     // Mostrar un mensaje según si se encontraron resultados o no
-    if (clienteEncontrado) {
-        JOptionPane.showMessageDialog(this, "Cliente(s) encontrado(s).");
-    } else {
+    if (!clienteEncontrado) {
         JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
     }
 
@@ -462,7 +466,7 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel btnMenuBack;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRegistroCliente;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;

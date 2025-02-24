@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import stocksmart.ConnectionDB;
 import stocksmart.FontLoader;
+import stocksmart.StockSmartFrameClientes;
 
 public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
 
@@ -62,7 +63,7 @@ public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         logoLoginIcon = new javax.swing.JLabel();
-        jPanel1 = new JPanel(){
+        btnClientesBack = new JPanel(){
             @Override
             protected void paintComponent(Graphics g) {
                 // Super llama al comportamiento predeterminado
@@ -229,25 +230,28 @@ public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
-        jPanel1.setForeground(new java.awt.Color(0, 153, 204));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.setDoubleBuffered(false);
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnClientesBack.setForeground(new java.awt.Color(0, 153, 204));
+        btnClientesBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientesBack.setDoubleBuffered(false);
+        btnClientesBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClientesBackMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel1MouseEntered(evt);
+                btnClientesBackMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel1MouseExited(evt);
+                btnClientesBackMouseExited(evt);
             }
         });
-        jPanel1.setLayout(null);
+        btnClientesBack.setLayout(null);
 
         lblMenu.setFont(customFont);
         lblMenu.setForeground(new java.awt.Color(255, 255, 255));
-        lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/home-icon24.png"))); // NOI18N
-        lblMenu.setText("Menu");
+        lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon2.png"))); // NOI18N
+        lblMenu.setText("Clientes");
         lblMenu.setIconTextGap(10);
-        jPanel1.add(lblMenu);
+        btnClientesBack.add(lblMenu);
         lblMenu.setBounds(10, 0, 230, 50);
 
         javax.swing.GroupLayout pnlFrameLayout = new javax.swing.GroupLayout(pnlFrame);
@@ -261,7 +265,7 @@ public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
                         .addComponent(logoLoginIcon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnClientesBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlRegistroClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -276,7 +280,7 @@ public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnClientesBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(557, Short.MAX_VALUE))
             .addComponent(pnlRegistroClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -304,16 +308,16 @@ public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
     }
 
 
-    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+    private void btnClientesBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesBackMouseEntered
         // TODO add your handlings code here:
 
 
-    }//GEN-LAST:event_jPanel1MouseEntered
+    }//GEN-LAST:event_btnClientesBackMouseEntered
 
-    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+    private void btnClientesBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesBackMouseExited
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jPanel1MouseExited
+    }//GEN-LAST:event_btnClientesBackMouseExited
 
     private void txtApellidoPaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoPaternoActionPerformed
         // TODO add your handling code here:
@@ -366,6 +370,16 @@ public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoMaternoActionPerformed
 
+    private void btnClientesBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesBackMouseClicked
+        try {
+            // TODO add your handling code here:
+            new StockSmartFrameClientes().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(StockSmartFrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                this.setVisible(false);
+    }//GEN-LAST:event_btnClientesBackMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -414,8 +428,8 @@ public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JPanel btnClientesBack;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblApellidoMaterno;
     private javax.swing.JLabel lblApellidoPaterno;
     private javax.swing.JLabel lblDireccion;
