@@ -52,7 +52,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="stockSmartLoginLabel" min="-2" pref="185" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jPanel1" max="32767" attributes="0"/>
+                      <Component id="btnMenuBack" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="panelLogin2" min="-2" max="-2" attributes="0"/>
@@ -78,7 +78,7 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel1" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="btnMenuBack" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -300,7 +300,7 @@
             </Property>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="btnMenuBack">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="99" red="0" type="rgb"/>
@@ -311,8 +311,9 @@
             <Property name="doubleBuffered" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseExited"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMenuBackMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMenuBackMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMenuBackMouseExited"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;    @Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        // Super llama al comportamiento predeterminado&#xa;        super.paintComponent(g);&#xa;&#xa;        // Habilitar gr&#xe1;ficos avanzados&#xa;        Graphics2D g2d = (Graphics2D) g;&#xa;        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);&#xa;&#xa;        // Fondo transparente o del mismo color que el contenedor&#xa;        g2d.setColor(getParent().getBackground()); // Color del contenedor padre&#xa;        g2d.fillRect(0, 0, getWidth(), getHeight());&#xa;&#xa;        // Crear el gradiente de negro a azul&#xa;        GradientPaint gradiente = new GradientPaint(&#xa;            0, 0, new Color(0, 0, 0, 175),         // Inicio: negro&#xa;            getWidth()-(getWidth()/7), 0, new Color(50,130,233)  // Fin: azul&#xa;        );&#xa;&#xa;        // Dibujar el fondo redondeado con gradiente&#xa;        g2d.setPaint(gradiente);&#xa;        int arcWidth = 25;  // Curvatura horizontal&#xa;        int arcHeight = 25; // Curvatura vertical&#xa;        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), arcWidth, arcHeight);&#xa;&#xa;        g2d.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, arcWidth, arcHeight);&#xa;    }&#xa;&#xa;    @Override&#xa;    public boolean isOpaque() {&#xa;        return false; // Permitir transparencia&#xa;    }&#xa;}"/>

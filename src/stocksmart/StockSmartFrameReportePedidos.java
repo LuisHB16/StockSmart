@@ -22,18 +22,20 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class StockSmartFrameReportePedidos extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
-        Font customFont = FontLoader.customFont;
-        Font customFontBold = FontLoader.customFontBold;
-        Font customFontBold2 = FontLoader.customFontBold2;
-        Font customFontBold3 = FontLoader.customFontBold3;
-        private Color originalBackground;
-private Border originalBorder;
+
+    ConnectionDB connectionDB = null;
+    Font customFont = FontLoader.customFont;
+    Font customFontBold = FontLoader.customFontBold;
+    Font customFontBold2 = FontLoader.customFontBold2;
+    Font customFontBold3 = FontLoader.customFontBold3;
+    private Color originalBackground;
+    private Border originalBorder;
+
     /**
      * Creates new form StockSmartFrameVentas
      */
     public StockSmartFrameReportePedidos() throws SQLException {
-        
+
         initComponents();
         connectionDB();
     }
@@ -55,7 +57,7 @@ private Border originalBorder;
         btnGenerarReporte = new javax.swing.JButton();
         lblReportePedidos = new javax.swing.JLabel();
         logoLoginIcon = new javax.swing.JLabel();
-        jPanel1 = new JPanel(){
+        btnMenuBack = new JPanel(){
             @Override
             protected void paintComponent(Graphics g) {
                 // Super llama al comportamiento predeterminado
@@ -163,25 +165,28 @@ private Border originalBorder;
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
-        jPanel1.setForeground(new java.awt.Color(0, 153, 204));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.setDoubleBuffered(false);
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnMenuBack.setForeground(new java.awt.Color(0, 153, 204));
+        btnMenuBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenuBack.setDoubleBuffered(false);
+        btnMenuBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMenuBackMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel1MouseEntered(evt);
+                btnMenuBackMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel1MouseExited(evt);
+                btnMenuBackMouseExited(evt);
             }
         });
-        jPanel1.setLayout(null);
+        btnMenuBack.setLayout(null);
 
         lblMenu.setFont(customFont);
         lblMenu.setForeground(new java.awt.Color(255, 255, 255));
         lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/home-icon24.png"))); // NOI18N
         lblMenu.setText("Menu");
         lblMenu.setIconTextGap(10);
-        jPanel1.add(lblMenu);
+        btnMenuBack.add(lblMenu);
         lblMenu.setBounds(10, 0, 230, 50);
 
         javax.swing.GroupLayout pnlFrameLayout = new javax.swing.GroupLayout(pnlFrame);
@@ -195,7 +200,7 @@ private Border originalBorder;
                         .addComponent(logoLoginIcon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnMenuBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlReportePedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -210,7 +215,7 @@ private Border originalBorder;
                         .addContainerGap()
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMenuBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(557, Short.MAX_VALUE))
             .addComponent(pnlReportePedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -233,15 +238,15 @@ private Border originalBorder;
     }// </editor-fold>//GEN-END:initComponents
 
     public void connectionDB() throws SQLException {
-        
+
         connectionDB = new ConnectionDB();
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_Ventas, Id_Clientes, Fecha, Total, Id_Vendedor, Id_Repartidor, Status FROM venta");
         DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaReportePedidos.getModel();
-        
-        while(result.next()) {
-            
+
+        while (result.next()) {
+
             int idVentas = result.getInt("Id_Ventas");
             int idClientes = result.getInt("Id_Clientes");
             String fecha = result.getString("Fecha");
@@ -252,27 +257,32 @@ private Border originalBorder;
 
             tablaVentas1.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
         }
-        
+
         result.close();
         statement.close();
-            
-    }
-    
-    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
-        // TODO add your handlings code here:
-  
-        
-        
-    }//GEN-LAST:event_jPanel1MouseEntered
 
-    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+    }
+
+    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
+        // TODO add your handlings code here:
+
+
+    }//GEN-LAST:event_btnMenuBackMouseEntered
+
+    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
         // TODO add your handling code here:
-         
-    }//GEN-LAST:event_jPanel1MouseExited
+
+    }//GEN-LAST:event_btnMenuBackMouseExited
 
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
+
+    private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
+        // TODO add your handling code here:
+        new StockSmartFrameMenu().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMenuBackMouseClicked
 
     /**
      * @param args the command line arguments
@@ -301,8 +311,7 @@ private Border originalBorder;
         }
         //</editor-fold>
         //</editor-fold>
-    
-            
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -317,7 +326,7 @@ private Border originalBorder;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerarReporte;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel btnMenuBack;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblReportePedidos;
     private javax.swing.JLabel logoLoginIcon;

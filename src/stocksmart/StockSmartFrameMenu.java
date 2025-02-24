@@ -2,6 +2,9 @@ package stocksmart;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.AbstractBorder;
 
 public class StockSmartFrameMenu extends javax.swing.JFrame {
@@ -328,39 +331,97 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVentasActionPerformed
-        // TODO add your handling code here:
+            try {
+                // TODO add your handling code here:
+                new StockSmartFrameVentas().setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(StockSmartFrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }//GEN-LAST:event_botonVentasActionPerformed
 
     private void botonPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedidosActionPerformed
         // TODO add your handling code here:
+          try {
+                // TODO add your handling code here:
+                new StockSmartFramePedidos().setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(StockSmartFrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_botonPedidosActionPerformed
 
     private void botonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientesActionPerformed
         // TODO add your handling code here:
+          try {
+                // TODO add your handling code here:
+                new StockSmartFrameClientes().setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(StockSmartFrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_botonClientesActionPerformed
 
     private void botonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductosActionPerformed
         // TODO add your handling code here:
+          try {
+                // TODO add your handling code here:
+                new StockSmartFrameProductos().setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(StockSmartFrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_botonProductosActionPerformed
 
     private void botonProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedoresActionPerformed
         // TODO add your handling code here:
+          try {
+                // TODO add your handling code here:
+                new StockSmartFrameProveedores().setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(StockSmartFrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_botonProveedoresActionPerformed
 
     private void botonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUsuariosActionPerformed
         // TODO add your handling code here:
+          try {
+                // TODO add your handling code here:
+                new StockSmartFrameUsuarios().setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(StockSmartFrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_botonUsuariosActionPerformed
 
     private void botonReportePedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportePedidosActionPerformed
         // TODO add your handling code here:
+          try {
+                // TODO add your handling code here:
+                new StockSmartFrameReportePedidos().setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(StockSmartFrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_botonReportePedidosActionPerformed
 
     private void botonReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReporteVentasActionPerformed
         // TODO add your handling code here:
+         try {
+                // TODO add your handling code here:
+                new StockSmartFrameReporteVentas().setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(StockSmartFrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_botonReporteVentasActionPerformed
 
     private void botonConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfiguracionActionPerformed
         // TODO add your handling code here:
+            
+        
     }//GEN-LAST:event_botonConfiguracionActionPerformed
 
     /**
