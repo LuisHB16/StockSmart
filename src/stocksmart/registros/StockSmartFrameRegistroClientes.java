@@ -8,7 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.sql.SQLException;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
@@ -21,18 +20,20 @@ import stocksmart.StockSmartFrameClientes;
 public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
 
     ConnectionDB connectionDB = null;
+    StockSmartFrameClientes fclientes = null;
     Font customFont = FontLoader.customFont;
     Font customFontBold = FontLoader.customFontBold;
     Font customFontBold2 = FontLoader.customFontBold2;
-    Font customFontBold3 = FontLoader.customFontBold3;
-    private Color originalBackground;
-    private Border originalBorder;
 
     /**
      * Creates new form StockSmartFrameVentas
+     *
+     * @param fclientes
+     * @throws java.sql.SQLException
      */
-    public StockSmartFrameRegistroClientes() throws SQLException {
+    public StockSmartFrameRegistroClientes(StockSmartFrameClientes fclientes) throws SQLException {
 
+        this.fclientes = fclientes;
         initComponents();
         connectionDB();
     }
@@ -326,35 +327,36 @@ public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         try {
-           // Obtener la conexión a la base de datos
-        Connection connection = connectionDB.getConnection();
-        
-        // Consulta SQL para insertar un nuevo cliente
-        String sql = "INSERT INTO clientes (Nombre, Apellido_P, Apellido_M, Direccion, Telefono) VALUES (?, ?, ?, ?, ?)";
+            // Obtener la conexión a la base de datos
 
-        // Crear el PreparedStatement para evitar inyecciones SQL
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        
-        // Obtener los datos desde los JTextField (ajústalos según los nombres de tus componentes)
-        preparedStatement.setString(1, txtNombre.getText());
-        preparedStatement.setString(2, txtApellidoPaterno.getText());
-        preparedStatement.setString(3, txtApellidoMaterno.getText());
-        preparedStatement.setString(4, txtDireccion.getText());
-        preparedStatement.setString(5, txtTelefono.getText());
+            Connection connection = connectionDB.getConnection();
 
-        // Ejecutar la consulta
-        int filasAfectadas = preparedStatement.executeUpdate();
+            // Consulta SQL para insertar un nuevo cliente
+            String sql = "INSERT INTO clientes (Nombre, Apellido_P, Apellido_M, Direccion, Telefono) VALUES (?, ?, ?, ?, ?)";
 
-        if (filasAfectadas > 0) {
-            JOptionPane.showMessageDialog(this, "Cliente registrado con éxito.");
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al registrar cliente.");
-        }
+            // Crear el PreparedStatement para evitar inyecciones SQL
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-        // Cerrar la conexión
-        preparedStatement.close();
-        connection.close();
-     
+            // Obtener los datos desde los JTextField (ajústalos según los nombres de tus componentes)
+            preparedStatement.setString(1, txtNombre.getText());
+            preparedStatement.setString(2, txtApellidoPaterno.getText());
+            preparedStatement.setString(3, txtApellidoMaterno.getText());
+            preparedStatement.setString(4, txtDireccion.getText());
+            preparedStatement.setString(5, txtTelefono.getText());
+
+            // Ejecutar la consulta
+            int filasAfectadas = preparedStatement.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                JOptionPane.showMessageDialog(this, "Cliente registrado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al registrar cliente.");
+            }
+
+            // Cerrar la conexión
+            preparedStatement.close();
+            connection.close();
+
         } catch (SQLException ex) {
             Logger.getLogger(StockSmartFrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -371,60 +373,15 @@ public class StockSmartFrameRegistroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoMaternoActionPerformed
 
     private void btnClientesBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesBackMouseClicked
-        try {
-            // TODO add your handling code here:
-            new StockSmartFrameClientes().setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(StockSmartFrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                this.setVisible(false);
+        // TODO add your handling code here:
+        this.fclientes.setVisible(true);
+        //this.setVisible(false);
     }//GEN-LAST:event_btnClientesBackMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StockSmartFrameRegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StockSmartFrameRegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StockSmartFrameRegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StockSmartFrameRegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new StockSmartFrameRegistroClientes().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(StockSmartFrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

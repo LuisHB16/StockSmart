@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import javax.swing.border.AbstractBorder;
 
 public class StockSmartFrameMenu extends javax.swing.JFrame {
+    
+        StockSmartFrameClientes fclientes = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
@@ -355,9 +357,13 @@ public class StockSmartFrameMenu extends javax.swing.JFrame {
     private void botonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientesActionPerformed
         // TODO add your handling code here:
           try {
-                // TODO add your handling code here:
-                new StockSmartFrameClientes().setVisible(true);
-                this.setVisible(false);
+              
+                if(this.fclientes == null){
+                    this.fclientes = new StockSmartFrameClientes(this);
+                }
+                this.fclientes.setVisible(true);
+                
+              // this.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(StockSmartFrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }

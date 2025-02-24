@@ -35,19 +35,20 @@ import stocksmart.registros.StockSmartFrameRegistroClientes;
 public class StockSmartFrameClientes extends javax.swing.JFrame {
 
     ConnectionDB connectionDB = null;
+    StockSmartFrameMenu fmenu = null;
+    StockSmartFrameRegistroClientes fregistroClientes = null;
     Font customFont = FontLoader.customFont;
     Font customFontBold = FontLoader.customFontBold;
     Font customFontBold2 = FontLoader.customFontBold2;
-    Font customFontBold3 = FontLoader.customFontBold3;
-    private Color originalBackground;
-    private Border originalBorder;
+   
 
     /**
      * Creates new form StockSmartFrameVentas
      */
-    public StockSmartFrameClientes() throws SQLException {
+    public StockSmartFrameClientes(StockSmartFrameMenu menu) throws SQLException {
 
         initComponents();
+        this.fmenu = menu;        
         connectionDB();
     }
 
@@ -356,8 +357,11 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
     private void btnRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroClienteActionPerformed
         try {
             // TODO add your handling code here:
-            new StockSmartFrameRegistroClientes().setVisible(true);
-            this.setVisible(false);
+            if(this.fregistroClientes == null){
+               this.fregistroClientes = new StockSmartFrameRegistroClientes(this);
+            }
+            this.fregistroClientes.setVisible(true);
+           // this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(StockSmartFrameClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -367,7 +371,7 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
         // TODO add your handling code here:
-        new StockSmartFrameMenu().setVisible(true);
+        this.fmenu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
@@ -399,9 +403,9 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
         String direccion = result.getString("Direccion");
         String telefono = result.getString("Telefono");
 
-        // Agregar los resultados a la tabla
+        
         tablaVentas1.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
-        clienteEncontrado = true;  // Marcar que se encontró al menos un cliente
+        clienteEncontrado = true; 
     }
 
     // Mostrar un mensaje según si se encontraron resultados o no
@@ -426,42 +430,7 @@ public class StockSmartFrameClientes extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StockSmartFrameClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StockSmartFrameClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StockSmartFrameClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StockSmartFrameClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new StockSmartFrameClientes().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(StockSmartFrameClientes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
