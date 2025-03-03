@@ -14,9 +14,11 @@ public class FrameMenu extends javax.swing.JFrame {
         FrameProductos fproductos = null;
         FrameProveedores fproveedores = null;
         FrameUsuarios fusuarios = null;
-        Font customFont = FontLoader.customFont;
+        FrameReportePedidos freportepedidos = null;
+        FrameReporteVentas freporteventas = null;
+        FrameVentas fventas = null;
+        
         Font customFontBold = FontLoader.customFontBold;
-        Font customFontBold2 = FontLoader.customFontBold2;
         Font customFontBold3 = FontLoader.customFontBold3;
         
         
@@ -337,9 +339,12 @@ public class FrameMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVentasActionPerformed
-            try {
+           try {
                 // TODO add your handling code here:
-                new FrameVentas().setVisible(true);
+                  if(this.fventas == null){
+                    this.fventas = new FrameVentas(this);
+                }
+               this.fventas.setVisible(true);
                 this.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
@@ -424,7 +429,10 @@ public class FrameMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
           try {
                 // TODO add your handling code here:
-                new FrameReportePedidos().setVisible(true);
+                  if(this.freportepedidos == null){
+                    this.freportepedidos = new FrameReportePedidos(this);
+                }
+               this.freportepedidos.setVisible(true);
                 this.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
@@ -433,13 +441,15 @@ public class FrameMenu extends javax.swing.JFrame {
 
     private void botonReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReporteVentasActionPerformed
         // TODO add your handling code here:
-         try {
-                // TODO add your handling code here:
-                new FrameReporteVentas().setVisible(true);
-                this.setVisible(false);
+        if(this.freporteventas == null){
+            try {
+                this.freporteventas = new FrameReporteVentas(this);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        this.freporteventas.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonReporteVentasActionPerformed
 
     private void botonConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfiguracionActionPerformed
