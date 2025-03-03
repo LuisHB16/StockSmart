@@ -253,6 +253,7 @@ public class StockSmartFrameLogin extends javax.swing.JFrame {
         }
             result.close();
             statement.close();
+            connection.close();
             
             
            
