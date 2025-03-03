@@ -319,6 +319,7 @@ public class FrameClientes extends javax.swing.JFrame {
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_C, Nombre, Apellido_P, Apellido_M, Direccion, Telefono FROM clientes");
         DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaClientes.getModel();
+        tablaVentas1.setRowCount(0);
         while (result.next()) {
             int idVentas = result.getInt("Id_C");
 
@@ -333,6 +334,7 @@ public class FrameClientes extends javax.swing.JFrame {
 
         result.close();
         statement.close();
+        connection.close();
 
     }
     private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered

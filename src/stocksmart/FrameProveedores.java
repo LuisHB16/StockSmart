@@ -6,24 +6,21 @@ package stocksmart;
 
 import assests.icons.clases.PlusIcon;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.sql.SQLException;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import stocksmart.registros.FrameRegistroProveedores;
 
 /**
  *
@@ -31,12 +28,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrameProveedores extends javax.swing.JFrame {
        ConnectionDB connectionDB = null;
+        FrameRegistroProveedores fregistroproveedores = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
-        Font customFontBold3 = FontLoader.customFontBold3;
-        private Color originalBackground;
-private Border originalBorder;
+       
     /**
      * Creates new form StockSmartFrameVentas
      */
@@ -59,11 +55,11 @@ private Border originalBorder;
         stockSmartLoginLabel = new javax.swing.JLabel();
         panelLogin2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaVentas = new JTable();
+        tablaProveedores = new JTable();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        btnNuevoProveedor = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -117,33 +113,33 @@ private Border originalBorder;
 
         panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaVentas.setAutoCreateRowSorter(true);
-        tablaVentas.setFont(customFontBold2);
-        tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProveedores.setAutoCreateRowSorter(true);
+        tablaProveedores.setFont(customFontBold2);
+        tablaProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
-            new String [] {"Id_Ventas", "Id_Clientes", "Fecha", "Total", "Id_Vendedor", "Id_Repartidor", "Status"}
+            new String [] {"Marca", "Telefono", "Direccion", "Correo"}
 
         ));
-        tablaVentas.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaVentas);
+        tablaProveedores.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaProveedores);
 
         jLabel2.setFont(customFontBold2);
         jLabel2.setText("Nombre del Cliente");
 
         jScrollPane2.setViewportView(jTextPane1);
 
-        jButton1.setBackground(new java.awt.Color(50, 130, 233));
-        jButton1.setFont(customFontBold2);
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Nuevo Proveedor");
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.setIconTextGap(10);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevoProveedor.setBackground(new java.awt.Color(50, 130, 233));
+        btnNuevoProveedor.setFont(customFontBold2);
+        btnNuevoProveedor.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevoProveedor.setText("Nuevo Proveedor");
+        btnNuevoProveedor.setBorderPainted(false);
+        btnNuevoProveedor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNuevoProveedor.setIconTextGap(10);
+        btnNuevoProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnNuevoProveedorActionPerformed(evt);
             }
         });
 
@@ -199,7 +195,7 @@ private Border originalBorder;
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jButton2)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnNuevoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
@@ -212,7 +208,7 @@ private Border originalBorder;
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnNuevoProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
@@ -222,8 +218,8 @@ private Border originalBorder;
                 .addGap(26, 26, 26))
         );
 
-        jButton1.setIcon(new PlusIcon(18, 18, Color.WHITE));
-        jButton1.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnNuevoProveedor.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnNuevoProveedor.setIcon(new PlusIcon(18, 18, Color.WHITE));
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
@@ -292,7 +288,7 @@ private Border originalBorder;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE)
+            .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 1265, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,23 +302,22 @@ private Border originalBorder;
         connectionDB = new ConnectionDB();
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT Id_Ventas, Id_Clientes, Fecha, Total, Id_Vendedor, Id_Repartidor, Status FROM venta");
-        DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaVentas.getModel();
-        while(result.next()){
-            int idVentas = result.getInt("Id_Ventas");
-                int idClientes = result.getInt("Id_Clientes");
-                String fecha = result.getString("Fecha");
-                double total = result.getDouble("Total");
-                String idVendedor = result.getString("Id_Vendedor");
-                int idRepartidor = result.getInt("Id_Repartidor");
-                String status = result.getString("Status");
-               
-                tablaVentas1.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
+        ResultSet result = statement.executeQuery("SELECT * FROM proveedores");
+        DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaProveedores.getModel();
+          tablaVentas1.setRowCount(0);
+        while (result.next()) {
+           
+            String nombre = result.getString("Marca");
+            String telefono = result.getString("Telefono");
+            String direccion = result.getString("Direccion");
+            String correo = result.getString("correo");
+
+            tablaVentas1.addRow(new Object[]{nombre, telefono, direccion, correo});
         }
-        
+
         result.close();
         statement.close();
-            
+        connection.close();
         
         
     }
@@ -346,9 +341,20 @@ private Border originalBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnNuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            if(this.fregistroproveedores == null){
+               this.fregistroproveedores = new FrameRegistroProveedores(this);
+            }
+            this.fregistroproveedores.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+    }//GEN-LAST:event_btnNuevoProveedorActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
         // TODO add your handling code here:}
@@ -356,6 +362,9 @@ private Border originalBorder;
                 this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
+    public void actualizarTabla(){
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -405,7 +414,7 @@ private Border originalBorder;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnMenuBack;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnNuevoProveedor;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -418,6 +427,6 @@ private Border originalBorder;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
     private javax.swing.JLabel stockSmartLoginLabel;
-    private javax.swing.JTable tablaVentas;
+    private javax.swing.JTable tablaProveedores;
     // End of variables declaration//GEN-END:variables
 }

@@ -346,8 +346,14 @@ public class FrameRegistroClientes extends javax.swing.JFrame {
 
             // Ejecutar la consulta
             int filasAfectadas = preparedStatement.executeUpdate();
+            
+            
 
             if (filasAfectadas > 0) {
+                this.fclientes.connectionDB();
+                this.fclientes.setVisible(true);
+        this.setVisible(false);
+        
                 JOptionPane.showMessageDialog(this, "Cliente registrado con éxito.");
             } else {
                 JOptionPane.showMessageDialog(this, "Error al registrar cliente.");

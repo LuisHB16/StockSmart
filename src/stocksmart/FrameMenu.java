@@ -10,6 +10,7 @@ import javax.swing.border.AbstractBorder;
 public class FrameMenu extends javax.swing.JFrame {
     
         FrameClientes fclientes = null;
+        FramePedidos fpedidos = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
@@ -347,7 +348,10 @@ public class FrameMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
           try {
                 // TODO add your handling code here:
-                new FramePedidos().setVisible(true);
+                  if(this.fpedidos == null){
+                    this.fpedidos = new FramePedidos(this);
+                }
+               this.fpedidos.setVisible(true);
                 this.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);

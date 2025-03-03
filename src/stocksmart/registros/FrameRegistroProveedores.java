@@ -1,42 +1,38 @@
 package stocksmart.registros;
 
-import assests.icons.clases.PlusIcon;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 import stocksmart.ConnectionDB;
 import stocksmart.FontLoader;
+import stocksmart.FrameProveedores;
 
 public class FrameRegistroProveedores extends javax.swing.JFrame {
        ConnectionDB connectionDB = null;
+       FrameProveedores fproveedores = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
-        Font customFontBold3 = FontLoader.customFontBold3;
-        private Color originalBackground;
-private Border originalBorder;
+        
+      
     /**
      * Creates new form StockSmartFrameVentas
      */
-    public FrameRegistroProveedores() throws SQLException {
+    public FrameRegistroProveedores( FrameProveedores fproveedores) throws SQLException {
         
         initComponents();
+        this.fproveedores = fproveedores;
         connectionDB();
     }
 
@@ -228,6 +224,9 @@ private Border originalBorder;
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.setDoubleBuffered(false);
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel1MouseEntered(evt);
             }
@@ -240,7 +239,7 @@ private Border originalBorder;
         lblMenu.setFont(customFont);
         lblMenu.setForeground(new java.awt.Color(255, 255, 255));
         lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/home-icon24.png"))); // NOI18N
-        lblMenu.setText("Menu");
+        lblMenu.setText("Proveedores");
         lblMenu.setIconTextGap(10);
         jPanel1.add(lblMenu);
         lblMenu.setBounds(10, 0, 230, 50);
@@ -294,7 +293,7 @@ private Border originalBorder;
     }// </editor-fold>//GEN-END:initComponents
 
     public void connectionDB() throws SQLException {
-        
+         connectionDB = new ConnectionDB();
         
             
     }
@@ -317,6 +316,47 @@ private Border originalBorder;
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+         try {
+            // Obtener la conexión a la base de datos
+
+            Connection connection = connectionDB.getConnection();
+
+            // Consulta SQL para insertar un nuevo cliente
+            String sql = "INSERT INTO proveedores (Marca , Telefono , Direccion ,correo) VALUES (?, ?, ?, ?)";
+
+            // Crear el PreparedStatement para evitar inyecciones SQL
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Obtener los datos desde los JTextField (ajústalos según los nombres de tus componentes)
+            
+            
+            preparedStatement.setString(1, txtMarca.getText());
+            preparedStatement.setString(2, txtTelefono.getText());
+            preparedStatement.setString(3, txtDireccion.getText());
+            preparedStatement.setString(4, txtNombre.getText());
+
+            // Ejecutar la consulta
+            int filasAfectadas = preparedStatement.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                this.fproveedores.connectionDB();
+                this.fproveedores.setVisible(true);
+                
+        this.setVisible(false);
+        
+                JOptionPane.showMessageDialog(this, "Cliente registrado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al registrar cliente.");
+            }
+
+            // Cerrar la conexión
+            preparedStatement.close();
+            connection.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -327,60 +367,16 @@ private Border originalBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        this.fproveedores.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameRegistroProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameRegistroProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameRegistroProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameRegistroProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-    
-            
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new FrameRegistroProveedores().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(FrameRegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
