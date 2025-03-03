@@ -122,11 +122,13 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="lblNombre" pref="96" max="32767" attributes="0"/>
                                       <Component id="lblApellidos" max="32767" attributes="0"/>
+                                      <Component id="lblRol" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtNombre" max="32767" attributes="0"/>
                                       <Component id="txtApellidos" max="32767" attributes="0"/>
+                                      <Component id="txtRol" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
@@ -151,6 +153,11 @@
                           <Component id="txtApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblRol" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRol" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnGuardar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
@@ -170,7 +177,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Registro de repartidores"/>
+                <Property name="text" type="java.lang.String" value="Registro de trabajadores"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNombre">
@@ -232,6 +239,19 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="lblRol">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Rol"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRol">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRolActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="logoLoginIcon">
@@ -252,6 +272,7 @@
             <Property name="doubleBuffered" type="boolean" value="false"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseClicked"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseExited"/>
           </Events>
@@ -274,7 +295,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assests/icons/home-icon24.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Menu"/>
+                <Property name="text" type="java.lang.String" value="Usuarios"/>
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Constraints>

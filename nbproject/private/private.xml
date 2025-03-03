@@ -3,24 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/StockSmartFrameRegistroProveedores.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/StockSmartFrameRegistroRepartidores.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameVentas.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameReporteVentas.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FontLoader.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/StockSmartFrameRegistroProductos.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameEstatusReparto.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameMenu.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameProductos.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameClientes.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameLogin.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameProveedores.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFrameReportePedidos.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmartFramePedidos.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/StockSmartFrameRegistroClientes.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/detalleV.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameUsuarios.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FramePedidos.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/conexion.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameProductos.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameMenu.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/productosd.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameProveedores.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/FrameRegistroTrabajadores.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/FrameRegistroProveedores.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameClientes.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameVentas.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/ConnectionDB.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/TextBubbleBorder.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmart.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/FrameRegistroClientes.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameReporteVentas.java</file>
         </group>
     </open-files>
 </project-private>

@@ -11,6 +11,9 @@ public class FrameMenu extends javax.swing.JFrame {
     
         FrameClientes fclientes = null;
         FramePedidos fpedidos = null;
+        FrameProductos fproductos = null;
+        FrameProveedores fproveedores = null;
+        FrameUsuarios fusuarios = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
@@ -375,10 +378,14 @@ public class FrameMenu extends javax.swing.JFrame {
 
     private void botonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductosActionPerformed
         // TODO add your handling code here:
-          try {
-                // TODO add your handling code here:
-                new FrameProductos().setVisible(true);
-                this.setVisible(false);
+            try {
+              
+                if(this.fproductos == null){
+                    this.fproductos = new FrameProductos(this);
+                }
+               this.fproductos.setVisible(true);
+                
+              this.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -386,10 +393,14 @@ public class FrameMenu extends javax.swing.JFrame {
 
     private void botonProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedoresActionPerformed
         // TODO add your handling code here:
-          try {
-                // TODO add your handling code here:
-                new FrameProveedores().setVisible(true);
-                this.setVisible(false);
+         try {
+              
+                if(this.fproveedores == null){
+                    this.fproveedores = new FrameProveedores(this);
+                }
+               this.fproveedores.setVisible(true);
+                
+              this.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -399,7 +410,10 @@ public class FrameMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
           try {
                 // TODO add your handling code here:
-                new FrameUsuarios().setVisible(true);
+                  if(this.fusuarios == null){
+                    this.fusuarios = new FrameUsuarios(this);
+                }
+               this.fusuarios.setVisible(true);
                 this.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);

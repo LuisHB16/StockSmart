@@ -13,18 +13,22 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import stocksmart.ConnectionDB;
 import stocksmart.FontLoader;
+import stocksmart.FrameUsuarios;
 
-public class FrameRegistroRepartidores extends javax.swing.JFrame {
+public class FrameRegistroTrabajadores extends javax.swing.JFrame {
        ConnectionDB connectionDB = null;
+        FrameUsuarios fusuarios = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
@@ -34,9 +38,10 @@ private Border originalBorder;
     /**
      * Creates new form StockSmartFrameVentas
      */
-    public FrameRegistroRepartidores() throws SQLException {
+    public FrameRegistroTrabajadores(FrameUsuarios fusuarios) throws SQLException {
         
         initComponents();
+        this.fusuarios = fusuarios;
         connectionDB();
     }
 
@@ -59,6 +64,8 @@ private Border originalBorder;
         txtApellidos = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        lblRol = new javax.swing.JLabel();
+        txtRol = new javax.swing.JTextField();
         logoLoginIcon = new javax.swing.JLabel();
         jPanel1 = new JPanel(){
             @Override
@@ -111,7 +118,7 @@ private Border originalBorder;
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
-        lblTitulo.setText("Registro de repartidores");
+        lblTitulo.setText("Registro de trabajadores");
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNombre.setText("Nombre");
@@ -149,6 +156,15 @@ private Border originalBorder;
             }
         });
 
+        lblRol.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblRol.setText("Rol");
+
+        txtRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRolActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlRegistroRepartidoresLayout = new javax.swing.GroupLayout(pnlRegistroRepartidores);
         pnlRegistroRepartidores.setLayout(pnlRegistroRepartidoresLayout);
         pnlRegistroRepartidoresLayout.setHorizontalGroup(
@@ -164,11 +180,13 @@ private Border originalBorder;
                         .addGroup(pnlRegistroRepartidoresLayout.createSequentialGroup()
                             .addGroup(pnlRegistroRepartidoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                                .addComponent(lblApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblRol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(27, 27, 27)
                             .addGroup(pnlRegistroRepartidoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtNombre)
-                                .addComponent(txtApellidos)))
+                                .addComponent(txtApellidos)
+                                .addComponent(txtRol, javax.swing.GroupLayout.Alignment.TRAILING)))
                         .addComponent(lblTitulo)))
                 .addContainerGap(240, Short.MAX_VALUE))
         );
@@ -185,6 +203,10 @@ private Border originalBorder;
                 .addGroup(pnlRegistroRepartidoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblApellidos))
+                .addGap(41, 41, 41)
+                .addGroup(pnlRegistroRepartidoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRol)
+                    .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlRegistroRepartidoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,6 +220,9 @@ private Border originalBorder;
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.setDoubleBuffered(false);
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel1MouseEntered(evt);
             }
@@ -210,7 +235,7 @@ private Border originalBorder;
         lblMenu.setFont(customFont);
         lblMenu.setForeground(new java.awt.Color(255, 255, 255));
         lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/home-icon24.png"))); // NOI18N
-        lblMenu.setText("Menu");
+        lblMenu.setText("Usuarios");
         lblMenu.setIconTextGap(10);
         jPanel1.add(lblMenu);
         lblMenu.setBounds(10, 0, 230, 50);
@@ -264,7 +289,7 @@ private Border originalBorder;
     }// </editor-fold>//GEN-END:initComponents
 
     public void connectionDB() throws SQLException {
-        
+         connectionDB = new ConnectionDB();
         
             
     }
@@ -287,58 +312,66 @@ private Border originalBorder;
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+          try {
+            // Obtener la conexión a la base de datos
+
+            Connection connection = connectionDB.getConnection();
+
+            // Consulta SQL para insertar un nuevo cliente
+            String sql = "INSERT INTO trabajadores (Usuario_trabajador , Rol) VALUES (?, ?)";
+
+            // Crear el PreparedStatement para evitar inyecciones SQL
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Obtener los datos desde los JTextField (ajústalos según los nombres de tus componentes)
+            preparedStatement.setString(1, txtNombre.getText()+ txtApellidos.getText());
+            preparedStatement.setString(2, txtRol.getText());
+        
+
+            // Ejecutar la consulta
+            int filasAfectadas = preparedStatement.executeUpdate();
+            
+            
+
+            if (filasAfectadas > 0) {
+                this.fusuarios.limpiarTabla();
+                this.fusuarios.connectionDB();
+                this.fusuarios.setVisible(true);
+        this.setVisible(false);
+        
+                JOptionPane.showMessageDialog(this, "Cliente registrado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al registrar cliente.");
+            }
+
+            // Cerrar la conexión
+            preparedStatement.close();
+            connection.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameRegistroRepartidores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameRegistroRepartidores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameRegistroRepartidores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameRegistroRepartidores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-    
-            
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new FrameRegistroRepartidores().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(FrameRegistroRepartidores.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+    private void txtRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRolActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        
+        this.fusuarios.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+  
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -347,6 +380,7 @@ private Border originalBorder;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel pnlFrame;
@@ -354,5 +388,6 @@ private Border originalBorder;
     private javax.swing.JLabel stockSmartLoginLabel;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtRol;
     // End of variables declaration//GEN-END:variables
 }

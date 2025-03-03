@@ -365,7 +365,7 @@ public class FramePedidos extends javax.swing.JFrame {
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_Ventas, Id_Clientes, Fecha, Total, Id_Vendedor, Id_Repartidor, Status FROM venta");
-        DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaPedidos.getModel();
+        DefaultTableModel model = (DefaultTableModel) tablaPedidos.getModel();
         
         while(result.next()) {
             
@@ -377,7 +377,7 @@ public class FramePedidos extends javax.swing.JFrame {
             int idRepartidor = result.getInt("Id_Repartidor");
             String status = result.getString("Status");
 
-            tablaVentas1.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
+            model.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
             
         }
         

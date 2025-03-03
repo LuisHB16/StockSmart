@@ -29,6 +29,7 @@ import stocksmart.registros.FrameRegistroProveedores;
 public class FrameProveedores extends javax.swing.JFrame {
        ConnectionDB connectionDB = null;
         FrameRegistroProveedores fregistroproveedores = null;
+        FrameMenu fmenu = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
@@ -36,11 +37,13 @@ public class FrameProveedores extends javax.swing.JFrame {
     /**
      * Creates new form StockSmartFrameVentas
      */
-    public FrameProveedores() throws SQLException {
+    public FrameProveedores(FrameMenu fmenu) throws SQLException {
         
         initComponents();
+        this.fmenu = fmenu;
         connectionDB();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -303,8 +306,8 @@ public class FrameProveedores extends javax.swing.JFrame {
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT * FROM proveedores");
-        DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaProveedores.getModel();
-          tablaVentas1.setRowCount(0);
+        DefaultTableModel model = (DefaultTableModel) tablaProveedores.getModel();
+          model.setRowCount(0);
         while (result.next()) {
            
             String nombre = result.getString("Marca");
@@ -312,7 +315,7 @@ public class FrameProveedores extends javax.swing.JFrame {
             String direccion = result.getString("Direccion");
             String correo = result.getString("correo");
 
-            tablaVentas1.addRow(new Object[]{nombre, telefono, direccion, correo});
+            model.addRow(new Object[]{nombre, telefono, direccion, correo});
         }
 
         result.close();
@@ -320,6 +323,11 @@ public class FrameProveedores extends javax.swing.JFrame {
         connection.close();
         
         
+    }
+    
+     public void LimpiarTabla() {
+        DefaultTableModel model = (DefaultTableModel) tablaProveedores.getModel();
+        model.setRowCount(0);
     }
     private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
         // TODO add your handlings code here:
@@ -358,59 +366,15 @@ public class FrameProveedores extends javax.swing.JFrame {
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
         // TODO add your handling code here:}
-        new FrameMenu().setVisible(true);
-                this.setVisible(false);
+        this.fmenu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
-    public void actualizarTabla(){
-        
-    }
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-    
-            
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new FrameProveedores().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(FrameProveedores.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnMenuBack;

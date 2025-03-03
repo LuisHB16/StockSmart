@@ -31,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrameProductos extends javax.swing.JFrame {
        ConnectionDB connectionDB = null;
+       FrameMenu fmenu = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
@@ -40,9 +41,10 @@ private Border originalBorder;
     /**
      * Creates new form StockSmartFrameVentas
      */
-    public FrameProductos() throws SQLException {
+    public FrameProductos(FrameMenu fmenu) throws SQLException {
         
         initComponents();
+        this.fmenu = fmenu;
         connectionDB();
     }
 
@@ -59,7 +61,7 @@ private Border originalBorder;
         stockSmartLoginLabel = new javax.swing.JLabel();
         panelLogin2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaVentas = new JTable();
+        tablaProductos = new JTable();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
@@ -117,17 +119,17 @@ private Border originalBorder;
 
         panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaVentas.setAutoCreateRowSorter(true);
-        tablaVentas.setFont(customFontBold2);
-        tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProductos.setAutoCreateRowSorter(true);
+        tablaProductos.setFont(customFontBold2);
+        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {"Id_Ventas", "Id_Clientes", "Fecha", "Total", "Id_Vendedor", "Id_Repartidor", "Status"}
 
         ));
-        tablaVentas.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaVentas);
+        tablaProductos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaProductos);
 
         jLabel2.setFont(customFontBold2);
         jLabel2.setText("Nombre del Cliente");
@@ -292,7 +294,7 @@ private Border originalBorder;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE)
+            .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 1265, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +309,7 @@ private Border originalBorder;
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_Ventas, Id_Clientes, Fecha, Total, Id_Vendedor, Id_Repartidor, Status FROM venta");
-        DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaVentas.getModel();
+        DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
         while(result.next()){
             int idVentas = result.getInt("Id_Ventas");
                 int idClientes = result.getInt("Id_Clientes");
@@ -317,7 +319,7 @@ private Border originalBorder;
                 int idRepartidor = result.getInt("Id_Repartidor");
                 String status = result.getString("Status");
                
-                tablaVentas1.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
+                model.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
         }
         
         result.close();
@@ -325,6 +327,10 @@ private Border originalBorder;
             
         
         
+    }
+     public void limpiarTabla(){
+         DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
+         model.setRowCount(0);
     }
     private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
         // TODO add your handlings code here:
@@ -352,53 +358,14 @@ private Border originalBorder;
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
         // TODO add your handling code here:
-        new FrameMenu().setVisible(true);
+       this.fmenu.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-    
-            
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new FrameProductos().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(FrameProductos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
-
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnMenuBack;
     private javax.swing.JButton jButton1;
@@ -414,6 +381,6 @@ private Border originalBorder;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
     private javax.swing.JLabel stockSmartLoginLabel;
-    private javax.swing.JTable tablaVentas;
+    private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }

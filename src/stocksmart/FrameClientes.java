@@ -40,7 +40,6 @@ public class FrameClientes extends javax.swing.JFrame {
     Font customFont = FontLoader.customFont;
     Font customFontBold = FontLoader.customFontBold;
     Font customFontBold2 = FontLoader.customFontBold2;
-   
 
     /**
      * Creates new form StockSmartFrameVentas
@@ -48,7 +47,7 @@ public class FrameClientes extends javax.swing.JFrame {
     public FrameClientes(FrameMenu menu) throws SQLException {
 
         initComponents();
-        this.fmenu = menu;        
+        this.fmenu = menu;
         connectionDB();
     }
 
@@ -318,8 +317,8 @@ public class FrameClientes extends javax.swing.JFrame {
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_C, Nombre, Apellido_P, Apellido_M, Direccion, Telefono FROM clientes");
-        DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaClientes.getModel();
-        tablaVentas1.setRowCount(0);
+        DefaultTableModel model = (DefaultTableModel) tablaClientes.getModel();
+        model.setRowCount(0);
         while (result.next()) {
             int idVentas = result.getInt("Id_C");
 
@@ -329,13 +328,18 @@ public class FrameClientes extends javax.swing.JFrame {
             String direccion = result.getString("Direccion");
             String telefono = result.getString("Telefono");
 
-            tablaVentas1.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
+            model.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
         }
 
         result.close();
         statement.close();
         connection.close();
 
+    }
+
+    public void LimpiarTabla() {
+        DefaultTableModel model = (DefaultTableModel) tablaClientes.getModel();
+        model.setRowCount(0);
     }
     private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
         // TODO add your handlings code here:
@@ -359,15 +363,15 @@ public class FrameClientes extends javax.swing.JFrame {
     private void btnRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroClienteActionPerformed
         try {
             // TODO add your handling code here:
-            if(this.fregistroClientes == null){
-               this.fregistroClientes = new FrameRegistroClientes(this);
+            if (this.fregistroClientes == null) {
+                this.fregistroClientes = new FrameRegistroClientes(this);
             }
             this.fregistroClientes.setVisible(true);
             this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(FrameClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
 
     }//GEN-LAST:event_btnRegistroClienteActionPerformed
 
@@ -379,60 +383,55 @@ public class FrameClientes extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-      try {
-   
-    Connection connection = connectionDB.getConnection();
+        try {
 
-    String sql = "SELECT * FROM clientes WHERE Nombre LIKE ?";
+            Connection connection = connectionDB.getConnection();
 
-    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            String sql = "SELECT * FROM clientes WHERE Nombre LIKE ?";
 
-    preparedStatement.setString(1, "%" + txtNombre.getText() + "%");
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-    ResultSet result = preparedStatement.executeQuery();
-    
-    DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaClientes.getModel();
+            preparedStatement.setString(1, "%" + txtNombre.getText() + "%");
 
-    tablaVentas1.setRowCount(0);
+            ResultSet result = preparedStatement.executeQuery();
 
-    
-    boolean clienteEncontrado = false;
-    while (result.next()) {
-        int idVentas = result.getInt("Id_C");
-        String nombre = result.getString("Nombre");
-        String apellidoP = result.getString("Apellido_P");
-        String apellidoM = result.getString("Apellido_M");
-        String direccion = result.getString("Direccion");
-        String telefono = result.getString("Telefono");
+            DefaultTableModel model = (DefaultTableModel) tablaClientes.getModel();
 
-        
-        tablaVentas1.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
-        clienteEncontrado = true; 
-    }
+            model.setRowCount(0);
 
-    // Mostrar un mensaje según si se encontraron resultados o no
-    if (!clienteEncontrado) {
-        JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
-    }
+            boolean clienteEncontrado = false;
+            while (result.next()) {
+                int idVentas = result.getInt("Id_C");
+                String nombre = result.getString("Nombre");
+                String apellidoP = result.getString("Apellido_P");
+                String apellidoM = result.getString("Apellido_M");
+                String direccion = result.getString("Direccion");
+                String telefono = result.getString("Telefono");
 
-    // Cerrar los recursos
-    result.close();
-    preparedStatement.close();
-    connection.close();
+                model.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
+                clienteEncontrado = true;
+            }
 
-} catch (SQLException ex) {
-    Logger.getLogger(FrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
-}
+            // Mostrar un mensaje según si se encontraron resultados o no
+            if (!clienteEncontrado) {
+                JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
+            }
 
+            // Cerrar los recursos
+            result.close();
+            preparedStatement.close();
+            connection.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-   
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
