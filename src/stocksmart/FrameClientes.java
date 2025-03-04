@@ -4,6 +4,7 @@
  */
 package stocksmart;
 
+import inicio.FrameMenu;
 import assests.icons.clases.PlusIcon;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -362,7 +363,7 @@ public class FrameClientes extends javax.swing.JFrame {
 
     private void btnRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroClienteActionPerformed
         try {
-            // TODO add your handling code here:
+            
             if (this.fregistroClientes == null) {
                 this.fregistroClientes = new FrameRegistroClientes(this);
             }
@@ -376,7 +377,7 @@ public class FrameClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroClienteActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        // TODO add your handling code here:
+        
         this.fmenu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked

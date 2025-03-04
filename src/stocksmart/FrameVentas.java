@@ -1,5 +1,6 @@
 package stocksmart;
 
+import inicio.FrameMenu;
 import assests.icons.clases.PlusIcon;
 import java.awt.Color;
 import java.awt.Cursor;

@@ -32,7 +32,7 @@ public class productosd {
                 String descripcion = rs.getString("Descripcion");
                 String granel = rs.getString("Granel");
                 String unidad = rs.getString("Unidad");
-                byte[] imagen = rs.getBytes("Imagen"); // Recupera el campo de imagen como un arreglo de bytes
+                byte[] imagen = rs.getBytes("Imagen"); 
                 String categoria = rs.getString("Categoria");
                 String unidadC = rs.getString("UnidadC");
                 int cantmax = rs.getInt("ExtMax");

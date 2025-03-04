@@ -4,24 +4,20 @@
  */
 package stocksmart;
 
+import inicio.FrameMenu;
 import assests.icons.clases.PlusIcon;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.sql.SQLException;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,9 +31,7 @@ public class FrameProductos extends javax.swing.JFrame {
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
-        Font customFontBold3 = FontLoader.customFontBold3;
-        private Color originalBackground;
-private Border originalBorder;
+      
     /**
      * Creates new form StockSmartFrameVentas
      */
@@ -318,7 +312,7 @@ private Border originalBorder;
                 String idVendedor = result.getString("Id_Vendedor");
                 int idRepartidor = result.getInt("Id_Repartidor");
                 String status = result.getString("Status");
-               
+        
                 model.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
         }
         
