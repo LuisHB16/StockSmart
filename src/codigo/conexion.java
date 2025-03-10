@@ -4,10 +4,7 @@
  */
 package codigo;
 
-/**
- *
- * @author alanm
- */
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +16,8 @@ public class conexion {
 
     public Connection getConnection() {
         try {
-            String myBD = "jdbc:mysql://localhost:3306/tlapaleria?serverTimezone=UTC";
+            //jdbc:mysql://localhost:3306/tlapaleria?serverTimezone=UTC
+            String myBD = "jdbc:mysql://localhost:3306/tlapaleria";
             con = DriverManager.getConnection(myBD, "root", "");
             return con;
         } catch (SQLException e) {

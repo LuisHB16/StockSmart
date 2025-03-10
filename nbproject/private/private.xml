@@ -5,27 +5,31 @@
         <group>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/detalleV.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FontLoader.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameLogin.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameUsuarios.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FramePedidos.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/conexion.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameProductos.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameMenu.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameDatosEmpresa.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/productosd.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/assests/images/logoStockSmart50.png</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/TextBubbleBorder.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/FrameRegistroProductos.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameProveedores.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/cliented.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/FrameRegistroTrabajadores.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/FrameRegistroProveedores.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameClientes.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/ventad.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameVentas.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameEstatusReparto.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/ConnectionDB.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/FrameRegistroClientes.java</file>
-            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/TextBubbleBorder.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameReportePedidos.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameProductos.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameDatosEmpresa.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/productosd.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameProveedores.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/registros/FrameRegistroTrabajadores.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameClientes.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/inicio/FrameLogin.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/clientes.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/ConnectionDB.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/venta.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/StockSmart.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/inicio/FrameMenu.java</file>
             <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameReporteVentas.java</file>
         </group>
     </open-files>
