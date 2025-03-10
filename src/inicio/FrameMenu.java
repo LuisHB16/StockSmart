@@ -62,7 +62,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonUsuarios = new javax.swing.JButton();
         botonReportePedidos = new javax.swing.JButton();
         botonReporteVentas = new javax.swing.JButton();
-        botonConfiguracion = new javax.swing.JButton();
+        botonPredicciones = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         logoLoginIcon = new javax.swing.JLabel();
 
@@ -223,21 +223,21 @@ public class FrameMenu extends javax.swing.JFrame {
             }
         });
 
-        botonConfiguracion.setBackground(new java.awt.Color(50, 130, 233));
-        botonConfiguracion.setFont(customFontBold3);
-        botonConfiguracion.setForeground(new java.awt.Color(255, 255, 255));
-        botonConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon24.png"))); // NOI18N
-        botonConfiguracion.setText("Configuracion");
-        botonConfiguracion.setBorder(null);
-        botonConfiguracion.setBorderPainted(false);
-        botonConfiguracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonConfiguracion.setIconTextGap(6);
-        botonConfiguracion.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonConfiguracion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon20.png"))); // NOI18N
-        botonConfiguracion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+        botonPredicciones.setBackground(new java.awt.Color(50, 130, 233));
+        botonPredicciones.setFont(customFontBold3);
+        botonPredicciones.setForeground(new java.awt.Color(255, 255, 255));
+        botonPredicciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon24.png"))); // NOI18N
+        botonPredicciones.setText("Predicciones");
+        botonPredicciones.setBorder(null);
+        botonPredicciones.setBorderPainted(false);
+        botonPredicciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonPredicciones.setIconTextGap(6);
+        botonPredicciones.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonPredicciones.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon20.png"))); // NOI18N
+        botonPredicciones.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonPredicciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonConfiguracionActionPerformed(evt);
+                botonPrediccionesActionPerformed(evt);
             }
         });
 
@@ -258,7 +258,7 @@ public class FrameMenu extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(botonReporteVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(botonConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(botonPredicciones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelLogin2Layout.createSequentialGroup()
                             .addComponent(botonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,7 +297,7 @@ public class FrameMenu extends javax.swing.JFrame {
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botonReportePedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonReporteVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonPredicciones, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
@@ -461,11 +461,11 @@ public class FrameMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_botonReporteVentasActionPerformed
 
-    private void botonConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfiguracionActionPerformed
+    private void botonPrediccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrediccionesActionPerformed
         // TODO add your handling code here:
             
         
-    }//GEN-LAST:event_botonConfiguracionActionPerformed
+    }//GEN-LAST:event_botonPrediccionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -505,8 +505,8 @@ public class FrameMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonClientes;
-    private javax.swing.JButton botonConfiguracion;
     private javax.swing.JButton botonPedidos;
+    private javax.swing.JButton botonPredicciones;
     private javax.swing.JButton botonProductos;
     private javax.swing.JButton botonProveedores;
     private javax.swing.JButton botonReportePedidos;
