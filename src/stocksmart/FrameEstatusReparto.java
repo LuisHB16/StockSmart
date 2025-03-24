@@ -13,13 +13,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FrameEstatusReparto extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
+        ConnectionDB connectionDB = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
         Font customFontBold3 = FontLoader.customFontBold3;
         private Color originalBackground;
-private Border originalBorder;
+        private Border originalBorder;
     /**
      * Creates new form StockSmartFrameVentas
      */

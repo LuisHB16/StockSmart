@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package stocksmart;
 
 import inicio.FrameMenu;
@@ -23,10 +19,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import stocksmart.registros.FrameRegistroProveedores;
 
-/**
- *
- * @author alanm
- */
 public class FrameProveedores extends javax.swing.JFrame {
        ConnectionDB connectionDB = null;
         FrameRegistroProveedores fregistroproveedores = null;

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package stocksmart;
 
 import inicio.FrameMenu;
@@ -27,10 +23,6 @@ import javax.swing.table.DefaultTableModel;
 import stocksmart.registros.FrameRegistroClientes;
 import stocksmart.registros.FrameRegistroTrabajadores;
 
-/**
- *
- * @author alanm
- */
 public class FrameUsuarios extends javax.swing.JFrame {
         ConnectionDB connectionDB = null;
         FrameMenu fmenu = null;
@@ -38,9 +30,7 @@ public class FrameUsuarios extends javax.swing.JFrame {
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
-        
-        
-       
+
     /**
      * Creates new form StockSmartFrameVentas
      */

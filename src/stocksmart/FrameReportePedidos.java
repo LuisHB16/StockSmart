@@ -23,7 +23,6 @@ public class FrameReportePedidos extends javax.swing.JFrame {
     Font customFontBold = FontLoader.customFontBold;
     Font customFontBold2 = FontLoader.customFontBold2;
   
-
     /**
      * Creates new form StockSmartFrameVentas
      */

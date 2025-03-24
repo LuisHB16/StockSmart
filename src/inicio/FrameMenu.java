@@ -53,6 +53,7 @@ public class FrameMenu extends javax.swing.JFrame {
 
         panelLogin1 = new javax.swing.JPanel();
         panelLogin2 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
         botonVentas = new javax.swing.JButton();
         botonPedidos = new javax.swing.JButton();
         botonClientes = new javax.swing.JButton();
@@ -62,7 +63,6 @@ public class FrameMenu extends javax.swing.JFrame {
         botonReportePedidos = new javax.swing.JButton();
         botonReporteVentas = new javax.swing.JButton();
         botonConfiguracion = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         botonClientes1 = new javax.swing.JButton();
         botonPedidos1 = new javax.swing.JButton();
         botonProveedores1 = new javax.swing.JButton();
@@ -77,6 +77,11 @@ public class FrameMenu extends javax.swing.JFrame {
         panelLogin1.setBackground(new java.awt.Color(50, 130, 233));
 
         panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Menú");
 
         botonVentas.setBackground(new java.awt.Color(50, 130, 233));
         botonVentas.setFont(customFontBold3);
@@ -135,7 +140,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonProductos.setBackground(new java.awt.Color(50, 130, 233));
         botonProductos.setFont(customFontBold3);
         botonProductos.setForeground(new java.awt.Color(255, 255, 255));
-        botonProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/inventory-icon-24.png"))); // NOI18N
+        botonProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/productos-icon24.png"))); // NOI18N
         botonProductos.setText("Productos");
         botonProductos.setBorder(null);
         botonProductos.setBorderPainted(false);
@@ -225,8 +230,8 @@ public class FrameMenu extends javax.swing.JFrame {
         botonConfiguracion.setBackground(new java.awt.Color(50, 130, 233));
         botonConfiguracion.setFont(customFontBold3);
         botonConfiguracion.setForeground(new java.awt.Color(255, 255, 255));
-        botonConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon24.png"))); // NOI18N
-        botonConfiguracion.setText("Configuracion");
+        botonConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/movimientos-icon24.png"))); // NOI18N
+        botonConfiguracion.setText("Movimientos");
         botonConfiguracion.setBorder(null);
         botonConfiguracion.setBorderPainted(false);
         botonConfiguracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -240,16 +245,11 @@ public class FrameMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(50, 130, 233));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Menú");
-
         botonClientes1.setBackground(new java.awt.Color(50, 130, 233));
         botonClientes1.setFont(customFontBold3);
         botonClientes1.setForeground(new java.awt.Color(255, 255, 255));
-        botonClientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon24.png"))); // NOI18N
-        botonClientes1.setText("Clientes");
+        botonClientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/categoria-icon24.png"))); // NOI18N
+        botonClientes1.setText("Categorías");
         botonClientes1.setBorder(null);
         botonClientes1.setBorderPainted(false);
         botonClientes1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -266,8 +266,8 @@ public class FrameMenu extends javax.swing.JFrame {
         botonPedidos1.setBackground(new java.awt.Color(50, 130, 233));
         botonPedidos1.setFont(customFontBold3);
         botonPedidos1.setForeground(new java.awt.Color(255, 255, 255));
-        botonPedidos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon24.png"))); // NOI18N
-        botonPedidos1.setText("Pedidos");
+        botonPedidos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporte-dev-icon24.png"))); // NOI18N
+        botonPedidos1.setText("Reporte de Devoluciones");
         botonPedidos1.setBorder(null);
         botonPedidos1.setBorderPainted(false);
         botonPedidos1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -284,8 +284,8 @@ public class FrameMenu extends javax.swing.JFrame {
         botonProveedores1.setBackground(new java.awt.Color(50, 130, 233));
         botonProveedores1.setFont(customFontBold3);
         botonProveedores1.setForeground(new java.awt.Color(255, 255, 255));
-        botonProveedores1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/proveedores-icon24.png"))); // NOI18N
-        botonProveedores1.setText("Proveedores");
+        botonProveedores1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/unidad-icon24.png"))); // NOI18N
+        botonProveedores1.setText("Unidades");
         botonProveedores1.setBorder(null);
         botonProveedores1.setBorderPainted(false);
         botonProveedores1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -302,8 +302,8 @@ public class FrameMenu extends javax.swing.JFrame {
         botonReporteVentas1.setBackground(new java.awt.Color(50, 130, 233));
         botonReporteVentas1.setFont(customFontBold3);
         botonReporteVentas1.setForeground(new java.awt.Color(255, 255, 255));
-        botonReporteVentas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos24.png"))); // NOI18N
-        botonReporteVentas1.setText("Reporte Ventas");
+        botonReporteVentas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/subproducto-icon24.png"))); // NOI18N
+        botonReporteVentas1.setText("Subproductos");
         botonReporteVentas1.setBorder(null);
         botonReporteVentas1.setBorderPainted(false);
         botonReporteVentas1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -320,8 +320,8 @@ public class FrameMenu extends javax.swing.JFrame {
         botonConfiguracion1.setBackground(new java.awt.Color(50, 130, 233));
         botonConfiguracion1.setFont(customFontBold3);
         botonConfiguracion1.setForeground(new java.awt.Color(255, 255, 255));
-        botonConfiguracion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon24.png"))); // NOI18N
-        botonConfiguracion1.setText("Configuracion");
+        botonConfiguracion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/altas-icon24.png"))); // NOI18N
+        botonConfiguracion1.setText("Altas");
         botonConfiguracion1.setBorder(null);
         botonConfiguracion1.setBorderPainted(false);
         botonConfiguracion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -338,8 +338,8 @@ public class FrameMenu extends javax.swing.JFrame {
         botonUsuarios1.setBackground(new java.awt.Color(50, 130, 233));
         botonUsuarios1.setFont(customFontBold3);
         botonUsuarios1.setForeground(new java.awt.Color(255, 255, 255));
-        botonUsuarios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuarios-icon24.png"))); // NOI18N
-        botonUsuarios1.setText("Usuarios");
+        botonUsuarios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/prediccion-icon24.png"))); // NOI18N
+        botonUsuarios1.setText("Predicción");
         botonUsuarios1.setBorder(null);
         botonUsuarios1.setBorderPainted(false);
         botonUsuarios1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -356,8 +356,8 @@ public class FrameMenu extends javax.swing.JFrame {
         botonConfiguracion2.setBackground(new java.awt.Color(50, 130, 233));
         botonConfiguracion2.setFont(customFontBold3);
         botonConfiguracion2.setForeground(new java.awt.Color(255, 255, 255));
-        botonConfiguracion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon24.png"))); // NOI18N
-        botonConfiguracion2.setText("Altas");
+        botonConfiguracion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/devolucion-icon24.png"))); // NOI18N
+        botonConfiguracion2.setText("Devoluciones");
         botonConfiguracion2.setBorder(null);
         botonConfiguracion2.setBorderPainted(false);
         botonConfiguracion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -376,80 +376,85 @@ public class FrameMenu extends javax.swing.JFrame {
         panelLogin2Layout.setHorizontalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(botonVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(botonReportePedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(botonReporteVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonConfiguracion2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(28, 28, 28)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(botonReporteVentas1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(botonConfiguracion1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(botonPedidos1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(botonClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(517, 517, 517))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
-                        .addComponent(botonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(botonProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(botonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(botonProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(botonUsuarios1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLogin2Layout.createSequentialGroup()
+                                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(panelLogin2Layout.createSequentialGroup()
+                                        .addComponent(botonVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(botonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelLogin2Layout.createSequentialGroup()
+                                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(panelLogin2Layout.createSequentialGroup()
+                                                .addComponent(botonReportePedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(40, 40, 40)
+                                                .addComponent(botonReporteVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(panelLogin2Layout.createSequentialGroup()
+                                                .addComponent(botonClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(botonUsuarios1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(31, 31, 31)
+                                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(botonConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(botonConfiguracion1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(28, 28, 28)
+                                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(botonPedidos1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(botonConfiguracion2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botonReporteVentas1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
+                                .addComponent(botonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(botonProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(botonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(botonProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(133, 133, 133))))
         );
         panelLogin2Layout.setVerticalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonPedidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonPedidos1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonClientes1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonUsuarios1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonReporteVentas1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonConfiguracion1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonReportePedidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonReporteVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(botonConfiguracion2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addGroup(panelLogin2Layout.createSequentialGroup()
+                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonPedidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonPedidos1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
+                                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(botonProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(botonReporteVentas1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonReportePedidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonReporteVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(botonConfiguracion2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonConfiguracion1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(botonClientes1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelLogin1Layout = new javax.swing.GroupLayout(panelLogin1);
@@ -686,7 +691,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private javax.swing.JButton botonUsuarios;
     private javax.swing.JButton botonUsuarios1;
     private javax.swing.JButton botonVentas;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
     // End of variables declaration//GEN-END:variables
