@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javax.swing.border.AbstractBorder;
 import stocksmart.FontLoader;
 import stocksmart.FrameClientes;
+import stocksmart.FrameMovimientos;
 import stocksmart.FramePedidos;
 import stocksmart.FrameProductos;
 import stocksmart.FrameProveedores;
@@ -26,6 +27,7 @@ public class FrameMenu extends javax.swing.JFrame {
         FrameReportePedidos freportepedidos = null;
         FrameReporteVentas freporteventas = null;
         FrameVentas fventas = null;
+        FrameMovimientos fmovimientos = null;
         
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold3 = FontLoader.customFontBold3;
@@ -63,8 +65,8 @@ public class FrameMenu extends javax.swing.JFrame {
         botonReporteVentas = new javax.swing.JButton();
         botonConfiguracion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        botonClientes1 = new javax.swing.JButton();
-        botonPedidos1 = new javax.swing.JButton();
+        botonMovimientos = new javax.swing.JButton();
+        botonMovimientosdfds = new javax.swing.JButton();
         botonProveedores1 = new javax.swing.JButton();
         botonReporteVentas1 = new javax.swing.JButton();
         botonConfiguracion1 = new javax.swing.JButton();
@@ -245,39 +247,39 @@ public class FrameMenu extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Menú");
 
-        botonClientes1.setBackground(new java.awt.Color(50, 130, 233));
-        botonClientes1.setFont(customFontBold3);
-        botonClientes1.setForeground(new java.awt.Color(255, 255, 255));
-        botonClientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon24.png"))); // NOI18N
-        botonClientes1.setText("Clientes");
-        botonClientes1.setBorder(null);
-        botonClientes1.setBorderPainted(false);
-        botonClientes1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonClientes1.setIconTextGap(6);
-        botonClientes1.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonClientes1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon20.png"))); // NOI18N
-        botonClientes1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonClientes1.addActionListener(new java.awt.event.ActionListener() {
+        botonMovimientos.setBackground(new java.awt.Color(50, 130, 233));
+        botonMovimientos.setFont(customFontBold3);
+        botonMovimientos.setForeground(new java.awt.Color(255, 255, 255));
+        botonMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon24.png"))); // NOI18N
+        botonMovimientos.setText("Movimientos");
+        botonMovimientos.setBorder(null);
+        botonMovimientos.setBorderPainted(false);
+        botonMovimientos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonMovimientos.setIconTextGap(6);
+        botonMovimientos.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonMovimientos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon20.png"))); // NOI18N
+        botonMovimientos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonMovimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonClientes1ActionPerformed(evt);
+                botonMovimientosActionPerformed(evt);
             }
         });
 
-        botonPedidos1.setBackground(new java.awt.Color(50, 130, 233));
-        botonPedidos1.setFont(customFontBold3);
-        botonPedidos1.setForeground(new java.awt.Color(255, 255, 255));
-        botonPedidos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon24.png"))); // NOI18N
-        botonPedidos1.setText("Pedidos");
-        botonPedidos1.setBorder(null);
-        botonPedidos1.setBorderPainted(false);
-        botonPedidos1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botonPedidos1.setIconTextGap(6);
-        botonPedidos1.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonPedidos1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon20.png"))); // NOI18N
-        botonPedidos1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botonPedidos1.addActionListener(new java.awt.event.ActionListener() {
+        botonMovimientosdfds.setBackground(new java.awt.Color(50, 130, 233));
+        botonMovimientosdfds.setFont(customFontBold3);
+        botonMovimientosdfds.setForeground(new java.awt.Color(255, 255, 255));
+        botonMovimientosdfds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon24.png"))); // NOI18N
+        botonMovimientosdfds.setText("d");
+        botonMovimientosdfds.setBorder(null);
+        botonMovimientosdfds.setBorderPainted(false);
+        botonMovimientosdfds.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonMovimientosdfds.setIconTextGap(6);
+        botonMovimientosdfds.setMargin(new java.awt.Insets(2, 14, 25, 14));
+        botonMovimientosdfds.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon20.png"))); // NOI18N
+        botonMovimientosdfds.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonMovimientosdfds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPedidos1ActionPerformed(evt);
+                botonMovimientosdfdsActionPerformed(evt);
             }
         });
 
@@ -399,9 +401,9 @@ public class FrameMenu extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addComponent(botonConfiguracion1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(botonPedidos1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonMovimientosdfds, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(botonClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -431,8 +433,8 @@ public class FrameMenu extends javax.swing.JFrame {
                     .addComponent(botonVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonPedidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonPedidos1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonClientes1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonMovimientosdfds, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonMovimientos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botonProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -605,13 +607,24 @@ public class FrameMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botonConfiguracionActionPerformed
 
-    private void botonClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientes1ActionPerformed
+    private void botonMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMovimientosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonClientes1ActionPerformed
+         if(this.fmovimientos == null){
+            try {
+                this.freporteventas = new FrameReporteVentas(this);
+            } catch (SQLException ex) {
+                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        this.freporteventas.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_botonMovimientosActionPerformed
 
-    private void botonPedidos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedidos1ActionPerformed
+    private void botonMovimientosdfdsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMovimientosdfdsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonPedidos1ActionPerformed
+       
+    }//GEN-LAST:event_botonMovimientosdfdsActionPerformed
 
     private void botonProveedores1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedores1ActionPerformed
         // TODO add your handling code here:
@@ -671,12 +684,12 @@ public class FrameMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonClientes;
-    private javax.swing.JButton botonClientes1;
     private javax.swing.JButton botonConfiguracion;
     private javax.swing.JButton botonConfiguracion1;
     private javax.swing.JButton botonConfiguracion2;
+    private javax.swing.JButton botonMovimientos;
+    private javax.swing.JButton botonMovimientosdfds;
     private javax.swing.JButton botonPedidos;
-    private javax.swing.JButton botonPedidos1;
     private javax.swing.JButton botonProductos;
     private javax.swing.JButton botonProveedores;
     private javax.swing.JButton botonProveedores1;

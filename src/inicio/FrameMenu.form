@@ -103,9 +103,9 @@
                               <Component id="botonConfiguracion1" min="-2" pref="211" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="botonPedidos1" min="-2" pref="211" max="-2" attributes="0"/>
+                              <Component id="botonMovimientosdfds" min="-2" pref="211" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="botonClientes1" min="-2" pref="211" max="-2" attributes="0"/>
+                              <Component id="botonMovimientos" min="-2" pref="211" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -143,8 +143,8 @@
                           <Component id="botonVentas" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                           <Component id="botonPedidos" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                           <Component id="botonClientes" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
-                          <Component id="botonPedidos1" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
-                          <Component id="botonClientes1" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="botonMovimientosdfds" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="botonMovimientos" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -479,7 +479,7 @@
                 <Property name="text" type="java.lang.String" value="Men&#xfa;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="botonClientes1">
+            <Component class="javax.swing.JButton" name="botonMovimientos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -493,7 +493,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assests/icons/clientes-icon24.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Clientes"/>
+                <Property name="text" type="java.lang.String" value="Movimientos"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -509,10 +509,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonClientes1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonMovimientosActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonPedidos1">
+            <Component class="javax.swing.JButton" name="botonMovimientosdfds">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -526,7 +526,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assests/icons/package-icon24.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Pedidos"/>
+                <Property name="text" type="java.lang.String" value="d"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -542,7 +542,7 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPedidos1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonMovimientosdfdsActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonProveedores1">
