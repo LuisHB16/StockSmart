@@ -100,24 +100,24 @@
                                                       <Component id="botonReporteVentas" min="-2" pref="211" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="botonClientes1" min="-2" pref="211" max="-2" attributes="0"/>
+                                                      <Component id="botonCategorias" min="-2" pref="211" max="-2" attributes="0"/>
                                                       <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="botonUsuarios1" min="-2" pref="211" max="-2" attributes="0"/>
+                                                      <Component id="botonPrediccion" min="-2" pref="211" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="botonConfiguracion" min="-2" pref="211" max="-2" attributes="0"/>
-                                                  <Component id="botonConfiguracion1" min="-2" pref="211" max="-2" attributes="0"/>
+                                                  <Component id="botonMovimientos" min="-2" pref="211" max="-2" attributes="0"/>
+                                                  <Component id="botonAltas" min="-2" pref="211" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="botonPedidos1" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
+                                          <Component id="botonRDevoluciones" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                              <Component id="botonConfiguracion2" min="-2" pref="211" max="-2" attributes="0"/>
-                                              <Component id="botonReporteVentas1" min="-2" pref="211" max="-2" attributes="0"/>
+                                              <Component id="botonDevoluciones" min="-2" pref="211" max="-2" attributes="0"/>
+                                              <Component id="botonSubproductos" min="-2" pref="211" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -128,7 +128,7 @@
                                       <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
                                       <Component id="botonUsuarios" min="-2" pref="211" max="-2" attributes="0"/>
                                       <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                                      <Component id="botonProveedores1" min="-2" pref="211" max="-2" attributes="0"/>
+                                      <Component id="botonUnidades" min="-2" pref="211" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
@@ -144,37 +144,37 @@
                       <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="botonUsuarios1" min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="botonPrediccion" min="-2" pref="147" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="botonPedidos" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                   <Component id="botonClientes" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
-                                  <Component id="botonPedidos1" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Component id="botonRDevoluciones" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                   <Component id="botonVentas" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="botonProveedores1" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                          <Component id="botonUnidades" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                           <Component id="botonProductos" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                           <Component id="botonProveedores" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                           <Component id="botonUsuarios" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="botonReporteVentas1" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                          <Component id="botonSubproductos" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                           <Component id="botonReportePedidos" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                           <Component id="botonReporteVentas" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
-                                          <Component id="botonConfiguracion" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                          <Component id="botonMovimientos" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="botonConfiguracion2" min="-2" pref="147" max="-2" attributes="0"/>
-                                          <Component id="botonConfiguracion1" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                          <Component id="botonDevoluciones" min="-2" pref="147" max="-2" attributes="0"/>
+                                          <Component id="botonAltas" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="botonClientes1" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Component id="botonCategorias" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -460,7 +460,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonReporteVentasActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonConfiguracion">
+            <Component class="javax.swing.JButton" name="botonMovimientos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -490,10 +490,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConfiguracionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonMovimientosActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonClientes1">
+            <Component class="javax.swing.JButton" name="botonCategorias">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -523,10 +523,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonClientes1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCategoriasActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonPedidos1">
+            <Component class="javax.swing.JButton" name="botonRDevoluciones">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -556,10 +556,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPedidos1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRDevolucionesActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonProveedores1">
+            <Component class="javax.swing.JButton" name="botonUnidades">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -589,10 +589,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonProveedores1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonUnidadesActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonReporteVentas1">
+            <Component class="javax.swing.JButton" name="botonSubproductos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -622,10 +622,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonReporteVentas1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSubproductosActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonConfiguracion1">
+            <Component class="javax.swing.JButton" name="botonAltas">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -655,10 +655,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConfiguracion1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAltasActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonUsuarios1">
+            <Component class="javax.swing.JButton" name="botonPrediccion">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -688,10 +688,10 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonUsuarios1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPrediccionActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="botonConfiguracion2">
+            <Component class="javax.swing.JButton" name="botonDevoluciones">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -721,7 +721,7 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConfiguracion2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDevolucionesActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
