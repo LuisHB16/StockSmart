@@ -3,6 +3,7 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="AltasFrame"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -21,17 +22,8 @@
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pnlFrame" min="-2" max="-2" attributes="0"/>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pnlFrame" alignment="0" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+    <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pnlFrame">
@@ -40,6 +32,11 @@
           <Color blue="e9" green="82" red="32" type="rgb"/>
         </Property>
       </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -55,7 +52,7 @@
                       <Component id="btnMenuBack" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="pnlPedidos" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlAltas" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -76,7 +73,7 @@
                   <Component id="btnMenuBack" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace pref="557" max="32767" attributes="0"/>
               </Group>
-              <Component id="pnlPedidos" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnlAltas" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -96,7 +93,7 @@
             <Property name="text" type="java.lang.String" value="StockSmart"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="pnlPedidos">
+        <Container class="javax.swing.JPanel" name="pnlAltas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -111,33 +108,33 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="236" max="-2" attributes="0"/>
+                      <Component id="lblAltas" min="-2" pref="236" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="369" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="scrollTablaPedidos" min="-2" pref="361" max="-2" attributes="0"/>
+                              <Component id="scrollTable1" min="-2" pref="361" max="-2" attributes="0"/>
                               <EmptySpace pref="41" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnAgregarCliente" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="btnInsertar" min="-2" pref="100" max="-2" attributes="0"/>
                                   <Component id="btnEliminar" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="scrollTablaPedidos1" min="-2" pref="361" max="-2" attributes="0"/>
+                              <Component id="scrollTable2" min="-2" pref="361" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="771" max="-2" attributes="0"/>
-                                      <Component id="btnCobrar" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="btnAgregar" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblVendedor" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="lblNombre" min="-2" pref="95" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="scrollBarcode" min="-2" pref="250" max="-2" attributes="0"/>
+                                      <Component id="txtNombre" min="-2" pref="228" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -150,45 +147,46 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lblAltas" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblVendedor" min="-2" max="-2" attributes="0"/>
-                                  <Component id="scrollBarcode" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                                      <Component id="btnAgregarCliente" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="btnInsertar" min="-2" pref="32" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnEliminar" min="-2" pref="32" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                      <Component id="scrollTablaPedidos" min="-2" pref="386" max="-2" attributes="0"/>
+                                      <Component id="scrollTable1" min="-2" pref="386" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Component id="scrollTablaPedidos1" min="-2" pref="386" max="-2" attributes="0"/>
+                          <Component id="scrollTable2" min="-2" pref="386" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="btnCobrar" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnAgregar" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="scrollTablaPedidos">
+            <Container class="javax.swing.JScrollPane" name="scrollTable1">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tablaPedidos">
+                <Component class="javax.swing.JTable" name="table1">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -207,7 +205,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblVendedor">
+            <Component class="javax.swing.JLabel" name="lblNombre">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="customFontBold2" type="code"/>
@@ -215,23 +213,7 @@
                 <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="scrollBarcode">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTextPane" name="txtBarcode">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="customFontBold2    " type="code"/>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JButton" name="btnCobrar">
+            <Component class="javax.swing.JButton" name="btnAgregar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -248,7 +230,7 @@
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCobrarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnEliminar">
@@ -271,7 +253,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAgregarCliente">
+            <Component class="javax.swing.JButton" name="btnInsertar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="customFontBold2" type="code"/>
@@ -284,10 +266,10 @@
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarClienteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lblAltas">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="48" style="1"/>
@@ -299,14 +281,14 @@
                 <Property name="text" type="java.lang.String" value="Altas"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="scrollTablaPedidos1">
+            <Container class="javax.swing.JScrollPane" name="scrollTable2">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tablaPedidos1">
+                <Component class="javax.swing.JTable" name="table2">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -325,6 +307,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JTextField" name="txtNombre">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtNombre.setFont(customFontBold2);"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="logoLoginIcon">

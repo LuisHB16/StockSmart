@@ -44,18 +44,17 @@ public class FrameAltas extends javax.swing.JFrame {
 
         pnlFrame = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
-        pnlPedidos = new javax.swing.JPanel();
-        scrollTablaPedidos = new javax.swing.JScrollPane();
-        tablaPedidos = new JTable();
-        lblVendedor = new javax.swing.JLabel();
-        scrollBarcode = new javax.swing.JScrollPane();
-        txtBarcode = new javax.swing.JTextPane();
-        btnCobrar = new javax.swing.JButton();
+        pnlAltas = new javax.swing.JPanel();
+        scrollTable1 = new javax.swing.JScrollPane();
+        table1 = new JTable();
+        lblNombre = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnAgregarCliente = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        scrollTablaPedidos1 = new javax.swing.JScrollPane();
-        tablaPedidos1 = new JTable();
+        btnInsertar = new javax.swing.JButton();
+        lblAltas = new javax.swing.JLabel();
+        scrollTable2 = new javax.swing.JScrollPane();
+        table2 = new JTable();
+        txtNombre = new javax.swing.JTextField();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -94,7 +93,9 @@ public class FrameAltas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("AltasFrame");
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlFrame.setBackground(new java.awt.Color(50, 130, 233));
 
@@ -104,36 +105,33 @@ public class FrameAltas extends javax.swing.JFrame {
         stockSmartLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stockSmartLoginLabel.setText("StockSmart");
 
-        pnlPedidos.setBackground(new java.awt.Color(255, 255, 255));
+        pnlAltas.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaPedidos.setAutoCreateRowSorter(true);
-        tablaPedidos.setFont(customFontBold2);
-        tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setAutoCreateRowSorter(true);
+        table1.setFont(customFontBold2);
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {"Id_Ventas", "Id_Clientes", "Fecha", "Total", "Id_Vendedor", "Id_Repartidor", "Status"}
 
         ));
-        tablaPedidos.getTableHeader().setReorderingAllowed(false);
-        scrollTablaPedidos.setViewportView(tablaPedidos);
+        table1.getTableHeader().setReorderingAllowed(false);
+        scrollTable1.setViewportView(table1);
 
-        lblVendedor.setFont(customFontBold2);
-        lblVendedor.setText("Nombre");
+        lblNombre.setFont(customFontBold2);
+        lblNombre.setText("Nombre");
 
-        txtBarcode.setFont(customFontBold2    );
-        scrollBarcode.setViewportView(txtBarcode);
-
-        btnCobrar.setBackground(new java.awt.Color(50, 130, 233));
-        btnCobrar.setFont(customFontBold2);
-        btnCobrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCobrar.setText("Generar");
-        btnCobrar.setBorderPainted(false);
-        btnCobrar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCobrar.setIconTextGap(10);
-        btnCobrar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setBackground(new java.awt.Color(50, 130, 233));
+        btnAgregar.setFont(customFontBold2);
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Generar");
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAgregar.setIconTextGap(10);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCobrarActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -150,90 +148,99 @@ public class FrameAltas extends javax.swing.JFrame {
             }
         });
 
-        btnAgregarCliente.setFont(customFontBold2);
-        btnAgregarCliente.setForeground(new java.awt.Color(50, 130, 233));
-        btnAgregarCliente.setText("Insertar");
-        btnAgregarCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAgregarCliente.setIconTextGap(10);
-        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnInsertar.setFont(customFontBold2);
+        btnInsertar.setForeground(new java.awt.Color(50, 130, 233));
+        btnInsertar.setText("Insertar");
+        btnInsertar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnInsertar.setIconTextGap(10);
+        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarClienteActionPerformed(evt);
+                btnInsertarActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(50, 130, 233));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Altas");
+        lblAltas.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblAltas.setForeground(new java.awt.Color(50, 130, 233));
+        lblAltas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAltas.setText("Altas");
 
-        tablaPedidos1.setAutoCreateRowSorter(true);
-        tablaPedidos1.setFont(customFontBold2);
-        tablaPedidos1.setModel(new javax.swing.table.DefaultTableModel(
+        table2.setAutoCreateRowSorter(true);
+        table2.setFont(customFontBold2);
+        table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {"Id_Ventas", "Id_Clientes", "Fecha", "Total", "Id_Vendedor", "Id_Repartidor", "Status"}
 
         ));
-        tablaPedidos1.getTableHeader().setReorderingAllowed(false);
-        scrollTablaPedidos1.setViewportView(tablaPedidos1);
+        table2.getTableHeader().setReorderingAllowed(false);
+        scrollTable2.setViewportView(table2);
 
-        javax.swing.GroupLayout pnlPedidosLayout = new javax.swing.GroupLayout(pnlPedidos);
-        pnlPedidos.setLayout(pnlPedidosLayout);
-        pnlPedidosLayout.setHorizontalGroup(
-            pnlPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPedidosLayout.createSequentialGroup()
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlAltasLayout = new javax.swing.GroupLayout(pnlAltas);
+        pnlAltas.setLayout(pnlAltasLayout);
+        pnlAltasLayout.setHorizontalGroup(
+            pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAltasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAltas, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(369, 369, 369))
-            .addGroup(pnlPedidosLayout.createSequentialGroup()
+            .addGroup(pnlAltasLayout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addGroup(pnlPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlPedidosLayout.createSequentialGroup()
-                        .addComponent(scrollTablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAltasLayout.createSequentialGroup()
+                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addGroup(pnlPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(scrollTablaPedidos1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
-                    .addGroup(pnlPedidosLayout.createSequentialGroup()
-                        .addGroup(pnlPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlPedidosLayout.createSequentialGroup()
+                    .addGroup(pnlAltasLayout.createSequentialGroup()
+                        .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlAltasLayout.createSequentialGroup()
                                 .addGap(771, 771, 771)
-                                .addComponent(btnCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlPedidosLayout.createSequentialGroup()
-                                .addComponent(lblVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlAltasLayout.createSequentialGroup()
+                                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(scrollBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(12, 12, 12))))
         );
-        pnlPedidosLayout.setVerticalGroup(
-            pnlPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPedidosLayout.createSequentialGroup()
+        pnlAltasLayout.setVerticalGroup(
+            pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAltasLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlPedidosLayout.createSequentialGroup()
-                        .addGroup(pnlPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblVendedor)
-                            .addComponent(scrollBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnlPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlPedidosLayout.createSequentialGroup()
+                .addComponent(lblAltas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlAltasLayout.createSequentialGroup()
+                        .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNombre)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlAltasLayout.createSequentialGroup()
                                 .addGap(95, 95, 95)
-                                .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlPedidosLayout.createSequentialGroup()
+                            .addGroup(pnlAltasLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(scrollTablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(scrollTablaPedidos1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(scrollTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
-                .addComponent(btnCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
+
+        txtNombre.setFont(customFontBold2);
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
@@ -274,7 +281,7 @@ public class FrameAltas extends javax.swing.JFrame {
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnMenuBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnlAltas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlFrameLayout.setVerticalGroup(
             pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,22 +296,13 @@ public class FrameAltas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMenuBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(557, Short.MAX_VALUE))
-            .addComponent(pnlPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlAltas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         //AbstractBorder brdr1 = new TextBubbleBorder(new Color(255, 255, 255),4,25,0);
         //panelLogin2.setBorder(brdr1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(pnlFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -315,7 +313,7 @@ public class FrameAltas extends javax.swing.JFrame {
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_Ventas, Id_Clientes, Fecha, Total, Id_Vendedor, Id_Repartidor, Status FROM venta");
-        DefaultTableModel model = (DefaultTableModel) tablaPedidos.getModel();
+        DefaultTableModel model = (DefaultTableModel) table1.getModel();
         
         while(result.next()) {
             
@@ -353,9 +351,9 @@ public class FrameAltas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarClienteActionPerformed
+    }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
         // TODO add your handling code here:
@@ -363,31 +361,34 @@ public class FrameAltas extends javax.swing.JFrame {
                 this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
-    private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCobrarActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
      */
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarCliente;
-    private javax.swing.JButton btnCobrar;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnInsertar;
     private javax.swing.JPanel btnMenuBack;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblVendedor;
+    private javax.swing.JLabel lblAltas;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel logoLoginIcon;
+    private javax.swing.JPanel pnlAltas;
     private javax.swing.JPanel pnlFrame;
-    private javax.swing.JPanel pnlPedidos;
-    private javax.swing.JScrollPane scrollBarcode;
-    private javax.swing.JScrollPane scrollTablaPedidos;
-    private javax.swing.JScrollPane scrollTablaPedidos1;
+    private javax.swing.JScrollPane scrollTable1;
+    private javax.swing.JScrollPane scrollTable2;
     private javax.swing.JLabel stockSmartLoginLabel;
-    private javax.swing.JTable tablaPedidos;
-    private javax.swing.JTable tablaPedidos1;
-    private javax.swing.JTextPane txtBarcode;
+    private javax.swing.JTable table1;
+    private javax.swing.JTable table2;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
