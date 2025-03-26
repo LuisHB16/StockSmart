@@ -250,7 +250,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonMovimientos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonMovimientos.setIconTextGap(6);
         botonMovimientos.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonMovimientos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon20.png"))); // NOI18N
+        botonMovimientos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/movimientos-icon24.png"))); // NOI18N
         botonMovimientos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonMovimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,7 +268,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonCategorias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonCategorias.setIconTextGap(6);
         botonCategorias.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonCategorias.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/clientes-icon20.png"))); // NOI18N
+        botonCategorias.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/categoria-icon24.png"))); // NOI18N
         botonCategorias.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,7 +286,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonRDevoluciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonRDevoluciones.setIconTextGap(6);
         botonRDevoluciones.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonRDevoluciones.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/package-icon20.png"))); // NOI18N
+        botonRDevoluciones.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporte-dev-icon24.png"))); // NOI18N
         botonRDevoluciones.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonRDevoluciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -304,7 +304,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonUnidades.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonUnidades.setIconTextGap(6);
         botonUnidades.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonUnidades.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/proveedores-icon20.png"))); // NOI18N
+        botonUnidades.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/unidad-icon24.png"))); // NOI18N
         botonUnidades.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonUnidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,7 +322,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonSubproductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonSubproductos.setIconTextGap(6);
         botonSubproductos.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonSubproductos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos20.png"))); // NOI18N
+        botonSubproductos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/subproducto-icon24.png"))); // NOI18N
         botonSubproductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonSubproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -340,7 +340,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonAltas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonAltas.setIconTextGap(6);
         botonAltas.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonAltas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon20.png"))); // NOI18N
+        botonAltas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/altas-icon24.png"))); // NOI18N
         botonAltas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonAltas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,7 +358,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonPrediccion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonPrediccion.setIconTextGap(6);
         botonPrediccion.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonPrediccion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuarios-icon20.png"))); // NOI18N
+        botonPrediccion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/devolucion-icon24.png"))); // NOI18N
         botonPrediccion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonPrediccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,7 +376,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonDevoluciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonDevoluciones.setIconTextGap(6);
         botonDevoluciones.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonDevoluciones.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/configuration-icon20.png"))); // NOI18N
+        botonDevoluciones.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/devolucion-icon24.png"))); // NOI18N
         botonDevoluciones.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonDevoluciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

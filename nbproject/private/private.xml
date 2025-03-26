@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/Proyecto/StockSmart/src/stocksmart/FrameAltas.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/Proyecto/StockSmart/src/stocksmart/FrameDevoluciones.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/Proyecto/StockSmart/src/stocksmart/FrameMovimientos.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/Proyecto/StockSmart/src/inicio/FrameMenu.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/Proyecto/StockSmart/src/stocksmart/FrameSubproductos.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/Proyecto/StockSmart/src/stocksmart/FrameCategoria.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/Proyecto/StockSmart/src/stocksmart/FrameClientes.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameAltas.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameDatosEmpresa.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameMovimientos.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/stocksmart/FrameEstatusReparto.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/inicio/FrameMenu.java</file>
         </group>
     </open-files>
 </project-private>
