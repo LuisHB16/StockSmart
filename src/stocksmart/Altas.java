@@ -1,6 +1,5 @@
 package stocksmart;
 
-
 import codigo.Unidad;
 import codigo.Unidadd;
 import codigo.movimiento;
@@ -35,6 +34,7 @@ public class Altas extends javax.swing.JFrame {
 
     private List<productos> productosDisponibles = new ArrayList<>();
     private List<productos> productosSeleccionados = new ArrayList<>();
+    FrameMenu fmenu ;
     productosd p = new productosd();
     movimientod m = new movimientod();
     Date fechaVenta = new Date();
@@ -42,68 +42,68 @@ public class Altas extends javax.swing.JFrame {
     Double inventario;
     private ArrayList<Unidad> listaUnidades = new ArrayList<>();
 
-    public Altas() {
+    public Altas(FrameMenu Menu) {
+        
         initComponents();
+        this.fmenu = fmenu;
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setSize(1240, 730); // Define el tamaño de la ventana (ancho x alto)
-    this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         lista();
         ListarProductos();
-btnInsertar.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        int selectedViewRow = table1.getSelectedRow();
-        if (selectedViewRow >= 0) {
-            // Obtén el modelo de la primera tabla
-            DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
-            
-            // Obtén el modelo de la segunda tabla
-            DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
+        btnInsertar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedViewRow = table1.getSelectedRow();
+                if (selectedViewRow >= 0) {
+                    // Obtén el modelo de la primera tabla
+                    DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
 
-            // Obtén el índice del modelo utilizando la vista seleccionada de la primera tabla
-            int selectedModelRow = table1.convertRowIndexToModel(selectedViewRow);
-            
-            // Obtén los datos de la fila seleccionada de la primera tabla
-            Object[] rowData = new Object[model1.getColumnCount()];
-            for (int i = 0; i < model1.getColumnCount(); i++) {
-                rowData[i] = model1.getValueAt(selectedModelRow, i);
+                    // Obtén el modelo de la segunda tabla
+                    DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
+
+                    // Obtén el índice del modelo utilizando la vista seleccionada de la primera tabla
+                    int selectedModelRow = table1.convertRowIndexToModel(selectedViewRow);
+
+                    // Obtén los datos de la fila seleccionada de la primera tabla
+                    Object[] rowData = new Object[model1.getColumnCount()];
+                    for (int i = 0; i < model1.getColumnCount(); i++) {
+                        rowData[i] = model1.getValueAt(selectedModelRow, i);
+                    }
+
+                    // Añade una nueva fila a la segunda tabla utilizando los datos obtenidos
+                    model2.addRow(rowData);
+
+                    // Elimina la fila de la primera tabla utilizando el índice del modelo
+                    model1.removeRow(selectedModelRow);
+                }
             }
+        });
 
-            // Añade una nueva fila a la segunda tabla utilizando los datos obtenidos
-            model2.addRow(rowData);
+        btnEliminar.addActionListener((ActionEvent e) -> {
+            int selectedViewRow = table2.getSelectedRow();
+            if (selectedViewRow >= 0) {
+                // Obtén el modelo de la primera tabla
+                DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
 
-            // Elimina la fila de la primera tabla utilizando el índice del modelo
-            model1.removeRow(selectedModelRow);
-        }
-    }
-});
+                // Obtén el modelo de la segunda tabla
+                DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
 
+                // Obtén el índice del modelo utilizando la vista seleccionada de la segunda tabla
+                int selectedModelRow = table2.convertRowIndexToModel(selectedViewRow);
 
+                // Obtén los datos de la fila seleccionada de la segunda tabla
+                Object[] rowData = new Object[model2.getColumnCount()];
+                for (int i = 0; i < model2.getColumnCount(); i++) {
+                    rowData[i] = model2.getValueAt(selectedModelRow, i);
+                }
 
-btnEliminar.addActionListener((ActionEvent e) -> {
-    int selectedViewRow = table2.getSelectedRow();
-    if (selectedViewRow >= 0) {
-        // Obtén el modelo de la primera tabla
-        DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
-        
-        // Obtén el modelo de la segunda tabla
-        DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
-        
-        // Obtén el índice del modelo utilizando la vista seleccionada de la segunda tabla
-        int selectedModelRow = table2.convertRowIndexToModel(selectedViewRow);
-        
-        // Obtén los datos de la fila seleccionada de la segunda tabla
-        Object[] rowData = new Object[model2.getColumnCount()];
-        for (int i = 0; i < model2.getColumnCount(); i++) {
-            rowData[i] = model2.getValueAt(selectedModelRow, i);
-        }
-        
-        // Añade una nueva fila a la primera tabla utilizando los datos obtenidos
-        model1.addRow(rowData);
-        
-        // Elimina la fila de la segunda tabla utilizando el índice del modelo
-        model2.removeRow(selectedModelRow);
-    }
+                // Añade una nueva fila a la primera tabla utilizando los datos obtenidos
+                model1.addRow(rowData);
+
+                // Elimina la fila de la segunda tabla utilizando el índice del modelo
+                model2.removeRow(selectedModelRow);
+            }
         });
 
         table2.addMouseListener(new MouseAdapter() {
@@ -141,34 +141,34 @@ btnEliminar.addActionListener((ActionEvent e) -> {
                     JOptionPane.showMessageDialog(null, "La tabla está vacía. Agrega productos antes de realizar esta acción.");
                     return;  // Sale del método actionPerformed si la tabla2 está vacía
                 }
-                
+
                 // Itera a través de la tabla2 para obtener los códigos y cantidades
                 for (int i = 0; i < table2.getRowCount(); i++) {
                     String codigo = table2.getValueAt(i, 0).toString();
-                    System.out.println(codigo );
-                    System.out.println(codigo );
+                    System.out.println(codigo);
+                    System.out.println(codigo);
                     int cantidad = Integer.parseInt(table2.getValueAt(i, 4).toString());
                     Double cant = Double.valueOf(table2.getValueAt(i, 4).toString());
                     for (productos producto : productosSeleccionados) {
                         if (codigo == null ? producto.getCodigo() == null : codigo.equals(producto.getCodigo())) {
                             Unidad formatoEncontrado = null;
-                            
+
                             for (Unidad unidad : listaUnidades) {
                                 if (unidad.getUnidad().equals(producto.getUnidadC())) {
                                     formatoEncontrado = unidad;
                                     break;
                                 }
                             }
-                            
+
                             cantidad = (int) (cantidad * formatoEncontrado.getFormato());
-                            
+
                             inventario = producto.getExistencia();
                         }
                     }
-                    
+
                     // Llama al nuevo método para actualizar la cantidad en la base de datos
                     if (p.actualizarCantidadProducto(codigo, cantidad)) {
-                        
+
                         movimiento mo = new movimiento("Alta", fechaActual, cant, codigo, inventario);
                         m.agregarMovimiento(mo);
                         JOptionPane.showMessageDialog(null, "Productos actualizados correctamente.");
@@ -177,11 +177,11 @@ btnEliminar.addActionListener((ActionEvent e) -> {
                         JOptionPane.showMessageDialog(null, "Error al actualizar la cantidad del producto.");
                     }
                 }
-                
+
                 // Después de actualizar la base de datos, puedes limpiar la tabla2 si es necesario
                 DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
                 model2.setRowCount(0);
-                
+
                 // También puedes recargar los productos disponibles en la tabla original
                 ListarProductos();
             }
@@ -589,8 +589,8 @@ btnEliminar.addActionListener((ActionEvent e) -> {
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
         // TODO add your handling code here:
-        new FrameMenu().setVisible(true);
         this.setVisible(false);
+        this.fmenu.setVisible(true);
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
     private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
@@ -603,38 +603,7 @@ btnEliminar.addActionListener((ActionEvent e) -> {
 
     }//GEN-LAST:event_btnMenuBackMouseExited
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Altas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Altas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Altas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Altas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Altas().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
