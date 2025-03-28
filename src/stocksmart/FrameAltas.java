@@ -1,43 +1,292 @@
 package stocksmart;
 
+import codigo.Unidad;
+import codigo.Unidadd;
+import codigo.movimiento;
+import codigo.movimientod;
+import codigo.productos;
+import codigo.productosd;
 import inicio.FrameMenu;
-import assests.icons.clases.PlusIcon;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.sql.SQLException;
-import javax.swing.JPanel;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import javax.swing.JTable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import static stocksmart.FontLoader.customFont;
+import static stocksmart.FontLoader.customFontBold;
+import static stocksmart.FontLoader.customFontBold2;
 
 public class FrameAltas extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
-       FrameMenu fmenu = null;
-        Font customFont = FontLoader.customFont;
-        Font customFontBold = FontLoader.customFontBold;
-        Font customFontBold2 = FontLoader.customFontBold2;
 
-    /**
-     * Creates new form StockSmartFrameVentas
-     */
-    public FrameAltas(FrameMenu fmenu) throws SQLException {
+    private List<productos> productosDisponibles = new ArrayList<>();
+    private List<productos> productosSeleccionados = new ArrayList<>();
+    FrameMenu fmenu ;
+    productosd p = new productosd();
+    movimientod m = new movimientod();
+    Date fechaVenta = new Date();
+    String fechaActual = new SimpleDateFormat("dd/MM/yyyy").format(fechaVenta);
+    Double inventario;
+    private ArrayList<Unidad> listaUnidades = new ArrayList<>();
+
+    public FrameAltas(FrameMenu Menu) {
         
         initComponents();
-        this.fmenu = fmenu;
-        connectionDB();
+        this.fmenu = Menu;
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setSize(1240, 730); // Define el tamaño de la ventana (ancho x alto)
+        this.setLocationRelativeTo(null);
+        lista();
+        ListarProductos();
+        btnInsertar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedViewRow = table1.getSelectedRow();
+                if (selectedViewRow >= 0) {
+                    // Obtén el modelo de la primera tabla
+                    DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
+
+                    // Obtén el modelo de la segunda tabla
+                    DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
+
+                    // Obtén el índice del modelo utilizando la vista seleccionada de la primera tabla
+                    int selectedModelRow = table1.convertRowIndexToModel(selectedViewRow);
+
+                    // Obtén los datos de la fila seleccionada de la primera tabla
+                    Object[] rowData = new Object[model1.getColumnCount()];
+                    for (int i = 0; i < model1.getColumnCount(); i++) {
+                        rowData[i] = model1.getValueAt(selectedModelRow, i);
+                    }
+
+                    // Añade una nueva fila a la segunda tabla utilizando los datos obtenidos
+                    model2.addRow(rowData);
+
+                    // Elimina la fila de la primera tabla utilizando el índice del modelo
+                    model1.removeRow(selectedModelRow);
+                }
+            }
+        });
+
+        btnEliminar.addActionListener((ActionEvent e) -> {
+            int selectedViewRow = table2.getSelectedRow();
+            if (selectedViewRow >= 0) {
+                // Obtén el modelo de la primera tabla
+                DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
+
+                // Obtén el modelo de la segunda tabla
+                DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
+
+                // Obtén el índice del modelo utilizando la vista seleccionada de la segunda tabla
+                int selectedModelRow = table2.convertRowIndexToModel(selectedViewRow);
+
+                // Obtén los datos de la fila seleccionada de la segunda tabla
+                Object[] rowData = new Object[model2.getColumnCount()];
+                for (int i = 0; i < model2.getColumnCount(); i++) {
+                    rowData[i] = model2.getValueAt(selectedModelRow, i);
+                }
+
+                // Añade una nueva fila a la primera tabla utilizando los datos obtenidos
+                model1.addRow(rowData);
+
+                // Elimina la fila de la segunda tabla utilizando el índice del modelo
+                model2.removeRow(selectedModelRow);
+            }
+        });
+
+        table2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int rowIndex = table2.getSelectedRow();
+                    if (rowIndex >= 0) {
+                        actualizarCantidadProducto(rowIndex);
+                    }
+                }
+            }
+        });
+        txtNombre.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                filterTable();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                filterTable();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                // Not used for plain text fields
+            }
+        });
+        btnAgregar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Verificar si la tabla2 está vacía
+                if (table2.getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "La tabla está vacía. Agrega productos antes de realizar esta acción.");
+                    return;  // Sale del método actionPerformed si la tabla2 está vacía
+                }
+
+                // Itera a través de la tabla2 para obtener los códigos y cantidades
+                for (int i = 0; i < table2.getRowCount(); i++) {
+                    String codigo = table2.getValueAt(i, 0).toString();
+                    System.out.println(codigo);
+                    System.out.println(codigo);
+                    int cantidad = Integer.parseInt(table2.getValueAt(i, 4).toString());
+                    Double cant = Double.valueOf(table2.getValueAt(i, 4).toString());
+                    for (productos producto : productosSeleccionados) {
+                        if (codigo == null ? producto.getCodigo() == null : codigo.equals(producto.getCodigo())) {
+                            Unidad formatoEncontrado = null;
+
+                            for (Unidad unidad : listaUnidades) {
+                                if (unidad.getUnidad().equals(producto.getUnidadC())) {
+                                    formatoEncontrado = unidad;
+                                    break;
+                                }
+                            }
+
+                            cantidad = (int) (cantidad * formatoEncontrado.getFormato());
+
+                            inventario = producto.getExistencia();
+                        }
+                    }
+
+                    // Llama al nuevo método para actualizar la cantidad en la base de datos
+                    if (p.actualizarCantidadProducto(codigo, cantidad)) {
+
+                        movimiento mo = new movimiento("Alta", fechaActual, cant, codigo, inventario);
+                        m.agregarMovimiento(mo);
+                        JOptionPane.showMessageDialog(null, "Productos actualizados correctamente.");
+                    } else {
+                        // Maneja el error si la actualización falló
+                        JOptionPane.showMessageDialog(null, "Error al actualizar la cantidad del producto.");
+                    }
+                }
+
+                // Después de actualizar la base de datos, puedes limpiar la tabla2 si es necesario
+                DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
+                model2.setRowCount(0);
+
+                // También puedes recargar los productos disponibles en la tabla original
+                ListarProductos();
+            }
+        });
+
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    private void lista() {
+        Unidadd unidadDAO = new Unidadd();
+        listaUnidades = (ArrayList<Unidad>) unidadDAO.listarUnidades();
+
+        for (Unidad unidad : listaUnidades) {
+            String nombreUnidad = unidad.getUnidad();
+            Double formato = unidad.getFormato();
+        }
+    }
+
+    public void ListarProductos() {
+        productosd proDAO = new productosd();
+        List<productos> ListarPr = proDAO.listarProductos();
+        DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
+        model1.setRowCount(0);
+
+        productosDisponibles.clear();
+        productosSeleccionados.clear();
+
+        for (productos producto : ListarPr) {
+
+            Unidad formatoEncontrado = null;
+
+            for (Unidad unidad : listaUnidades) {
+                if (unidad.getUnidad().equals(producto.getUnidadC())) {
+                    formatoEncontrado = unidad;
+                    break;
+                }
+            }
+
+            Object[] ob = new Object[5];
+            ob[0] = producto.getCodigo();
+            ob[1] = producto.getNombre();
+            ob[2] = producto.getMarca();
+            ob[3] = producto.getUnidadC();
+            ob[4] = producto.getExistencia() / formatoEncontrado.getFormato();
+
+            model1.addRow(ob);
+            productosDisponibles.add(producto);
+        }
+    }
+
+    private void actualizarCantidadProducto(int rowIndex) {
+        String cantidadStr = JOptionPane.showInputDialog("Ingrese la cantidad (número entero):");
+        if (cantidadStr != null) {
+            try {
+                int cantidad = Integer.parseInt(cantidadStr);
+                if (cantidad > 0) {
+                    // Actualizar la cantidad en la tabla2
+                    table2.setValueAt(cantidad, rowIndex, 4); // La columna 3 es la columna de cantidad
+
+                    // Obtener el precio unitario como cadena
+                    String precioUnitarioStr = (String) table2.getValueAt(rowIndex, 2);
+
+                    precioUnitarioStr = precioUnitarioStr.replace(',', '.');
+
+                    double precioUnitario = Double.parseDouble(precioUnitarioStr);
+
+                    // Calcular el nuevo total
+                    double total = precioUnitario * cantidad;
+                    table2.setValueAt(total, rowIndex, 4);
+                } else {
+                    JOptionPane.showMessageDialog(null, "La cantidad debe ser mayor que 0.");
+                }
+            } catch (NumberFormatException e) {
+                //JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida (número entero).");
+            }
+        }
+    }
+
+    private void filterTable() {
+        String filterText = txtNombre.getText().toLowerCase();
+
+        DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
+        model1.setRowCount(0);
+
+        for (productos producto : productosDisponibles) {
+            if (producto.getNombre().toLowerCase().contains(filterText)) {
+                Unidad formatoEncontrado = null;
+
+                for (Unidad unidad : listaUnidades) {
+                    if (unidad.getUnidad().equals(producto.getUnidadC())) {
+                        formatoEncontrado = unidad;
+                        break;
+                    }
+                }
+
+                Object[] ob = new Object[5];
+                ob[0] = producto.getCodigo();
+                ob[1] = producto.getNombre();
+                ob[2] = producto.getMarca();
+                ob[3] = producto.getUnidadC();
+                ob[4] = producto.getExistencia() / formatoEncontrado.getFormato();
+                model1.addRow(ob);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,16 +294,16 @@ public class FrameAltas extends javax.swing.JFrame {
         pnlFrame = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
         pnlAltas = new javax.swing.JPanel();
-        scrollTable1 = new javax.swing.JScrollPane();
-        table1 = new JTable();
         lblNombre = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnInsertar = new javax.swing.JButton();
         lblAltas = new javax.swing.JLabel();
-        scrollTable2 = new javax.swing.JScrollPane();
-        table2 = new JTable();
         txtNombre = new javax.swing.JTextField();
+        scrollTable1 = new javax.swing.JScrollPane();
+        table1 = new javax.swing.JTable();
+        scrollTable2 = new javax.swing.JScrollPane();
+        table2 = new javax.swing.JTable();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -98,6 +347,7 @@ public class FrameAltas extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlFrame.setBackground(new java.awt.Color(50, 130, 233));
+        pnlFrame.setMaximumSize(new java.awt.Dimension(1231, 716));
 
         stockSmartLoginLabel.setBackground(new java.awt.Color(255, 255, 255));
         stockSmartLoginLabel.setFont(customFontBold);
@@ -106,18 +356,6 @@ public class FrameAltas extends javax.swing.JFrame {
         stockSmartLoginLabel.setText("StockSmart");
 
         pnlAltas.setBackground(new java.awt.Color(255, 255, 255));
-
-        table1.setAutoCreateRowSorter(true);
-        table1.setFont(customFontBold2);
-        table1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {"Id_Ventas", "Id_Clientes", "Fecha", "Total", "Id_Vendedor", "Id_Repartidor", "Status"}
-
-        ));
-        table1.getTableHeader().setReorderingAllowed(false);
-        scrollTable1.setViewportView(table1);
 
         lblNombre.setFont(customFontBold2);
         lblNombre.setText("Nombre");
@@ -164,23 +402,50 @@ public class FrameAltas extends javax.swing.JFrame {
         lblAltas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAltas.setText("Altas");
 
-        table2.setAutoCreateRowSorter(true);
-        table2.setFont(customFontBold2);
-        table2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {"Id_Ventas", "Id_Clientes", "Fecha", "Total", "Id_Vendedor", "Id_Repartidor", "Status"}
-
-        ));
-        table2.getTableHeader().setReorderingAllowed(false);
-        scrollTable2.setViewportView(table2);
-
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
+
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Marca", "Unidad", "Existencia"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table1.getTableHeader().setReorderingAllowed(false);
+        scrollTable1.setViewportView(table1);
+        table1.setFont(customFontBold2);
+
+        table2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo ", "Nombre", "Marca", "Unidad", "Cantidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table2.getTableHeader().setReorderingAllowed(false);
+        scrollTable2.setViewportView(table2);
 
         javax.swing.GroupLayout pnlAltasLayout = new javax.swing.GroupLayout(pnlAltas);
         pnlAltas.setLayout(pnlAltasLayout);
@@ -191,18 +456,9 @@ public class FrameAltas extends javax.swing.JFrame {
                 .addComponent(lblAltas, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(369, 369, 369))
             .addGroup(pnlAltasLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
                 .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlAltasLayout.createSequentialGroup()
-                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(scrollTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(pnlAltasLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
                         .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlAltasLayout.createSequentialGroup()
                                 .addGap(771, 771, 771)
@@ -210,8 +466,17 @@ public class FrameAltas extends javax.swing.JFrame {
                             .addGroup(pnlAltasLayout.createSequentialGroup()
                                 .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12))))
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnlAltasLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addComponent(scrollTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         pnlAltasLayout.setVerticalGroup(
             pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,18 +489,17 @@ public class FrameAltas extends javax.swing.JFrame {
                         .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNombre)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)
                         .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlAltasLayout.createSequentialGroup()
-                                .addGap(95, 95, 95)
+                                .addGap(98, 98, 98)
                                 .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlAltasLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(scrollTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(scrollTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -307,45 +571,9 @@ public class FrameAltas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void connectionDB() throws SQLException {
-        
-        connectionDB = new ConnectionDB();
-        Connection connection = connectionDB.getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT Id_Ventas, Id_Clientes, Fecha, Total, Id_Vendedor, Id_Repartidor, Status FROM venta");
-        DefaultTableModel model = (DefaultTableModel) table1.getModel();
-        
-        while(result.next()) {
-            
-            int idVentas = result.getInt("Id_Ventas");
-            int idClientes = result.getInt("Id_Clientes");
-            String fecha = result.getString("Fecha");
-            double total = result.getDouble("Total");
-            String idVendedor = result.getString("Id_Vendedor");
-            int idRepartidor = result.getInt("Id_Repartidor");
-            String status = result.getString("Status");
-
-            model.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
-            
-        }
-        
-        result.close();
-        statement.close();
-        connection.close();
-            
-    }
-    
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-  
-        
-        
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-         
-    }//GEN-LAST:event_btnMenuBackMouseExited
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
@@ -355,24 +583,28 @@ public class FrameAltas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnInsertarActionPerformed
 
-    private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        // TODO add your handling code here:
-        new FrameMenu().setVisible(true);
-                this.setVisible(false);
-    }//GEN-LAST:event_btnMenuBackMouseClicked
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
- 
+    private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.fmenu.setVisible(true);
+    }//GEN-LAST:event_btnMenuBackMouseClicked
+
+    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
+        // TODO add your handlings code here:
+
+    }//GEN-LAST:event_btnMenuBackMouseEntered
+
+    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnMenuBackMouseExited
+
+  
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;

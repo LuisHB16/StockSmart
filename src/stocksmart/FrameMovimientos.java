@@ -47,25 +47,23 @@ public class FrameMovimientos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelLogin1 = new javax.swing.JPanel();
+        pnlFrame = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
-        panelLogin2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaProveedores = new JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        pnlMovimientos = new javax.swing.JPanel();
+        boxMovimientos = new javax.swing.JComboBox<>();
+        lblFechaInicio = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jLabel3 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        checkBoxMovimientos = new javax.swing.JCheckBox();
+        lblCodigo = new javax.swing.JLabel();
+        checkBoxCodigo = new javax.swing.JCheckBox();
+        lblMovimientos = new javax.swing.JLabel();
+        lblFechaFinal = new javax.swing.JLabel();
+        fechaFinal = new com.toedter.calendar.JDateChooser();
         fechaInicial = new com.toedter.calendar.JDateChooser();
-        fechaInicial1 = new com.toedter.calendar.JDateChooser();
-        jLabel6 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
+        scrollTable1 = new javax.swing.JScrollPane();
+        table1 = new javax.swing.JTable();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -106,7 +104,7 @@ public class FrameMovimientos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        panelLogin1.setBackground(new java.awt.Color(50, 130, 233));
+        pnlFrame.setBackground(new java.awt.Color(50, 130, 233));
 
         stockSmartLoginLabel.setBackground(new java.awt.Color(255, 255, 255));
         stockSmartLoginLabel.setFont(customFontBold);
@@ -114,24 +112,15 @@ public class FrameMovimientos extends javax.swing.JFrame {
         stockSmartLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stockSmartLoginLabel.setText("StockSmart");
 
-        panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
+        pnlMovimientos.setBackground(new java.awt.Color(255, 255, 255));
+        pnlMovimientos.setName(""); // NOI18N
+        pnlMovimientos.setPreferredSize(new java.awt.Dimension(1675, 1000));
 
-        tablaProveedores.setAutoCreateRowSorter(true);
-        tablaProveedores.setFont(customFontBold2);
-        tablaProveedores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        boxMovimientos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alta", "Ajuste", "Venta", "Pedido", "Devolucion" }));
+        boxMovimientos.setEnabled(false);
 
-            },
-            new String [] {"Marca", "Telefono", "Direccion", "Correo"}
-
-        ));
-        tablaProveedores.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaProveedores);
-
-        jLabel2.setFont(customFontBold2);
-        jLabel2.setText("Fecha de inicio");
-
-        jScrollPane2.setViewportView(jTextPane1);
+        lblFechaInicio.setFont(customFontBold2);
+        lblFechaInicio.setText("Fecha de inicio");
 
         btnBuscar.setFont(customFontBold2);
         btnBuscar.setForeground(new java.awt.Color(50, 130, 233));
@@ -144,110 +133,131 @@ public class FrameMovimientos extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane3.setViewportView(jTextPane2);
+        lblCodigo.setFont(customFontBold2);
+        lblCodigo.setText("Codigo");
 
-        jLabel3.setFont(customFontBold2);
-        jLabel3.setText("Codigo");
-
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        checkBoxCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                checkBoxCodigoActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(customFontBold2);
-        jLabel4.setText("Tipo de Movimeintos ");
+        lblMovimientos.setFont(customFontBold2);
+        lblMovimientos.setText("Tipo de Movimeintos ");
 
-        jLabel5.setFont(customFontBold2);
-        jLabel5.setText("Fecha final");
+        lblFechaFinal.setFont(customFontBold2);
+        lblFechaFinal.setText("Fecha final");
+
+        fechaFinal.setBackground(new java.awt.Color(255, 255, 255));
+        fechaFinal.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
 
         fechaInicial.setBackground(new java.awt.Color(255, 255, 255));
         fechaInicial.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
 
-        fechaInicial1.setBackground(new java.awt.Color(255, 255, 255));
-        fechaInicial1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Movimientos");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(50, 130, 233));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Movimientos");
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
-        panelLogin2.setLayout(panelLogin2Layout);
-        panelLogin2Layout.setHorizontalGroup(
-            panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLogin2Layout.createSequentialGroup()
-                                .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+            },
+            new String [] {
+                "Movimiento", "Codigo", "Cantidad", "invantario antes", "Inventario despues", "Fecha"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table1.getTableHeader().setReorderingAllowed(false);
+        scrollTable1.setViewportView(table1);
+
+        javax.swing.GroupLayout pnlMovimientosLayout = new javax.swing.GroupLayout(pnlMovimientos);
+        pnlMovimientos.setLayout(pnlMovimientosLayout);
+        pnlMovimientosLayout.setHorizontalGroup(
+            pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLogin2Layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel2)
-                                    .addComponent(fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fechaInicial1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblFechaInicio)
+                                    .addComponent(fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                                    .addComponent(fechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblFechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBuscar))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(428, Short.MAX_VALUE))
-            .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelLogin2Layout.createSequentialGroup()
+                            .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                                .addComponent(checkBoxMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(boxMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(checkBoxCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCodigo)
+                                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(367, 367, 367)
+                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMovimientosLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 1055, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlMovimientosLayout.createSequentialGroup()
                     .addGap(112, 112, 112)
-                    .addComponent(jLabel4)
-                    .addContainerGap(1037, Short.MAX_VALUE)))
+                    .addComponent(lblMovimientos)
+                    .addContainerGap(1335, Short.MAX_VALUE)))
         );
-        panelLogin2Layout.setVerticalGroup(
-            panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
+        pnlMovimientosLayout.setVerticalGroup(
+            pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMovimientosLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                        .addComponent(lblFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelLogin2Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jCheckBox2))
-                            .addComponent(jScrollPane2)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jScrollPane3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fechaInicial1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
-            .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelLogin2Layout.createSequentialGroup()
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(boxMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkBoxMovimientos)))
+                            .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblCodigo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(checkBoxCodigo)
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(18, 18, 18)
+                .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(115, Short.MAX_VALUE))
+            .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlMovimientosLayout.createSequentialGroup()
                     .addGap(115, 115, 115)
-                    .addComponent(jLabel4)
-                    .addContainerGap(601, Short.MAX_VALUE)))
+                    .addComponent(lblMovimientos)
+                    .addContainerGap(608, Short.MAX_VALUE)))
         );
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
@@ -276,38 +286,38 @@ public class FrameMovimientos extends javax.swing.JFrame {
         btnMenuBack.add(jLabel1);
         jLabel1.setBounds(10, 0, 230, 50);
 
-        javax.swing.GroupLayout panelLogin1Layout = new javax.swing.GroupLayout(panelLogin1);
-        panelLogin1.setLayout(panelLogin1Layout);
-        panelLogin1Layout.setHorizontalGroup(
-            panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlFrameLayout = new javax.swing.GroupLayout(pnlFrame);
+        pnlFrame.setLayout(pnlFrameLayout);
+        pnlFrameLayout.setHorizontalGroup(
+            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addComponent(logoLoginIcon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnMenuBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(pnlMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(765, 765, 765))
         );
-        panelLogin1Layout.setVerticalGroup(
-            panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin1Layout.createSequentialGroup()
-                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelLogin1Layout.createSequentialGroup()
-                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(logoLoginIcon))
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMenuBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        pnlFrameLayout.setVerticalGroup(
+            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFrameLayout.createSequentialGroup()
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
+                        .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlFrameLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(logoLoginIcon))
+                            .addGroup(pnlFrameLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMenuBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
 
         //AbstractBorder brdr1 = new TextBubbleBorder(new Color(255, 255, 255),4,25,0);
@@ -317,11 +327,15 @@ public class FrameMovimientos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 1265, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 1428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,7 +346,7 @@ public class FrameMovimientos extends javax.swing.JFrame {
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT * FROM proveedores");
-        DefaultTableModel model = (DefaultTableModel) tablaProveedores.getModel();
+        DefaultTableModel model = (DefaultTableModel) table1.getModel();
           model.setRowCount(0);
         while (result.next()) {
            
@@ -352,7 +366,7 @@ public class FrameMovimientos extends javax.swing.JFrame {
     }
     
      public void LimpiarTabla() {
-        DefaultTableModel model = (DefaultTableModel) tablaProveedores.getModel();
+        DefaultTableModel model = (DefaultTableModel) table1.getModel();
         model.setRowCount(0);
     }
     private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
@@ -373,9 +387,9 @@ public class FrameMovimientos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void checkBoxCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_checkBoxCodigoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
@@ -388,27 +402,25 @@ public class FrameMovimientos extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxMovimientos;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel btnMenuBack;
+    private javax.swing.JCheckBox checkBoxCodigo;
+    private javax.swing.JCheckBox checkBoxMovimientos;
+    private com.toedter.calendar.JDateChooser fechaFinal;
     private com.toedter.calendar.JDateChooser fechaInicial;
-    private com.toedter.calendar.JDateChooser fechaInicial1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblFechaFinal;
+    private javax.swing.JLabel lblFechaInicio;
+    private javax.swing.JLabel lblMovimientos;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logoLoginIcon;
-    private javax.swing.JPanel panelLogin1;
-    private javax.swing.JPanel panelLogin2;
+    private javax.swing.JPanel pnlFrame;
+    private javax.swing.JPanel pnlMovimientos;
+    private javax.swing.JScrollPane scrollTable1;
     private javax.swing.JLabel stockSmartLoginLabel;
-    private javax.swing.JTable tablaProveedores;
+    private javax.swing.JTable table1;
+    private javax.swing.JTextField txtCodigo;
     // End of variables declaration//GEN-END:variables
 }
