@@ -149,7 +149,7 @@ public class FrameReporteVentas extends javax.swing.JFrame {
             .addGroup(pnlReportePedidosLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(lblReporteVentas)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollReportePedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
