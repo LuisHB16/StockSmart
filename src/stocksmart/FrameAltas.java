@@ -46,8 +46,8 @@ public class FrameAltas extends javax.swing.JFrame {
         
         initComponents();
         this.fmenu = Menu;
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setSize(1240, 730); // Define el tamaño de la ventana (ancho x alto)
+        
+         // Define el tamaño de la ventana (ancho x alto)
         this.setLocationRelativeTo(null);
         lista();
         ListarProductos();

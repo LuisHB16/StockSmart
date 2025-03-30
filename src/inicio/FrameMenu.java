@@ -618,11 +618,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void botonMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMovimientosActionPerformed
         // TODO add your handling code here:
         if (this.fmovimientos == null) {
-            try {
-                this.fmovimientos = new FrameMovimientos(this);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.fmovimientos = new FrameMovimientos(this);
         }
         this.fmovimientos.setVisible(true);
         this.setVisible(false);
