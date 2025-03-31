@@ -18,8 +18,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class FrameProductos extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
-       FrameMenu fmenu = null;
+    
+        ConnectionDB connectionDB = null;
+        FrameMenu fmenu = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
@@ -31,7 +32,9 @@ public class FrameProductos extends javax.swing.JFrame {
         
         initComponents();
         this.fmenu = fmenu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -51,10 +54,11 @@ public class FrameProductos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnNuevoProducto = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -90,7 +94,7 @@ public class FrameProductos extends javax.swing.JFrame {
                 return false; // Permitir transparencia
             }
         };
-        jLabel1 = new javax.swing.JLabel();
+        lblMenu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -122,50 +126,52 @@ public class FrameProductos extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jTextPane1);
 
-        jButton1.setBackground(new java.awt.Color(50, 130, 233));
-        jButton1.setFont(customFontBold2);
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Nuevo Productos");
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.setIconTextGap(10);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevoProducto.setBackground(new java.awt.Color(50, 130, 233));
+        btnNuevoProducto.setFont(customFontBold2);
+        btnNuevoProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevoProducto.setText("Nuevo producto");
+        btnNuevoProducto.setBorderPainted(false);
+        btnNuevoProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNuevoProducto.setIconTextGap(10);
+        btnNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnNuevoProductoActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(customFontBold2);
-        jButton2.setForeground(new java.awt.Color(50, 130, 233));
-        jButton2.setText("Buscar");
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setIconTextGap(10);
+        btnBuscar.setFont(customFontBold2);
+        btnBuscar.setForeground(new java.awt.Color(50, 130, 233));
+        btnBuscar.setText("Buscar");
+        btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBuscar.setIconTextGap(10);
 
-        jButton5.setBackground(new java.awt.Color(50, 130, 233));
-        jButton5.setFont(customFontBold2);
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Eliminar");
-        jButton5.setBorderPainted(false);
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton5.setIconTextGap(10);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(50, 130, 233));
+        btnEliminar.setFont(customFontBold2);
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminar.setIconTextGap(10);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(customFontBold2);
-        jButton6.setForeground(new java.awt.Color(50, 130, 233));
-        jButton6.setText("Editar");
-        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.setIconTextGap(10);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setFont(customFontBold2);
+        btnEditar.setForeground(new java.awt.Color(50, 130, 233));
+        btnEditar.setText("Editar");
+        btnEditar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEditar.setIconTextGap(10);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
+        lblTitulo.setText("Productos");
 
         javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
         panelLogin2.setLayout(panelLogin2Layout);
@@ -175,43 +181,47 @@ public class FrameProductos extends javax.swing.JFrame {
                 .addGap(67, 67, 67)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(panelLogin2Layout.createSequentialGroup()
                             .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
                                 .addGroup(panelLogin2Layout.createSequentialGroup()
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButton2)))
+                                    .addComponent(btnBuscar)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                            .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblTitulo)
+                                .addComponent(btnNuevoProducto)))))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         panelLogin2Layout.setVerticalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+                .addGap(34, 34, 34)
+                .addComponent(lblTitulo)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        jButton1.setIcon(new PlusIcon(18, 18, Color.WHITE));
-        jButton1.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnNuevoProducto.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnNuevoProducto.setIcon(new PlusIcon(18, 18, Color.WHITE));
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
@@ -222,22 +232,16 @@ public class FrameProductos extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
-            }
         });
         btnMenuBack.setLayout(null);
 
-        jLabel1.setFont(customFont);
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/home-icon24.png"))); // NOI18N
-        jLabel1.setText("Menu");
-        jLabel1.setIconTextGap(10);
-        btnMenuBack.add(jLabel1);
-        jLabel1.setBounds(10, 0, 230, 50);
+        lblMenu.setFont(customFont);
+        lblMenu.setForeground(new java.awt.Color(255, 255, 255));
+        lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/home-icon24.png"))); // NOI18N
+        lblMenu.setText("Menu");
+        lblMenu.setIconTextGap(10);
+        btnMenuBack.add(lblMenu);
+        lblMenu.setBounds(10, 0, 230, 50);
 
         javax.swing.GroupLayout panelLogin1Layout = new javax.swing.GroupLayout(panelLogin1);
         panelLogin1.setLayout(panelLogin1Layout);
@@ -290,62 +294,57 @@ public class FrameProductos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void connectionDB() throws SQLException{
+    public void connectionDB() throws SQLException {
+        
         connectionDB = new ConnectionDB();
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_Ventas, Id_Clientes, Fecha, Total, Id_Vendedor, Id_Repartidor, Status FROM venta");
         DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
-        while(result.next()){
-            int idVentas = result.getInt("Id_Ventas");
-                int idClientes = result.getInt("Id_Clientes");
-                String fecha = result.getString("Fecha");
-                double total = result.getDouble("Total");
-                String idVendedor = result.getString("Id_Vendedor");
-                int idRepartidor = result.getInt("Id_Repartidor");
-                String status = result.getString("Status");
         
-                model.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
+        while(result.next()) {
+            
+            int idVentas = result.getInt("Id_Ventas");
+            int idClientes = result.getInt("Id_Clientes");
+            String fecha = result.getString("Fecha");
+            double total = result.getDouble("Total");
+            String idVendedor = result.getString("Id_Vendedor");
+            int idRepartidor = result.getInt("Id_Repartidor");
+            String status = result.getString("Status");
+
+            model.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
+        
         }
         
         result.close();
         statement.close();
-            
-        
         
     }
-     public void limpiarTabla(){
-         DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
-         model.setRowCount(0);
+    
+    public void limpiarTabla() {
+        
+        DefaultTableModel model = (DefaultTableModel) tablaProductos.getModel();
+        model.setRowCount(0);
+        
     }
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-  
-        
-        
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
+    
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-         
-    }//GEN-LAST:event_btnMenuBackMouseExited
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnNuevoProductoActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        // TODO add your handling code here:
-       this.fmenu.setVisible(true);
-                this.setVisible(false);
+    
+        this.fmenu.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
     /**
@@ -353,16 +352,17 @@ public class FrameProductos extends javax.swing.JFrame {
      */
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel btnMenuBack;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnNuevoProducto;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel lblMenu;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;

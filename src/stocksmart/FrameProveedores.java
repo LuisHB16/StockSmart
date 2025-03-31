@@ -11,15 +11,18 @@ import java.awt.RenderingHints;
 import java.sql.SQLException;
 import javax.swing.JPanel;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import stocksmart.registros.FrameRegistroProveedores;
 
 public class FrameProveedores extends javax.swing.JFrame {
+    
        ConnectionDB connectionDB = null;
         FrameRegistroProveedores fregistroproveedores = null;
         FrameMenu fmenu = null;
@@ -34,7 +37,9 @@ public class FrameProveedores extends javax.swing.JFrame {
         
         initComponents();
         this.fmenu = fmenu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
     
 
@@ -52,13 +57,14 @@ public class FrameProveedores extends javax.swing.JFrame {
         panelLogin2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProveedores = new JTable();
-        jLabel2 = new javax.swing.JLabel();
+        lblNombreProveedor = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtNombreProveedor = new javax.swing.JTextPane();
         btnNuevoProveedor = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -121,10 +127,10 @@ public class FrameProveedores extends javax.swing.JFrame {
         tablaProveedores.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaProveedores);
 
-        jLabel2.setFont(customFontBold2);
-        jLabel2.setText("Nombre del Cliente");
+        lblNombreProveedor.setFont(customFontBold2);
+        lblNombreProveedor.setText("Nombre del proveedor");
 
-        jScrollPane2.setViewportView(jTextPane1);
+        jScrollPane2.setViewportView(txtNombreProveedor);
 
         btnNuevoProveedor.setBackground(new java.awt.Color(50, 130, 233));
         btnNuevoProveedor.setFont(customFontBold2);
@@ -139,37 +145,45 @@ public class FrameProveedores extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(customFontBold2);
-        jButton2.setForeground(new java.awt.Color(50, 130, 233));
-        jButton2.setText("Buscar");
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setIconTextGap(10);
-
-        jButton5.setBackground(new java.awt.Color(50, 130, 233));
-        jButton5.setFont(customFontBold2);
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Eliminar");
-        jButton5.setBorderPainted(false);
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton5.setIconTextGap(10);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setFont(customFontBold2);
+        btnBuscar.setForeground(new java.awt.Color(50, 130, 233));
+        btnBuscar.setText("Buscar");
+        btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBuscar.setIconTextGap(10);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(customFontBold2);
-        jButton6.setForeground(new java.awt.Color(50, 130, 233));
-        jButton6.setText("Editar");
-        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.setIconTextGap(10);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(50, 130, 233));
+        btnEliminar.setFont(customFontBold2);
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminar.setIconTextGap(10);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
+
+        btnEditar.setFont(customFontBold2);
+        btnEditar.setForeground(new java.awt.Color(50, 130, 233));
+        btnEditar.setText("Editar");
+        btnEditar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEditar.setIconTextGap(10);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Proveedores");
 
         javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
         panelLogin2.setLayout(panelLogin2Layout);
@@ -179,38 +193,43 @@ public class FrameProveedores extends javax.swing.JFrame {
                 .addGap(67, 67, 67)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelLogin2Layout.createSequentialGroup()
-                            .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addGroup(panelLogin2Layout.createSequentialGroup()
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButton2)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnNuevoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTitulo)
+                            .addGroup(panelLogin2Layout.createSequentialGroup()
+                                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNombreProveedor)
+                                    .addGroup(panelLogin2Layout.createSequentialGroup()
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnBuscar)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnNuevoProveedor)
+                                .addGap(98, 98, 98)))))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
         panelLogin2Layout.setVerticalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel2)
+                .addGap(29, 29, 29)
+                .addComponent(lblTitulo)
+                .addGap(18, 18, 18)
+                .addComponent(lblNombreProveedor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevoProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -225,12 +244,6 @@ public class FrameProveedores extends javax.swing.JFrame {
         btnMenuBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
             }
         });
         btnMenuBack.setLayout(null);
@@ -294,13 +307,15 @@ public class FrameProveedores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void connectionDB() throws SQLException{
+    public void connectionDB() throws SQLException {
+        
         connectionDB = new ConnectionDB();
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT * FROM proveedores");
         DefaultTableModel model = (DefaultTableModel) tablaProveedores.getModel();
-          model.setRowCount(0);
+        model.setRowCount(0);
+        
         while (result.next()) {
            
             String nombre = result.getString("Marca");
@@ -309,81 +324,196 @@ public class FrameProveedores extends javax.swing.JFrame {
             String correo = result.getString("correo");
 
             model.addRow(new Object[]{nombre, telefono, direccion, correo});
+            
         }
 
         result.close();
         statement.close();
         connection.close();
         
-        
     }
     
      public void LimpiarTabla() {
+         
         DefaultTableModel model = (DefaultTableModel) tablaProveedores.getModel();
         model.setRowCount(0);
+        
     }
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-  
+     
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         
-        
-    }//GEN-LAST:event_btnMenuBackMouseEntered
+        int filaSeleccionada = tablaProveedores.getSelectedRow();
+    
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un proveedor para eliminar.");
+            return;
+        }
 
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_btnMenuBackMouseExited
+        String marca = (String) tablaProveedores.getValueAt(filaSeleccionada, 0);
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        int confirmacion = JOptionPane.showConfirmDialog(
+            this, 
+            "¿Está seguro que desea eliminar al proveedor: " + marca + "?", 
+            "Confirmar eliminación", 
+            JOptionPane.YES_NO_OPTION
+        );
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            try {
+                Connection connection = connectionDB.getConnection();
+                String sql = "DELETE FROM proveedores WHERE Marca = ?";
 
-    private void btnNuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProveedorActionPerformed
-        // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            if(this.fregistroproveedores == null){
-               this.fregistroproveedores = new FrameRegistroProveedores(this);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, marca);
+
+                int filasAfectadas = preparedStatement.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    JOptionPane.showMessageDialog(this, "Proveedor eliminado correctamente.");
+
+                    // Actualizar la tabla
+                    LimpiarTabla();
+                    connectionDB();
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el proveedor.");
+                }
+
+                preparedStatement.close();
+                connection.close();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(FrameProveedores.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error al eliminar proveedor: " + ex.getMessage());
             }
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        
+        int filaSeleccionada = tablaProveedores.getSelectedRow();
+    
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un proveedor para editar.");
+            return;
+        }
+
+        try {
+            // Obtener datos de la fila seleccionada
+            String marca = (String) tablaProveedores.getValueAt(filaSeleccionada, 0);
+            String telefono = (String) tablaProveedores.getValueAt(filaSeleccionada, 1);
+            String direccion = (String) tablaProveedores.getValueAt(filaSeleccionada, 2);
+            String correo = (String) tablaProveedores.getValueAt(filaSeleccionada, 3);
+
+            // Crear o reutilizar el frame de registro
+            if (this.fregistroproveedores == null) {
+                this.fregistroproveedores = new FrameRegistroProveedores(this);
+            } else {
+                this.fregistroproveedores.resetearFormulario();
+            }
+
+            // Configurar modo edición
+            fregistroproveedores.setModoEdicion(marca, telefono, direccion, correo);
+
+            // Mostrar el formulario
             this.fregistroproveedores.setVisible(true);
             this.setVisible(false);
+
         } catch (SQLException ex) {
-            Logger.getLogger(FrameClientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrameProveedores.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al abrir el formulario de edición: " + ex.getMessage());
         }
-         
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnNuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProveedorActionPerformed
+        
+        try {
+            
+            if (this.fregistroproveedores == null) {
+                this.fregistroproveedores = new FrameRegistroProveedores(this);
+            } else {
+                this.fregistroproveedores.resetearFormulario();
+            }
+
+            this.fregistroproveedores.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameProveedores.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        }
+        
     }//GEN-LAST:event_btnNuevoProveedorActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        // TODO add your handling code here:}
+        
         this.fmenu.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+        try {
+            
+            Connection connection = connectionDB.getConnection();
+            String sql = "SELECT * FROM proveedores WHERE Marca LIKE ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + txtNombreProveedor.getText() + "%");
+
+            ResultSet result = preparedStatement.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) tablaProveedores.getModel();
+
+            LimpiarTabla();
+
+            boolean encontrado = false;
+            while (result.next()) {
+                String marca = result.getString("Marca");
+                String telefono = result.getString("Telefono");
+                String direccion = result.getString("Direccion");
+                String correo = result.getString("correo");
+
+                model.addRow(new Object[]{marca, telefono, direccion, correo});
+                encontrado = true;
+            }
+
+            if (!encontrado) {
+                JOptionPane.showMessageDialog(this, "No se encontraron proveedores con ese nombre.");
+            }
+
+            result.close();
+            preparedStatement.close();
+            connection.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameProveedores.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al buscar proveedores: " + ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
     
     /**
      * @param args the command line arguments
      */
  
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel btnMenuBack;
     private javax.swing.JButton btnNuevoProveedor;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel lblNombreProveedor;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
     private javax.swing.JLabel stockSmartLoginLabel;
     private javax.swing.JTable tablaProveedores;
+    private javax.swing.JTextPane txtNombreProveedor;
     // End of variables declaration//GEN-END:variables
 }

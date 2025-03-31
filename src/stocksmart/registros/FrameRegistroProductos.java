@@ -22,22 +22,28 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import stocksmart.ConnectionDB;
 import stocksmart.FontLoader;
+import stocksmart.FrameProductos;
 
 public class FrameRegistroProductos extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
-        Font customFont = FontLoader.customFont;
-        Font customFontBold = FontLoader.customFontBold;
-        Font customFontBold2 = FontLoader.customFontBold2;
-        Font customFontBold3 = FontLoader.customFontBold3;
-        private Color originalBackground;
-private Border originalBorder;
+    
+    ConnectionDB connectionDB = null;
+    FrameProductos fproductos = null;
+    Font customFont = FontLoader.customFont;
+    Font customFontBold = FontLoader.customFontBold;
+    Font customFontBold2 = FontLoader.customFontBold2;
+    Font customFontBold3 = FontLoader.customFontBold3;
+    private Color originalBackground;
+    private Border originalBorder;
+    
     /**
-     * Creates new form StockSmartFrameVentas
+     * Creates new form FrameProductos
      */
     public FrameRegistroProductos() throws SQLException {
         
         initComponents();
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -148,42 +154,6 @@ private Border originalBorder;
 
         lblMarca.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblMarca.setText("Marca");
-
-        txtCodigoProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoProductoActionPerformed(evt);
-            }
-        });
-
-        txtPrecioUnitario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioUnitarioActionPerformed(evt);
-            }
-        });
-
-        txtPrecioMayoreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioMayoreoActionPerformed(evt);
-            }
-        });
-
-        txtPrecioProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioProveedorActionPerformed(evt);
-            }
-        });
-
-        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadActionPerformed(evt);
-            }
-        });
-
-        txtMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMarcaActionPerformed(evt);
-            }
-        });
 
         btnGuardar.setBackground(new java.awt.Color(50, 130, 233));
         btnGuardar.setFont(customFontBold2);
@@ -305,11 +275,8 @@ private Border originalBorder;
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.setDoubleBuffered(false);
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel1MouseExited(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
             }
         });
         jPanel1.setLayout(null);
@@ -372,26 +339,8 @@ private Border originalBorder;
 
     public void connectionDB() throws SQLException {
         
-        
-            
     }
     
-    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
-        // TODO add your handlings code here:
-  
-        
-        
-    }//GEN-LAST:event_jPanel1MouseEntered
-
-    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_jPanel1MouseExited
-
-    private void txtCodigoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoProductoActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -400,25 +349,12 @@ private Border originalBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtPrecioUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioUnitarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioUnitarioActionPerformed
-
-    private void txtPrecioMayoreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioMayoreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioMayoreoActionPerformed
-
-    private void txtPrecioProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioProveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioProveedorActionPerformed
-
-    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadActionPerformed
-
-    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMarcaActionPerformed
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        
+        this.fproductos.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -446,39 +382,7 @@ private Border originalBorder;
             java.util.logging.Logger.getLogger(FrameRegistroProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
     
-            
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

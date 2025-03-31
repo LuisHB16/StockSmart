@@ -38,20 +38,17 @@ public class FrameMenu extends javax.swing.JFrame {
         FrameUnidades funidades = null;
         FrameSubproductos fsubproductos = null;
         FrameCategoria fcategorias = null;
-              
-        
+
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold3 = FontLoader.customFontBold3;
-        
-        
+
     /**
      * Creates new form StockSmartFrameMenu
      */
     public FrameMenu() {
         
         initComponents();
-      
-       this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         
     }
 
@@ -504,146 +501,173 @@ public class FrameMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVentasActionPerformed
-           try {
-                // TODO add your handling code here:
-                  if(this.fventas == null){
-                    this.fventas = new FrameVentas(this);
-                }
-               this.fventas.setVisible(true);
-                this.setVisible(false);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+           
+        try {
+            
+            if(this.fventas == null){
+                this.fventas = new FrameVentas(this);
             }
+                
+            this.fventas.setVisible(true);
+            this.setVisible(false);
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_botonVentasActionPerformed
 
     private void botonPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedidosActionPerformed
-        // TODO add your handling code here:
-          try {
-                // TODO add your handling code here:
-                  if(this.fpedidos == null){
-                    this.fpedidos = new FramePedidos(this);
-                }
-               this.fpedidos.setVisible(true);
-                this.setVisible(false);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        
+        try {
+
+            if(this.fpedidos == null){
+                this.fpedidos = new FramePedidos(this);
             }
+
+            this.fpedidos.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
     }//GEN-LAST:event_botonPedidosActionPerformed
 
     private void botonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientesActionPerformed
-        // TODO add your handling code here:
-          try {
-              
-                if(this.fclientes == null){
-                    this.fclientes = new FrameClientes(this);
-                }
-               this.fclientes.setVisible(true);
-                
-              this.setVisible(false);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        
+        try {
+
+            if(this.fclientes == null){
+                this.fclientes = new FrameClientes(this);
             }
+
+            this.fclientes.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
     }//GEN-LAST:event_botonClientesActionPerformed
 
     private void botonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductosActionPerformed
-        // TODO add your handling code here:
-            try {
-              
-                if(this.fproductos == null){
-                    this.fproductos = new FrameProductos(this);
-                }
-               this.fproductos.setVisible(true);
-                
-              this.setVisible(false);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        
+        try {
+
+            if(this.fproductos == null){
+                this.fproductos = new FrameProductos(this);
             }
+
+            this.fproductos.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }//GEN-LAST:event_botonProductosActionPerformed
 
     private void botonProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedoresActionPerformed
-        // TODO add your handling code here:
-         try {
-              
-                if(this.fproveedores == null){
-                    this.fproveedores = new FrameProveedores(this);
-                }
-               this.fproveedores.setVisible(true);
-                
-              this.setVisible(false);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        
+        try {
+
+            if(this.fproveedores == null){
+                this.fproveedores = new FrameProveedores(this);
             }
+
+            this.fproveedores.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
     }//GEN-LAST:event_botonProveedoresActionPerformed
 
     private void botonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUsuariosActionPerformed
-        // TODO add your handling code here:
-          try {
-                // TODO add your handling code here:
-                  if(this.fusuarios == null){
-                    this.fusuarios = new FrameUsuarios(this);
-                }
-               this.fusuarios.setVisible(true);
-                this.setVisible(false);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        
+        try {
+                
+            if(this.fusuarios == null){
+                this.fusuarios = new FrameUsuarios(this);
             }
+
+            this.fusuarios.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
     }//GEN-LAST:event_botonUsuariosActionPerformed
 
     private void botonReportePedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportePedidosActionPerformed
-        // TODO add your handling code here:
-          try {
-                // TODO add your handling code here:
-                  if(this.freportepedidos == null){
-                    this.freportepedidos = new FrameReportePedidos(this);
-                }
-               this.freportepedidos.setVisible(true);
-                this.setVisible(false);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        
+        try {
+                
+            if(this.freportepedidos == null){
+                this.freportepedidos = new FrameReportePedidos(this);
             }
+
+            this.freportepedidos.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
     }//GEN-LAST:event_botonReportePedidosActionPerformed
 
     private void botonReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReporteVentasActionPerformed
-        // TODO add your handling code here:
+        
         if(this.freporteventas == null){
+            
             try {
                 this.freporteventas = new FrameReporteVentas(this);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
+        
         this.freporteventas.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonReporteVentasActionPerformed
 
     private void botonMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMovimientosActionPerformed
-        // TODO add your handling code here:
-         if(this.fmovimientos == null){
+        
+        if(this.fmovimientos == null){
+             
             try {
                 this.fmovimientos = new FrameMovimientos(this);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
+        
         this.fmovimientos.setVisible(true);
         this.setVisible(false);
-        
-            
         
     }//GEN-LAST:event_botonMovimientosActionPerformed
 
     private void botonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCategoriasActionPerformed
-        // TODO add your handling code here:
-          if(this.fcategorias == null){
+        
+        if(this.fcategorias == null){
+            
             try {
                 this.fcategorias = new FrameCategoria(this);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
+        
         this.fcategorias.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonCategoriasActionPerformed
 
     private void botonRDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRDevolucionesActionPerformed
@@ -652,43 +676,51 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRDevolucionesActionPerformed
 
     private void botonUnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnidadesActionPerformed
-        // TODO add your handling code here:
+        
         if(this.funidades == null){
+            
             try {
                 this.funidades = new FrameUnidades(this);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
+        
         this.funidades.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonUnidadesActionPerformed
 
     private void botonSubproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSubproductosActionPerformed
-        // TODO add your handling code here:
-         if(this.fsubproductos == null){
+        
+        if(this.fsubproductos == null){
+             
             try {
                 this.fsubproductos = new FrameSubproductos(this);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
+        
         this.fsubproductos.setVisible(true);
         this.setVisible(false);
-                                
         
     }//GEN-LAST:event_botonSubproductosActionPerformed
 
     private void botonAltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltasActionPerformed
-        // TODO add your handling code here:
-
-if(this.faltas == null){
+        
+        if(this.faltas == null){
+            
             try {
                 this.faltas = new FrameAltas(this);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
+        
         this.faltas.setVisible(true);
         this.setVisible(false);
      
@@ -700,15 +732,17 @@ if(this.faltas == null){
     }//GEN-LAST:event_botonPrediccionActionPerformed
 
     private void botonDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDevolucionesActionPerformed
-        // TODO add your handling code here:
-        
+                
         if(this.fdevoluciones == null){
+            
             try {
                 this.fdevoluciones = new FrameDevoluciones(this);
             } catch (SQLException ex) {
                 Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
+        
         this.fdevoluciones.setVisible(true);
         this.setVisible(false);
 

@@ -41,7 +41,9 @@ public class FrameClientes extends javax.swing.JFrame {
 
         initComponents();
         this.fmenu = menu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -58,13 +60,14 @@ public class FrameClientes extends javax.swing.JFrame {
         panelLogin2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaClientes = new JTable();
-        jLabel2 = new javax.swing.JLabel();
+        lblNombreCliente = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtNombre = new javax.swing.JTextPane();
         btnRegistroCliente = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -127,8 +130,8 @@ public class FrameClientes extends javax.swing.JFrame {
         tablaClientes.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaClientes);
 
-        jLabel2.setFont(customFontBold2);
-        jLabel2.setText("Nombre del Cliente");
+        lblNombreCliente.setFont(customFontBold2);
+        lblNombreCliente.setText("Nombre del Cliente");
 
         jScrollPane2.setViewportView(txtNombre);
 
@@ -157,30 +160,34 @@ public class FrameClientes extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(50, 130, 233));
-        jButton5.setFont(customFontBold2);
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Eliminar");
-        jButton5.setBorderPainted(false);
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton5.setIconTextGap(10);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(50, 130, 233));
+        btnEliminar.setFont(customFontBold2);
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminar.setIconTextGap(10);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(customFontBold2);
-        jButton6.setForeground(new java.awt.Color(50, 130, 233));
-        jButton6.setText("Editar");
-        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.setIconTextGap(10);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditar.setFont(customFontBold2);
+        btnEditar.setForeground(new java.awt.Color(50, 130, 233));
+        btnEditar.setText("Editar");
+        btnEditar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEditar.setIconTextGap(10);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
+        lblTitulo.setText("Clientes");
 
         javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
         panelLogin2.setLayout(panelLogin2Layout);
@@ -190,27 +197,31 @@ public class FrameClientes extends javax.swing.JFrame {
                 .addGap(67, 67, 67)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(panelLogin2Layout.createSequentialGroup()
                             .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
+                                .addComponent(lblNombreCliente)
                                 .addGroup(panelLogin2Layout.createSequentialGroup()
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(btnBuscar)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnRegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblTitulo)
+                                .addComponent(btnRegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
         panelLogin2Layout.setVerticalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel2)
+                .addGap(23, 23, 23)
+                .addComponent(lblTitulo)
+                .addGap(18, 18, 18)
+                .addComponent(lblNombreCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
@@ -220,8 +231,8 @@ public class FrameClientes extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -236,12 +247,6 @@ public class FrameClientes extends javax.swing.JFrame {
         btnMenuBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
             }
         });
         btnMenuBack.setLayout(null);
@@ -306,13 +311,16 @@ public class FrameClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void connectionDB() throws SQLException {
+        
         connectionDB = new ConnectionDB();
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_C, Nombre, Apellido_P, Apellido_M, Direccion, Telefono FROM clientes");
         DefaultTableModel model = (DefaultTableModel) tablaClientes.getModel();
         model.setRowCount(0);
+        
         while (result.next()) {
+            
             int idVentas = result.getInt("Id_C");
 
             String nombre = result.getString("Nombre");
@@ -322,6 +330,7 @@ public class FrameClientes extends javax.swing.JFrame {
             String telefono = result.getString("Telefono");
 
             model.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
+            
         }
 
         result.close();
@@ -331,40 +340,120 @@ public class FrameClientes extends javax.swing.JFrame {
     }
 
     public void LimpiarTabla() {
+        
         DefaultTableModel model = (DefaultTableModel) tablaClientes.getModel();
         model.setRowCount(0);
+        
     }
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
+    
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
+        int filaSeleccionada = tablaClientes.getSelectedRow();
+    
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un cliente para eliminar.");
+            return;
+        }
 
+        int id = (int) tablaClientes.getValueAt(filaSeleccionada, 0);
+        String nombre = (String) tablaClientes.getValueAt(filaSeleccionada, 1) + " " + 
+                       (String) tablaClientes.getValueAt(filaSeleccionada, 2);
 
-    }//GEN-LAST:event_btnMenuBackMouseEntered
+        int confirmacion = JOptionPane.showConfirmDialog(
+            this, 
+            "¿Está seguro que desea eliminar al cliente: " + nombre + "?", 
+            "Confirmar eliminación", 
+            JOptionPane.YES_NO_OPTION
+        );
 
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            try {
+                Connection connection = connectionDB.getConnection();
+                String sql = "DELETE FROM clientes WHERE Id_C = ?";
 
-    }//GEN-LAST:event_btnMenuBackMouseExited
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, id);
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+                int filasAfectadas = preparedStatement.executeUpdate();
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+                if (filasAfectadas > 0) {
+                    JOptionPane.showMessageDialog(this, "Cliente eliminado correctamente.");
+
+                    // Actualizar la tabla
+                    LimpiarTabla();
+                    connectionDB();
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el cliente.");
+                }
+
+                preparedStatement.close();
+                connection.close();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(FrameClientes.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error al eliminar cliente: " + ex.getMessage());
+            }
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        
+        int filaSeleccionada = tablaClientes.getSelectedRow();
+    
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un cliente para editar.");
+            return;
+        }
+
+        try {
+            
+            // Obtener datos de la fila seleccionada
+            int id = (int) tablaClientes.getValueAt(filaSeleccionada, 0);
+            String nombre = (String) tablaClientes.getValueAt(filaSeleccionada, 1);
+            String apellidoP = (String) tablaClientes.getValueAt(filaSeleccionada, 2);
+            String apellidoM = (String) tablaClientes.getValueAt(filaSeleccionada, 3);
+            String direccion = (String) tablaClientes.getValueAt(filaSeleccionada, 4);
+            String telefono = (String) tablaClientes.getValueAt(filaSeleccionada, 5);
+
+            // Crear o reutilizar el frame de registro
+            if (this.fregistroClientes == null) {
+                this.fregistroClientes = new FrameRegistroClientes(this);
+            } else {
+                this.fregistroClientes.resetearFormulario();
+            }
+
+            // Configurar modo edición
+            fregistroClientes.setModoEdicion(id, nombre, apellidoP, apellidoM, direccion, telefono);
+
+            // Mostrar el formulario
+            this.fregistroClientes.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameClientes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al abrir el formulario de edición: " + ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroClienteActionPerformed
+        
         try {
             
             if (this.fregistroClientes == null) {
                 this.fregistroClientes = new FrameRegistroClientes(this);
+            } else {
+                this.fregistroClientes.resetearFormulario();
             }
+
             this.fregistroClientes.setVisible(true);
             this.setVisible(false);
+
         } catch (SQLException ex) {
             Logger.getLogger(FrameClientes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
         }
-
 
     }//GEN-LAST:event_btnRegistroClienteActionPerformed
 
@@ -372,28 +461,25 @@ public class FrameClientes extends javax.swing.JFrame {
         
         this.fmenu.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        
         try {
 
             Connection connection = connectionDB.getConnection();
-
             String sql = "SELECT * FROM clientes WHERE Nombre LIKE ?";
-
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
             preparedStatement.setString(1, "%" + txtNombre.getText() + "%");
-
             ResultSet result = preparedStatement.executeQuery();
-
             DefaultTableModel model = (DefaultTableModel) tablaClientes.getModel();
-
             model.setRowCount(0);
 
             boolean clienteEncontrado = false;
+            
             while (result.next()) {
+                
                 int idVentas = result.getInt("Id_C");
                 String nombre = result.getString("Nombre");
                 String apellidoP = result.getString("Apellido_P");
@@ -403,6 +489,7 @@ public class FrameClientes extends javax.swing.JFrame {
 
                 model.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
                 clienteEncontrado = true;
+                
             }
 
             // Mostrar un mensaje según si se encontraron resultados o no
@@ -418,8 +505,7 @@ public class FrameClientes extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(FrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
@@ -428,14 +514,15 @@ public class FrameClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel btnMenuBack;
     private javax.swing.JButton btnRegistroCliente;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblNombreCliente;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;

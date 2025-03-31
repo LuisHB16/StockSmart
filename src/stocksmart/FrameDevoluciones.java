@@ -41,7 +41,9 @@ public class FrameDevoluciones extends javax.swing.JFrame {
 
         initComponents();
         this.fmenu = menu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -195,12 +197,6 @@ public class FrameDevoluciones extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
-            }
         });
         btnMenuBack.setLayout(null);
 
@@ -264,13 +260,16 @@ public class FrameDevoluciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void connectionDB() throws SQLException {
+        
         connectionDB = new ConnectionDB();
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_C, Nombre, Apellido_P, Apellido_M, Direccion, Telefono FROM clientes");
         DefaultTableModel model = (DefaultTableModel) tablaDevoluciones.getModel();
         model.setRowCount(0);
+        
         while (result.next()) {
+            
             int idVentas = result.getInt("Id_C");
 
             String nombre = result.getString("Nombre");
@@ -280,6 +279,7 @@ public class FrameDevoluciones extends javax.swing.JFrame {
             String telefono = result.getString("Telefono");
 
             model.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
+            
         }
 
         result.close();
@@ -289,20 +289,12 @@ public class FrameDevoluciones extends javax.swing.JFrame {
     }
 
     public void LimpiarTabla() {
+        
         DefaultTableModel model = (DefaultTableModel) tablaDevoluciones.getModel();
         model.setRowCount(0);
+        
     }
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-
-
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseExited
-
+    
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarActionPerformed
@@ -324,6 +316,7 @@ public class FrameDevoluciones extends javax.swing.JFrame {
         
         this.fmenu.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
     /**

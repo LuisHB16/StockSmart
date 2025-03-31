@@ -41,6 +41,7 @@ public class FrameCategoria extends javax.swing.JFrame {
 
         initComponents();
         this.fmenu = menu;
+        this.setLocationRelativeTo(null);
         connectionDB();
     }
 

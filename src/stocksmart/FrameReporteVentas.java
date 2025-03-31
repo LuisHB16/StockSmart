@@ -30,7 +30,9 @@ public class FrameReporteVentas extends javax.swing.JFrame {
 
         initComponents();
         this.fmenu = fmenu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -165,12 +167,6 @@ public class FrameReporteVentas extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
-            }
         });
         btnMenuBack.setLayout(null);
 
@@ -257,24 +253,15 @@ public class FrameReporteVentas extends javax.swing.JFrame {
 
     }
 
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-
-
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseExited
-
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
+        
         this.fmenu.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
+        this.setVisible(false);
+        
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
     /**

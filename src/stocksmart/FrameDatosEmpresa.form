@@ -245,16 +245,10 @@
             <Component class="javax.swing.JTextField" name="txtNombreEmpresa">
             </Component>
             <Component class="javax.swing.JTextField" name="txtRFC">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRFCActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTelefono">
             </Component>
             <Component class="javax.swing.JTextField" name="txtDireccion">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDireccionActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnGuardar">
               <Properties>
@@ -311,10 +305,6 @@
             </Property>
             <Property name="doubleBuffered" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseExited"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;    @Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        // Super llama al comportamiento predeterminado&#xa;        super.paintComponent(g);&#xa;&#xa;        // Habilitar gr&#xe1;ficos avanzados&#xa;        Graphics2D g2d = (Graphics2D) g;&#xa;        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);&#xa;&#xa;        // Fondo transparente o del mismo color que el contenedor&#xa;        g2d.setColor(getParent().getBackground()); // Color del contenedor padre&#xa;        g2d.fillRect(0, 0, getWidth(), getHeight());&#xa;&#xa;        // Crear el gradiente de negro a azul&#xa;        GradientPaint gradiente = new GradientPaint(&#xa;            0, 0, new Color(0, 0, 0, 175),         // Inicio: negro&#xa;            getWidth()-(getWidth()/7), 0, new Color(50,130,233)  // Fin: azul&#xa;        );&#xa;&#xa;        // Dibujar el fondo redondeado con gradiente&#xa;        g2d.setPaint(gradiente);&#xa;        int arcWidth = 25;  // Curvatura horizontal&#xa;        int arcHeight = 25; // Curvatura vertical&#xa;        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), arcWidth, arcHeight);&#xa;&#xa;        g2d.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, arcWidth, arcHeight);&#xa;    }&#xa;&#xa;    @Override&#xa;    public boolean isOpaque() {&#xa;        return false; // Permitir transparencia&#xa;    }&#xa;}"/>
           </AuxValues>

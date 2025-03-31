@@ -17,8 +17,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class FrameAltas extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
-       FrameMenu fmenu = null;
+    
+        ConnectionDB connectionDB = null;
+        FrameMenu fmenu = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
         Font customFontBold2 = FontLoader.customFontBold2;
@@ -30,7 +31,9 @@ public class FrameAltas extends javax.swing.JFrame {
         
         initComponents();
         this.fmenu = fmenu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**

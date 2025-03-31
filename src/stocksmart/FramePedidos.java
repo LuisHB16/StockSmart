@@ -17,11 +17,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class FramePedidos extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
-       FrameMenu fmenu = null;
-        Font customFont = FontLoader.customFont;
-        Font customFontBold = FontLoader.customFontBold;
-        Font customFontBold2 = FontLoader.customFontBold2;
+    
+    ConnectionDB connectionDB = null;
+    FrameMenu fmenu = null;
+    Font customFont = FontLoader.customFont;
+    Font customFontBold = FontLoader.customFontBold;
+    Font customFontBold2 = FontLoader.customFontBold2;
 
     /**
      * Creates new form StockSmartFrameVentas
@@ -30,7 +31,9 @@ public class FramePedidos extends javax.swing.JFrame {
         
         initComponents();
         this.fmenu = fmenu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -291,12 +294,6 @@ public class FramePedidos extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
-            }
         });
         btnMenuBack.setLayout(null);
 
@@ -384,18 +381,6 @@ public class FramePedidos extends javax.swing.JFrame {
             
     }
     
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-  
-        
-        
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_btnMenuBackMouseExited
-
     private void btnAgregarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarItemActionPerformed
@@ -413,9 +398,10 @@ public class FramePedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        // TODO add your handling code here:
+        
         new FrameMenu().setVisible(true);
-                this.setVisible(false);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
     /**

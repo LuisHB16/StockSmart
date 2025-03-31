@@ -18,7 +18,10 @@ import stocksmart.FontLoader;
 import stocksmart.FrameUsuarios;
 
 public class FrameRegistroTrabajadores extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
+        
+        private boolean modoEdicion = false;
+        private String usuarioOriginal; // Guardar el nombre original al editar
+        ConnectionDB connectionDB = null;
         FrameUsuarios fusuarios = null;
         Font customFont = FontLoader.customFont;
         Font customFontBold = FontLoader.customFontBold;
@@ -30,8 +33,17 @@ public class FrameRegistroTrabajadores extends javax.swing.JFrame {
     public FrameRegistroTrabajadores(FrameUsuarios fusuarios) throws SQLException {
         
         initComponents();
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                resetearFormulario();
+            }
+        });
         this.fusuarios = fusuarios;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        resetearFormulario();
+        
     }
 
     /**
@@ -115,12 +127,6 @@ public class FrameRegistroTrabajadores extends javax.swing.JFrame {
         lblApellidos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblApellidos.setText("Apellidos");
 
-        txtApellidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidosActionPerformed(evt);
-            }
-        });
-
         btnGuardar.setBackground(new java.awt.Color(50, 130, 233));
         btnGuardar.setFont(customFontBold2);
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,12 +154,6 @@ public class FrameRegistroTrabajadores extends javax.swing.JFrame {
         lblRol.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblRol.setText("Rol");
 
-        txtRol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRolActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlRegistroRepartidoresLayout = new javax.swing.GroupLayout(pnlRegistroRepartidores);
         pnlRegistroRepartidores.setLayout(pnlRegistroRepartidoresLayout);
         pnlRegistroRepartidoresLayout.setHorizontalGroup(
@@ -168,8 +168,8 @@ public class FrameRegistroTrabajadores extends javax.swing.JFrame {
                     .addGroup(pnlRegistroRepartidoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(pnlRegistroRepartidoresLayout.createSequentialGroup()
                             .addGroup(pnlRegistroRepartidoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                                .addComponent(lblApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                                 .addComponent(lblRol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(27, 27, 27)
                             .addGroup(pnlRegistroRepartidoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,12 +211,6 @@ public class FrameRegistroTrabajadores extends javax.swing.JFrame {
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel1MouseExited(evt);
             }
         });
         jPanel1.setLayout(null);
@@ -276,91 +270,107 @@ public class FrameRegistroTrabajadores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     public void connectionDB() throws SQLException {
-         connectionDB = new ConnectionDB();
         
-            
+        connectionDB = new ConnectionDB();
+        
     }
     
-    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
-        // TODO add your handlings code here:
-  
+    public void setModoEdicion(String nombreCompleto, String rol) {
         
+        // Separar nombre y apellidos (asumiendo que están separados por espacio)
+        String[] partesNombre = nombreCompleto.split(" ", 2);
+        String nombre = partesNombre.length > 0 ? partesNombre[0] : "";
+        String apellidos = partesNombre.length > 1 ? partesNombre[1] : "";
+
+        txtNombre.setText(nombre);
+        txtApellidos.setText(apellidos);
+        txtRol.setText(rol);
+
+        this.modoEdicion = true;
+        this.usuarioOriginal = nombreCompleto;
+        lblTitulo.setText("Editar trabajador");
         
-    }//GEN-LAST:event_jPanel1MouseEntered
-
-    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_jPanel1MouseExited
-
-    private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidosActionPerformed
-
+    }
+    
+    public void resetearFormulario() {
+        
+        txtNombre.setText("");
+        txtApellidos.setText("");
+        txtRol.setText("");
+        this.modoEdicion = false;
+        this.usuarioOriginal = null;
+        lblTitulo.setText("Registro de trabajadores"); // Restablecer el título
+        
+    }
+    
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-          try {
-            // Obtener la conexión a la base de datos
 
+        try {
+            
             Connection connection = connectionDB.getConnection();
+            String sql;
+            PreparedStatement preparedStatement;
 
-            // Consulta SQL para insertar un nuevo cliente
-            String sql = "INSERT INTO trabajadores (Usuario_trabajador , Rol) VALUES (?, ?)";
+            String nombreCompleto = txtNombre.getText() + " " + txtApellidos.getText();
+            String rol = txtRol.getText();
 
-            // Crear el PreparedStatement para evitar inyecciones SQL
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-            // Obtener los datos desde los JTextField (ajústalos según los nombres de tus componentes)
-            preparedStatement.setString(1, txtNombre.getText()+ txtApellidos.getText());
-            preparedStatement.setString(2, txtRol.getText());
-        
-
-            // Ejecutar la consulta
-            int filasAfectadas = preparedStatement.executeUpdate();
-            
-            
-
-            if (filasAfectadas > 0) {
-                this.fusuarios.limpiarTabla();
-                this.fusuarios.connectionDB();
-                this.fusuarios.setVisible(true);
-        this.setVisible(false);
-        
-                JOptionPane.showMessageDialog(this, "Cliente registrado con éxito.");
+            if (modoEdicion) {
+                // Modo edición - UPDATE
+                sql = "UPDATE trabajadores SET Usuario_trabajador = ?, Rol = ? WHERE Usuario_trabajador = ?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, nombreCompleto);
+                preparedStatement.setString(2, rol);
+                preparedStatement.setString(3, usuarioOriginal);
             } else {
-                JOptionPane.showMessageDialog(this, "Error al registrar cliente.");
+                // Nuevo registro - INSERT
+                sql = "INSERT INTO trabajadores (Usuario_trabajador, Rol) VALUES (?, ?)";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, nombreCompleto);
+                preparedStatement.setString(2, rol);
             }
 
-            // Cerrar la conexión
+            int filasAfectadas = preparedStatement.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                JOptionPane.showMessageDialog(this, modoEdicion ? 
+                    "Trabajador actualizado con éxito." : "Trabajador registrado con éxito.");
+
+                // Actualizar la tabla en FrameUsuarios
+                fusuarios.limpiarTabla();
+                fusuarios.connectionDB();
+
+                // Regresar al frame de usuarios
+                fusuarios.setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo completar la operación.");
+            }
+
             preparedStatement.close();
             connection.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(FrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrameRegistroTrabajadores.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
         }
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        
+        this.fusuarios.setVisible(true);
+        this.setVisible(false);
+    
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRolActionPerformed
-
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        // TODO add your handling code here:
         
         this.fusuarios.setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_jPanel1MouseClicked
-
-  
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

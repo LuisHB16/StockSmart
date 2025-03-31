@@ -19,13 +19,15 @@ import stocksmart.FontLoader;
 import stocksmart.FrameProveedores;
 
 public class FrameRegistroProveedores extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
-       FrameProveedores fproveedores = null;
-        Font customFont = FontLoader.customFont;
-        Font customFontBold = FontLoader.customFontBold;
-        Font customFontBold2 = FontLoader.customFontBold2;
+    
+    private boolean modoEdicion = false;
+    private String marcaOriginal; // Guarda la marca original al editar
+    ConnectionDB connectionDB = null;
+    FrameProveedores fproveedores = null;
+    Font customFont = FontLoader.customFont;
+    Font customFontBold = FontLoader.customFontBold;
+    Font customFontBold2 = FontLoader.customFontBold2;
         
-      
     /**
      * Creates new form StockSmartFrameVentas
      */
@@ -33,7 +35,9 @@ public class FrameRegistroProveedores extends javax.swing.JFrame {
         
         initComponents();
         this.fproveedores = fproveedores;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -125,18 +129,6 @@ public class FrameRegistroProveedores extends javax.swing.JFrame {
         lblTelefono.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTelefono.setText("Teléfono");
 
-        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionActionPerformed(evt);
-            }
-        });
-
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
-            }
-        });
-
         btnGuardar.setBackground(new java.awt.Color(50, 130, 233));
         btnGuardar.setFont(customFontBold2);
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,12 +219,6 @@ public class FrameRegistroProveedores extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel1MouseExited(evt);
-            }
         });
         jPanel1.setLayout(null);
 
@@ -293,90 +279,113 @@ public class FrameRegistroProveedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void connectionDB() throws SQLException {
-         connectionDB = new ConnectionDB();
         
-            
+        connectionDB = new ConnectionDB();
+        
     }
     
-    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
-        // TODO add your handlings code here:
-  
+    public void setModoEdicion(String marca, String telefono, String direccion, String correo) {
         
+        txtMarca.setText(marca);
+        txtTelefono.setText(telefono);
+        txtDireccion.setText(direccion);
+        txtNombre.setText(correo);
+
+        this.modoEdicion = true;
+        this.marcaOriginal = marca;
+        lblTitulo.setText("Editar proveedor");
         
-    }//GEN-LAST:event_jPanel1MouseEntered
-
-    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_jPanel1MouseExited
-
-    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionActionPerformed
-
+    }
+    
+    public void resetearFormulario() {
+        
+        txtMarca.setText("");
+        txtTelefono.setText("");
+        txtDireccion.setText("");
+        txtNombre.setText("");
+        this.modoEdicion = false;
+        this.marcaOriginal = null;
+        lblTitulo.setText("Registro de proveedores");
+        
+    }
+    
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-         try {
-            // Obtener la conexión a la base de datos
-
+        
+        try {
+            
             Connection connection = connectionDB.getConnection();
+            String sql;
+            PreparedStatement preparedStatement;
 
-            // Consulta SQL para insertar un nuevo cliente
-            String sql = "INSERT INTO proveedores (Marca , Telefono , Direccion ,correo) VALUES (?, ?, ?, ?)";
+            if (modoEdicion) {
+                
+                // Modo edición - UPDATE
+                sql = "UPDATE proveedores SET Marca=?, Telefono=?, Direccion=?, correo=? WHERE Marca=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, txtMarca.getText());
+                preparedStatement.setString(2, txtTelefono.getText());
+                preparedStatement.setString(3, txtDireccion.getText());
+                preparedStatement.setString(4, txtNombre.getText());
+                preparedStatement.setString(5, marcaOriginal);
+                
+            } else {
+                
+                // Modo nuevo - INSERT
+                sql = "INSERT INTO proveedores (Marca, Telefono, Direccion, correo) VALUES (?, ?, ?, ?)";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, txtMarca.getText());
+                preparedStatement.setString(2, txtTelefono.getText());
+                preparedStatement.setString(3, txtDireccion.getText());
+                preparedStatement.setString(4, txtNombre.getText());
+                
+            }
 
-            // Crear el PreparedStatement para evitar inyecciones SQL
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-            // Obtener los datos desde los JTextField (ajústalos según los nombres de tus componentes)
-            
-            
-            preparedStatement.setString(1, txtMarca.getText());
-            preparedStatement.setString(2, txtTelefono.getText());
-            preparedStatement.setString(3, txtDireccion.getText());
-            preparedStatement.setString(4, txtNombre.getText());
-
-            // Ejecutar la consulta
             int filasAfectadas = preparedStatement.executeUpdate();
 
             if (filasAfectadas > 0) {
-                this.fproveedores.connectionDB();
-                this.fproveedores.setVisible(true);
                 
-        this.setVisible(false);
-        
-                JOptionPane.showMessageDialog(this, "Cliente registrado con éxito.");
+                JOptionPane.showMessageDialog(this, 
+                    modoEdicion ? "Proveedor actualizado con éxito." : "Proveedor registrado con éxito.");
+
+                // Actualizar la tabla en FrameProveedores
+                fproveedores.LimpiarTabla();
+                fproveedores.connectionDB();
+
+                // Regresar al frame de proveedores
+                fproveedores.setVisible(true);
+                this.setVisible(false);
+                
             } else {
-                JOptionPane.showMessageDialog(this, "Error al registrar cliente.");
+                JOptionPane.showMessageDialog(this, "No se pudo completar la operación.");
             }
 
-            // Cerrar la conexión
             preparedStatement.close();
             connection.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(FrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrameRegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
         }
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
-
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        // TODO add your handling code here:
+        
         this.fproveedores.setVisible(true);
         this.setVisible(false);
+        
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        
+        this.fproveedores.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments
      */
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

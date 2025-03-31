@@ -23,20 +23,23 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class FrameVentas extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
-       FrameMenu fmenu = null;
-        Font customFont = FontLoader.customFont;
-        Font customFontBold = FontLoader.customFontBold;
-        Font customFontBold2 = FontLoader.customFontBold2;
+    
+    ConnectionDB connectionDB = null;
+    FrameMenu fmenu = null;
+    Font customFont = FontLoader.customFont;
+    Font customFontBold = FontLoader.customFontBold;
+    Font customFontBold2 = FontLoader.customFontBold2;
    
     /**
-     * Creates new form StockSmartFrameVentas
+     * Creates new form FrameVentas
      */
     public FrameVentas( FrameMenu fmenu) throws SQLException {
         
         initComponents();
         this.fmenu = fmenu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -53,14 +56,14 @@ public class FrameVentas extends javax.swing.JFrame {
         panelLogin2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVentas = new JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        lblVendedor = new javax.swing.JLabel();
+        cbxVendedor = new javax.swing.JComboBox<>();
+        lblCodigoBarras = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        txtCodigoBarras = new javax.swing.JTextPane();
+        btnNuevoItem = new javax.swing.JButton();
+        btnCobrar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -123,53 +126,53 @@ public class FrameVentas extends javax.swing.JFrame {
         tablaVentas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaVentas);
 
-        jLabel2.setFont(customFontBold2);
-        jLabel2.setText("Vendedor");
+        lblVendedor.setFont(customFontBold2);
+        lblVendedor.setText("Vendedor");
 
-        jComboBox1.setFont(customFontBold2       );
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxVendedor.setFont(customFontBold2       );
+        cbxVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/codigobarras.png"))); // NOI18N
+        lblCodigoBarras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/codigobarras.png"))); // NOI18N
 
-        jTextPane1.setFont(customFontBold2    );
-        jScrollPane2.setViewportView(jTextPane1);
+        txtCodigoBarras.setFont(customFontBold2    );
+        jScrollPane2.setViewportView(txtCodigoBarras);
 
-        jButton1.setBackground(new java.awt.Color(50, 130, 233));
-        jButton1.setFont(customFontBold2);
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Item");
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.setIconTextGap(10);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevoItem.setBackground(new java.awt.Color(50, 130, 233));
+        btnNuevoItem.setFont(customFontBold2);
+        btnNuevoItem.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevoItem.setText("Item");
+        btnNuevoItem.setBorderPainted(false);
+        btnNuevoItem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNuevoItem.setIconTextGap(10);
+        btnNuevoItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnNuevoItemActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(50, 130, 233));
-        jButton3.setFont(customFontBold2);
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Cobrar");
-        jButton3.setBorderPainted(false);
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setIconTextGap(10);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnCobrar.setBackground(new java.awt.Color(50, 130, 233));
+        btnCobrar.setFont(customFontBold2);
+        btnCobrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCobrar.setText("Cobrar");
+        btnCobrar.setBorderPainted(false);
+        btnCobrar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCobrar.setIconTextGap(10);
+        btnCobrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnCobrarActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(50, 130, 233));
-        jButton4.setFont(customFontBold2);
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Eliminar");
-        jButton4.setBorderPainted(false);
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setIconTextGap(10);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(50, 130, 233));
+        btnEliminar.setFont(customFontBold2);
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminar.setIconTextGap(10);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -182,20 +185,20 @@ public class FrameVentas extends javax.swing.JFrame {
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelLogin2Layout.createSequentialGroup()
                         .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelLogin2Layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnNuevoItem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(73, 73, 73))
         );
         panelLogin2Layout.setVerticalGroup(
@@ -203,24 +206,24 @@ public class FrameVentas extends javax.swing.JFrame {
             .addGroup(panelLogin2Layout.createSequentialGroup()
                 .addGap(122, 122, 122)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblVendedor)
+                    .addComponent(cbxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane2)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNuevoItem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
-        jButton1.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnNuevoItem.setIcon(new PlusIcon(18, 18, Color.WHITE));
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
@@ -230,12 +233,6 @@ public class FrameVentas extends javax.swing.JFrame {
         btnMenuBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
             }
         });
         btnMenuBack.setLayout(null);
@@ -298,84 +295,72 @@ public class FrameVentas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void connectionDB() throws SQLException{
+    public void connectionDB() throws SQLException {
+        
         connectionDB = new ConnectionDB();
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT Id_Ventas, Id_Clientes, Fecha, Total, Id_Vendedor, Id_Repartidor, Status FROM venta");
         DefaultTableModel tablaVentas1 = (DefaultTableModel) tablaVentas.getModel();
+        
         while(result.next()){
+            
             int idVentas = result.getInt("Id_Ventas");
-                int idClientes = result.getInt("Id_Clientes");
-                String fecha = result.getString("Fecha");
-                double total = result.getDouble("Total");
-                String idVendedor = result.getString("Id_Vendedor");
-                int idRepartidor = result.getInt("Id_Repartidor");
-                String status = result.getString("Status");
-               
-                tablaVentas1.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
+            int idClientes = result.getInt("Id_Clientes");
+            String fecha = result.getString("Fecha");
+            double total = result.getDouble("Total");
+            String idVendedor = result.getString("Id_Vendedor");
+            int idRepartidor = result.getInt("Id_Repartidor");
+            String status = result.getString("Status");
+
+            tablaVentas1.addRow(new Object[]{idVentas, idClientes, fecha, total, idVendedor, idRepartidor, status});
+        
         }
         
         result.close();
         statement.close();
-            
-        
         
     }
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-  
-        
-        
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
+    
+    private void btnNuevoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoItemActionPerformed
         // TODO add your handling code here:
-         
-    }//GEN-LAST:event_btnMenuBackMouseExited
+    }//GEN-LAST:event_btnNuevoItemActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCobrarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        // TODO add your handling code here:
         
-                // TODO add your handling code here:
-                this.fmenu.setVisible(true);
-                this.setVisible(false);
+        this.fmenu.setVisible(true);
+        this.setVisible(false);
             
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCobrar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel btnMenuBack;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnNuevoItem;
+    private javax.swing.JComboBox<String> cbxVendedor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel lblCodigoBarras;
+    private javax.swing.JLabel lblVendedor;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
     private javax.swing.JLabel stockSmartLoginLabel;
     private javax.swing.JTable tablaVentas;
+    private javax.swing.JTextPane txtCodigoBarras;
     // End of variables declaration//GEN-END:variables
 }

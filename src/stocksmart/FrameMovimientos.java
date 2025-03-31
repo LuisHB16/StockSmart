@@ -20,12 +20,12 @@ import javax.swing.table.DefaultTableModel;
 import stocksmart.registros.FrameRegistroProveedores;
 
 public class FrameMovimientos extends javax.swing.JFrame {
-       ConnectionDB connectionDB = null;
-        
-        FrameMenu fmenu = null;
-        Font customFont = FontLoader.customFont;
-        Font customFontBold = FontLoader.customFontBold;
-        Font customFontBold2 = FontLoader.customFontBold2;
+    
+    ConnectionDB connectionDB = null;
+    FrameMenu fmenu = null;
+    Font customFont = FontLoader.customFont;
+    Font customFontBold = FontLoader.customFontBold;
+    Font customFontBold2 = FontLoader.customFontBold2;
        
     /**
      * Creates new form StockSmartFrameVentas
@@ -34,9 +34,10 @@ public class FrameMovimientos extends javax.swing.JFrame {
         
         initComponents();
         this.fmenu = fmenu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,12 +150,6 @@ public class FrameMovimientos extends javax.swing.JFrame {
         jLabel3.setFont(customFontBold2);
         jLabel3.setText("Codigo");
 
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(customFontBold2);
         jLabel4.setText("Tipo de Movimeintos ");
 
@@ -199,8 +194,7 @@ public class FrameMovimientos extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel2)
                                     .addComponent(fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fechaInicial1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(fechaInicial1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnBuscar))))
@@ -258,12 +252,6 @@ public class FrameMovimientos extends javax.swing.JFrame {
         btnMenuBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
             }
         });
         btnMenuBack.setLayout(null);
@@ -327,13 +315,15 @@ public class FrameMovimientos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void connectionDB() throws SQLException{
+    public void connectionDB() throws SQLException {
+        
         connectionDB = new ConnectionDB();
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT * FROM proveedores");
         DefaultTableModel model = (DefaultTableModel) tablaProveedores.getModel();
-          model.setRowCount(0);
+        model.setRowCount(0);
+        
         while (result.next()) {
            
             String nombre = result.getString("Marca");
@@ -342,40 +332,28 @@ public class FrameMovimientos extends javax.swing.JFrame {
             String correo = result.getString("correo");
 
             model.addRow(new Object[]{nombre, telefono, direccion, correo});
+            
         }
 
         result.close();
         statement.close();
         connection.close();
         
-        
     }
     
      public void LimpiarTabla() {
+         
         DefaultTableModel model = (DefaultTableModel) tablaProveedores.getModel();
         model.setRowCount(0);
+        
     }
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-  
-        
-        
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_btnMenuBackMouseExited
-
+     
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        // TODO add your handling code here:}
+        
         this.fmenu.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_btnMenuBackMouseClicked
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
@@ -385,7 +363,6 @@ public class FrameMovimientos extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

@@ -24,6 +24,7 @@ import stocksmart.registros.FrameRegistroClientes;
 import stocksmart.registros.FrameRegistroTrabajadores;
 
 public class FrameUsuarios extends javax.swing.JFrame {
+    
         ConnectionDB connectionDB = null;
         FrameMenu fmenu = null;
         FrameRegistroTrabajadores fregistrotrab = null;
@@ -34,11 +35,13 @@ public class FrameUsuarios extends javax.swing.JFrame {
     /**
      * Creates new form StockSmartFrameVentas
      */
-    public FrameUsuarios( FrameMenu fmenu) throws SQLException {
+    public FrameUsuarios(FrameMenu fmenu) throws SQLException {
         
         initComponents();
         this.fmenu = fmenu;
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -55,13 +58,14 @@ public class FrameUsuarios extends javax.swing.JFrame {
         panelLogin2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new JTable();
-        jLabel2 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtNombre = new javax.swing.JTextPane();
         btnBuscar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnNuevoMiembro = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -124,12 +128,11 @@ public class FrameUsuarios extends javax.swing.JFrame {
         tablaUsuarios.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaUsuarios);
 
-        jLabel2.setFont(customFontBold2);
-        jLabel2.setText("Nombre del Trabajdor / Vendedor");
+        lblNombre.setFont(customFontBold2);
+        lblNombre.setText("Nombre del Trabajdor / Vendedor");
 
         jScrollPane2.setViewportView(txtNombre);
 
-        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscar.setFont(customFontBold2);
         btnBuscar.setForeground(new java.awt.Color(50, 130, 233));
         btnBuscar.setText("Buscar");
@@ -141,43 +144,47 @@ public class FrameUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(50, 130, 233));
-        jButton1.setFont(customFontBold2);
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Nuevo Miembro");
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.setIconTextGap(10);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevoMiembro.setBackground(new java.awt.Color(50, 130, 233));
+        btnNuevoMiembro.setFont(customFontBold2);
+        btnNuevoMiembro.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevoMiembro.setText("Nuevo Miembro");
+        btnNuevoMiembro.setBorderPainted(false);
+        btnNuevoMiembro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNuevoMiembro.setIconTextGap(10);
+        btnNuevoMiembro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnNuevoMiembroActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(customFontBold2);
-        jButton6.setForeground(new java.awt.Color(50, 130, 233));
-        jButton6.setText("Editar");
-        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.setIconTextGap(10);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setFont(customFontBold2);
+        btnEditar.setForeground(new java.awt.Color(50, 130, 233));
+        btnEditar.setText("Editar");
+        btnEditar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEditar.setIconTextGap(10);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(50, 130, 233));
-        jButton5.setFont(customFontBold2);
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Eliminar");
-        jButton5.setBorderPainted(false);
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton5.setIconTextGap(10);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(50, 130, 233));
+        btnEliminar.setFont(customFontBold2);
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEliminar.setIconTextGap(10);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Usuarios");
 
         javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
         panelLogin2.setLayout(panelLogin2Layout);
@@ -187,42 +194,46 @@ public class FrameUsuarios extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 883, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(panelLogin2Layout.createSequentialGroup()
                             .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(btnBuscar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 883, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnNuevoMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(85, 85, 85))
         );
         panelLogin2Layout.setVerticalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(jLabel2)
+                .addGap(40, 40, 40)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNuevoMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
-        jButton1.setIcon(new PlusIcon(18, 18, Color.WHITE));
-        jButton1.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnNuevoMiembro.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnNuevoMiembro.setIcon(new PlusIcon(18, 18, Color.WHITE));
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
@@ -232,12 +243,6 @@ public class FrameUsuarios extends javax.swing.JFrame {
         btnMenuBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
             }
         });
         btnMenuBack.setLayout(null);
@@ -302,89 +307,158 @@ public class FrameUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void connectionDB() throws SQLException{
+        
         connectionDB = new ConnectionDB();
         Connection connection = connectionDB.getConnection();
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT * FROM trabajadores");
         DefaultTableModel model = (DefaultTableModel) tablaUsuarios.getModel();
+        
         while(result.next()){
             
                 String nombre = result.getString("Usuario_trabajador");
-      
                 String rol = result.getString("Rol");
-               
                 model.addRow(new Object[]{nombre, rol});
+                
         }
         
         result.close();
         statement.close();
-            
-        
         
     }
     
     public void limpiarTabla(){
-         DefaultTableModel model = (DefaultTableModel) tablaUsuarios.getModel();
-         model.setRowCount(0);
+        
+        DefaultTableModel model = (DefaultTableModel) tablaUsuarios.getModel();
+        model.setRowCount(0);
+        
     }
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-  
-        
-        
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_btnMenuBackMouseExited
-
+    
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        // TODO add your handling code here:
+        
         this.fmenu.setVisible(true);
-                this.setVisible(false);
+        this.setVisible(false);
+                
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-         try {
-            // TODO add your handling code here:
+    private void btnNuevoMiembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoMiembroActionPerformed
+        
+        try {
+            
             if (this.fregistrotrab == null) {
                 this.fregistrotrab = new FrameRegistroTrabajadores(this);
+            } else {
+                this.fregistrotrab.resetearFormulario(); // Limpiar el formulario si ya existe
             }
             this.fregistrotrab.setVisible(true);
             this.setVisible(false);
+            
         } catch (SQLException ex) {
             Logger.getLogger(FrameClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnNuevoMiembroActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        
+        int filaSeleccionada = tablaUsuarios.getSelectedRow();
+    
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un usuario para editar.");
+            return;
+        }
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        try {
+            // Obtener datos de la tabla
+            String nombreUsuario = (String) tablaUsuarios.getValueAt(filaSeleccionada, 0);
+            String rolUsuario = (String) tablaUsuarios.getValueAt(filaSeleccionada, 1);
+
+            // Crear o reutilizar el frame de registro
+            if (this.fregistrotrab == null) {
+                this.fregistrotrab = new FrameRegistroTrabajadores(this);
+            }
+
+            // Configurar modo edición
+            fregistrotrab.setModoEdicion(nombreUsuario, rolUsuario);
+
+            // Mostrar el formulario
+            this.fregistrotrab.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al abrir el formulario de edición: " + ex.getMessage());
+        }
+    
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
+        try {
+            // Obtener la fila seleccionada
+            int filaSeleccionada = tablaUsuarios.getSelectedRow();
+
+            if (filaSeleccionada == -1) {
+                JOptionPane.showMessageDialog(this, "Por favor, seleccione un usuario para eliminar.");
+                return;
+            }
+
+            // Obtener el nombre del usuario de la fila seleccionada (columna 0)
+            String nombreUsuario = (String) tablaUsuarios.getValueAt(filaSeleccionada, 0);
+
+            // Confirmar la eliminación
+            int confirmacion = JOptionPane.showConfirmDialog(
+                this, 
+                "¿Está seguro que desea eliminar al usuario: " + nombreUsuario + "?", 
+                "Confirmar eliminación", 
+                JOptionPane.YES_NO_OPTION
+            );
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                Connection connection = connectionDB.getConnection();
+
+                // DELETE
+                String sql = "DELETE FROM trabajadores WHERE Usuario_trabajador = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, nombreUsuario);
+
+                // Ejecutar la eliminación
+                int filasAfectadas = preparedStatement.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    
+                    JOptionPane.showMessageDialog(this, "Usuario eliminado correctamente.");
+
+                    // Actualizar la tabla
+                    DefaultTableModel model = (DefaultTableModel) tablaUsuarios.getModel();
+                    model.removeRow(filaSeleccionada);
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el usuario.");
+                }
+
+                // Cerrar recursos
+                preparedStatement.close();
+                connection.close();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FrameUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al eliminar el usuario: " + ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
         
           try {
 
             Connection connection = connectionDB.getConnection();
-
             String sql = "SELECT * FROM trabajadores WHERE Usuario_trabajador LIKE ?";
-
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
             preparedStatement.setString(1, "%" + txtNombre.getText() + "%");
-
             ResultSet result = preparedStatement.executeQuery();
-
             DefaultTableModel model = (DefaultTableModel) tablaUsuarios.getModel();
-
             model.setRowCount(0);
 
             boolean clienteEncontrado = false;
@@ -398,7 +472,7 @@ public class FrameUsuarios extends javax.swing.JFrame {
                 clienteEncontrado = true;
             }
 
-            // Mostrar un mensaje según si se encontraron resultados o no
+            // Si no se encuentra cliente
             if (!clienteEncontrado) {
                 JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
             }
@@ -411,23 +485,24 @@ public class FrameUsuarios extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(FrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
+          
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
      */
   
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel btnMenuBack;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btnNuevoMiembro;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;

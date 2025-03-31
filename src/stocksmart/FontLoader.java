@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class FontLoader {
+    
     private static final String FONT_PATH = "src/assests/fonts/Inter,Lusitana/Inter/Inter-VariableFont_opsz,wght.ttf";
     public static Font customFont;
     public static Font customFontBold;
@@ -14,6 +15,7 @@ public class FontLoader {
 
     // Bloque estático para inicializar las fuentes
     static {
+        
         try {
             customFont = Font.createFont(Font.TRUETYPE_FONT, new File(FONT_PATH)).deriveFont(18f);
             customFontBold = customFont.deriveFont(Font.BOLD, 30f);
@@ -26,5 +28,7 @@ public class FontLoader {
             customFontBold = customFont.deriveFont(Font.BOLD, 30f);
             customFontBold2 = customFont.deriveFont(Font.PLAIN, 14f);
         }
+        
     }
+    
 }

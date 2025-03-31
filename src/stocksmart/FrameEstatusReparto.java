@@ -13,20 +13,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FrameEstatusReparto extends javax.swing.JFrame {
-        ConnectionDB connectionDB = null;
-        Font customFont = FontLoader.customFont;
-        Font customFontBold = FontLoader.customFontBold;
-        Font customFontBold2 = FontLoader.customFontBold2;
-        Font customFontBold3 = FontLoader.customFontBold3;
-        private Color originalBackground;
-        private Border originalBorder;
+    
+    ConnectionDB connectionDB = null;
+    Font customFont = FontLoader.customFont;
+    Font customFontBold = FontLoader.customFontBold;
+    Font customFontBold2 = FontLoader.customFontBold2;
+    Font customFontBold3 = FontLoader.customFontBold3;
+    private Color originalBackground;
+    private Border originalBorder;
+        
     /**
      * Creates new form StockSmartFrameVentas
      */
     public FrameEstatusReparto() throws SQLException {
         
         initComponents();
+        this.setLocationRelativeTo(null);
         connectionDB();
+        
     }
 
     /**
@@ -185,14 +189,6 @@ public class FrameEstatusReparto extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(0, 153, 204));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.setDoubleBuffered(false);
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel1MouseExited(evt);
-            }
-        });
         jPanel1.setLayout(null);
 
         lblMenu.setFont(customFont);
@@ -253,22 +249,8 @@ public class FrameEstatusReparto extends javax.swing.JFrame {
 
     public void connectionDB() throws SQLException {
         
-        
-            
     }
     
-    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
-        // TODO add your handlings code here:
-  
-        
-        
-    }//GEN-LAST:event_jPanel1MouseEntered
-
-    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_jPanel1MouseExited
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarActionPerformed

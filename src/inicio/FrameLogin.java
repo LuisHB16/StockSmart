@@ -1,10 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package inicio;
-
-
 
 import java.awt.Color;
 import java.sql.*;
@@ -14,29 +8,24 @@ import stocksmart.ConnectionDB;
 import stocksmart.FontLoader;
 import codigo.TextBubbleBorder;
 
-/**
- *
- * @author alanm
- */
-
 public class FrameLogin extends javax.swing.JFrame {
 
+    ConnectionDB connectionDB = null;
+    Font customFont = FontLoader.customFont;
+    Font customFontBold = FontLoader.customFontBold;
+    Font customFontBold2 = FontLoader.customFontBold2;
+    String usuarioBD = null;
+    String passwordBD = null;
     
-     ConnectionDB connectionDB = null;
-     Font customFont = FontLoader.customFont;
-     Font customFontBold = FontLoader.customFontBold;
-     Font customFontBold2 = FontLoader.customFontBold2;
-     String usuarioBD = null;
-     String passwordBD = null;
-     
-     
     /**
      * Creates new form StockSmartFrameLogin
      */
     public FrameLogin() {
-    connectionDB();
-   
-    initComponents();
+        
+        initComponents();
+        this.setLocationRelativeTo(null);
+        connectionDB();
+
     }
 
     /**
@@ -216,17 +205,17 @@ public class FrameLogin extends javax.swing.JFrame {
 
     //INICIAR SESION BOTON
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
         String passwordString = new String(passInput1.getPassword());
         
-        if(userInput1.getText().equals(usuarioBD) && passwordString.equals(passwordBD)){
+        if(userInput1.getText().equals(usuarioBD) && passwordString.equals(passwordBD)) {
+            
             System.out.println("Bienvenido");
             FrameMenu ssfm = new FrameMenu();
-               ssfm.setVisible(true);
-               setVisible(false);
+            ssfm.setVisible(true);
+            setVisible(false);
             
         }
-                
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -234,11 +223,9 @@ public class FrameLogin extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-
     public void connectionDB(){
         
         try{
-            
             
             connectionDB = new ConnectionDB();
             Connection connection = connectionDB.getConnection();
@@ -247,24 +234,23 @@ public class FrameLogin extends javax.swing.JFrame {
          
             if (result.next()) {
             
-            this.usuarioBD = result.getString("Usuario");
-            this.passwordBD = result.getString("ContraseÃ±a"); 
+                this.usuarioBD = result.getString("Usuario");
+                this.passwordBD = result.getString("ContraseÃ±a"); 
            
-        }
+            }
+            
             result.close();
             statement.close();
             connection.close();
             
-            
-           
-        }catch(Exception e){
-              System.out.println(e);
+        } catch(Exception e){
+            System.out.println(e);
         }
         
     }
+    
     public static void main(String args[]) {
         
-  
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -289,7 +275,6 @@ public class FrameLogin extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
