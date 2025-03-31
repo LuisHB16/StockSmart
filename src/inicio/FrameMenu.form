@@ -485,7 +485,7 @@
                   <Insets value="[2, 14, 25, 14]"/>
                 </Property>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/assests/icons/configuration-icon20.png"/>
+                  <Image iconType="3" name="/assests/icons/movimientos-icon24.png"/>
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -518,7 +518,7 @@
                   <Insets value="[2, 14, 25, 14]"/>
                 </Property>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/assests/icons/clientes-icon20.png"/>
+                  <Image iconType="3" name="/assests/icons/categoria-icon24.png"/>
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -551,7 +551,7 @@
                   <Insets value="[2, 14, 25, 14]"/>
                 </Property>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/assests/icons/package-icon20.png"/>
+                  <Image iconType="3" name="/assests/icons/reporte-dev-icon24.png"/>
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -584,7 +584,7 @@
                   <Insets value="[2, 14, 25, 14]"/>
                 </Property>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/assests/icons/proveedores-icon20.png"/>
+                  <Image iconType="3" name="/assests/icons/unidad-icon24.png"/>
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -617,7 +617,7 @@
                   <Insets value="[2, 14, 25, 14]"/>
                 </Property>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/assests/icons/reporteVentasPedidos20.png"/>
+                  <Image iconType="3" name="/assests/icons/subproducto-icon24.png"/>
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -650,7 +650,7 @@
                   <Insets value="[2, 14, 25, 14]"/>
                 </Property>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/assests/icons/configuration-icon20.png"/>
+                  <Image iconType="3" name="/assests/icons/altas-icon24.png"/>
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -683,7 +683,7 @@
                   <Insets value="[2, 14, 25, 14]"/>
                 </Property>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/assests/icons/usuarios-icon20.png"/>
+                  <Image iconType="3" name="/assests/icons/devolucion-icon24.png"/>
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -716,7 +716,7 @@
                   <Insets value="[2, 14, 25, 14]"/>
                 </Property>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/assests/icons/configuration-icon20.png"/>
+                  <Image iconType="3" name="/assests/icons/devolucion-icon24.png"/>
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
