@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
+import static stocksmart.FontLoader.customFontBold2;
 
 public class VentanaBusquedaProductos extends JFrame {
 
@@ -24,10 +25,10 @@ public class VentanaBusquedaProductos extends JFrame {
     public VentanaBusquedaProductos() {
         initComponents();
         setLocationRelativeTo(null);
-        tableModel = (DefaultTableModel) tablaProductos.getModel();
+        tableModel = (DefaultTableModel) Table1.getModel();
 
         DefaultRowSorter<DefaultTableModel, Integer> sorter = new TableRowSorter<>(tableModel);
-        tablaProductos.setRowSorter(sorter);
+        Table1.setRowSorter(sorter);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -36,11 +37,11 @@ public class VentanaBusquedaProductos extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean selected = boxNombre.isSelected();
-                fielNombre.setEnabled(selected);
+                txtNombre.setEnabled(selected);
 
                 // If the checkbox is deselected, clear the text in fielNombre
                 if (!selected) {
-                    fielNombre.setText("");
+                    txtNombre.setText("");
                     filterTable(); // Perform filtering when the checkbox is deselected
                 }
             }
@@ -51,18 +52,18 @@ public class VentanaBusquedaProductos extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean selected = boxCodigo.isSelected();
-                fielCodigo.setEnabled(selected);
+                txtCodigo.setEnabled(selected);
 
                 // If the checkbox is deselected, clear the text in fielCodigo
                 if (!selected) {
-                    fielCodigo.setText("");
+                    txtCodigo.setText("");
                     filterTable(); // Perform filtering when the checkbox is deselected
                 }
             }
         });
 
         // Add DocumentListener to the fielNombre field
-        fielNombre.getDocument().addDocumentListener(new DocumentListener() {
+        txtNombre.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 filterTable();
@@ -80,7 +81,7 @@ public class VentanaBusquedaProductos extends JFrame {
         });
 
         // Add DocumentListener to the fielCodigo field
-        fielCodigo.getDocument().addDocumentListener(new DocumentListener() {
+        txtCodigo.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 filterTable();
@@ -99,9 +100,9 @@ public class VentanaBusquedaProductos extends JFrame {
     }
 
     private void filterTable() {
-        String nombreFilter = fielNombre.getText().toLowerCase();
-        String codigoFilter = fielCodigo.getText().toLowerCase();
-        DefaultRowSorter<DefaultTableModel, Integer> sorter = (DefaultRowSorter<DefaultTableModel, Integer>) tablaProductos.getRowSorter();
+        String nombreFilter = txtNombre.getText().toLowerCase();
+        String codigoFilter = txtCodigo.getText().toLowerCase();
+        DefaultRowSorter<DefaultTableModel, Integer> sorter = (DefaultRowSorter<DefaultTableModel, Integer>) Table1.getRowSorter();
         List<RowFilter<Object, Integer>> filters = new ArrayList<>();
         if (boxNombre.isSelected() && !nombreFilter.isEmpty()) {
             filters.add(RowFilter.regexFilter(nombreFilter, 1)); 
@@ -147,21 +148,48 @@ public class VentanaBusquedaProductos extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaProductos = new javax.swing.JTable();
-        btnAgregar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        fielNombre = new javax.swing.JTextField();
-        fielCodigo = new javax.swing.JTextField();
-        boxCodigo = new javax.swing.JCheckBox();
+        lblNombre = new javax.swing.JLabel();
         boxNombre = new javax.swing.JCheckBox();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
+        scrollTable1 = new javax.swing.JScrollPane();
+        Table1 = new javax.swing.JTable();
+        boxCodigo = new javax.swing.JCheckBox();
+        lblCodigo = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
+        lblNombre.setFont(customFontBold2);
+        lblNombre.setText("Nombre:");
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 120, 20));
+        getContentPane().add(boxNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Busqueda Productos");
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+
+        btnAgregar.setBackground(new java.awt.Color(50, 130, 233));
+        btnAgregar.setFont(customFontBold2);
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 490, 90, 40));
+
+        Table1.setFont(customFontBold2);
+        Table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -177,53 +205,43 @@ public class VentanaBusquedaProductos extends JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tablaProductos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tablaProductos.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaProductos);
-        if (tablaProductos.getColumnModel().getColumnCount() > 0) {
-            tablaProductos.getColumnModel().getColumn(0).setResizable(false);
-            tablaProductos.getColumnModel().getColumn(2).setResizable(false);
-            tablaProductos.getColumnModel().getColumn(3).setResizable(false);
-            tablaProductos.getColumnModel().getColumn(4).setResizable(false);
-            tablaProductos.getColumnModel().getColumn(5).setResizable(false);
+        Table1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        Table1.getTableHeader().setReorderingAllowed(false);
+        scrollTable1.setViewportView(Table1);
+        if (Table1.getColumnModel().getColumnCount() > 0) {
+            Table1.getColumnModel().getColumn(0).setResizable(false);
+            Table1.getColumnModel().getColumn(2).setResizable(false);
+            Table1.getColumnModel().getColumn(3).setResizable(false);
+            Table1.getColumnModel().getColumn(4).setResizable(false);
+            Table1.getColumnModel().getColumn(5).setResizable(false);
         }
-        tablaProductos.getAccessibleContext().setAccessibleName("");
+        Table1.getAccessibleContext().setAccessibleName("");
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 650, 300));
+        jPanel1.add(scrollTable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 770, 300));
+        jPanel1.add(boxCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 423, 90, 30));
+        lblCodigo.setFont(customFontBold2);
+        lblCodigo.setText("Codigo:");
+        jPanel1.add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 120, 20));
 
-        jLabel1.setText("Nombre:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, 20));
+        txtCodigo.setFont(customFontBold2);
+        txtCodigo.setEnabled(false);
+        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 450, -1));
 
-        fielNombre.setEnabled(false);
-        getContentPane().add(fielNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 120, -1));
+        txtNombre.setFont(customFontBold2);
+        txtNombre.setEnabled(false);
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 450, -1));
 
-        fielCodigo.setEnabled(false);
-        getContentPane().add(fielCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 120, -1));
-        getContentPane().add(boxCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
-        getContentPane().add(boxNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-
-        jLabel2.setText("Codigo:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, 20));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 470));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        int selectedRow = tablaProductos.getSelectedRow();
+        int selectedRow = Table1.getSelectedRow();
 
         if (selectedRow != -1) {
-            String codigo = (String) tablaProductos.getValueAt(selectedRow, 0);
+            String codigo = (String) Table1.getValueAt(selectedRow, 0);
 
             // Notificar al listener que se ha seleccionado un producto
             if (listener != null) {
@@ -274,15 +292,16 @@ public class VentanaBusquedaProductos extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Table1;
     private javax.swing.JCheckBox boxCodigo;
     private javax.swing.JCheckBox boxNombre;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JTextField fielCodigo;
-    private javax.swing.JTextField fielNombre;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaProductos;
+    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JScrollPane scrollTable1;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

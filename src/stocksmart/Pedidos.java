@@ -1529,8 +1529,8 @@ private void lista() {
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         // TODO add your handling code here:
-        ventasINEW p = new ventasINEW();
-        p.setVisible(true);
+        Ventas v = new Ventas();
+        v.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVentaActionPerformed
 
