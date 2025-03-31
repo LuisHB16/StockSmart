@@ -36,7 +36,6 @@ import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -50,7 +49,7 @@ import static stocksmart.FontLoader.customFontBold2;
 
 public class Pedidos extends javax.swing.JFrame {
 
-    subproductos pa = new subproductos();
+
     subproductosd da = new subproductosd();
     productosd proDAO = new productosd();
     productos pro = new productos();
@@ -624,6 +623,11 @@ private void lista() {
 
         boxClienteVenta.setFont(customFontBold2);
         boxClienteVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxClienteVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxClienteVentaActionPerformed(evt);
+            }
+        });
 
         lblClienteVenta.setFont(customFontBold2);
         lblClienteVenta.setText("Nombre del cliente");
@@ -862,12 +866,9 @@ private void lista() {
                         .addComponent(txtNombreInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlArticuloLayout.createSequentialGroup()
                         .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlArticuloLayout.createSequentialGroup()
-                                .addComponent(lblImporteInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(pnlArticuloLayout.createSequentialGroup()
-                                .addComponent(lblCantidadInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(71, 71, 71)))
+                            .addComponent(lblImporteInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCantidadInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(pnlArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtImporteInventario)
                             .addComponent(txtCantidadInventario))))
@@ -1528,7 +1529,7 @@ private void lista() {
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         // TODO add your handling code here:
-        ventasI p = new ventasI();
+        ventasINEW p = new ventasINEW();
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVentaActionPerformed
@@ -1536,6 +1537,10 @@ private void lista() {
     private void txtApellidoMClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoMClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoMClienteActionPerformed
+
+    private void boxClienteVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxClienteVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxClienteVentaActionPerformed
 
     /**
      * @param args the command line arguments

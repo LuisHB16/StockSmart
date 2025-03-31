@@ -935,7 +935,7 @@ public class FramePedidos extends javax.swing.JFrame {
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         // TODO add your handling code here:
-        ventasI p = new ventasI();
+        ventasINEW p = new ventasINEW();
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVentaActionPerformed

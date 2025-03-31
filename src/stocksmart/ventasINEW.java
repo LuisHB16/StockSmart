@@ -44,9 +44,9 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
-public class ventasI extends javax.swing.JFrame {
+public class ventasINEW extends javax.swing.JFrame {
 
-    subproductos pa = new subproductos();
+    
     subproductosd da = new subproductosd();
     productosd proDAO = new productosd();
     productos pro = new productos();
@@ -68,7 +68,7 @@ public class ventasI extends javax.swing.JFrame {
     int selectedRow;
     int rowIndex = -1;
 
-    public ventasI() {
+    public ventasINEW() {
         initComponents();
         lista();
         tmp = (DefaultTableModel) table.getModel();
@@ -250,22 +250,22 @@ public class ventasI extends javax.swing.JFrame {
                     if (bufferedImage != null) {
                         // Escala la imagen al tamaño de jLabel_foto
                         ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
-                                jLabel_foto.getWidth(), jLabel_foto.getHeight(), Image.SCALE_SMOOTH));
+                                lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
 
-                        jLabel_foto.setIcon(nuevaIcono);
-                        jLabel_foto.setText("");
+                        lblFoto.setIcon(nuevaIcono);
+                        lblFoto.setText("");
                     } else {
-                        jLabel_foto.setIcon(null);
-                        jLabel_foto.setText("No se pudo cargar la imagen.");
+                        lblFoto.setIcon(null);
+                        lblFoto.setText("No se pudo cargar la imagen.");
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                    jLabel_foto.setIcon(null);
-                    jLabel_foto.setText("Error al cargar la imagen.");
+                    lblFoto.setIcon(null);
+                    lblFoto.setText("Error al cargar la imagen.");
                 }
             } else {
-                jLabel_foto.setIcon(null);
-                jLabel_foto.setText("No hay imagen disponible.");
+                lblFoto.setIcon(null);
+                lblFoto.setText("No hay imagen disponible.");
             }
 
             Unidad formatoEncontrado = null;
@@ -292,8 +292,8 @@ public class ventasI extends javax.swing.JFrame {
             txtCantidad1.setText(tmp.getValueAt(selectedRow, 4).toString());
             txtCantidad.setText(tmp.getValueAt(selectedRow, 5).toString());
         } else {
-            jLabel_foto.setIcon(null);
-            jLabel_foto.setText("No se encontró el artículo");
+            lblFoto.setIcon(null);
+            lblFoto.setText("No se encontró el artículo");
             // Limpia el nombre y la existencia si no se encontró el producto
             fielNombre.setText("");
             fielexistencia.setText("");
@@ -317,10 +317,10 @@ public class ventasI extends javax.swing.JFrame {
 
         for (int i = 0; i < table.getRowCount(); i++) {
             String codigo = table.getValueAt(i, 0).toString();
-            Double cant = Double.parseDouble(table.getValueAt(i, 4).toString());
+            Double cant = Double.valueOf(table.getValueAt(i, 4).toString());
             double precio = Double.parseDouble(table.getValueAt(i, 2).toString());
             String unidad = table.getValueAt(i, 3).toString(); // Obtener el valor de "Unidad"
-            Double inventario = null;
+            Double inventarioDetalle = null;
             dv.setId_Ventas(id);
             dv.setCodigo(codigo);
             dv.setCantidad(cant);
@@ -328,44 +328,20 @@ public class ventasI extends javax.swing.JFrame {
             dv.setUnidad(unidad);
             for (productos producto : productosEncontrados) {
                 if (producto.getClavealterna().equals(codigo)) {
-                    inventario = producto.getExistencia();
+                    inventarioDetalle = producto.getExistencia();
                     break;
                 } else if (producto.getCodigo().equals(codigo)) {
-                    inventario = producto.getExistencia();
+                    inventarioDetalle = producto.getExistencia();
                     break;
                 }
             }
-            movimiento mo = new movimiento("Venta", fechaActual, cant, codigo, inventario);
+            movimiento mo = new movimiento("Venta", fechaActual, cant, codigo, inventarioDetalle);
             m.agregarMovimiento(mo);
             vDAO.RegistrarDetalleVenta(dv);
         }
         pdf.pdfV(id, cliente, pago, item);
     }
 
-    private void agregarProductoAVentas() {
-        int selectedRow = table.getSelectedRow();
-
-        if (selectedRow != -1) {
-            String codigo = table.getValueAt(selectedRow, 0).toString();
-            String nombre = table.getValueAt(selectedRow, 1).toString();
-            double precio = Double.parseDouble(table.getValueAt(selectedRow, 2).toString());
-            String unidad = table.getValueAt(selectedRow, 3).toString();
-            double cantidad = Double.parseDouble(table.getValueAt(selectedRow, 4).toString());
-            double total = Double.parseDouble(table.getValueAt(selectedRow, 5).toString());
-            String granel = table.getValueAt(selectedRow, 6).toString();
-
-            // Agregar el producto a la tabla de ventas
-            DefaultTableModel modeloTablaVentas = (DefaultTableModel) table.getModel();
-            Object[] rowData = {codigo, nombre, precio, unidad, cantidad, total, granel};
-            modeloTablaVentas.addRow(rowData);
-
-            // Puedes realizar otras operaciones o cálculos relacionados con la venta aquí
-            // Actualizar el total a pagar en la tabla de ventas
-            TotalPagar();
-        } else {
-            JOptionPane.showMessageDialog(this, "Selecciona un producto antes de agregar a la venta.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        }
-    }
 
     private void buscarProducto3(String codigo) {
         productos productoEncontrado = null;
@@ -391,22 +367,22 @@ public class ventasI extends javax.swing.JFrame {
                     if (bufferedImage != null) {
                         // Escala la imagen al tamaño de jLabel_foto
                         ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
-                                jLabel_foto.getWidth(), jLabel_foto.getHeight(), Image.SCALE_SMOOTH));
+                                lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
 
-                        jLabel_foto.setIcon(nuevaIcono);
-                        jLabel_foto.setText("");
+                        lblFoto.setIcon(nuevaIcono);
+                        lblFoto.setText("");
                     } else {
-                        jLabel_foto.setIcon(null);
-                        jLabel_foto.setText("No se pudo cargar la imagen.");
+                        lblFoto.setIcon(null);
+                        lblFoto.setText("No se pudo cargar la imagen.");
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                    jLabel_foto.setIcon(null);
-                    jLabel_foto.setText("Error al cargar la imagen.");
+                    lblFoto.setIcon(null);
+                    lblFoto.setText("Error al cargar la imagen.");
                 }
             } else {
-                jLabel_foto.setIcon(null);
-                jLabel_foto.setText("No hay imagen disponible.");
+                lblFoto.setIcon(null);
+                lblFoto.setText("No hay imagen disponible.");
             }
 
             // Actualiza el nombre y la existencia del producto
@@ -433,11 +409,7 @@ public class ventasI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel_foto = new javax.swing.JLabel();
+        lblFoto = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         btnatras = new javax.swing.JButton();
         btnItem = new javax.swing.JButton();
@@ -479,64 +451,16 @@ public class ventasI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1170, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 740, 1170, -1));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, 690));
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 210, -1, 630));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 1550, 40));
-
-        jLabel_foto.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_foto.setText("Foto");
-        jLabel_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel_foto.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblFoto.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFoto.setText("Foto");
+        lblFoto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblFoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_fotoMouseClicked(evt);
+                lblFotoMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 180, 150));
+        getContentPane().add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 180, 150));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/WhatsApp Image 2023-05-10 at 11.43.13 PM.jpeg"))); // NOI18N
         jButton2.setBorder(null);
@@ -799,7 +723,7 @@ public class ventasI extends javax.swing.JFrame {
             .addGap(0, 1120, Short.MAX_VALUE)
         );
 
-        getContentPane().add(a, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1940, 1120));
+        getContentPane().add(a, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1940, 1120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -837,22 +761,22 @@ public class ventasI extends javax.swing.JFrame {
                             if (bufferedImage != null) {
                                 // Escala la imagen al tamaño de jLabel_foto
                                 ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
-                                        jLabel_foto.getWidth(), jLabel_foto.getHeight(), Image.SCALE_SMOOTH));
+                                        lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
 
-                                jLabel_foto.setIcon(nuevaIcono);
-                                jLabel_foto.setText("");
+                                lblFoto.setIcon(nuevaIcono);
+                                lblFoto.setText("");
                             } else {
-                                jLabel_foto.setIcon(null);
-                                jLabel_foto.setText("No se pudo cargar la imagen.");
+                                lblFoto.setIcon(null);
+                                lblFoto.setText("No se pudo cargar la imagen.");
                             }
                         } catch (IOException ex) {
                             ex.printStackTrace();
-                            jLabel_foto.setIcon(null);
-                            jLabel_foto.setText("Error al cargar la imagen.");
+                            lblFoto.setIcon(null);
+                            lblFoto.setText("Error al cargar la imagen.");
                         }
                     } else {
-                        jLabel_foto.setIcon(null);
-                        jLabel_foto.setText("No hay imagen disponible.");
+                        lblFoto.setIcon(null);
+                        lblFoto.setText("No hay imagen disponible.");
                     }
                 }
                 txtCodigo.setText("");
@@ -967,9 +891,9 @@ public class ventasI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCobrarActionPerformed
 
-    private void jLabel_fotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_fotoMouseClicked
+    private void lblFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFotoMouseClicked
 
-    }//GEN-LAST:event_jLabel_fotoMouseClicked
+    }//GEN-LAST:event_lblFotoMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Pedidos p = new Pedidos();
@@ -1025,22 +949,22 @@ public class ventasI extends javax.swing.JFrame {
                             if (bufferedImage != null) {
                                 // Escala la imagen al tamaño de jLabel_foto
                                 ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
-                                        jLabel_foto.getWidth(), jLabel_foto.getHeight(), Image.SCALE_SMOOTH));
+                                        lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
 
-                                jLabel_foto.setIcon(nuevaIcono);
-                                jLabel_foto.setText("");
+                                lblFoto.setIcon(nuevaIcono);
+                                lblFoto.setText("");
                             } else {
-                                jLabel_foto.setIcon(null);
-                                jLabel_foto.setText("No se pudo cargar la imagen.");
+                                lblFoto.setIcon(null);
+                                lblFoto.setText("No se pudo cargar la imagen.");
                             }
                         } catch (IOException ex) {
                             ex.printStackTrace();
-                            jLabel_foto.setIcon(null);
-                            jLabel_foto.setText("Error al cargar la imagen.");
+                            lblFoto.setIcon(null);
+                            lblFoto.setText("Error al cargar la imagen.");
                         }
                     } else {
-                        jLabel_foto.setIcon(null);
-                        jLabel_foto.setText("No hay imagen disponible.");
+                        lblFoto.setIcon(null);
+                        lblFoto.setText("No hay imagen disponible.");
                     }
                 }
                 ventanaBusqueda.dispose(); // Cierra la ventana de búsqueda
@@ -1067,14 +991,18 @@ public class ventasI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventasI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventasINEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventasI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventasINEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventasI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventasINEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventasI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventasINEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1082,7 +1010,7 @@ public class ventasI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new ventasI().setVisible(true);
+            new ventasINEW().setVisible(true);
         });
     }
 
@@ -1106,14 +1034,9 @@ public class ventasI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel_foto;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -1121,6 +1044,7 @@ public class ventasI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCantidad1;
