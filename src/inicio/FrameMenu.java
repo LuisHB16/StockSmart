@@ -502,31 +502,30 @@ public class FrameMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVentasActionPerformed
-        try {
-            // TODO add your handling code here:
-            if (this.fventas == null) {
-                this.fventas = new FrameVentas(this);
+        // TODO add your handling code here:
+        if (this.fventas == null) {
+            if(fpedidos == null){
+                this.fpedidos = new FramePedidos(this,fventas);
             }
-            this.fventas.setVisible(true);
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            this.fventas = new FrameVentas(this,fpedidos);
         }
+        this.fventas.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_botonVentasActionPerformed
 
     private void botonPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedidosActionPerformed
         // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            if (this.fpedidos == null) {
-                this.fpedidos = new FramePedidos(this);
+        if (this.fpedidos == null) {
+            
+            if(this.fventas == null){
+                this.fventas = new FrameVentas(this,fpedidos);
             }
-            this.fpedidos.setVisible(true);
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            
+            this.fpedidos = new FramePedidos(this,fventas);
         }
+        this.fpedidos.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonPedidosActionPerformed
 
     private void botonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientesActionPerformed

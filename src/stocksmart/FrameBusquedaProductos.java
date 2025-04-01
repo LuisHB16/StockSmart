@@ -12,7 +12,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
 import static stocksmart.FontLoader.customFontBold2;
 
-public class VentanaBusquedaProductos extends JFrame {
+public class FrameBusquedaProductos extends JFrame {
 
     private DefaultTableModel tableModel;
 
@@ -22,7 +22,7 @@ public class VentanaBusquedaProductos extends JFrame {
         this.listener = listener;
     }
 
-    public VentanaBusquedaProductos() {
+    public FrameBusquedaProductos() {
         initComponents();
         setLocationRelativeTo(null);
         tableModel = (DefaultTableModel) Table1.getModel();
@@ -272,21 +272,23 @@ public class VentanaBusquedaProductos extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaBusquedaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameBusquedaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaBusquedaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameBusquedaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaBusquedaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameBusquedaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaBusquedaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameBusquedaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaBusquedaProductos().setVisible(true);
+                new FrameBusquedaProductos().setVisible(true);
             }
         });
     }

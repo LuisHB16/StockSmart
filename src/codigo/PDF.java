@@ -61,7 +61,7 @@ Document doc = new Document(new Rectangle(150f, 1000f));  // Ancho de 170 mm
             Font fuenteEmpresa = new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.NORMAL, BaseColor.BLACK);
 
             // Encabezado
-            Image img = Image.getInstance(getClass().getResource("/IMG/ya.png"));
+            Image img = Image.getInstance(getClass().getResource("/assests/images/ya.png"));
             img.scaleAbsolute(100, 100); // Ajusta el tamaño de la imagen
 
             Paragraph fecha = new Paragraph();
