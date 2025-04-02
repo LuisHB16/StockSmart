@@ -3,12 +3,9 @@ package stocksmart;
 import codigo.PDF;
 import codigo.Unidad;
 import codigo.Unidadd;
-import codigo.cliented;
-import codigo.clientes;
 import codigo.detalleV;
 import codigo.productos;
 import codigo.productosd;
-import codigo.subproductos;
 import codigo.subproductosd;
 import codigo.trabajadores;
 import codigo.trabajadoresd;
@@ -60,7 +57,7 @@ public class FrameVentas extends javax.swing.JFrame {
     private ArrayList<Unidad> listaUnidades = new ArrayList<>();
     String fechaActual = new SimpleDateFormat("dd/MM/yyyy").format(fechaVenta);
     double pago = 0.00;
-    int cliente = 0;
+    int cliente = 1;
     String Repartidor = "Sin Repartidor";
     String Status = "Pedido";
     DefaultTableModel tmp;
@@ -322,7 +319,7 @@ public class FrameVentas extends javax.swing.JFrame {
 
         for (int i = 0; i < table1Venta.getRowCount(); i++) {
             String codigo = table1Venta.getValueAt(i, 0).toString();
-            Double cant = Double.parseDouble(table1Venta.getValueAt(i, 4).toString());
+            Double cant = Double.valueOf(table1Venta.getValueAt(i, 4).toString());
             double precio = Double.parseDouble(table1Venta.getValueAt(i, 2).toString());
             String unidad = table1Venta.getValueAt(i, 3).toString(); // Obtener el valor de "Unidad"
             dv.setId_Ventas(id);

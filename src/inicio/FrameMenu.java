@@ -18,8 +18,9 @@ import stocksmart.FrameProveedores;
 import stocksmart.FrameReportePedidos;
 import stocksmart.FrameReporteVentas;
 import stocksmart.FrameSubproductos;
+import stocksmart.FrameTrabajadores;
 import stocksmart.FrameUnidades;
-import stocksmart.FrameUsuarios;
+
 import stocksmart.FrameVentas;
 
 public class FrameMenu extends javax.swing.JFrame {
@@ -28,7 +29,7 @@ public class FrameMenu extends javax.swing.JFrame {
     FramePedidos fpedidos = null;
     FrameProductos fproductos = null;
     FrameProveedores fproveedores = null;
-    FrameUsuarios fusuarios = null;
+    FrameTrabajadores ftrabajadores = null;
     FrameReportePedidos freportepedidos = null;
     FrameReporteVentas freporteventas = null;
     FrameVentas fventas = null;
@@ -188,7 +189,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonUsuarios.setFont(customFontBold3);
         botonUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         botonUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/usuarios-icon24.png"))); // NOI18N
-        botonUsuarios.setText("Usuarios");
+        botonUsuarios.setText("Trabajadores");
         botonUsuarios.setBorder(null);
         botonUsuarios.setBorderPainted(false);
         botonUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -560,31 +561,20 @@ public class FrameMenu extends javax.swing.JFrame {
 
     private void botonProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedoresActionPerformed
         // TODO add your handling code here:
-        try {
-
-            if (this.fproveedores == null) {
-                this.fproveedores = new FrameProveedores(this);
-            }
-            this.fproveedores.setVisible(true);
-
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        if (this.fproveedores == null) {
+            this.fproveedores = new FrameProveedores(this);
         }
+        this.fproveedores.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonProveedoresActionPerformed
 
     private void botonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUsuariosActionPerformed
         // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            if (this.fusuarios == null) {
-                this.fusuarios = new FrameUsuarios(this);
-            }
-            this.fusuarios.setVisible(true);
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        if (this.ftrabajadores == null) {
+            this.ftrabajadores = new FrameTrabajadores(this);
         }
+        this.ftrabajadores.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonUsuariosActionPerformed
 
     private void botonReportePedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportePedidosActionPerformed

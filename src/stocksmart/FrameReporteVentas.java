@@ -56,7 +56,7 @@ public class FrameReporteVentas extends javax.swing.JFrame {
             }
         });
         // Agregar ActionListener al CheckBox
-       
+        
         checkBoxVendedor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -242,20 +242,9 @@ public void ListarVentas() {
         btnBuscar.setText("Buscar");
         btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBuscar.setIconTextGap(10);
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
 
         lblVendedor.setFont(customFontBold2);
         lblVendedor.setText("Vendedor");
-
-        checkBoxVendedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkBoxVendedorActionPerformed(evt);
-            }
-        });
 
         lblFechaFinal.setFont(customFontBold2);
         lblFechaFinal.setText("Fecha final");
@@ -386,12 +375,6 @@ public void ListarVentas() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
-            }
         });
         btnMenuBack.setLayout(null);
 
@@ -445,29 +428,11 @@ public void ListarVentas() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void checkBoxVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxVendedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkBoxVendedorActionPerformed
-
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
         // TODO add your handling code here:}
         this.fmenu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
-
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseExited
 
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
         int selectedRow = table1.getSelectedRow();

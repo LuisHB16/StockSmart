@@ -45,19 +45,17 @@ public class PDF {
 
             // Define el tamaño personalizado para el documento (ticket)
             // Define el tamaño personalizado para el documento (ticket)
-Document doc = new Document(new Rectangle(150f, 1000f));  // Ancho de 170 mm
-  
+            Document doc = new Document(new Rectangle(150f, 1000f));  // Ancho de 170 mm
 
             // Elimina los márgenes del documento
-            doc.setMargins(2, 2, 2,2);  // Puedes ajustar los valores según sea necesario
-
+            doc.setMargins(2, 2, 2, 2);  // Puedes ajustar los valores según sea necesario
 
             PdfWriter.getInstance(doc, archivo);
             doc.open();
 
             Font fuenteEncabezado = new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.NORMAL, BaseColor.BLACK);
-            Font fuenteNormal = new Font(Font.FontFamily.TIMES_ROMAN, 9
-                    , Font.NORMAL, BaseColor.BLACK);
+            Font fuenteNormal = new Font(Font.FontFamily.TIMES_ROMAN, 9,
+                     Font.NORMAL, BaseColor.BLACK);
             Font fuenteEmpresa = new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.NORMAL, BaseColor.BLACK);
 
             // Encabezado
@@ -187,28 +185,27 @@ Document doc = new Document(new Rectangle(150f, 1000f));  // Ancho de 170 mm
             tabla.addCell(c4);
 
             // Consulta de productos
-String product = "SELECT p.Precio_U, p.cantidad, p.Codigo FROM detalle_venta p JOIN venta v ON p.Id_Ventas = v.Id_Ventas WHERE v.Id_Ventas = ?";
-try {
-    ps = con.prepareStatement(product);
-    ps.setInt(1, id_ventas);
-    rs = ps.executeQuery();
-    while (rs.next()) {
-        double subTotal = rs.getInt("Cantidad") * rs.getDouble("Precio_U");
+            String product = "SELECT p.Precio_U, p.cantidad, p.Codigo FROM detalle_venta p JOIN venta v ON p.Id_Ventas = v.Id_Ventas WHERE v.Id_Ventas = ?";
+            try {
+                ps = con.prepareStatement(product);
+                ps.setInt(1, id_ventas);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    double subTotal = rs.getInt("Cantidad") * rs.getDouble("Precio_U");
 
-        // Obtén el nombre del producto basado en el código
-        String codigoProducto = rs.getString("Codigo");
-        String nombreProducto = obtenerNombreProducto(codigoProducto);  // Función auxiliar para obtener el nombre
+                    // Obtén el nombre del producto basado en el código
+                    String codigoProducto = rs.getString("Codigo");
+                    String nombreProducto = obtenerNombreProducto(codigoProducto);  // Función auxiliar para obtener el nombre
 
-        tabla.addCell(new Phrase(rs.getString("Cantidad"), fuenteNormal));
-        tabla.addCell(new Phrase(nombreProducto, fuenteNormal));  // Utiliza el nombre obtenido
-        tabla.addCell(new Phrase(rs.getString("Precio_U"), fuenteNormal));
-        tabla.addCell(new Phrase(String.valueOf(subTotal), fuenteNormal));
-    }
-} catch (SQLException e) {
-    System.out.println(e.toString());
-}
-doc.add(tabla);
-
+                    tabla.addCell(new Phrase(rs.getString("Cantidad"), fuenteNormal));
+                    tabla.addCell(new Phrase(nombreProducto, fuenteNormal));  // Utiliza el nombre obtenido
+                    tabla.addCell(new Phrase(rs.getString("Precio_U"), fuenteNormal));
+                    tabla.addCell(new Phrase(String.valueOf(subTotal), fuenteNormal));
+                }
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+            doc.add(tabla);
 
             // Total
             Paragraph info = new Paragraph();
@@ -237,41 +234,38 @@ doc.add(tabla);
             System.out.println(e.toString());
         }
     }
-    
-private String obtenerNombreProducto(String codigoProducto) {
-    String nombreProducto = "Nombre no encontrado";  // Valor predeterminado si no se encuentra
 
-    // Busca el nombre en la tabla de productos
-    String queryProductos = "SELECT Nombre FROM producto WHERE Clavealterna = ?";
-    try {
-        PreparedStatement psProductos = con.prepareStatement(queryProductos);
-        psProductos.setString(1, codigoProducto);
-        ResultSet rsProductos = psProductos.executeQuery();
-        if (rsProductos.next()) {
-            nombreProducto = rsProductos.getString("Nombre");
-        } else {
-            // Si no se encuentra en productos, busca en subproductos
-            String querySubproductos = "SELECT Nombre FROM subproducto WHERE ClaveAlterna = ?";
-            PreparedStatement psSubproductos = con.prepareStatement(querySubproductos);
-            psSubproductos.setString(1, codigoProducto);
-            ResultSet rsSubproductos = psSubproductos.executeQuery();
-            if (rsSubproductos.next()) {
-                nombreProducto = rsSubproductos.getString("Nombre");
+    private String obtenerNombreProducto(String codigoProducto) {
+        String nombreProducto = "Nombre no encontrado";  // Valor predeterminado si no se encuentra
+
+        // Busca el nombre en la tabla de productos
+        String queryProductos = "SELECT Nombre FROM producto WHERE Clavealterna = ?";
+        try {
+            PreparedStatement psProductos = con.prepareStatement(queryProductos);
+            psProductos.setString(1, codigoProducto);
+            ResultSet rsProductos = psProductos.executeQuery();
+            if (rsProductos.next()) {
+                nombreProducto = rsProductos.getString("Nombre");
+            } else {
+                // Si no se encuentra en productos, busca en subproductos
+                String querySubproductos = "SELECT Nombre FROM subproducto WHERE ClaveAlterna = ?";
+                PreparedStatement psSubproductos = con.prepareStatement(querySubproductos);
+                psSubproductos.setString(1, codigoProducto);
+                ResultSet rsSubproductos = psSubproductos.executeQuery();
+                if (rsSubproductos.next()) {
+                    nombreProducto = rsSubproductos.getString("Nombre");
+                }
             }
+
+            // Limitar la longitud del nombre a un máximo de 15 letras
+            if (nombreProducto.length() > 15) {
+                nombreProducto = nombreProducto.substring(0, 15);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
         }
 
-        // Limitar la longitud del nombre a un máximo de 15 letras
-        if (nombreProducto.length() > 15) {
-            nombreProducto = nombreProducto.substring(0, 15);
-        }
-    } catch (SQLException e) {
-        System.out.println(e.toString());
+        return nombreProducto;
     }
 
-    return nombreProducto;
-}
-
-
-    
-    
 }

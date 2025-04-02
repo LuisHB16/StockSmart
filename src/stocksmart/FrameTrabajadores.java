@@ -10,11 +10,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.RenderingHints;
-import java.sql.SQLException;
 import javax.swing.JPanel;
 import java.util.List;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -29,22 +27,22 @@ import static stocksmart.FontLoader.customFontBold2;
 
 public class FrameTrabajadores extends javax.swing.JFrame {
 
-    
     FrameMenu fmenu = null;
-    
-     trabajadoresd tr = new trabajadoresd();
-         List<trabajadores> listaTrabajadores;
+
+    trabajadoresd tr = new trabajadoresd();
+    List<trabajadores> listaTrabajadores;
 
     /**
      * Creates new form StockSmartFrameVentas
      */
-    public FrameTrabajadores(FrameMenu menu) throws SQLException {
+    public FrameTrabajadores(FrameMenu menu) {
 
         initComponents();
         this.fmenu = menu;
-         ListarTrabajadores();
+        ListarTrabajadores();
         listaTrabajadores = tr.listarTrabajadores();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null);
+      
 
         table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -74,12 +72,10 @@ public class FrameTrabajadores extends javax.swing.JFrame {
                 filtrarTabla();
             }
         });
-        
-       
-       
+
     }
-    
-     private void filtrarTabla() {
+
+    private void filtrarTabla() {
         String filtroNombre = txtUsuario.getText().toLowerCase();
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
         model.setRowCount(0);
@@ -115,7 +111,6 @@ public class FrameTrabajadores extends javax.swing.JFrame {
         }
         table1.setModel(modelo);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -190,11 +185,12 @@ public class FrameTrabajadores extends javax.swing.JFrame {
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
-        lblTitulo.setText("Unidades");
+        lblTitulo.setText("Trabajadores");
 
         lblUsuario.setFont(customFontBold2);
         lblUsuario.setText("Usuario");
 
+        txtUsuario.setFont(customFontBold2);
         jScrollPane2.setViewportView(txtUsuario);
 
         btnAgregar.setBackground(new java.awt.Color(50, 130, 233));
@@ -234,6 +230,7 @@ public class FrameTrabajadores extends javax.swing.JFrame {
             }
         });
 
+        table1.setFont(customFontBold2);
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -314,12 +311,6 @@ public class FrameTrabajadores extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
-            }
         });
         btnMenuBack.setLayout(null);
 
@@ -384,23 +375,10 @@ public class FrameTrabajadores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
-
-    
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-
-
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseExited
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         // TODO add your handling code here:
-           int pregunta = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar el Trabajador?");
+        int pregunta = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar el Trabajador?");
         if (pregunta == 0) {
             int selectedRow = table1.getSelectedRow();
             if (selectedRow != -1) {
@@ -415,7 +393,7 @@ public class FrameTrabajadores extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-         int selectedRow = table1.getSelectedRow();
+        int selectedRow = table1.getSelectedRow();
 
         if (selectedRow != -1) {
             String nombreAnterior = (String) table1.getValueAt(selectedRow, 0);
@@ -501,7 +479,7 @@ public class FrameTrabajadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        
+
         this.fmenu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked

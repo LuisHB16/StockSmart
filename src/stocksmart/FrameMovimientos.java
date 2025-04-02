@@ -14,7 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +23,7 @@ import static stocksmart.FontLoader.customFont;
 import static stocksmart.FontLoader.customFontBold;
 import static stocksmart.FontLoader.customFontBold2;
 
-public class FrameMovimientos extends javax.swing.JFrame {
+public final class FrameMovimientos extends javax.swing.JFrame {
 
     private List<movimiento> listaMovimiento = new ArrayList<>();
     FrameMenu fmenu;
@@ -37,26 +36,17 @@ public class FrameMovimientos extends javax.swing.JFrame {
         
         ListarMovimientos();
         
-        btnBuscar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                filtrarVentasPorFecha();
-            }
+        btnBuscar.addActionListener((ActionEvent e) -> {
+            filtrarVentasPorFecha();
         });
         // Agregar ActionListener al CheckBox
-        checkBoxMovimientos.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Habilitar o deshabilitar el ComboBox según el estado del CheckBox
-                boxMovimientos.setEnabled(checkBoxMovimientos.isSelected());
-            }
+        checkBoxMovimientos.addActionListener((ActionEvent e) -> {
+            // Habilitar o deshabilitar el ComboBox según el estado del CheckBox
+            boxMovimientos.setEnabled(checkBoxMovimientos.isSelected());
         });
-        checkBoxCodigo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Habilitar o deshabilitar el campo de texto según el estado del CheckBox2
-                txtCodigo.setEnabled(checkBoxCodigo.isSelected());
-            }
+        checkBoxCodigo.addActionListener((ActionEvent e) -> {
+            // Habilitar o deshabilitar el campo de texto según el estado del CheckBox2
+            txtCodigo.setEnabled(checkBoxCodigo.isSelected());
         });
     }
 
@@ -88,7 +78,6 @@ public class FrameMovimientos extends javax.swing.JFrame {
                         model.addRow(ob);
                     }
                 } catch (ParseException e) {
-                    e.printStackTrace();
                 }
             }
         } else {
@@ -111,15 +100,21 @@ public class FrameMovimientos extends javax.swing.JFrame {
             ob[2] = listaMovimiento.get(i).getCantidad();
             ob[3] = listaMovimiento.get(i).getInventario_antes();
 
-            // Utiliza equals para comparar cadenas en lugar de ==
-            if ("Devolucion".equals(listaMovimiento.get(i).getMovimiento()) || "Alta".equals(listaMovimiento.get(i).getMovimiento())) {
-               
+            if (null == listaMovimiento.get(i).getMovimiento()) {
                 ob[4] = listaMovimiento.get(i).getInventario_antes() + (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
-            } else if ("Venta".equals(listaMovimiento.get(i).getMovimiento()) || "Pedido".equals(listaMovimiento.get(i).getMovimiento())) {
-                
-                ob[4] = listaMovimiento.get(i).getInventario_antes() - (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
-            } else {
-                ob[4] = listaMovimiento.get(i).getInventario_antes() + (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
+            } else // Utiliza equals para comparar cadenas en lugar de ==
+            switch (listaMovimiento.get(i).getMovimiento()) {
+                case "Devolucion":
+                case "Alta":
+                    ob[4] = listaMovimiento.get(i).getInventario_antes() + (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
+                    break;
+                case "Venta":
+                case "Pedido":
+                    ob[4] = listaMovimiento.get(i).getInventario_antes() - (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
+                    break;
+                default:
+                    ob[4] = listaMovimiento.get(i).getInventario_antes() + (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
+                    break;
             }
 
             ob[5] = listaMovimiento.get(i).getFehca();
@@ -211,20 +206,9 @@ public class FrameMovimientos extends javax.swing.JFrame {
         btnBuscar.setText("Buscar");
         btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBuscar.setIconTextGap(10);
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
 
         lblCodigo.setFont(customFontBold2);
         lblCodigo.setText("Codigo");
-
-        checkBoxCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkBoxCodigoActionPerformed(evt);
-            }
-        });
 
         lblMovimientos.setFont(customFontBold2);
         lblMovimientos.setText("Tipo de Movimeintos ");
@@ -291,8 +275,7 @@ public class FrameMovimientos extends javax.swing.JFrame {
                                     .addGroup(pnlMovimientosLayout.createSequentialGroup()
                                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(367, 367, 367)
-                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMovimientosLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 1055, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -352,12 +335,6 @@ public class FrameMovimientos extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
-            }
         });
         btnMenuBack.setLayout(null);
 
@@ -411,29 +388,11 @@ public class FrameMovimientos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void checkBoxCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkBoxCodigoActionPerformed
-
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
         // TODO add your handling code here:}
         this.fmenu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
-
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseExited
 
     /**
      * @param args the command line arguments
