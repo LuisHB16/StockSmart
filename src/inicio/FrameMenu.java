@@ -604,11 +604,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void botonReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReporteVentasActionPerformed
         // TODO add your handling code here:
         if (this.freporteventas == null) {
-            try {
-                this.freporteventas = new FrameReporteVentas(this);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.freporteventas = new FrameReporteVentas(this);
         }
         this.freporteventas.setVisible(true);
         this.setVisible(false);

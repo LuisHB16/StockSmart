@@ -87,7 +87,7 @@
     <Component class="javax.swing.JButton" name="btnGenerarReporte">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/IMG/pdf.png"/>
+          <Image iconType="3" name="/assests/icons/etiqueta.png"/>
         </Property>
       </Properties>
       <Events>
@@ -158,7 +158,7 @@
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/IMG/lupa.png"/>
+          <Image iconType="3" name="/assests/icons/clientes-icon20.png"/>
         </Property>
       </Properties>
       <Events>
@@ -208,7 +208,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/IMG/WhatsApp Image 2023-05-10 at 11.43.13 PM.jpeg"/>
+          <Image iconType="3" name="/assests/icons/home-icon24.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
