@@ -2,6 +2,14 @@ package stocksmart;
 
 import inicio.FrameMenu;
 import assests.icons.clases.PlusIcon;
+import codigo.PDF;
+import codigo.detalleV;
+import codigo.movimiento;
+import codigo.movimientod;
+import codigo.productos;
+import codigo.productosd;
+import codigo.venta;
+import codigo.ventad;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -17,22 +25,36 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import static stocksmart.FontLoader.customFont;
+import static stocksmart.FontLoader.customFontBold;
+import static stocksmart.FontLoader.customFontBold2;
 import stocksmart.registros.FrameRegistroClientes;
 
 public class FrameDevoluciones extends javax.swing.JFrame {
 
-    ConnectionDB connectionDB = null;
+    
     FrameMenu fmenu = null;
-    FrameRegistroClientes fregistroClientes = null;
-    Font customFont = FontLoader.customFont;
-    Font customFontBold = FontLoader.customFontBold;
-    Font customFontBold2 = FontLoader.customFontBold2;
+    detalleV detalleV = new detalleV();
+    ventad detalleDAO = new ventad();
+    int folios;
+    Date fechaVenta = new Date();
+    String fechaActual = new SimpleDateFormat("dd/MM/yyyy").format(fechaVenta);    venta v = new venta();
+    ventad vDAO = new ventad();
+    PDF pdf = new PDF();
+    movimientod m = new movimientod();
+    productosd p = new productosd();
+    productos pro = new productos();
+    Double inventario;
 
     /**
      * Creates new form StockSmartFrameVentas
@@ -40,8 +62,50 @@ public class FrameDevoluciones extends javax.swing.JFrame {
     public FrameDevoluciones(FrameMenu menu) throws SQLException {
 
         initComponents();
+        btnGenerar.setEnabled(false);
         this.fmenu = menu;
-        connectionDB();
+        
+    }
+
+    private void buscarEnBaseDeDatos(String folio) {
+    // Utiliza el método BuscarVenta de la clase ventad para obtener la venta correspondiente al folio
+    venta ventaEncontrada = new ventad().BuscarVenta1(Integer.parseInt(folio));
+
+    // Verificar si se encontró la venta (considerando 0 como válido)
+    int idVentas = ventaEncontrada.getId_Ventas();
+    if (idVentas != 0) {
+        // Verificar si el estado de la venta es "venta"
+        if (ventaEncontrada.getStatus().equalsIgnoreCase("venta")) {
+            // Llenar la tabla con los detalles de la venta encontrada
+            folios = Integer.parseInt(folio);
+            llenarTablaConDetalles(idVentas);
+        } else {
+            JOptionPane.showMessageDialog(null, "La venta no tiene el estado 'venta'", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Venta no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+    private void llenarTablaConDetalles(int idVentas) {
+        // Utiliza el método ListarDetallesVenta de la clase ventad para obtener la lista de detalles de venta
+        btnGenerar.setEnabled(true);
+        
+        List<detalleV> listaDetalles = detalleDAO.ListarDetallesVenta(idVentas);
+
+        // Actualizar el modelo de la tabla con los detalles de venta
+        DefaultTableModel modelo = (DefaultTableModel) table1.getModel();
+        modelo.setRowCount(0); // Limpiar la tabla antes de llenarla con nuevos datos
+
+        if (!listaDetalles.isEmpty()) {
+            for (detalleV dv : listaDetalles) {
+                // Calcular el total multiplicando el precio y la cantidad
+                double total = dv.getPrecio_U() * dv.getCantidad();
+                modelo.addRow(new Object[]{dv.getCodigo(), dv.getPrecio_U(), dv.getCantidad(), total});
+            }
+        } else {
+            System.out.println("No se encontraron detalles para el ID de ventas: " + idVentas);
+        }
     }
 
     /**
@@ -53,14 +117,14 @@ public class FrameDevoluciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelLogin1 = new javax.swing.JPanel();
+        pnlFrame = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
-        panelLogin2 = new javax.swing.JPanel();
+        pnlDevoluciones = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaDevoluciones = new JTable();
         btnCrearNota = new javax.swing.JButton();
         btnGenerar = new javax.swing.JButton();
+        scrollTable1 = new javax.swing.JScrollPane();
+        table1 = new javax.swing.JTable();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -101,7 +165,7 @@ public class FrameDevoluciones extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        panelLogin1.setBackground(new java.awt.Color(50, 130, 233));
+        pnlFrame.setBackground(new java.awt.Color(50, 130, 233));
 
         stockSmartLoginLabel.setBackground(new java.awt.Color(255, 255, 255));
         stockSmartLoginLabel.setFont(customFontBold);
@@ -109,23 +173,11 @@ public class FrameDevoluciones extends javax.swing.JFrame {
         stockSmartLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stockSmartLoginLabel.setText("StockSmart");
 
-        panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
+        pnlDevoluciones.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
         lblTitulo.setText("Devoluciones");
-
-        tablaDevoluciones.setAutoCreateRowSorter(true);
-        tablaDevoluciones.setFont(customFontBold2);
-        tablaDevoluciones.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {"Id_C", "Nombre", "Apellido_P", "Apellido_M", "Direccion", "Telefono"}
-
-        ));
-        tablaDevoluciones.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaDevoluciones);
 
         btnCrearNota.setBackground(new java.awt.Color(50, 130, 233));
         btnCrearNota.setFont(customFontBold2);
@@ -153,35 +205,58 @@ public class FrameDevoluciones extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
-        panelLogin2.setLayout(panelLogin2Layout);
-        panelLogin2Layout.setHorizontalGroup(
-            panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCrearNota, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLogin2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitulo)
-                .addGap(347, 347, 347))
+        table1.setFont(customFontBold2);
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "PrecioU", "Cantidad", "Total"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table1.getTableHeader().setReorderingAllowed(false);
+        scrollTable1.setViewportView(table1);
+
+        javax.swing.GroupLayout pnlDevolucionesLayout = new javax.swing.GroupLayout(pnlDevoluciones);
+        pnlDevoluciones.setLayout(pnlDevolucionesLayout);
+        pnlDevolucionesLayout.setHorizontalGroup(
+            pnlDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDevolucionesLayout.createSequentialGroup()
+                .addGroup(pnlDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDevolucionesLayout.createSequentialGroup()
+                        .addGap(1096, 1096, 1096)
+                        .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDevolucionesLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDevolucionesLayout.createSequentialGroup()
+                        .addGap(456, 456, 456)
+                        .addComponent(lblTitulo))
+                    .addGroup(pnlDevolucionesLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(btnCrearNota, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-        panelLogin2Layout.setVerticalGroup(
-            panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+        pnlDevolucionesLayout.setVerticalGroup(
+            pnlDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDevolucionesLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
                 .addComponent(lblTitulo)
-                .addGap(26, 26, 26)
+                .addGap(30, 30, 30)
                 .addComponent(btnCrearNota, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(18, 18, 18))
         );
 
         btnCrearNota.setIcon(new PlusIcon(18, 18, Color.WHITE));
@@ -195,12 +270,6 @@ public class FrameDevoluciones extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
-            }
         });
         btnMenuBack.setLayout(null);
 
@@ -212,33 +281,32 @@ public class FrameDevoluciones extends javax.swing.JFrame {
         btnMenuBack.add(lblMenu);
         lblMenu.setBounds(10, 0, 230, 50);
 
-        javax.swing.GroupLayout panelLogin1Layout = new javax.swing.GroupLayout(panelLogin1);
-        panelLogin1.setLayout(panelLogin1Layout);
-        panelLogin1Layout.setHorizontalGroup(
-            panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlFrameLayout = new javax.swing.GroupLayout(pnlFrame);
+        pnlFrame.setLayout(pnlFrameLayout);
+        pnlFrameLayout.setHorizontalGroup(
+            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addComponent(logoLoginIcon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnMenuBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(pnlDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        panelLogin1Layout.setVerticalGroup(
-            panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin1Layout.createSequentialGroup()
-                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnlFrameLayout.setVerticalGroup(
+            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFrameLayout.createSequentialGroup()
+                .addComponent(pnlDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelLogin1Layout.createSequentialGroup()
-                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+            .addGroup(pnlFrameLayout.createSequentialGroup()
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(logoLoginIcon))
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,71 +321,66 @@ public class FrameDevoluciones extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 1265, Short.MAX_VALUE)
+            .addComponent(pnlFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void connectionDB() throws SQLException {
-        connectionDB = new ConnectionDB();
-        Connection connection = connectionDB.getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT Id_C, Nombre, Apellido_P, Apellido_M, Direccion, Telefono FROM clientes");
-        DefaultTableModel model = (DefaultTableModel) tablaDevoluciones.getModel();
-        model.setRowCount(0);
-        while (result.next()) {
-            int idVentas = result.getInt("Id_C");
-
-            String nombre = result.getString("Nombre");
-            String apellidoP = result.getString("Apellido_P");
-            String apellidoM = result.getString("Apellido_M");
-            String direccion = result.getString("Direccion");
-            String telefono = result.getString("Telefono");
-
-            model.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
-        }
-
-        result.close();
-        statement.close();
-        connection.close();
-
-    }
-
-    public void LimpiarTabla() {
-        DefaultTableModel model = (DefaultTableModel) tablaDevoluciones.getModel();
-        model.setRowCount(0);
-    }
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-
-
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseExited
-
+   
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         // TODO add your handling code here:
+         detalleDAO.actualizarEstado2(folios, "devolucion",fechaActual);
+     vDAO.ListarDetallesVenta(folios);
+                for (detalleV detalle : vDAO.ListarDetallesVenta(folios)) {
+                    pro = p.BuscarClave(detalle.getCodigo());
+                    Double existencia = pro.getExistencia();
+                    if(existencia == null){
+                        String Codigo=detalle.getCodigo();
+                        pro = p.Buscarprocodigo3(detalle.getCodigo());
+                        pro = p.BuscarClave(pro.getCodigo());
+                        existencia = pro.getExistencia();
+                        movimiento mo = new movimiento("Devolucion", fechaActual, detalle.getCantidad(), Codigo, pro.getExistencia());
+                        m.agregarMovimiento(mo);
+                    }else{
+                        movimiento mo = new movimiento("Devolucion", fechaActual, detalle.getCantidad(), detalle.getCodigo(), pro.getExistencia());
+                        m.agregarMovimiento(mo);
+                        
+                    }
+                }
+
+
+    // Desactivar el botón Generar
+    btnGenerar.setEnabled(false);
+
+    // Mostrar mensaje de éxito
+    JOptionPane.showMessageDialog(null, "La devolución se generó con éxito");
+
+    // Limpiar la tabla
+    DefaultTableModel modelo = (DefaultTableModel) table1.getModel();
+    modelo.setRowCount(0);
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void btnCrearNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearNotaActionPerformed
-        /*try {
-            
-            if (this.fregistroClientes == null) {
-                this.fregistroClientes = new FrameRegistroClientes(this);
-            }
-            this.fregistroClientes.setVisible(true);
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameDevoluciones.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        // Crear el JOptionPane personalizado
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel("Ingrese el folio:");
+        JTextField textField = new JTextField(10);
+        panel.add(label);
+        panel.add(textField);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Nuevo",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            // Obtener el folio ingresado
+            String folio = textField.getText();
+            buscarEnBaseDeDatos(folio);
+        }
     }//GEN-LAST:event_btnCrearNotaActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
@@ -334,13 +397,13 @@ public class FrameDevoluciones extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearNota;
     private javax.swing.JButton btnGenerar;
     private javax.swing.JPanel btnMenuBack;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logoLoginIcon;
-    private javax.swing.JPanel panelLogin1;
-    private javax.swing.JPanel panelLogin2;
+    private javax.swing.JPanel pnlDevoluciones;
+    private javax.swing.JPanel pnlFrame;
+    private javax.swing.JScrollPane scrollTable1;
     private javax.swing.JLabel stockSmartLoginLabel;
-    private javax.swing.JTable tablaDevoluciones;
+    private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables
 }

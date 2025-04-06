@@ -1,11 +1,9 @@
 package inicio;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.border.AbstractBorder;
 import stocksmart.FontLoader;
 import stocksmart.FrameAltas;
 import stocksmart.FrameCategoria;
@@ -610,11 +608,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void botonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCategoriasActionPerformed
         // TODO add your handling code here:
         if (this.fcategorias == null) {
-            try {
-                this.fcategorias = new FrameCategoria(this);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.fcategorias = new FrameCategoria(this);
         }
         this.fcategorias.setVisible(true);
         this.setVisible(false);

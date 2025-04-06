@@ -8,8 +8,6 @@ import codigo.productos;
 import codigo.productosd;
 import codigo.subproductos;
 import codigo.subproductosd;
-import codigo.trabajadores;
-import codigo.trabajadoresd;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,7 +17,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.RenderingHints;
@@ -58,14 +55,16 @@ import static stocksmart.FontLoader.customFont;
 import static stocksmart.FontLoader.customFontBold;
 import static stocksmart.FontLoader.customFontBold2;
 
-public class FrameSubproductos extends javax.swing.JFrame {
+public final class FrameSubproductos extends javax.swing.JFrame {
 
     FrameMenu fmenu = null;
-     private List<subproductos> listaProductos = new ArrayList<>();
-    private List<productos> listaProductos2 = new ArrayList<>();
+    private List<subproductos> listaProductos = new ArrayList<>();
+    private final List<productos> listaProductos2 = new ArrayList<>();
 
     /**
      * Creates new form StockSmartFrameVentas
+     *
+     * @param menu
      */
     public FrameSubproductos(FrameMenu menu) {
 
@@ -89,82 +88,74 @@ public class FrameSubproductos extends javax.swing.JFrame {
                 filtrarTabla();
             }
         });
-        table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    if (table1.getSelectedRow() != -1) {
-                        btnBorrar.setEnabled(true);
-                    } else {
-                        btnBorrar.setEnabled(false);
-                    }
+        table1.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
+            if (!e.getValueIsAdjusting()) {
+                if (table1.getSelectedRow() != -1) {
+                    btnBorrar.setEnabled(true);
+                } else {
+                    btnBorrar.setEnabled(false);
                 }
             }
         });
-        table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    int rowIndex = table1.getSelectedRow();
-                    if (rowIndex != -1) {
-                        btnBorrar.setEnabled(true);
-                        subproductos pro = listaProductos.get(rowIndex);
-                        byte[] imagenBytes = pro.getImagen();
+        table1.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
+            if (!e.getValueIsAdjusting()) {
+                int rowIndex = table1.getSelectedRow();
+                if (rowIndex != -1) {
+                    btnBorrar.setEnabled(true);
+                    subproductos pro = listaProductos.get(rowIndex);
+                    byte[] imagenBytes = pro.getImagen();
 
-                        if (imagenBytes != null) {
-                            try {
-                                // Convierte el arreglo de bytes en una imagen
-                                ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenBytes);
-                                BufferedImage bufferedImage = ImageIO.read(inputStream);
+                    if (imagenBytes != null) {
+                        try {
+                            // Convierte el arreglo de bytes en una imagen
+                            ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenBytes);
+                            BufferedImage bufferedImage = ImageIO.read(inputStream);
 
-                                if (bufferedImage != null) {
-                                    // Escala la imagen al tamaño de jLabel_foto
-                                    ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
-                                            lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
+                            if (bufferedImage != null) {
+                                // Escala la imagen al tamaño de jLabel_foto
+                                ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
+                                        lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
 
-                                    lblFoto.setIcon(nuevaIcono);
-                                    lblFoto.setText("");
-                                } else {
-                                    lblFoto.setIcon(null);
-                                    lblFoto.setText("No se pudo cargar la imagen.");
-                                }
-                            } catch (IOException ex) {
-                                ex.printStackTrace();
+                                lblFoto.setIcon(nuevaIcono);
+                                lblFoto.setText("");
+                            } else {
                                 lblFoto.setIcon(null);
-                                lblFoto.setText("Error al cargar la imagen.");
+                                lblFoto.setText("No se pudo cargar la imagen.");
                             }
-                        } else {
+                        } catch (IOException ex) {
                             lblFoto.setIcon(null);
-                            lblFoto.setText("No hay imagen disponible.");
+                            lblFoto.setText("Error al cargar la imagen.");
                         }
                     } else {
-                        btnBorrar.setEnabled(false);
                         lblFoto.setIcon(null);
-                        lblFoto.setText("");
+                        lblFoto.setText("No hay imagen disponible.");
                     }
+                } else {
+                    btnBorrar.setEnabled(false);
+                    lblFoto.setIcon(null);
+                    lblFoto.setText("");
                 }
             }
         });
-        
+
     }
-    
-   
+
     public void LimpiarTable() {
         table1.removeAll();
     }
 
-private subproductos obtenerProductoPorCodigo(String codigo) {
-    subproductosd proDAO = new subproductosd();
-    listaProductos = proDAO.listarSubproductos();
+    private subproductos obtenerProductoPorCodigo(String codigo) {
+        subproductosd proDAO = new subproductosd();
+        listaProductos = proDAO.listarSubproductos();
 
-    for (subproductos productos : listaProductos) {
-        if (productos.getClaveAlterna().equals(codigo)) {
-            return productos;
+        for (subproductos productos : listaProductos) {
+            if (productos.getClaveAlterna().equals(codigo)) {
+                return productos;
+            }
         }
-    }
 
-    return null; // Retorna null si no se encuentra el producto
-}
+        return null; // Retorna null si no se encuentra el producto
+    }
 
     private void filtrarTabla() {
         String filtro = txtNombre.getText().toLowerCase();
@@ -504,7 +495,7 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-         int selectedRow = table1.getSelectedRow();
+        int selectedRow = table1.getSelectedRow();
 
         if (selectedRow != -1) {
             // Obtener los valores de la fila seleccionada
@@ -514,8 +505,6 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
             String unidad = (String) table1.getValueAt(selectedRow, 4);
             subproductosd proDAO = new subproductosd();
             String codigo = proDAO.obtenerCodigo(claveAlterna);
-
-            
 
             // Crear un panel para editar los datos del subproducto
             JPanel panel = new JPanel(new GridBagLayout());
@@ -550,9 +539,9 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
 
             // Llenar la tabla con todos los datos de productos
             productosd p = new productosd();
-            List<productos> listaProductos = p.listarProductos();
+            List<productos> listaProductosEditar = p.listarProductos();
 
-            for (productos producto : listaProductos) {
+            for (productos producto : listaProductosEditar) {
                 // Agrega los datos a la tabla
                 Object[] rowData = {producto.getCodigo(), producto.getNombre()};
                 tableModel.addRow(rowData);
@@ -574,13 +563,11 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
             gbc.gridwidth = 2;
             panel.add(btnAgregarProducto, gbc);
 
-            btnAgregarProducto.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    int selectedProductRow = productTable.getSelectedRow();
-                    if (selectedProductRow != -1) {
-                        String selectedProductCode = (String) productTable.getValueAt(selectedProductRow, 0);
-                        codigoField.setText(selectedProductCode);
-                    }
+            btnAgregarProducto.addActionListener((ActionEvent e) -> {
+                int selectedProductRow = productTable.getSelectedRow();
+                if (selectedProductRow != -1) {
+                    String selectedProductCode = (String) productTable.getValueAt(selectedProductRow, 0);
+                    codigoField.setText(selectedProductCode);
                 }
             });
 
@@ -623,46 +610,39 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
             panel.add(btnAgregarUnidad, gbc);
 
             // Manejador de eventos para el botón de agregar unidad
-            btnAgregarUnidad.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    JPanel unidadPanel = new JPanel(new GridBagLayout());
-                    GridBagConstraints gbc = new GridBagConstraints();
-                    gbc.anchor = GridBagConstraints.WEST;
-                    gbc.insets = new Insets(5, 5, 5, 5);
-
-                    gbc.gridx = 0;
-                    gbc.gridy = 0;
-                    unidadPanel.add(new JLabel("Unidad de medida:"), gbc);
-
-                    JTextField nuevaUnidadField = new JTextField(15);
-                    gbc.gridx = 1;
-                    unidadPanel.add(nuevaUnidadField, gbc);
-
-                    gbc.gridx = 0;
-                    gbc.gridy = 1;
-                    unidadPanel.add(new JLabel("Formato:"), gbc);
-
-                    JTextField formatoField = new JTextField(15);
-                    gbc.gridx = 1;
-                    unidadPanel.add(formatoField, gbc);
-
-                    int result = JOptionPane.showConfirmDialog(null, unidadPanel, "Agregar una nueva unidad de medida", JOptionPane.OK_CANCEL_OPTION);
-                    if (result == JOptionPane.OK_OPTION) {
-                        String nuevaUnidad = nuevaUnidadField.getText();
-                        String formatoText = formatoField.getText();
-                        double formato;
-
-                        try {
-                            formato = Double.parseDouble(formatoText);
-                        } catch (NumberFormatException ex) {
-                            JOptionPane.showMessageDialog(null, "El formato debe ser un valor numérico válido.");
-                            return;
-                        }
-
-                        if (nuevaUnidad != null && !nuevaUnidad.isEmpty()) {
-                            unidadDAO.RegistrarUnidad(new Unidad(nuevaUnidad, formato));
-                            unidadComboBox.addItem(nuevaUnidad);
-                        }
+            btnAgregarUnidad.addActionListener((ActionEvent e) -> {
+                JPanel unidadPanel = new JPanel(new GridBagLayout());
+                GridBagConstraints gbc1 = new GridBagConstraints();
+                gbc1.anchor = GridBagConstraints.WEST;
+                gbc1.insets = new Insets(5, 5, 5, 5);
+                gbc1.gridx = 0;
+                gbc1.gridy = 0;
+                unidadPanel.add(new JLabel("Unidad de medida:"), gbc1);
+                JTextField nuevaUnidadField = new JTextField(15);
+                gbc1.gridx = 1;
+                unidadPanel.add(nuevaUnidadField, gbc1);
+                gbc1.gridx = 0;
+                gbc1.gridy = 1;
+                unidadPanel.add(new JLabel("Formato:"), gbc1);
+                JTextField formatoField = new JTextField(15);
+                gbc1.gridx = 1;
+                unidadPanel.add(formatoField, gbc1);
+                int result = JOptionPane.showConfirmDialog(null, unidadPanel, "Agregar una nueva unidad de medida", JOptionPane.OK_CANCEL_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    String nuevaUnidad = nuevaUnidadField.getText();
+                    String formatoText = formatoField.getText();
+                    double formato;
+                    
+                    try {
+                        formato = Double.parseDouble(formatoText);
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(null, "El formato debe ser un valor numérico válido.");
+                        return;
+                    }
+                    
+                    if (nuevaUnidad != null && !nuevaUnidad.isEmpty()) {
+                        unidadDAO.RegistrarUnidad(new Unidad(nuevaUnidad, formato));
+                        unidadComboBox.addItem(nuevaUnidad);
                     }
                 }
             });
@@ -723,14 +703,12 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
 
                                         // Puedes hacer algo con el arreglo de bytes 'imagen' aquí si es necesario
                                     } catch (IOException ex) {
-                                        ex.printStackTrace();
                                         JOptionPane.showMessageDialog(null, "Error al convertir la imagen.");
                                     }
                                 } else {
                                     JOptionPane.showMessageDialog(null, "No se pudo cargar la imagen.");
                                 }
                             } catch (IOException ex) {
-                                ex.printStackTrace();
                                 JOptionPane.showMessageDialog(null, "Error al cargar la imagen.");
                             }
                         }
@@ -780,7 +758,6 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
                         ImageIO.write(bufferedImage, "jpg", byteArrayOutputStream);
                         imagen = byteArrayOutputStream.toByteArray(); // Asignar la imagen a la variable
                     } catch (IOException ex) {
-                        ex.printStackTrace();
                         JOptionPane.showMessageDialog(null, "Error al convertir la imagen.");
                         return;
                     }
@@ -818,7 +795,7 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       JPanel panel = new JPanel(new GridBagLayout());
+        JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.WEST;
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -855,9 +832,9 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
 
         // Llenar la tabla con todos los datos de productos
         productosd p = new productosd();
-        List<productos> listaProductos = p.listarProductos();
+        List<productos> listaProductosAgregar = p.listarProductos();
 
-        for (productos producto : listaProductos) {
+        for (productos producto : listaProductosAgregar) {
             // Agrega los datos a la tabla
             Object[] rowData = {producto.getCodigo(), producto.getNombre()};
             tableModel.addRow(rowData);
@@ -973,7 +950,6 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
                                 JOptionPane.showMessageDialog(null, "No se pudo cargar la imagen.");
                             }
                         } catch (IOException ex) {
-                            ex.printStackTrace();
                             JOptionPane.showMessageDialog(null, "Error al cargar la imagen.");
                         }
                     }
@@ -1013,46 +989,39 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
         panel.add(btnAgregarUnidad, gbc);
 
         // Manejador de eventos para el botón de agregar unidad
-        btnAgregarUnidad.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JPanel unidadPanel = new JPanel(new GridBagLayout());
-                GridBagConstraints gbc = new GridBagConstraints();
-                gbc.anchor = GridBagConstraints.WEST;
-                gbc.insets = new Insets(5, 5, 5, 5);
-
-                gbc.gridx = 0;
-                gbc.gridy = 0;
-                unidadPanel.add(new JLabel("Unidad de medida:"), gbc);
-
-                JTextField nuevaUnidadField = new JTextField(15);
-                gbc.gridx = 1;
-                unidadPanel.add(nuevaUnidadField, gbc);
-
-                gbc.gridx = 0;
-                gbc.gridy = 1;
-                unidadPanel.add(new JLabel("Formato:"), gbc);
-
-                JTextField formatoField = new JTextField(15);
-                gbc.gridx = 1;
-                unidadPanel.add(formatoField, gbc);
-
-                int result = JOptionPane.showConfirmDialog(null, unidadPanel, "Agregar una nueva unidad de medida", JOptionPane.OK_CANCEL_OPTION);
-                if (result == JOptionPane.OK_OPTION) {
-                    String nuevaUnidad = nuevaUnidadField.getText();
-                    String formatoText = formatoField.getText();
-                    double formato;
-
-                    try {
-                        formato = Double.parseDouble(formatoText);
-                    } catch (NumberFormatException ex) {
-                        JOptionPane.showMessageDialog(null, "El formato debe ser un valor numérico válido.");
-                        return;
-                    }
-
-                    if (nuevaUnidad != null && !nuevaUnidad.isEmpty()) {
-                        unidadDAO.RegistrarUnidad(new Unidad(nuevaUnidad, formato));
-                        unidadComboBox.addItem(nuevaUnidad);
-                    }
+        btnAgregarUnidad.addActionListener((ActionEvent e) -> {
+            JPanel unidadPanel = new JPanel(new GridBagLayout());
+            GridBagConstraints gbc1 = new GridBagConstraints();
+            gbc1.anchor = GridBagConstraints.WEST;
+            gbc1.insets = new Insets(5, 5, 5, 5);
+            gbc1.gridx = 0;
+            gbc1.gridy = 0;
+            unidadPanel.add(new JLabel("Unidad de medida:"), gbc1);
+            JTextField nuevaUnidadField = new JTextField(15);
+            gbc1.gridx = 1;
+            unidadPanel.add(nuevaUnidadField, gbc1);
+            gbc1.gridx = 0;
+            gbc1.gridy = 1;
+            unidadPanel.add(new JLabel("Formato:"), gbc1);
+            JTextField formatoField = new JTextField(15);
+            gbc1.gridx = 1;
+            unidadPanel.add(formatoField, gbc1);
+            int result = JOptionPane.showConfirmDialog(null, unidadPanel, "Agregar una nueva unidad de medida", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+                String nuevaUnidad = nuevaUnidadField.getText();
+                String formatoText = formatoField.getText();
+                double formato;
+                
+                try {
+                    formato = Double.parseDouble(formatoText);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "El formato debe ser un valor numérico válido.");
+                    return;
+                }
+                
+                if (nuevaUnidad != null && !nuevaUnidad.isEmpty()) {
+                    unidadDAO.RegistrarUnidad(new Unidad(nuevaUnidad, formato));
+                    unidadComboBox.addItem(nuevaUnidad);
                 }
             }
         });
@@ -1083,7 +1052,6 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
                     ImageIO.write(bufferedImage, "jpg", byteArrayOutputStream);
                     imagen = byteArrayOutputStream.toByteArray(); // Asignar la imagen a la variable
                 } catch (IOException ex) {
-                    ex.printStackTrace();
                     JOptionPane.showMessageDialog(null, "Error al convertir la imagen.");
                     return;
                 }
@@ -1114,9 +1082,9 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
                     }
                 }
                 productosd proDAO2 = new productosd();
-                List<productos> listaProductos2 = proDAO2.listarProductos();
+                List<productos> listaProductosAgregar2 = proDAO2.listarProductos();
 
-                for (productos pr : listaProductos2) {
+                for (productos pr : listaProductosAgregar2) {
                     if (pr.getClavealterna().equals(claveAlterna)) {
                         JOptionPane.showMessageDialog(null, "La clave alterna ya existen en la base de datos como producto. Introduce una clave alterna diferente.");
                         return;

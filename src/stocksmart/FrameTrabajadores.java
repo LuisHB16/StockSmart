@@ -25,7 +25,7 @@ import static stocksmart.FontLoader.customFont;
 import static stocksmart.FontLoader.customFontBold;
 import static stocksmart.FontLoader.customFontBold2;
 
-public class FrameTrabajadores extends javax.swing.JFrame {
+public final class FrameTrabajadores extends javax.swing.JFrame {
 
     FrameMenu fmenu = null;
 
@@ -34,6 +34,7 @@ public class FrameTrabajadores extends javax.swing.JFrame {
 
     /**
      * Creates new form StockSmartFrameVentas
+     * @param menu
      */
     public FrameTrabajadores(FrameMenu menu) {
 
@@ -44,15 +45,12 @@ public class FrameTrabajadores extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
       
 
-        table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    if (table1.getSelectedRow() != -1) {
-                        btnBorrar.setEnabled(true);
-                    } else {
-                        btnBorrar.setEnabled(false);
-                    }
+        table1.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
+            if (!e.getValueIsAdjusting()) {
+                if (table1.getSelectedRow() != -1) {
+                    btnBorrar.setEnabled(true);
+                } else {
+                    btnBorrar.setEnabled(false);
                 }
             }
         });
@@ -439,7 +437,7 @@ public class FrameTrabajadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        trabajadoresd tr = new trabajadoresd();
+        trabajadoresd trabajadores = new trabajadoresd();
 
         String[] roles = {"repartidor", "vendedor"};
         JComboBox<String> comboBox = new JComboBox<>(roles);
@@ -461,11 +459,11 @@ public class FrameTrabajadores extends javax.swing.JFrame {
             // Validación del nombre
             if (nombre != null && !nombre.isEmpty()) {
                 // Validación de duplicados en la clave primaria (nombre)
-                if (!tr.existeTrabajador(nombre)) {
+                if (!trabajadores.existeTrabajador(nombre)) {
                     trabajadores t = new trabajadores(nombre, rol);
                     t.setNombre(nombre);
                     t.setRol(rol);
-                    tr.registrarTrabajador(t);
+                    trabajadores.registrarTrabajador(t);
                     LimpiarTable();
                     ListarTrabajadores();
                     JOptionPane.showMessageDialog(null, "Trabajador registrado:\nNombre: " + nombre + "\nRol: " + rol);

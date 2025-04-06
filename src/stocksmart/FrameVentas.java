@@ -53,7 +53,7 @@ public class FrameVentas extends javax.swing.JFrame {
     Date fechaVenta = new Date();
     detalleV dv = new detalleV();
     PDF pdf = new PDF();
-    private ArrayList<productos> productosEncontrados = new ArrayList<>();
+    private final ArrayList<productos> productosEncontrados = new ArrayList<>();
     private ArrayList<Unidad> listaUnidades = new ArrayList<>();
     String fechaActual = new SimpleDateFormat("dd/MM/yyyy").format(fechaVenta);
     double pago = 0.00;
@@ -114,10 +114,10 @@ public class FrameVentas extends javax.swing.JFrame {
     }
 
     private void eliminarProductoSeleccionado() {
-        int selectedRow = table1Venta.getSelectedRow();
-        if (selectedRow != -1) {
+        int selectedRowEliminar = table1Venta.getSelectedRow();
+        if (selectedRowEliminar != -1) {
             DefaultTableModel model = (DefaultTableModel) table1Venta.getModel();
-            model.removeRow(selectedRow);
+            model.removeRow(selectedRowEliminar);
             TotalPagar();
         }
     }
@@ -261,7 +261,6 @@ public class FrameVentas extends javax.swing.JFrame {
                         lblFoto.setText("No se pudo cargar la imagen.");
                     }
                 } catch (IOException ex) {
-                    ex.printStackTrace();
                     lblFoto.setIcon(null);
                     lblFoto.setText("Error al cargar la imagen.");
                 }
@@ -365,7 +364,6 @@ public class FrameVentas extends javax.swing.JFrame {
                         lblFoto.setText("No se pudo cargar la imagen.");
                     }
                 } catch (IOException ex) {
-                    ex.printStackTrace();
                     lblFoto.setIcon(null);
                     lblFoto.setText("Error al cargar la imagen.");
                 }
@@ -934,7 +932,6 @@ public class FrameVentas extends javax.swing.JFrame {
                                 lblFoto.setText("No se pudo cargar la imagen.");
                             }
                         } catch (IOException ex) {
-                            ex.printStackTrace();
                             lblFoto.setIcon(null);
                             lblFoto.setText("Error al cargar la imagen.");
                         }
@@ -1056,55 +1053,50 @@ public class FrameVentas extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrameBusquedaProductos ventanaBusqueda = new FrameBusquedaProductos();
         ventanaBusqueda.cargarProductos(proDAO.listarProductos2());
-        ventanaBusqueda.setProductoSeleccionadoListener(new FrameBusquedaProductos.ProductoSeleccionadoListener() {
-            @Override
-            public void productoSeleccionado(String codigo) {
-                // Lógica para agregar el producto seleccionado a la tabla de ventas
-                int rowIndex = -1;
-                for (int i = 0; i < tmp.getRowCount(); i++) {
-                    if (tmp.getValueAt(i, 0).equals(codigo)) {
-                        rowIndex = i;
-                        break;
-                    }
+        ventanaBusqueda.setProductoSeleccionadoListener((String codigo) -> {
+            // Lógica para agregar el producto seleccionado a la tabla de ventas
+            int rowIndex1 = -1;
+            for (int i = 0; i < tmp.getRowCount(); i++) {
+                if (tmp.getValueAt(i, 0).equals(codigo)) {
+                    rowIndex1 = i;
+                    break;
                 }
-
-                if (rowIndex != -1) {
-                    double cantidad = (Double) tmp.getValueAt(rowIndex, 4) + 1.0;
-                    double precio = Double.parseDouble(table1Venta.getValueAt(selectedRow, 2).toString());
-                    tmp.setValueAt(cantidad, rowIndex, 4);
-                    tmp.setValueAt(cantidad * precio, rowIndex, 5);
-                } else {
-                    buscarProducto(codigo);
-                    byte[] imagenBytes = pro.getImagen();
-                    if (imagenBytes != null) {
-                        try {
-                            // Convierte el arreglo de bytes en una imagen
-                            ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenBytes);
-                            BufferedImage bufferedImage = ImageIO.read(inputStream);
-
-                            if (bufferedImage != null) {
-                                // Escala la imagen al tamaño de jLabel_foto
-                                ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
-                                        lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
-
-                                lblFoto.setIcon(nuevaIcono);
-                                lblFoto.setText("");
-                            } else {
-                                lblFoto.setIcon(null);
-                                lblFoto.setText("No se pudo cargar la imagen.");
-                            }
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                            lblFoto.setIcon(null);
-                            lblFoto.setText("Error al cargar la imagen.");
-                        }
-                    } else {
-                        lblFoto.setIcon(null);
-                        lblFoto.setText("No hay imagen disponible.");
-                    }
-                }
-                ventanaBusqueda.dispose(); // Cierra la ventana de búsqueda
             }
+            if (rowIndex1 != -1) {
+                double cantidad = (Double) tmp.getValueAt(rowIndex1, 4) + 1.0;
+                double precio = Double.parseDouble(table1Venta.getValueAt(selectedRow, 2).toString());
+                tmp.setValueAt(cantidad, rowIndex1, 4);
+                tmp.setValueAt(cantidad * precio, rowIndex1, 5);
+            } else {
+                buscarProducto(codigo);
+                byte[] imagenBytes = pro.getImagen();
+                if (imagenBytes != null) {
+                    try {
+                        // Convierte el arreglo de bytes en una imagen
+                        ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenBytes);
+                        BufferedImage bufferedImage = ImageIO.read(inputStream);
+                        
+                        if (bufferedImage != null) {
+                            // Escala la imagen al tamaño de jLabel_foto
+                            ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
+                                    lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
+                            
+                            lblFoto.setIcon(nuevaIcono);
+                            lblFoto.setText("");
+                        } else {
+                            lblFoto.setIcon(null);
+                            lblFoto.setText("No se pudo cargar la imagen.");
+                        }
+                    } catch (IOException ex) {
+                        lblFoto.setIcon(null);
+                        lblFoto.setText("Error al cargar la imagen.");
+                    }
+                } else {
+                    lblFoto.setIcon(null);
+                    lblFoto.setText("No hay imagen disponible.");
+                }
+            }
+            ventanaBusqueda.dispose(); // Cierra la ventana de búsqueda
         });
         ventanaBusqueda.setVisible(true);
     }//GEN-LAST:event_btnBuscarVentaActionPerformed
@@ -1126,10 +1118,10 @@ public class FrameVentas extends javax.swing.JFrame {
 
     private void btnPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidoActionPerformed
         // TODO add your handling code here:
-        if(fpedidos ==null){
-            this.fpedidos =  new FramePedidos(fmenu,this);
+        if (fpedidos == null) {
+            this.fpedidos = new FramePedidos(fmenu, this);
         }
-        
+
         fpedidos.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPedidoActionPerformed
@@ -1137,7 +1129,6 @@ public class FrameVentas extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxVendedorVenta;

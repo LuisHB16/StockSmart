@@ -68,7 +68,7 @@ private void buscarEnBaseDeDatos(String folio) {
         List<detalleV> listaDetalles = detalleDAO.ListarDetallesVenta(idVentas);
 
         // Actualizar el modelo de la tabla con los detalles de venta
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) table1.getModel();
         modelo.setRowCount(0); // Limpiar la tabla antes de llenarla con nuevos datos
 
         if (!listaDetalles.isEmpty()) {
@@ -86,9 +86,9 @@ private void buscarEnBaseDeDatos(String folio) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnNuevo = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        btnCrearNota = new javax.swing.JButton();
+        scrollTable1 = new javax.swing.JScrollPane();
+        table1 = new javax.swing.JTable();
         btnGenerar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         a = new javax.swing.JPanel();
@@ -96,15 +96,15 @@ private void buscarEnBaseDeDatos(String folio) {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnNuevo.setText("Crear nota de credito");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearNota.setText("Crear nota de credito");
+        btnCrearNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
+                btnCrearNotaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 180, 30));
+        getContentPane().add(btnCrearNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 180, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -120,16 +120,16 @@ private void buscarEnBaseDeDatos(String folio) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        table1.getTableHeader().setReorderingAllowed(false);
+        scrollTable1.setViewportView(table1);
+        if (table1.getColumnModel().getColumnCount() > 0) {
+            table1.getColumnModel().getColumn(0).setResizable(false);
+            table1.getColumnModel().getColumn(1).setResizable(false);
+            table1.getColumnModel().getColumn(2).setResizable(false);
+            table1.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 1190, 530));
+        getContentPane().add(scrollTable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 1190, 530));
 
         btnGenerar.setText("Generar");
         btnGenerar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -168,7 +168,7 @@ private void buscarEnBaseDeDatos(String folio) {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+    private void btnCrearNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearNotaActionPerformed
         // Crear el JOptionPane personalizado
         JPanel panel = new JPanel();
         JLabel label = new JLabel("Ingrese el folio:");
@@ -184,7 +184,7 @@ private void buscarEnBaseDeDatos(String folio) {
             String folio = textField.getText();
             buscarEnBaseDeDatos(folio);
         }
-    }//GEN-LAST:event_btnNuevoActionPerformed
+    }//GEN-LAST:event_btnCrearNotaActionPerformed
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
     // Actualizar el estado de la venta a "devolucion"
@@ -215,7 +215,7 @@ private void buscarEnBaseDeDatos(String folio) {
     JOptionPane.showMessageDialog(null, "La devolución se generó con éxito");
 
     // Limpiar la tabla
-    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+    DefaultTableModel modelo = (DefaultTableModel) table1.getModel();
     modelo.setRowCount(0);
     }//GEN-LAST:event_btnGenerarActionPerformed
 
@@ -263,10 +263,10 @@ private void buscarEnBaseDeDatos(String folio) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel a;
+    private javax.swing.JButton btnCrearNota;
     private javax.swing.JButton btnGenerar;
-    private javax.swing.JButton btnNuevo;
     private javax.swing.JButton jButton4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane scrollTable1;
+    private javax.swing.JTable table1;
     // End of variables declaration//GEN-END:variables
 }

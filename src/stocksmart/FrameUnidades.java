@@ -4,8 +4,6 @@ import inicio.FrameMenu;
 import assests.icons.clases.PlusIcon;
 import codigo.Unidad;
 import codigo.Unidadd;
-import codigo.trabajadores;
-import codigo.trabajadoresd;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -15,7 +13,6 @@ import java.awt.RenderingHints;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import java.util.List;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -28,7 +25,7 @@ import static stocksmart.FontLoader.customFont;
 import static stocksmart.FontLoader.customFontBold;
 import static stocksmart.FontLoader.customFontBold2;
 
-public class FrameUnidades extends javax.swing.JFrame {
+public final class FrameUnidades extends javax.swing.JFrame {
 
     FrameMenu fmenu = null;
     Unidadd tr = new Unidadd();
@@ -36,6 +33,7 @@ public class FrameUnidades extends javax.swing.JFrame {
 
     /**
      * Creates new form StockSmartFrameVentas
+     * @param menu
      */
     public FrameUnidades(FrameMenu menu) {
 
@@ -43,57 +41,54 @@ public class FrameUnidades extends javax.swing.JFrame {
         this.fmenu = menu;
 
         this.setLocationRelativeTo(null);
-         ListarUnidades();
+        ListarUnidades();
 
-        table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    if (table1.getSelectedRow() != -1) {
-                        btnBorrar.setEnabled(true);
-                    } else {
-                        btnBorrar.setEnabled(false);
-                    }
+        table1.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
+            if (!e.getValueIsAdjusting()) {
+                if (table1.getSelectedRow() != -1) {
+                    btnBorrar.setEnabled(true);
+                } else {
+                    btnBorrar.setEnabled(false);
                 }
             }
         });
-                   txtUnidad.getDocument().addDocumentListener(new DocumentListener() {
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            filtrarTabla();
-        }
+        txtUnidad.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                filtrarTabla();
+            }
 
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-            filtrarTabla();
-        }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                filtrarTabla();
+            }
 
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-            filtrarTabla();
-        }
-    });
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                filtrarTabla();
+            }
+        });
 
     }
-    
+
     private void filtrarTabla() {
-    String filtroMarca = txtUnidad.getText().toLowerCase();
-    DefaultTableModel model = (DefaultTableModel) table1.getModel();
-    model.setRowCount(0);
+        String filtroMarca = txtUnidad.getText().toLowerCase();
+        DefaultTableModel model = (DefaultTableModel) table1.getModel();
+        model.setRowCount(0);
 
-    for (Unidad proveedor : listaProveedores) {
-        String marca = proveedor.getUnidad().toLowerCase();
+        for (Unidad proveedor : listaProveedores) {
+            String marca = proveedor.getUnidad().toLowerCase();
 
-        // Check if the brand contains the filter text
-        if (marca.contains(filtroMarca)) {
-            Object[] ob = new Object[2];
-            ob[0] = proveedor.getUnidad();
-            ob[1] = proveedor.getFormato();
-         
-            model.addRow(ob);
+            // Check if the brand contains the filter text
+            if (marca.contains(filtroMarca)) {
+                Object[] ob = new Object[2];
+                ob[0] = proveedor.getUnidad();
+                ob[1] = proveedor.getFormato();
+
+                model.addRow(ob);
+            }
         }
     }
-}
 
     public void LimpiarTable() {
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
@@ -386,7 +381,7 @@ public class FrameUnidades extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-         int selectedRow = table1.getSelectedRow();
+        int selectedRow = table1.getSelectedRow();
 
         if (selectedRow != -1) {
             // Obtener los valores actuales de la unidad seleccionada
@@ -438,7 +433,7 @@ public class FrameUnidades extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       Unidadd tr = new Unidadd();
+        Unidadd unidades = new Unidadd();
 
         String[] roles = {"unidad", "Formato"};
         JTextField unidadField = new JTextField(20);
@@ -455,16 +450,16 @@ public class FrameUnidades extends javax.swing.JFrame {
 
         if (result == JOptionPane.OK_OPTION) {
             String nombre = unidadField.getText();
-            Double formato = Double.parseDouble(formatoField.getText());
+            Double formato = Double.valueOf(formatoField.getText());
 
             // Validación del nombre
             if (nombre != null && !nombre.isEmpty()) {
                 // Validación de duplicados en la clave primaria (nombre)
-                if (!tr.existeUnidad(nombre)) {
+                if (!unidades.existeUnidad(nombre)) {
                     Unidad t = new Unidad(nombre, formato);
                     t.setUnidad(nombre);
                     t.setFormato(formato);
-                    tr.RegistrarUnidad(t);
+                    unidades.RegistrarUnidad(t);
                     LimpiarTable();
                     ListarUnidades();
                     JOptionPane.showMessageDialog(null, "Unidad registrada:\nNombre: " + nombre + "\nRol: " + formato);

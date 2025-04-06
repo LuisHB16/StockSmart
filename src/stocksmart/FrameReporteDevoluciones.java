@@ -2,8 +2,6 @@ package stocksmart;
 
 import codigo.PDF;
 import java.text.ParseException;
-import codigo.movimiento;
-import codigo.movimientod;
 import codigo.trabajadores;
 import codigo.trabajadoresd;
 import codigo.venta;
@@ -45,20 +43,14 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
         this.fmenu = Menu;
         cargarVendedoresEnComboBox(boxVendedor);
         ListarVentas();
-        btnBuscar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                filtrarVentasPorFecha();
-            }
+        btnBuscar.addActionListener((ActionEvent e) -> {
+            filtrarVentasPorFecha();
         });
 
         // Agregar ActionListener al CheckBox
-        checkBoxVendedor.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Habilitar o deshabilitar el ComboBox según el estado del CheckBox
-                boxVendedor.setEnabled(checkBoxVendedor.isSelected());
-            }
+        checkBoxVendedor.addActionListener((ActionEvent e) -> {
+            // Habilitar o deshabilitar el ComboBox según el estado del CheckBox
+            boxVendedor.setEnabled(checkBoxVendedor.isSelected());
         });
 
     }
@@ -116,7 +108,6 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
                         }
                     }
                 } catch (ParseException e) {
-                    e.printStackTrace();
                 }
             }
         } else {

@@ -3,8 +3,6 @@ package stocksmart;
 
 import codigo.PDF;
 import java.text.ParseException;
-import codigo.movimiento;
-import codigo.movimientod;
 import codigo.trabajadores;
 import codigo.trabajadoresd;
 import codigo.venta;
@@ -19,7 +17,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,7 +28,7 @@ import static stocksmart.FontLoader.customFont;
 import static stocksmart.FontLoader.customFontBold;
 import static stocksmart.FontLoader.customFontBold2;
 
-public class FrameReporteVentas extends javax.swing.JFrame {
+public final class FrameReporteVentas extends javax.swing.JFrame {
 
     
     private List<venta> listaVentas = new ArrayList<>();
@@ -49,20 +46,14 @@ public class FrameReporteVentas extends javax.swing.JFrame {
         ListarVentas();
       
         
-        btnBuscar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                filtrarVentasPorFecha();
-            }
+        btnBuscar.addActionListener((ActionEvent e) -> {
+            filtrarVentasPorFecha();
         });
         // Agregar ActionListener al CheckBox
         
-        checkBoxVendedor.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Habilitar o deshabilitar el campo de texto según el estado del CheckBox2
-                boxVendedor.setEnabled(checkBoxVendedor.isSelected());
-            }
+        checkBoxVendedor.addActionListener((ActionEvent e) -> {
+            // Habilitar o deshabilitar el campo de texto según el estado del CheckBox2
+            boxVendedor.setEnabled(checkBoxVendedor.isSelected());
         });
     }
 
@@ -128,7 +119,6 @@ public class FrameReporteVentas extends javax.swing.JFrame {
                         }
                     }
                 } catch (ParseException e) {
-                    e.printStackTrace();
                 }
             }actualizarTotal();
         } else {

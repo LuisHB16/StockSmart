@@ -14,7 +14,7 @@ import static stocksmart.FontLoader.customFontBold2;
 
 public class FrameBusquedaProductos extends JFrame {
 
-    private DefaultTableModel tableModel;
+    private final DefaultTableModel tableModel;
 
     private ProductoSeleccionadoListener listener;
 
@@ -33,32 +33,26 @@ public class FrameBusquedaProductos extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // Add action listener to boxNombre checkbox
-        boxNombre.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean selected = boxNombre.isSelected();
-                txtNombre.setEnabled(selected);
-
-                // If the checkbox is deselected, clear the text in fielNombre
-                if (!selected) {
-                    txtNombre.setText("");
-                    filterTable(); // Perform filtering when the checkbox is deselected
-                }
+        boxNombre.addActionListener((ActionEvent e) -> {
+            boolean selected = boxNombre.isSelected();
+            txtNombre.setEnabled(selected);
+            
+            // If the checkbox is deselected, clear the text in fielNombre
+            if (!selected) {
+                txtNombre.setText("");
+                filterTable(); // Perform filtering when the checkbox is deselected
             }
         });
 
         // Add action listener to boxCodigo checkbox
-        boxCodigo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean selected = boxCodigo.isSelected();
-                txtCodigo.setEnabled(selected);
-
-                // If the checkbox is deselected, clear the text in fielCodigo
-                if (!selected) {
-                    txtCodigo.setText("");
-                    filterTable(); // Perform filtering when the checkbox is deselected
-                }
+        boxCodigo.addActionListener((ActionEvent e) -> {
+            boolean selected = boxCodigo.isSelected();
+            txtCodigo.setEnabled(selected);
+            
+            // If the checkbox is deselected, clear the text in fielCodigo
+            if (!selected) {
+                txtCodigo.setText("");
+                filterTable(); // Perform filtering when the checkbox is deselected
             }
         });
 
@@ -105,10 +99,10 @@ public class FrameBusquedaProductos extends JFrame {
         DefaultRowSorter<DefaultTableModel, Integer> sorter = (DefaultRowSorter<DefaultTableModel, Integer>) Table1.getRowSorter();
         List<RowFilter<Object, Integer>> filters = new ArrayList<>();
         if (boxNombre.isSelected() && !nombreFilter.isEmpty()) {
-            filters.add(RowFilter.regexFilter(nombreFilter, 1)); 
+            filters.add(RowFilter.regexFilter(nombreFilter, 1));
         }
         if (boxCodigo.isSelected() && !codigoFilter.isEmpty()) {
-            filters.add(RowFilter.regexFilter(codigoFilter, 0)); 
+            filters.add(RowFilter.regexFilter(codigoFilter, 0));
         }
         sorter.setRowFilter(RowFilter.andFilter(filters));
     }

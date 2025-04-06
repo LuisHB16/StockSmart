@@ -1,6 +1,5 @@
 package stocksmart;
 
-
 import codigo.PDF;
 import codigo.Unidad;
 import codigo.Unidadd;
@@ -9,7 +8,6 @@ import codigo.clientes;
 import codigo.detalleV;
 import codigo.productos;
 import codigo.productosd;
-import codigo.subproductos;
 import codigo.subproductosd;
 import codigo.trabajadores;
 import codigo.trabajadoresd;
@@ -47,8 +45,7 @@ import static stocksmart.FontLoader.customFont;
 import static stocksmart.FontLoader.customFontBold;
 import static stocksmart.FontLoader.customFontBold2;
 
-public class FramePedidos extends javax.swing.JFrame {
-
+public final class FramePedidos extends javax.swing.JFrame {
 
     subproductosd da = new subproductosd();
     productosd proDAO = new productosd();
@@ -58,7 +55,7 @@ public class FramePedidos extends javax.swing.JFrame {
     Date fechaVenta = new Date();
     detalleV dv = new detalleV();
     PDF pdf = new PDF();
-    private ArrayList<productos> productosEncontrados = new ArrayList<>();
+    private final ArrayList<productos> productosEncontrados = new ArrayList<>();
     private ArrayList<Unidad> listaUnidades = new ArrayList<>();
     String fechaActual = new SimpleDateFormat("dd/MM/yyyy").format(fechaVenta);
     double pago = 0.00;
@@ -69,18 +66,18 @@ public class FramePedidos extends javax.swing.JFrame {
     String item = "Vendedor por defecto"; // Agregado para almacenar el vendedor
     int selectedRow;
     int rowIndex = -1;
-    FrameMenu fmenu ;
+    FrameMenu fmenu;
     FrameVentas fventas;
 
     public FramePedidos(FrameMenu Menu, FrameVentas Ventas) {
         this.fmenu = Menu;
         this.fventas = Ventas;
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         lista();
         tmp = (DefaultTableModel) table1Venta.getModel();
-        
+
         cargarVendedoresEnComboBox(boxVendedorVenta);
         ListarClientes();
 
@@ -106,19 +103,17 @@ public class FramePedidos extends javax.swing.JFrame {
         productosEncontrados.clear();
     }
 
-private void lista() {
-    Unidadd unidadDAO = new Unidadd();
-    listaUnidades = (ArrayList<Unidad>) unidadDAO.listarUnidades();
+    private void lista() {
+        Unidadd unidadDAO = new Unidadd();
+        listaUnidades = (ArrayList<Unidad>) unidadDAO.listarUnidades();
 
-    // Ahora, la listaUnidades contiene tanto la unidad como el formato.
-    for (Unidad unidad : listaUnidades) {
-        String nombreUnidad = unidad.getUnidad();
-        Double formato = unidad.getFormato();
-        // Puedes hacer algo con 'nombreUnidad' y 'formato' aquí...
+        // Ahora, la listaUnidades contiene tanto la unidad como el formato.
+        for (Unidad unidad : listaUnidades) {
+            String nombreUnidad = unidad.getUnidad();
+            Double formato = unidad.getFormato();
+            // Puedes hacer algo con 'nombreUnidad' y 'formato' aquí...
+        }
     }
-}
-
-    
 
     public void LimpiarTable() {
         DefaultTableModel model = (DefaultTableModel) table1Venta.getModel();
@@ -126,10 +121,10 @@ private void lista() {
     }
 
     private void eliminarProductoSeleccionado() {
-        int selectedRow = table1Venta.getSelectedRow();
-        if (selectedRow != -1) {
+        int selectedRowEliminar = table1Venta.getSelectedRow();
+        if (selectedRowEliminar != -1) {
             DefaultTableModel model = (DefaultTableModel) table1Venta.getModel();
-            model.removeRow(selectedRow);
+            model.removeRow(selectedRowEliminar);
             TotalPagar();
         }
     }
@@ -273,7 +268,6 @@ private void lista() {
                         lblFoto.setText("No se pudo cargar la imagen.");
                     }
                 } catch (IOException ex) {
-                    ex.printStackTrace();
                     lblFoto.setIcon(null);
                     lblFoto.setText("Error al cargar la imagen.");
                 }
@@ -334,7 +328,7 @@ private void lista() {
 
         for (int i = 0; i < table1Venta.getRowCount(); i++) {
             String codigo = table1Venta.getValueAt(i, 0).toString();
-            Double cant = Double.parseDouble(table1Venta.getValueAt(i, 4).toString());
+            Double cant = Double.valueOf(table1Venta.getValueAt(i, 4).toString());
             double precio = Double.parseDouble(table1Venta.getValueAt(i, 2).toString());
             String unidad = table1Venta.getValueAt(i, 3).toString(); // Obtener el valor de "Unidad"
             dv.setId_Ventas(id);
@@ -362,6 +356,7 @@ private void lista() {
 
         boxClienteVenta.setModel(model);
     }
+
     public void ListarClientes() {
         cliented cd = new cliented();
         List<clientes> listaClientes = cd.listarClientes();
@@ -413,7 +408,6 @@ private void lista() {
                         lblFoto.setText("No se pudo cargar la imagen.");
                     }
                 } catch (IOException ex) {
-                    ex.printStackTrace();
                     lblFoto.setIcon(null);
                     lblFoto.setText("Error al cargar la imagen.");
                 }
@@ -557,12 +551,6 @@ private void lista() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
-            }
         });
         btnMenuBack.setLayout(null);
 
@@ -612,11 +600,6 @@ private void lista() {
         lblBarcodeVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/codigobarras.png"))); // NOI18N
 
         txtBarcodeVenta.setFont(customFontBold2);
-        txtBarcodeVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBarcodeVentaActionPerformed(evt);
-            }
-        });
         txtBarcodeVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBarcodeVentaKeyPressed(evt);
@@ -816,11 +799,6 @@ private void lista() {
         txtCantidadInventario.setFont(customFontBold2);
         txtCantidadInventario.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCantidadInventario.setEnabled(false);
-        txtCantidadInventario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadInventarioActionPerformed(evt);
-            }
-        });
 
         lblCantidadInventario.setBackground(new java.awt.Color(202, 202, 202));
         lblCantidadInventario.setFont(customFontBold2);
@@ -833,11 +811,6 @@ private void lista() {
         txtImporteInventario.setFont(customFontBold2);
         txtImporteInventario.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtImporteInventario.setEnabled(false);
-        txtImporteInventario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtImporteInventarioActionPerformed(evt);
-            }
-        });
 
         lblImporteInventario.setBackground(new java.awt.Color(202, 202, 202));
         lblImporteInventario.setFont(customFontBold2);
@@ -847,11 +820,6 @@ private void lista() {
         txtNombreInventario.setFont(customFontBold2);
         txtNombreInventario.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNombreInventario.setEnabled(false);
-        txtNombreInventario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreInventarioActionPerformed(evt);
-            }
-        });
 
         lblNombreInventario.setBackground(new java.awt.Color(204, 204, 204));
         lblNombreInventario.setFont(customFontBold2);
@@ -942,18 +910,8 @@ private void lista() {
         lblNombreCliente.setText("Nombre");
 
         txtNombreCliente.setFont(customFontBold2);
-        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreClienteActionPerformed(evt);
-            }
-        });
 
         txtDireccionCliente.setFont(customFontBold2);
-        txtDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionClienteActionPerformed(evt);
-            }
-        });
 
         lblDireccionCliente.setFont(customFontBold2);
         lblDireccionCliente.setText("Direccion:");
@@ -962,18 +920,8 @@ private void lista() {
         lblApellidoPCliente.setText("Apellido Paterno:");
 
         txtApellidoPCliente.setFont(customFontBold2);
-        txtApellidoPCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoPClienteActionPerformed(evt);
-            }
-        });
 
         txtApellidoMCliente.setFont(customFontBold2);
-        txtApellidoMCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoMClienteActionPerformed(evt);
-            }
-        });
 
         lblApellidoMCliente.setFont(customFontBold2);
         lblApellidoMCliente.setText("Apellido Materno:");
@@ -982,11 +930,6 @@ private void lista() {
         lblTelefonoCliente.setText("Telefono:");
 
         txtTelefonoCliente.setFont(customFontBold2);
-        txtTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoClienteActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlClienteLayout = new javax.swing.GroupLayout(pnlCliente);
         pnlCliente.setLayout(pnlClienteLayout);
@@ -1199,28 +1142,6 @@ private void lista() {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseExited
-
-    private void txtCantidadInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadInventarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadInventarioActionPerformed
-
-    private void txtImporteInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImporteInventarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtImporteInventarioActionPerformed
-
-    private void txtNombreInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreInventarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreInventarioActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String nombre = txtNombreCliente.getText();
         String apellidop = txtApellidoPCliente.getText();
@@ -1267,26 +1188,6 @@ private void lista() {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreClienteActionPerformed
-
-    private void txtDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionClienteActionPerformed
-
-    private void txtApellidoPClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoPClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidoPClienteActionPerformed
-
-    private void txtTelefonoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoClienteActionPerformed
-
-    }//GEN-LAST:event_txtTelefonoClienteActionPerformed
-
-    private void txtBarcodeVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBarcodeVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBarcodeVentaActionPerformed
-
     private void txtBarcodeVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarcodeVentaKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -1317,28 +1218,27 @@ private void lista() {
                             if (bufferedImage != null) {
                                 // Escala la imagen al tamaño de jLabel_foto
                                 ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
-                                    lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
+                                        lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
 
-                            lblFoto.setIcon(nuevaIcono);
-                            lblFoto.setText("");
-                        } else {
+                                lblFoto.setIcon(nuevaIcono);
+                                lblFoto.setText("");
+                            } else {
+                                lblFoto.setIcon(null);
+                                lblFoto.setText("No se pudo cargar la imagen.");
+                            }
+                        } catch (IOException ex) {
                             lblFoto.setIcon(null);
-                            lblFoto.setText("No se pudo cargar la imagen.");
+                            lblFoto.setText("Error al cargar la imagen.");
                         }
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
+                    } else {
                         lblFoto.setIcon(null);
-                        lblFoto.setText("Error al cargar la imagen.");
+                        lblFoto.setText("No hay imagen disponible.");
                     }
-                } else {
-                    lblFoto.setIcon(null);
-                    lblFoto.setText("No hay imagen disponible.");
                 }
+                txtBarcodeVenta.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese el código del producto");
             }
-            txtBarcodeVenta.setText("");
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrese el código del producto");
-        }
         }
         rowIndex = -1;
     }//GEN-LAST:event_txtBarcodeVentaKeyPressed
@@ -1453,37 +1353,34 @@ private void lista() {
         // TODO add your handling code here:
         FrameBusquedaProductos ventanaBusqueda = new FrameBusquedaProductos();
         ventanaBusqueda.cargarProductos(proDAO.listarProductos2());
-        ventanaBusqueda.setProductoSeleccionadoListener(new FrameBusquedaProductos.ProductoSeleccionadoListener() {
-            @Override
-            public void productoSeleccionado(String codigo) {
-                // Lógica para agregar el producto seleccionado a la tabla de ventas
-                int rowIndex = -1;
-                for (int i = 0; i < tmp.getRowCount(); i++) {
-                    if (tmp.getValueAt(i, 0).equals(codigo)) {
-                        rowIndex = i;
-                        break;
-                    }
+        ventanaBusqueda.setProductoSeleccionadoListener((String codigo) -> {
+            // Lógica para agregar el producto seleccionado a la tabla de ventas
+            int rowIndex1 = -1;
+            for (int i = 0; i < tmp.getRowCount(); i++) {
+                if (tmp.getValueAt(i, 0).equals(codigo)) {
+                    rowIndex1 = i;
+                    break;
                 }
-
-                if (rowIndex != -1) {
-                    double cantidad = (Double) tmp.getValueAt(rowIndex, 4) + 1.0;
-                    double precio = Double.parseDouble(table1Venta.getValueAt(selectedRow, 2).toString());
-                    tmp.setValueAt(cantidad, rowIndex, 4);
-                    tmp.setValueAt(cantidad * precio, rowIndex, 5);
-                } else {
-                    buscarProducto(codigo);
-                    byte[] imagenBytes = pro.getImagen();
-                    if (imagenBytes != null) {
-                        try {
-                            // Convierte el arreglo de bytes en una imagen
-                            ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenBytes);
-                            BufferedImage bufferedImage = ImageIO.read(inputStream);
-
-                            if (bufferedImage != null) {
-                                // Escala la imagen al tamaño de jLabel_foto
-                                ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
+            }
+            if (rowIndex1 != -1) {
+                double cantidad = (Double) tmp.getValueAt(rowIndex1, 4) + 1.0;
+                double precio = Double.parseDouble(table1Venta.getValueAt(selectedRow, 2).toString());
+                tmp.setValueAt(cantidad, rowIndex1, 4);
+                tmp.setValueAt(cantidad * precio, rowIndex1, 5);
+            } else {
+                buscarProducto(codigo);
+                byte[] imagenBytes = pro.getImagen();
+                if (imagenBytes != null) {
+                    try {
+                        // Convierte el arreglo de bytes en una imagen
+                        ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenBytes);
+                        BufferedImage bufferedImage = ImageIO.read(inputStream);
+                        
+                        if (bufferedImage != null) {
+                            // Escala la imagen al tamaño de jLabel_foto
+                            ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
                                     lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
-
+                            
                             lblFoto.setIcon(nuevaIcono);
                             lblFoto.setText("");
                         } else {
@@ -1501,7 +1398,6 @@ private void lista() {
                 }
             }
             ventanaBusqueda.dispose(); // Cierra la ventana de búsqueda
-        }
         });
         ventanaBusqueda.setVisible(true);
     }//GEN-LAST:event_btnBuscarVentaActionPerformed
@@ -1534,16 +1430,12 @@ private void lista() {
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         // TODO add your handling code here:
-       if(fventas == null){
-           this.fventas = new FrameVentas(fmenu, this);
-       }
+        if (fventas == null) {
+            this.fventas = new FrameVentas(fmenu, this);
+        }
         fventas.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVentaActionPerformed
-
-    private void txtApellidoMClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoMClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidoMClienteActionPerformed
 
     private void boxClienteVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxClienteVentaActionPerformed
         // TODO add your handling code here:
@@ -1552,7 +1444,7 @@ private void lista() {
     /**
      * @param args the command line arguments
      */
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxClienteVenta;
     private javax.swing.JComboBox<String> boxVendedorVenta;

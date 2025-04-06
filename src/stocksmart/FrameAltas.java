@@ -18,7 +18,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +29,7 @@ import static stocksmart.FontLoader.customFont;
 import static stocksmart.FontLoader.customFontBold;
 import static stocksmart.FontLoader.customFontBold2;
 
-public class FrameAltas extends javax.swing.JFrame {
+public final class FrameAltas extends javax.swing.JFrame {
 
     private List<productos> productosDisponibles = new ArrayList<>();
     private List<productos> productosSeleccionados = new ArrayList<>();
@@ -51,32 +50,29 @@ public class FrameAltas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         lista();
         ListarProductos();
-        btnInsertar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedViewRow = table1.getSelectedRow();
-                if (selectedViewRow >= 0) {
-                    // Obtén el modelo de la primera tabla
-                    DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
-
-                    // Obtén el modelo de la segunda tabla
-                    DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
-
-                    // Obtén el índice del modelo utilizando la vista seleccionada de la primera tabla
-                    int selectedModelRow = table1.convertRowIndexToModel(selectedViewRow);
-
-                    // Obtén los datos de la fila seleccionada de la primera tabla
-                    Object[] rowData = new Object[model1.getColumnCount()];
-                    for (int i = 0; i < model1.getColumnCount(); i++) {
-                        rowData[i] = model1.getValueAt(selectedModelRow, i);
-                    }
-
-                    // Añade una nueva fila a la segunda tabla utilizando los datos obtenidos
-                    model2.addRow(rowData);
-
-                    // Elimina la fila de la primera tabla utilizando el índice del modelo
-                    model1.removeRow(selectedModelRow);
+        btnInsertar.addActionListener((ActionEvent e) -> {
+            int selectedViewRow = table1.getSelectedRow();
+            if (selectedViewRow >= 0) {
+                // Obtén el modelo de la primera tabla
+                DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
+                
+                // Obtén el modelo de la segunda tabla
+                DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
+                
+                // Obtén el índice del modelo utilizando la vista seleccionada de la primera tabla
+                int selectedModelRow = table1.convertRowIndexToModel(selectedViewRow);
+                
+                // Obtén los datos de la fila seleccionada de la primera tabla
+                Object[] rowData = new Object[model1.getColumnCount()];
+                for (int i = 0; i < model1.getColumnCount(); i++) {
+                    rowData[i] = model1.getValueAt(selectedModelRow, i);
                 }
+                
+                // Añade una nueva fila a la segunda tabla utilizando los datos obtenidos
+                model2.addRow(rowData);
+                
+                // Elimina la fila de la primera tabla utilizando el índice del modelo
+                model1.removeRow(selectedModelRow);
             }
         });
 
@@ -133,58 +129,55 @@ public class FrameAltas extends javax.swing.JFrame {
                 // Not used for plain text fields
             }
         });
-        btnAgregar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Verificar si la tabla2 está vacía
-                if (table2.getRowCount() == 0) {
-                    JOptionPane.showMessageDialog(null, "La tabla está vacía. Agrega productos antes de realizar esta acción.");
-                    return;  // Sale del método actionPerformed si la tabla2 está vacía
-                }
-
-                // Itera a través de la tabla2 para obtener los códigos y cantidades
-                for (int i = 0; i < table2.getRowCount(); i++) {
-                    String codigo = table2.getValueAt(i, 0).toString();
-                    System.out.println(codigo);
-                    System.out.println(codigo);
-                    int cantidad = Integer.parseInt(table2.getValueAt(i, 4).toString());
-                    Double cant = Double.valueOf(table2.getValueAt(i, 4).toString());
-                    for (productos producto : productosSeleccionados) {
-                        if (codigo == null ? producto.getCodigo() == null : codigo.equals(producto.getCodigo())) {
-                            Unidad formatoEncontrado = null;
-
-                            for (Unidad unidad : listaUnidades) {
-                                if (unidad.getUnidad().equals(producto.getUnidadC())) {
-                                    formatoEncontrado = unidad;
-                                    break;
-                                }
-                            }
-
-                            cantidad = (int) (cantidad * formatoEncontrado.getFormato());
-
-                            inventario = producto.getExistencia();
-                        }
-                    }
-
-                    // Llama al nuevo método para actualizar la cantidad en la base de datos
-                    if (p.actualizarCantidadProducto(codigo, cantidad)) {
-
-                        movimiento mo = new movimiento("Alta", fechaActual, cant, codigo, inventario);
-                        m.agregarMovimiento(mo);
-                        JOptionPane.showMessageDialog(null, "Productos actualizados correctamente.");
-                    } else {
-                        // Maneja el error si la actualización falló
-                        JOptionPane.showMessageDialog(null, "Error al actualizar la cantidad del producto.");
-                    }
-                }
-
-                // Después de actualizar la base de datos, puedes limpiar la tabla2 si es necesario
-                DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
-                model2.setRowCount(0);
-
-                // También puedes recargar los productos disponibles en la tabla original
-                ListarProductos();
+        btnAgregar.addActionListener((ActionEvent e) -> {
+            // Verificar si la tabla2 está vacía
+            if (table2.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(null, "La tabla está vacía. Agrega productos antes de realizar esta acción.");
+                return;  // Sale del método actionPerformed si la tabla2 está vacía
             }
+            
+            // Itera a través de la tabla2 para obtener los códigos y cantidades
+            for (int i = 0; i < table2.getRowCount(); i++) {
+                String codigo = table2.getValueAt(i, 0).toString();
+                System.out.println(codigo);
+                System.out.println(codigo);
+                int cantidad = Integer.parseInt(table2.getValueAt(i, 4).toString());
+                Double cant = Double.valueOf(table2.getValueAt(i, 4).toString());
+                for (productos producto : productosSeleccionados) {
+                    if (codigo == null ? producto.getCodigo() == null : codigo.equals(producto.getCodigo())) {
+                        Unidad formatoEncontrado = null;
+                        
+                        for (Unidad unidad : listaUnidades) {
+                            if (unidad.getUnidad().equals(producto.getUnidadC())) {
+                                formatoEncontrado = unidad;
+                                break;
+                            }
+                        }
+                        
+                        cantidad = (int) (cantidad * formatoEncontrado.getFormato());
+                        
+                        inventario = producto.getExistencia();
+                    }
+                }
+                
+                // Llama al nuevo método para actualizar la cantidad en la base de datos
+                if (p.actualizarCantidadProducto(codigo, cantidad)) {
+                    
+                    movimiento mo = new movimiento("Alta", fechaActual, cant, codigo, inventario);
+                    m.agregarMovimiento(mo);
+                    JOptionPane.showMessageDialog(null, "Productos actualizados correctamente.");
+                } else {
+                    // Maneja el error si la actualización falló
+                    JOptionPane.showMessageDialog(null, "Error al actualizar la cantidad del producto.");
+                }
+            }
+            
+            // Después de actualizar la base de datos, puedes limpiar la tabla2 si es necesario
+            DefaultTableModel model2 = (DefaultTableModel) table2.getModel();
+            model2.setRowCount(0);
+            
+            // También puedes recargar los productos disponibles en la tabla original
+            ListarProductos();
         });
 
     }
