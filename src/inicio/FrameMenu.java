@@ -9,6 +9,7 @@ import stocksmart.FrameAltas;
 import stocksmart.FrameCategoria;
 import stocksmart.FrameClientes;
 import stocksmart.FrameDevoluciones;
+import stocksmart.FrameGestionPedidos;
 import stocksmart.FrameMovimientos;
 import stocksmart.FramePedidos;
 import stocksmart.FrameProductos;
@@ -38,7 +39,8 @@ public class FrameMenu extends javax.swing.JFrame {
     FrameUnidades funidades = null;
     FrameSubproductos fsubproductos = null;
     FrameCategoria fcategorias = null;
-    FrameReporteDevoluciones freportedvc;
+    FrameReporteDevoluciones freportedvc=null;
+    FrameGestionPedidos fgpedidos=null;
 
     Font customFontBold = FontLoader.customFontBold;
     Font customFontBold3 = FontLoader.customFontBold3;
@@ -207,7 +209,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonReportePedidos.setFont(customFontBold3);
         botonReportePedidos.setForeground(new java.awt.Color(255, 255, 255));
         botonReportePedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporteVentasPedidos24.png"))); // NOI18N
-        botonReportePedidos.setText("Reporte Pedidos");
+        botonReportePedidos.setText("Gestion Pedidos");
         botonReportePedidos.setBorder(null);
         botonReportePedidos.setBorderPainted(false);
         botonReportePedidos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -531,17 +533,11 @@ public class FrameMenu extends javax.swing.JFrame {
 
     private void botonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientesActionPerformed
         // TODO add your handling code here:
-        try {
-
-            if (this.fclientes == null) {
-                this.fclientes = new FrameClientes(this);
-            }
-            this.fclientes.setVisible(true);
-
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        if (this.fclientes == null) {
+            this.fclientes = new FrameClientes(this);
         }
+        this.fclientes.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonClientesActionPerformed
 
     private void botonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductosActionPerformed
@@ -573,16 +569,12 @@ public class FrameMenu extends javax.swing.JFrame {
 
     private void botonReportePedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportePedidosActionPerformed
         // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            if (this.freportepedidos == null) {
-                this.freportepedidos = new FrameReportePedidos(this);
-            }
-            this.freportepedidos.setVisible(true);
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+         if (this.fgpedidos == null) {
+            this.fgpedidos = new FrameGestionPedidos(this);
         }
+        this.fgpedidos.setVisible(true);
+        this.setVisible(false);
+       
     }//GEN-LAST:event_botonReportePedidosActionPerformed
 
     private void botonReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReporteVentasActionPerformed

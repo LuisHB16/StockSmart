@@ -19,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import static stocksmart.FontLoader.customFont;
 import static stocksmart.FontLoader.customFontBold;
@@ -28,8 +27,8 @@ import static stocksmart.FontLoader.customFontBold2;
 public final class FrameUnidades extends javax.swing.JFrame {
 
     FrameMenu fmenu = null;
-    Unidadd tr = new Unidadd();
-    private List<Unidad> listaProveedores = new ArrayList<>();
+    Unidadd unidad = new Unidadd();
+    private List<Unidad> listaUnidades = new ArrayList<>();
 
     /**
      * Creates new form StockSmartFrameVentas
@@ -76,7 +75,7 @@ public final class FrameUnidades extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
         model.setRowCount(0);
 
-        for (Unidad proveedor : listaProveedores) {
+        for (Unidad proveedor : listaUnidades) {
             String marca = proveedor.getUnidad().toLowerCase();
 
             // Check if the brand contains the filter text
@@ -96,14 +95,14 @@ public final class FrameUnidades extends javax.swing.JFrame {
     }
 
     public void ListarUnidades() {
-        listaProveedores = tr.listarUnidades();
+        listaUnidades = unidad.listarUnidades();
         DefaultTableModel modelo = (DefaultTableModel) table1.getModel();
 
-        for (int i = 0; i < listaProveedores.size(); i++) {
-            if (!listaProveedores.get(i).getUnidad().equals(".")) {
+        for (int i = 0; i < listaUnidades.size(); i++) {
+            if (!listaUnidades.get(i).getUnidad().equals(".")) {
                 Object[] ob = new Object[2];
-                ob[0] = listaProveedores.get(i).getUnidad();
-                ob[1] = listaProveedores.get(i).getFormato();
+                ob[0] = listaUnidades.get(i).getUnidad();
+                ob[1] = listaUnidades.get(i).getFormato();
                 modelo.addRow(ob);
             }
         }
@@ -367,7 +366,7 @@ public final class FrameUnidades extends javax.swing.JFrame {
             if (selectedRow != -1) {
                 String unidad = (String) table1.getValueAt(selectedRow, 0);
 
-                if (tr.eliminarUnidad(unidad)) {
+                if (this.unidad.eliminarUnidad(unidad)) {
                     JOptionPane.showMessageDialog(null, "Unidad eliminada con éxito.");
                     LimpiarTable();
                     ListarUnidades();
@@ -416,7 +415,7 @@ public final class FrameUnidades extends javax.swing.JFrame {
                         Unidad unidadActualizada = new Unidad(nuevaUnidad, nuevoFormato);
                         unidadActualizada.setUnidad(nuevaUnidad);
                         unidadActualizada.setFormato(nuevoFormato);
-                        tr.actualizarUnidad(unidadAnterior, unidadActualizada);
+                        unidad.actualizarUnidad(unidadAnterior, unidadActualizada);
                         LimpiarTable();
                         ListarUnidades();
                         JOptionPane.showMessageDialog(null, "Unidad actualizada:\nUnidad: " + nuevaUnidad + "\nFormato: " + nuevoFormato);
