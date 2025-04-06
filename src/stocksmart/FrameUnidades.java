@@ -124,9 +124,9 @@ public class FrameUnidades extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelLogin1 = new javax.swing.JPanel();
+        pnlFrame = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
-        panelLogin2 = new javax.swing.JPanel();
+        pnlUnidades = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblUnidad = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -176,7 +176,7 @@ public class FrameUnidades extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        panelLogin1.setBackground(new java.awt.Color(50, 130, 233));
+        pnlFrame.setBackground(new java.awt.Color(50, 130, 233));
 
         stockSmartLoginLabel.setBackground(new java.awt.Color(255, 255, 255));
         stockSmartLoginLabel.setFont(customFontBold);
@@ -184,7 +184,7 @@ public class FrameUnidades extends javax.swing.JFrame {
         stockSmartLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stockSmartLoginLabel.setText("StockSmart");
 
-        panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
+        pnlUnidades.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
@@ -244,13 +244,13 @@ public class FrameUnidades extends javax.swing.JFrame {
         table1.getTableHeader().setReorderingAllowed(false);
         scrollTable1.setViewportView(table1);
 
-        javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
-        panelLogin2.setLayout(panelLogin2Layout);
-        panelLogin2Layout.setHorizontalGroup(
-            panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlUnidadesLayout = new javax.swing.GroupLayout(pnlUnidades);
+        pnlUnidades.setLayout(pnlUnidadesLayout);
+        pnlUnidadesLayout.setHorizontalGroup(
+            pnlUnidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUnidadesLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlUnidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
@@ -260,26 +260,26 @@ public class FrameUnidades extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(137, 137, 137))
-            .addGroup(panelLogin2Layout.createSequentialGroup()
+            .addGroup(pnlUnidadesLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 1115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelLogin2Layout.createSequentialGroup()
+            .addGroup(pnlUnidadesLayout.createSequentialGroup()
                 .addGap(530, 530, 530)
                 .addComponent(lblTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelLogin2Layout.setVerticalGroup(
-            panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
+        pnlUnidadesLayout.setVerticalGroup(
+            pnlUnidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUnidadesLayout.createSequentialGroup()
                 .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(lblTitulo)
                 .addGap(18, 18, 18)
                 .addComponent(lblUnidad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlUnidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
-                    .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(pnlUnidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -310,33 +310,33 @@ public class FrameUnidades extends javax.swing.JFrame {
         btnMenuBack.add(lblMenu);
         lblMenu.setBounds(10, 0, 230, 50);
 
-        javax.swing.GroupLayout panelLogin1Layout = new javax.swing.GroupLayout(panelLogin1);
-        panelLogin1.setLayout(panelLogin1Layout);
-        panelLogin1Layout.setHorizontalGroup(
-            panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlFrameLayout = new javax.swing.GroupLayout(pnlFrame);
+        pnlFrame.setLayout(pnlFrameLayout);
+        pnlFrameLayout.setHorizontalGroup(
+            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addComponent(logoLoginIcon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnMenuBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        panelLogin1Layout.setVerticalGroup(
-            panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin1Layout.createSequentialGroup()
-                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnlFrameLayout.setVerticalGroup(
+            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFrameLayout.createSequentialGroup()
+                .addComponent(pnlUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelLogin1Layout.createSequentialGroup()
-                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+            .addGroup(pnlFrameLayout.createSequentialGroup()
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(logoLoginIcon))
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -352,12 +352,12 @@ public class FrameUnidades extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 1472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 1472, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -497,8 +497,8 @@ public class FrameUnidades extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUnidad;
     private javax.swing.JLabel logoLoginIcon;
-    private javax.swing.JPanel panelLogin1;
-    private javax.swing.JPanel panelLogin2;
+    private javax.swing.JPanel pnlFrame;
+    private javax.swing.JPanel pnlUnidades;
     private javax.swing.JScrollPane scrollTable1;
     private javax.swing.JLabel stockSmartLoginLabel;
     private javax.swing.JTable table1;

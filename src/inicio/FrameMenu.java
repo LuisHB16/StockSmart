@@ -548,17 +548,11 @@ public class FrameMenu extends javax.swing.JFrame {
 
     private void botonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductosActionPerformed
         // TODO add your handling code here:
-        try {
-
-            if (this.fproductos == null) {
-                this.fproductos = new FrameProductos(this);
-            }
-            this.fproductos.setVisible(true);
-
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        if (this.fproductos == null) {
+            this.fproductos = new FrameProductos(this);
         }
+        this.fproductos.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonProductosActionPerformed
 
     private void botonProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedoresActionPerformed

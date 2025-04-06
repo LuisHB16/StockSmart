@@ -25,19 +25,19 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="panelLogin1" min="-2" pref="1472" max="-2" attributes="0"/>
+              <Component id="pnlFrame" min="-2" pref="1472" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelLogin1" alignment="0" max="32767" attributes="0"/>
+          <Component id="pnlFrame" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="panelLogin1">
+    <Container class="javax.swing.JPanel" name="pnlFrame">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -58,7 +58,7 @@
                       <Component id="btnMenuBack" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="panelLogin2" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlTrabajadores" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -66,7 +66,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="panelLogin2" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlTrabajadores" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
@@ -103,7 +103,7 @@
             <Property name="text" type="java.lang.String" value="StockSmart"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="panelLogin2">
+        <Container class="javax.swing.JPanel" name="pnlTrabajadores">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

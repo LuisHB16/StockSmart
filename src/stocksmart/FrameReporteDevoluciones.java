@@ -151,7 +151,7 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
 
         pnlFrame = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
-        pnlMovimientos = new javax.swing.JPanel();
+        pnlReporteDevoluciones = new javax.swing.JPanel();
         lblFechaInicio = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         lblVendedor = new javax.swing.JLabel();
@@ -212,9 +212,9 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
         stockSmartLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stockSmartLoginLabel.setText("StockSmart");
 
-        pnlMovimientos.setBackground(new java.awt.Color(255, 255, 255));
-        pnlMovimientos.setName(""); // NOI18N
-        pnlMovimientos.setPreferredSize(new java.awt.Dimension(1675, 1000));
+        pnlReporteDevoluciones.setBackground(new java.awt.Color(255, 255, 255));
+        pnlReporteDevoluciones.setName(""); // NOI18N
+        pnlReporteDevoluciones.setPreferredSize(new java.awt.Dimension(1675, 1000));
 
         lblFechaInicio.setFont(customFontBold2);
         lblFechaInicio.setText("Fecha de inicio");
@@ -269,48 +269,48 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
         table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table);
 
-        javax.swing.GroupLayout pnlMovimientosLayout = new javax.swing.GroupLayout(pnlMovimientos);
-        pnlMovimientos.setLayout(pnlMovimientosLayout);
-        pnlMovimientosLayout.setHorizontalGroup(
-            pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMovimientosLayout.createSequentialGroup()
-                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlReporteDevolucionesLayout = new javax.swing.GroupLayout(pnlReporteDevoluciones);
+        pnlReporteDevoluciones.setLayout(pnlReporteDevolucionesLayout);
+        pnlReporteDevolucionesLayout.setHorizontalGroup(
+            pnlReporteDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReporteDevolucionesLayout.createSequentialGroup()
+                .addGroup(pnlReporteDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMovimientosLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlReporteDevolucionesLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(btnGenerarPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                        .addGroup(pnlReporteDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                                 .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnlReporteDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblFechaInicio)
                                     .addComponent(fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                                     .addComponent(fechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblFechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                            .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                                 .addGap(188, 188, 188)
                                 .addComponent(checkBoxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                                .addGroup(pnlReporteDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                                         .addComponent(lblVendedor)
                                         .addGap(474, 474, 474))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMovimientosLayout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlReporteDevolucionesLayout.createSequentialGroup()
                                         .addComponent(boxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(327, 327, 327)))
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)))))
                 .addGap(43, 43, 43))
         );
-        pnlMovimientosLayout.setVerticalGroup(
-            pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMovimientosLayout.createSequentialGroup()
+        pnlReporteDevolucionesLayout.setVerticalGroup(
+            pnlReporteDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                .addGroup(pnlReporteDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                         .addComponent(lblFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,17 +320,17 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
                         .addComponent(fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                    .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                         .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                        .addGroup(pnlReporteDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                                 .addComponent(lblVendedor)
-                                .addGroup(pnlMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                                .addGroup(pnlReporteDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                                         .addGap(24, 24, 24)
                                         .addComponent(checkBoxVendedor))
-                                    .addGroup(pnlMovimientosLayout.createSequentialGroup()
+                                    .addGroup(pnlReporteDevolucionesLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addComponent(boxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(btnGenerarPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -372,7 +372,7 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnMenuBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlReporteDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         pnlFrameLayout.setVerticalGroup(
@@ -389,7 +389,7 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
                                 .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnMenuBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlReporteDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
 
@@ -438,7 +438,7 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
     private javax.swing.JLabel lblVendedor;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel pnlFrame;
-    private javax.swing.JPanel pnlMovimientos;
+    private javax.swing.JPanel pnlReporteDevoluciones;
     private javax.swing.JLabel stockSmartLoginLabel;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables

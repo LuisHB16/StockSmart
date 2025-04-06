@@ -214,9 +214,9 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelLogin1 = new javax.swing.JPanel();
+        pnlFrame = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
-        panelLogin2 = new javax.swing.JPanel();
+        pnlSubproductos = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -267,7 +267,7 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        panelLogin1.setBackground(new java.awt.Color(50, 130, 233));
+        pnlFrame.setBackground(new java.awt.Color(50, 130, 233));
 
         stockSmartLoginLabel.setBackground(new java.awt.Color(255, 255, 255));
         stockSmartLoginLabel.setFont(customFontBold);
@@ -275,7 +275,7 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
         stockSmartLoginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stockSmartLoginLabel.setText("StockSmart");
 
-        panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSubproductos.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
@@ -348,14 +348,14 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
         table1.getTableHeader().setReorderingAllowed(false);
         scrollTable1.setViewportView(table1);
 
-        javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
-        panelLogin2.setLayout(panelLogin2Layout);
-        panelLogin2Layout.setHorizontalGroup(
-            panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlSubproductosLayout = new javax.swing.GroupLayout(pnlSubproductos);
+        pnlSubproductos.setLayout(pnlSubproductosLayout);
+        pnlSubproductosLayout.setHorizontalGroup(
+            pnlSubproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSubproductosLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
+                .addGroup(pnlSubproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSubproductosLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(btnAgregar)
@@ -364,40 +364,39 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
                         .addGap(18, 18, 18)
                         .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(125, 125, 125))
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSubproductosLayout.createSequentialGroup()
+                        .addGroup(pnlSubproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelLogin2Layout.createSequentialGroup()
+                            .addGroup(pnlSubproductosLayout.createSequentialGroup()
                                 .addGap(463, 463, 463)
                                 .addComponent(lblTitulo)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(150, 150, 150))))
-            .addGroup(panelLogin2Layout.createSequentialGroup()
+            .addGroup(pnlSubproductosLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 1162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        panelLogin2Layout.setVerticalGroup(
-            panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin2Layout.createSequentialGroup()
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
+        pnlSubproductosLayout.setVerticalGroup(
+            pnlSubproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSubproductosLayout.createSequentialGroup()
+                .addGroup(pnlSubproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSubproductosLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblTitulo)
                         .addGap(18, 18, 18)
                         .addComponent(lblNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
+                    .addGroup(pnlSubproductosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)))
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlSubproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
-                    .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62))
@@ -425,33 +424,33 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
         btnMenuBack.add(lblMenu);
         lblMenu.setBounds(10, 0, 230, 50);
 
-        javax.swing.GroupLayout panelLogin1Layout = new javax.swing.GroupLayout(panelLogin1);
-        panelLogin1.setLayout(panelLogin1Layout);
-        panelLogin1Layout.setHorizontalGroup(
-            panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlFrameLayout = new javax.swing.GroupLayout(pnlFrame);
+        pnlFrame.setLayout(pnlFrameLayout);
+        pnlFrameLayout.setHorizontalGroup(
+            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addComponent(logoLoginIcon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnMenuBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlSubproductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        panelLogin1Layout.setVerticalGroup(
-            panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLogin1Layout.createSequentialGroup()
-                .addComponent(panelLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnlFrameLayout.setVerticalGroup(
+            pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFrameLayout.createSequentialGroup()
+                .addComponent(pnlSubproductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelLogin1Layout.createSequentialGroup()
-                .addGroup(panelLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+            .addGroup(pnlFrameLayout.createSequentialGroup()
+                .addGroup(pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(logoLoginIcon))
-                    .addGroup(panelLogin1Layout.createSequentialGroup()
+                    .addGroup(pnlFrameLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -467,12 +466,12 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 1472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 1472, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1158,8 +1157,8 @@ private subproductos obtenerProductoPorCodigo(String codigo) {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logoLoginIcon;
-    private javax.swing.JPanel panelLogin1;
-    private javax.swing.JPanel panelLogin2;
+    private javax.swing.JPanel pnlFrame;
+    private javax.swing.JPanel pnlSubproductos;
     private javax.swing.JScrollPane scrollTable1;
     private javax.swing.JLabel stockSmartLoginLabel;
     private javax.swing.JTable table1;

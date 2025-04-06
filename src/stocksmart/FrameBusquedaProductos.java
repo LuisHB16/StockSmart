@@ -150,7 +150,7 @@ public class FrameBusquedaProductos extends JFrame {
 
         lblNombre = new javax.swing.JLabel();
         boxNombre = new javax.swing.JCheckBox();
-        jPanel1 = new javax.swing.JPanel();
+        pnlBusquedaProductos = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         scrollTable1 = new javax.swing.JScrollPane();
@@ -168,14 +168,14 @@ public class FrameBusquedaProductos extends JFrame {
         getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 120, 20));
         getContentPane().add(boxNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlBusquedaProductos.setBackground(new java.awt.Color(255, 255, 255));
+        pnlBusquedaProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Busqueda Productos");
-        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        pnlBusquedaProductos.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
 
         btnAgregar.setBackground(new java.awt.Color(50, 130, 233));
         btnAgregar.setFont(customFontBold2);
@@ -186,7 +186,7 @@ public class FrameBusquedaProductos extends JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 490, 90, 40));
+        pnlBusquedaProductos.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 490, 90, 40));
 
         Table1.setFont(customFontBold2);
         Table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -217,22 +217,22 @@ public class FrameBusquedaProductos extends JFrame {
         }
         Table1.getAccessibleContext().setAccessibleName("");
 
-        jPanel1.add(scrollTable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 770, 300));
-        jPanel1.add(boxCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        pnlBusquedaProductos.add(scrollTable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 770, 300));
+        pnlBusquedaProductos.add(boxCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         lblCodigo.setFont(customFontBold2);
         lblCodigo.setText("Codigo:");
-        jPanel1.add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 120, 20));
+        pnlBusquedaProductos.add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 120, 20));
 
         txtCodigo.setFont(customFontBold2);
         txtCodigo.setEnabled(false);
-        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 450, -1));
+        pnlBusquedaProductos.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 450, -1));
 
         txtNombre.setFont(customFontBold2);
         txtNombre.setEnabled(false);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 450, -1));
+        pnlBusquedaProductos.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 450, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 550));
+        getContentPane().add(pnlBusquedaProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -298,10 +298,10 @@ public class FrameBusquedaProductos extends JFrame {
     private javax.swing.JCheckBox boxCodigo;
     private javax.swing.JCheckBox boxNombre;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlBusquedaProductos;
     private javax.swing.JScrollPane scrollTable1;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
