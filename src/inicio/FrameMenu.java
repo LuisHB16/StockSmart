@@ -15,6 +15,7 @@ import stocksmart.FrameMovimientos;
 import stocksmart.FramePedidos;
 import stocksmart.FrameProductos;
 import stocksmart.FrameProveedores;
+import stocksmart.FrameReporteDevoluciones;
 import stocksmart.FrameReportePedidos;
 import stocksmart.FrameReporteVentas;
 import stocksmart.FrameSubproductos;
@@ -39,6 +40,7 @@ public class FrameMenu extends javax.swing.JFrame {
     FrameUnidades funidades = null;
     FrameSubproductos fsubproductos = null;
     FrameCategoria fcategorias = null;
+    FrameReporteDevoluciones freportedvc;
 
     Font customFontBold = FontLoader.customFontBold;
     Font customFontBold3 = FontLoader.customFontBold3;
@@ -626,17 +628,18 @@ public class FrameMenu extends javax.swing.JFrame {
 
     private void botonRDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRDevolucionesActionPerformed
         // TODO add your handling code here:
+        if (this.freportedvc == null) {
+            this.freportedvc = new FrameReporteDevoluciones(this);
+        }
+        this.freportedvc.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_botonRDevolucionesActionPerformed
 
     private void botonUnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnidadesActionPerformed
         // TODO add your handling code here:
         if (this.funidades == null) {
-            try {
-                this.funidades = new FrameUnidades(this);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.funidades = new FrameUnidades(this);
         }
         this.funidades.setVisible(true);
         this.setVisible(false);
@@ -645,11 +648,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void botonSubproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSubproductosActionPerformed
         // TODO add your handling code here:
         if (this.fsubproductos == null) {
-            try {
-                this.fsubproductos = new FrameSubproductos(this);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.fsubproductos = new FrameSubproductos(this);
         }
         this.fsubproductos.setVisible(true);
         this.setVisible(false);

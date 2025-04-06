@@ -2,46 +2,117 @@ package stocksmart;
 
 import inicio.FrameMenu;
 import assests.icons.clases.PlusIcon;
+import codigo.Unidad;
+import codigo.Unidadd;
+import codigo.trabajadores;
+import codigo.trabajadoresd;
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.RenderingHints;
-import java.sql.SQLException;
-import javax.swing.BorderFactory;
+import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import stocksmart.registros.FrameRegistroClientes;
+import static stocksmart.FontLoader.customFont;
+import static stocksmart.FontLoader.customFontBold;
+import static stocksmart.FontLoader.customFontBold2;
 
 public class FrameUnidades extends javax.swing.JFrame {
 
-    ConnectionDB connectionDB = null;
     FrameMenu fmenu = null;
-    FrameRegistroClientes fregistroClientes = null;
-    Font customFont = FontLoader.customFont;
-    Font customFontBold = FontLoader.customFontBold;
-    Font customFontBold2 = FontLoader.customFontBold2;
+    Unidadd tr = new Unidadd();
+    private List<Unidad> listaProveedores = new ArrayList<>();
 
     /**
      * Creates new form StockSmartFrameVentas
      */
-    public FrameUnidades(FrameMenu menu) throws SQLException {
+    public FrameUnidades(FrameMenu menu) {
 
         initComponents();
         this.fmenu = menu;
-        connectionDB();
+
+        this.setLocationRelativeTo(null);
+         ListarUnidades();
+
+        table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    if (table1.getSelectedRow() != -1) {
+                        btnBorrar.setEnabled(true);
+                    } else {
+                        btnBorrar.setEnabled(false);
+                    }
+                }
+            }
+        });
+                   txtUnidad.getDocument().addDocumentListener(new DocumentListener() {
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            filtrarTabla();
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            filtrarTabla();
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            filtrarTabla();
+        }
+    });
+
+    }
+    
+    private void filtrarTabla() {
+    String filtroMarca = txtUnidad.getText().toLowerCase();
+    DefaultTableModel model = (DefaultTableModel) table1.getModel();
+    model.setRowCount(0);
+
+    for (Unidad proveedor : listaProveedores) {
+        String marca = proveedor.getUnidad().toLowerCase();
+
+        // Check if the brand contains the filter text
+        if (marca.contains(filtroMarca)) {
+            Object[] ob = new Object[2];
+            ob[0] = proveedor.getUnidad();
+            ob[1] = proveedor.getFormato();
+         
+            model.addRow(ob);
+        }
+    }
+}
+
+    public void LimpiarTable() {
+        DefaultTableModel model = (DefaultTableModel) table1.getModel();
+        model.setRowCount(0);
+    }
+
+    public void ListarUnidades() {
+        listaProveedores = tr.listarUnidades();
+        DefaultTableModel modelo = (DefaultTableModel) table1.getModel();
+
+        for (int i = 0; i < listaProveedores.size(); i++) {
+            if (!listaProveedores.get(i).getUnidad().equals(".")) {
+                Object[] ob = new Object[2];
+                ob[0] = listaProveedores.get(i).getUnidad();
+                ob[1] = listaProveedores.get(i).getFormato();
+                modelo.addRow(ob);
+            }
+        }
+        table1.setModel(modelo);
     }
 
     /**
@@ -56,16 +127,15 @@ public class FrameUnidades extends javax.swing.JFrame {
         panelLogin1 = new javax.swing.JPanel();
         stockSmartLoginLabel = new javax.swing.JLabel();
         panelLogin2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaUnidades = new JTable();
         lblTitulo = new javax.swing.JLabel();
-        lblNombreUnidad = new javax.swing.JLabel();
+        lblUnidad = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtNombre = new javax.swing.JTextPane();
-        btnAgregarUnidad = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        txtUnidad = new javax.swing.JTextPane();
+        btnAgregar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        scrollTable1 = new javax.swing.JScrollPane();
+        table1 = new javax.swing.JTable();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -116,61 +186,39 @@ public class FrameUnidades extends javax.swing.JFrame {
 
         panelLogin2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tablaUnidades.setAutoCreateRowSorter(true);
-        tablaUnidades.setFont(customFontBold2);
-        tablaUnidades.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {"Id_C", "Nombre", "Apellido_P", "Apellido_M", "Direccion", "Telefono"}
-
-        ));
-        tablaUnidades.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaUnidades);
-
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(50, 130, 233));
         lblTitulo.setText("Unidades");
 
-        lblNombreUnidad.setFont(customFontBold2);
-        lblNombreUnidad.setText("Nombre de la unidad:");
+        lblUnidad.setFont(customFontBold2);
+        lblUnidad.setText("Nombre de la Unidad");
 
-        jScrollPane2.setViewportView(txtNombre);
+        txtUnidad.setFont(customFontBold2);
+        jScrollPane2.setViewportView(txtUnidad);
 
-        btnAgregarUnidad.setBackground(new java.awt.Color(50, 130, 233));
-        btnAgregarUnidad.setFont(customFontBold2);
-        btnAgregarUnidad.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarUnidad.setText("Agregar unidad");
-        btnAgregarUnidad.setBorderPainted(false);
-        btnAgregarUnidad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAgregarUnidad.setIconTextGap(10);
-        btnAgregarUnidad.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setBackground(new java.awt.Color(50, 130, 233));
+        btnAgregar.setFont(customFontBold2);
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar ");
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAgregar.setIconTextGap(10);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarUnidadActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
-        btnBuscar.setFont(customFontBold2);
-        btnBuscar.setForeground(new java.awt.Color(50, 130, 233));
-        btnBuscar.setText("Buscar");
-        btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnBuscar.setIconTextGap(10);
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+        btnBorrar.setBackground(new java.awt.Color(50, 130, 233));
+        btnBorrar.setFont(customFontBold2);
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setText("Eliminar");
+        btnBorrar.setBorderPainted(false);
+        btnBorrar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBorrar.setIconTextGap(10);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
-        btnEliminar.setBackground(new java.awt.Color(50, 130, 233));
-        btnEliminar.setFont(customFontBold2);
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setBorderPainted(false);
-        btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnEliminar.setIconTextGap(10);
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnBorrarActionPerformed(evt);
             }
         });
 
@@ -185,31 +233,41 @@ public class FrameUnidades extends javax.swing.JFrame {
             }
         });
 
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Unidad", "Formato"
+            }
+        ));
+        table1.getTableHeader().setReorderingAllowed(false);
+        scrollTable1.setViewportView(table1);
+
         javax.swing.GroupLayout panelLogin2Layout = new javax.swing.GroupLayout(panelLogin2);
         panelLogin2.setLayout(panelLogin2Layout);
         panelLogin2Layout.setHorizontalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLogin2Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelLogin2Layout.createSequentialGroup()
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(panelLogin2Layout.createSequentialGroup()
-                            .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblNombreUnidad)
-                                .addGroup(panelLogin2Layout.createSequentialGroup()
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnBuscar)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblTitulo)
-                                .addComponent(btnAgregarUnidad)))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(btnAgregar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 528, Short.MAX_VALUE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(137, 137, 137))
+            .addGroup(panelLogin2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 1115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelLogin2Layout.createSequentialGroup()
+                .addGap(530, 530, 530)
+                .addComponent(lblTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLogin2Layout.setVerticalGroup(
             panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,23 +275,20 @@ public class FrameUnidades extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(lblTitulo)
                 .addGap(18, 18, 18)
-                .addComponent(lblNombreUnidad)
+                .addComponent(lblUnidad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+                    .addGroup(panelLogin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
-        btnAgregarUnidad.setIcon(new PlusIcon(18, 18, Color.WHITE));
-        btnAgregarUnidad.setIcon(new PlusIcon(18, 18, Color.WHITE));
+        btnAgregar.setIcon(new PlusIcon(18, 18, Color.WHITE));
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
@@ -243,12 +298,6 @@ public class FrameUnidades extends javax.swing.JFrame {
         btnMenuBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuBackMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuBackMouseExited(evt);
             }
         });
         btnMenuBack.setLayout(null);
@@ -302,7 +351,9 @@ public class FrameUnidades extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 1265, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 1472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,142 +363,145 @@ public class FrameUnidades extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void connectionDB() throws SQLException {
-        connectionDB = new ConnectionDB();
-        Connection connection = connectionDB.getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT Id_C, Nombre, Apellido_P, Apellido_M, Direccion, Telefono FROM clientes");
-        DefaultTableModel model = (DefaultTableModel) tablaUnidades.getModel();
-        model.setRowCount(0);
-        while (result.next()) {
-            int idVentas = result.getInt("Id_C");
 
-            String nombre = result.getString("Nombre");
-            String apellidoP = result.getString("Apellido_P");
-            String apellidoM = result.getString("Apellido_M");
-            String direccion = result.getString("Direccion");
-            String telefono = result.getString("Telefono");
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        // TODO add your handling code here:
+        int pregunta = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar la unidad?");
+        if (pregunta == 0) {
+            int selectedRow = table1.getSelectedRow();
+            if (selectedRow != -1) {
+                String unidad = (String) table1.getValueAt(selectedRow, 0);
 
-            model.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
+                if (tr.eliminarUnidad(unidad)) {
+                    JOptionPane.showMessageDialog(null, "Unidad eliminada con éxito.");
+                    LimpiarTable();
+                    ListarUnidades();
+                    btnBorrar.setEnabled(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar la unidad, ya se está utilizando en un producto..");
+                }
+            }
         }
-
-        result.close();
-        statement.close();
-        connection.close();
-
-    }
-
-    public void LimpiarTabla() {
-        DefaultTableModel model = (DefaultTableModel) tablaUnidades.getModel();
-        model.setRowCount(0);
-    }
-    
-    private void btnMenuBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseEntered
-        // TODO add your handlings code here:
-
-
-    }//GEN-LAST:event_btnMenuBackMouseEntered
-
-    private void btnMenuBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseExited
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnMenuBackMouseExited
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
+         int selectedRow = table1.getSelectedRow();
+
+        if (selectedRow != -1) {
+            // Obtener los valores actuales de la unidad seleccionada
+            String unidadAnterior = (String) table1.getValueAt(selectedRow, 0);
+            Double formatoAnterior = (Double) table1.getValueAt(selectedRow, 1);
+
+            // Crear un panel de edición similar al de agregar
+            String[] roles = {"unidad", "Formato"};
+            JTextField unidadField = new JTextField(20);
+            JTextField formatoField = new JTextField(20);
+
+            unidadField.setText(unidadAnterior);
+            formatoField.setText(formatoAnterior.toString());
+
+            JPanel panel = new JPanel();
+            panel.setLayout(new GridLayout(3, 2)); // Corregido aquí
+
+            panel.add(new JLabel("Unidad:"));
+            panel.add(unidadField);
+            panel.add(new JLabel("Formato:"));
+            panel.add(formatoField);
+
+            int result = JOptionPane.showConfirmDialog(null, panel, "Editar Unidad", JOptionPane.OK_CANCEL_OPTION);
+
+            if (result == JOptionPane.OK_OPTION) {
+                String nuevaUnidad = unidadField.getText();
+                String nuevoFormatoStr = formatoField.getText();
+
+                if (!nuevaUnidad.isEmpty() && !nuevoFormatoStr.isEmpty()) {
+                    try {
+                        double nuevoFormato = Double.parseDouble(nuevoFormatoStr);
+                        Unidad unidadActualizada = new Unidad(nuevaUnidad, nuevoFormato);
+                        unidadActualizada.setUnidad(nuevaUnidad);
+                        unidadActualizada.setFormato(nuevoFormato);
+                        tr.actualizarUnidad(unidadAnterior, unidadActualizada);
+                        LimpiarTable();
+                        ListarUnidades();
+                        JOptionPane.showMessageDialog(null, "Unidad actualizada:\nUnidad: " + nuevaUnidad + "\nFormato: " + nuevoFormato);
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Por favor, ingrese un formato válido (número decimal).");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione una unidad para editar.");
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnAgregarUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUnidadActionPerformed
-        /*try {
-            
-            if (this.fregistroClientes == null) {
-                this.fregistroClientes = new FrameRegistroClientes(this);
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       Unidadd tr = new Unidadd();
+
+        String[] roles = {"unidad", "Formato"};
+        JTextField unidadField = new JTextField(20);
+        JTextField formatoField = new JTextField(20);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 2));
+        panel.add(new JLabel("Unidad:"));
+        panel.add(unidadField);
+        panel.add(new JLabel("Formato:"));
+        panel.add(formatoField);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Ingresar Trabajador", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            String nombre = unidadField.getText();
+            Double formato = Double.parseDouble(formatoField.getText());
+
+            // Validación del nombre
+            if (nombre != null && !nombre.isEmpty()) {
+                // Validación de duplicados en la clave primaria (nombre)
+                if (!tr.existeUnidad(nombre)) {
+                    Unidad t = new Unidad(nombre, formato);
+                    t.setUnidad(nombre);
+                    t.setFormato(formato);
+                    tr.RegistrarUnidad(t);
+                    LimpiarTable();
+                    ListarUnidades();
+                    JOptionPane.showMessageDialog(null, "Unidad registrada:\nNombre: " + nombre + "\nRol: " + formato);
+                } else {
+                    JOptionPane.showMessageDialog(null, "La unidad ya existe en la base de datos.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese un nombre válido.");
             }
-            this.fregistroClientes.setVisible(true);
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameUnidades.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-    }//GEN-LAST:event_btnAgregarUnidadActionPerformed
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        
+
         this.fmenu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuBackMouseClicked
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        try {
-
-            Connection connection = connectionDB.getConnection();
-
-            String sql = "SELECT * FROM clientes WHERE Nombre LIKE ?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-            preparedStatement.setString(1, "%" + txtNombre.getText() + "%");
-
-            ResultSet result = preparedStatement.executeQuery();
-
-            DefaultTableModel model = (DefaultTableModel) tablaUnidades.getModel();
-
-            model.setRowCount(0);
-
-            boolean clienteEncontrado = false;
-            while (result.next()) {
-                int idVentas = result.getInt("Id_C");
-                String nombre = result.getString("Nombre");
-                String apellidoP = result.getString("Apellido_P");
-                String apellidoM = result.getString("Apellido_M");
-                String direccion = result.getString("Direccion");
-                String telefono = result.getString("Telefono");
-
-                model.addRow(new Object[]{idVentas, nombre, apellidoP, apellidoM, direccion, telefono});
-                clienteEncontrado = true;
-            }
-
-            // Mostrar un mensaje según si se encontraron resultados o no
-            if (!clienteEncontrado) {
-                JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
-            }
-
-            // Cerrar los recursos
-            result.close();
-            preparedStatement.close();
-            connection.close();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(FrameRegistroClientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarUnidad;
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel btnMenuBack;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblMenu;
-    private javax.swing.JLabel lblNombreUnidad;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblUnidad;
     private javax.swing.JLabel logoLoginIcon;
     private javax.swing.JPanel panelLogin1;
     private javax.swing.JPanel panelLogin2;
+    private javax.swing.JScrollPane scrollTable1;
     private javax.swing.JLabel stockSmartLoginLabel;
-    private javax.swing.JTable tablaUnidades;
-    private javax.swing.JTextPane txtNombre;
+    private javax.swing.JTable table1;
+    private javax.swing.JTextPane txtUnidad;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,7 +24,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelLogin1" pref="1265" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="panelLogin1" min="-2" pref="1472" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -115,32 +118,27 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btnEditar" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnEliminar" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="877" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblNombreUnidad" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jScrollPane2" min="-2" pref="260" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnAgregarUnidad" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane2" min="-2" pref="260" max="-2" attributes="0"/>
+                          <Component id="lblUnidad" min="-2" pref="229" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="68" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnAgregar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="528" max="32767" attributes="0"/>
+                      <Component id="btnEditar" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnBorrar" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="scrollTable1" min="-2" pref="1115" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="530" max="-2" attributes="0"/>
+                      <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -150,52 +148,24 @@
                       <EmptySpace pref="56" max="32767" attributes="0"/>
                       <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblNombreUnidad" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUnidad" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnBuscar" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="btnAgregarUnidad" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="btnAgregar" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="btnEditar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="btnBorrar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="392" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnEliminar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="btnEditar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="scrollTable1" min="-2" pref="499" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="tablaUnidades">
-                  <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="customFontBold2" type="code"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&quot;Id_C&quot;, &quot;Nombre&quot;, &quot;Apellido_P&quot;, &quot;Apellido_M&quot;, &quot;Direccion&quot;, &quot;Telefono&quot;}&#xa;&#xa;)" type="code"/>
-                    </Property>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JTable()"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
             <Component class="javax.swing.JLabel" name="lblTitulo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -207,12 +177,12 @@
                 <Property name="text" type="java.lang.String" value="Unidades"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblNombreUnidad">
+            <Component class="javax.swing.JLabel" name="lblUnidad">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="customFontBold2" type="code"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nombre de la unidad:"/>
+                <Property name="text" type="java.lang.String" value="Nombre de la Unidad"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -222,11 +192,16 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextPane" name="txtNombre">
+                <Component class="javax.swing.JTextPane" name="txtUnidad">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="customFontBold2" type="code"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="btnAgregarUnidad">
+            <Component class="javax.swing.JButton" name="btnAgregar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -237,38 +212,19 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Agregar unidad"/>
+                <Property name="text" type="java.lang.String" value="Agregar "/>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarUnidadActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btnAgregarUnidad.setIcon(new PlusIcon(18, 18, Color.WHITE));"/>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btnAgregar.setIcon(new PlusIcon(18, 18, Color.WHITE));"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btnBuscar">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="customFontBold2" type="code"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e9" green="82" red="32" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Buscar"/>
-                <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="iconTextGap" type="int" value="10"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btnAgregarUnidad.setIcon(new PlusIcon(18, 18, Color.WHITE));"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnEliminar">
+            <Component class="javax.swing.JButton" name="btnBorrar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="82" red="32" type="rgb"/>
@@ -285,7 +241,7 @@
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBorrarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnEditar">
@@ -304,6 +260,28 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
               </Events>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="scrollTable1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="table1">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="2" rowCount="0">
+                        <Column editable="true" title="Unidad" type="java.lang.Object"/>
+                        <Column editable="true" title="Formato" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="logoLoginIcon">
@@ -325,8 +303,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMenuBackMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMenuBackMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMenuBackMouseExited"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;    @Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        // Super llama al comportamiento predeterminado&#xa;        super.paintComponent(g);&#xa;&#xa;        // Habilitar gr&#xe1;ficos avanzados&#xa;        Graphics2D g2d = (Graphics2D) g;&#xa;        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);&#xa;&#xa;        // Fondo transparente o del mismo color que el contenedor&#xa;        g2d.setColor(getParent().getBackground()); // Color del contenedor padre&#xa;        g2d.fillRect(0, 0, getWidth(), getHeight());&#xa;&#xa;        // Crear el gradiente de negro a azul&#xa;        GradientPaint gradiente = new GradientPaint(&#xa;            0, 0, new Color(0, 0, 0, 175),         // Inicio: negro&#xa;            getWidth()-(getWidth()/7), 0, new Color(50,130,233)  // Fin: azul&#xa;        );&#xa;&#xa;        // Dibujar el fondo redondeado con gradiente&#xa;        g2d.setPaint(gradiente);&#xa;        int arcWidth = 25;  // Curvatura horizontal&#xa;        int arcHeight = 25; // Curvatura vertical&#xa;        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), arcWidth, arcHeight);&#xa;&#xa;        g2d.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, arcWidth, arcHeight);&#xa;    }&#xa;&#xa;    @Override&#xa;    public boolean isOpaque() {&#xa;        return false; // Permitir transparencia&#xa;    }&#xa;}"/>

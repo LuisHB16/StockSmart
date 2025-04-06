@@ -808,7 +808,7 @@ public class FrameVentas extends javax.swing.JFrame {
             .addGroup(pnlVentasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(tabVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 1188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(257, Short.MAX_VALUE))
             .addGroup(pnlVentasLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)

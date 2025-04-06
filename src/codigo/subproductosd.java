@@ -196,7 +196,6 @@ public boolean EliminarSubproductos(int codigo , String ClaveAlterna, String nom
             }
         }
     } catch (SQLException e) {
-        e.printStackTrace();
     }
     
     return pro;

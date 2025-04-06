@@ -85,13 +85,13 @@ public class cliented {
             String Direccion = rs.getString("Direccion");
             String Telefono = rs.getString("Telefono");
             String correo = rs.getString("correo"); 
-            String Contraseña = rs.getString("Contraseña"); 
+            String Contraseña = rs.getString("ContraseÃ±a"); 
             String status = rs.getString("status");
             clientes pr = new clientes(id,Nombre,Apellido_p,Apellido_m,Direccion,Telefono,correo,Contraseña,status);
             listaClientes.add(pr);
         }
     } catch (SQLException e) {
-        System.out.println("Error al listar proveedores: " + e.toString());
+        System.out.println("Error al listar proveedores CLIENTES: " + e.toString());
     } finally {
         try {
             con.close();
