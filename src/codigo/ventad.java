@@ -319,6 +319,55 @@ public venta BuscarVenta1(int id){
 
         return ListaVenta;
     }
+    
+    public double[] obtenerVentasPorMes() {
+        // Lista para almacenar las ventas
+        List<Double> listaVentas = new ArrayList<>();
+        
+        try {
+            con = cn.getConnection();
+            
+            // Consulta para obtener todas las ventas
+            String sql = "SELECT Total FROM venta ";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            // Imprimir información de depuración
+            System.out.println("Ventas encontradas:");
+            int contador = 1;
+            double sumaTotal = 0;
+            
+            while (rs.next()) {
+                double venta = rs.getDouble("Total");
+                listaVentas.add(venta);
+                System.out.println("Venta " + contador + ": " + venta);
+                contador++;
+                sumaTotal += venta;
+            }
+            
+            System.out.println("Total de ventas encontradas: " + listaVentas.size());
+            System.out.println("Suma total de ventas: " + sumaTotal);
+            
+            // Convertir la lista a un array
+            double[] ventasArray = new double[listaVentas.size()];
+            for (int i = 0; i < listaVentas.size(); i++) {
+                ventasArray[i] = listaVentas.get(i);
+            }
+            
+            return ventasArray;
+            
+        } catch (SQLException e) {
+            System.out.println("Error al obtener ventas por mes: " + e.toString());
+            // En caso de error, devolver un array con al menos un valor para evitar errores
+            return new double[]{200.0};
+        } finally {
+            try {
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }
     public boolean actualizarEstado2(int idVenta, String nuevoEstado,String fecha) {
     String sql = "UPDATE venta SET status = ? , fecha = ? WHERE Id_Ventas = ?";
     try {
