@@ -278,7 +278,8 @@ public void ListarPedidos() {
             }
         });
 
-        boxEstado.setEnabled(false);
+        boxEstado.setEnabled(true
+        );
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

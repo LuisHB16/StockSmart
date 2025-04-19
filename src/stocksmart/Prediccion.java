@@ -124,8 +124,17 @@ public class Prediccion extends javax.swing.JFrame {
                 false
         );
         
+        // Aplicar fuente personalizada al gráfico
+        chart.getTitle().setFont(customFontBold2);
+        chart.getLegend().setItemFont(customFontBold2);
+        
         // Personalizar el gráfico
         XYPlot plot = chart.getXYPlot();
+        plot.getDomainAxis().setLabelFont(customFontBold2);
+        plot.getDomainAxis().setTickLabelFont(customFontBold2);
+        plot.getRangeAxis().setLabelFont(customFontBold2);
+        plot.getRangeAxis().setTickLabelFont(customFontBold2);
+        
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
         
         // Configurar colores y formas
