@@ -12,6 +12,7 @@ import stocksmart.FrameDevoluciones;
 import stocksmart.FrameGestionPedidos;
 import stocksmart.FrameMovimientos;
 import stocksmart.FramePedidos;
+import stocksmart.FramePrediccion;
 import stocksmart.FrameProductos;
 import stocksmart.FrameProveedores;
 import stocksmart.FrameReporteDevoluciones;
@@ -42,6 +43,7 @@ public class FrameMenu extends javax.swing.JFrame {
     FrameReporteDevoluciones freportedvc=null;
     FrameGestionPedidos fgpedidos=null;
 
+    FramePrediccion fprediccion = null;
     Font customFontBold = FontLoader.customFontBold;
     Font customFontBold3 = FontLoader.customFontBold3;
 
@@ -650,6 +652,12 @@ public class FrameMenu extends javax.swing.JFrame {
     private void botonPrediccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrediccionActionPerformed
         // TODO add your handling code here:
 
+        if (fprediccion == null ) {
+            fprediccion = new FramePrediccion();
+           
+        } 
+        fprediccion.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonPrediccionActionPerformed
 
     private void botonDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDevolucionesActionPerformed
