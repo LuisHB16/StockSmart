@@ -7,17 +7,26 @@ import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Locale;
+// Imports para JFreeChart
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 public class FramePrediccion extends JFrame {
     private JLabel labelPrediccion;
-    private JPanel panelGrafica;
+    private JPanel panelGrafica; // Panel que contendrá el ChartPanel
     private DefaultListModel<String> modeloMeses;
     private JList<String> listaMeses;
 
     public FramePrediccion(Connection conn) {
         System.out.println("FramePrediccion: Constructor llamado.");
         setTitle("Predicción de Ventas");
-        setSize(600, 400);
+        setSize(800, 600); // Aumentar tamaño para mejor visualización del gráfico
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -30,14 +39,8 @@ public class FramePrediccion extends JFrame {
         listaMeses = new JList<>(modeloMeses);
         add(new JScrollPane(listaMeses), BorderLayout.WEST);
 
-        panelGrafica = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                System.out.println("FramePrediccion: Dibujando gráfica...");
-                dibujarGrafica(g);
-            }
-        };
+        // Inicializar panelGrafica con BorderLayout para contener el ChartPanel
+        panelGrafica = new JPanel(new BorderLayout());
         add(panelGrafica, BorderLayout.CENTER);
 
         System.out.println("FramePrediccion: Cargando datos...");
@@ -75,13 +78,50 @@ public class FramePrediccion extends JFrame {
             ArrayList<Double> ultimas = pred.obtenerUltimasPredicciones(conn, 5);
             System.out.println("FramePrediccion: Últimas predicciones obtenidas: " + ultimas.size());
             modeloMeses.clear();
-            for (int i = ultimas.size() - 1; i >= 0; i--) {
-                LocalDate fecha = ahora.minusMonths(ultimas.size() - 1 - i);
+            // Crear series para JFreeChart
+            XYSeries seriesPredicciones = new XYSeries("Predicciones Históricas");
+            LocalDate fechaBase = ahora.minusMonths(ultimas.size() -1);
+
+            for (int i = 0; i < ultimas.size(); i++) {
+                LocalDate fecha = fechaBase.plusMonths(i);
                 String nombreMes = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
-                String itemLista = nombreMes + ": " + String.format("%.2f", ultimas.get(i));
+                double valor = ultimas.get(i);
+                String itemLista = nombreMes + ": " + String.format("%.2f", valor);
                 modeloMeses.addElement(itemLista);
                 System.out.println("FramePrediccion: Añadido a lista: " + itemLista);
+                // Añadir punto a la serie (usando índice como X)
+                seriesPredicciones.add(i, valor);
             }
+
+            // Crear dataset y gráfico
+            XYSeriesCollection dataset = new XYSeriesCollection();
+            dataset.addSeries(seriesPredicciones);
+
+            JFreeChart chart = ChartFactory.createXYLineChart(
+                    "Predicciones de Ventas Mensuales", // Título
+                    "Mes (Índice)",                   // Eje X
+                    "Ventas Predichas",               // Eje Y
+                    dataset,
+                    PlotOrientation.VERTICAL,
+                    true, // Leyenda
+                    true, // Tooltips
+                    false // URLs
+            );
+
+            // Personalizar gráfico (opcional, similar a Prediccion.java)
+            XYPlot plot = chart.getXYPlot();
+            XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+            renderer.setSeriesPaint(0, Color.BLUE);
+            renderer.setSeriesShapesVisible(0, true);
+            plot.setRenderer(renderer);
+            plot.setBackgroundPaint(Color.WHITE);
+
+            // Crear ChartPanel y añadirlo al panelGrafica
+            ChartPanel chartPanel = new ChartPanel(chart);
+            panelGrafica.removeAll(); // Limpiar panel por si acaso
+            panelGrafica.add(chartPanel, BorderLayout.CENTER);
+            panelGrafica.validate(); // Actualizar layout
+
             // Predicción siguiente mes
             int siguienteMes = mes == 12 ? 1 : mes + 1;
             int siguienteAnio = mes == 12 ? anio + 1 : anio;
@@ -94,53 +134,17 @@ public class FramePrediccion extends JFrame {
             System.err.println("FramePrediccion: Error al cargar predicciones: " + ex.getMessage());
             labelPrediccion.setText("Error al cargar predicciones");
             ex.printStackTrace();
+            // Mostrar mensaje de error en el panel del gráfico
+            panelGrafica.removeAll();
+            panelGrafica.add(new JLabel("Error al generar gráfico: " + ex.getMessage()), BorderLayout.CENTER);
+            panelGrafica.validate();
         }
     }
 
+    // Eliminar el método dibujarGrafica anterior
+    /*
     private void dibujarGrafica(Graphics g) {
-        System.out.println("FramePrediccion: Iniciando dibujo de gráfica.");
-        // Aquí puedes implementar una gráfica simple de barras con los datos de modeloMeses
-        int width = panelGrafica.getWidth();
-        int height = panelGrafica.getHeight();
-        int n = modeloMeses.size();
-        System.out.println("FramePrediccion: Número de elementos para graficar: " + n);
-        if (n == 0) {
-            System.out.println("FramePrediccion: No hay datos para graficar.");
-            return;
-        }
-        int barWidth = width / (n * 2);
-        int maxBarHeight = height - 40;
-        double max = 0;
-        for (int i = 0; i < n; i++) {
-            String[] parts = modeloMeses.get(i).split(": ");
-            if (parts.length == 2) {
-                try {
-                    double val = Double.parseDouble(parts[1].replace(',', '.')); // Asegurar punto decimal
-                    if (val > max) max = val;
-                } catch (NumberFormatException e) {
-                    System.err.println("FramePrediccion: Error al parsear valor para gráfica: " + parts[1]);
-                }
-            }
-        }
-        System.out.println("FramePrediccion: Valor máximo para escala de gráfica: " + max);
-        if (max == 0) max = 1; // Evitar división por cero si todos los valores son 0
-
-        for (int i = 0; i < n; i++) {
-            String[] parts = modeloMeses.get(i).split(": ");
-            if (parts.length == 2) {
-                try {
-                    double val = Double.parseDouble(parts[1].replace(',', '.')); // Asegurar punto decimal
-                    int barHeight = (int) (val / max * maxBarHeight);
-                    g.setColor(Color.BLUE);
-                    g.fillRect(40 + i * 2 * barWidth, height - barHeight - 20, barWidth, barHeight);
-                    g.setColor(Color.BLACK);
-                    g.drawString(parts[0], 40 + i * 2 * barWidth, height - 5);
-                    System.out.println("FramePrediccion: Dibujada barra para " + parts[0] + " con altura " + barHeight);
-                } catch (NumberFormatException e) {
-                    System.err.println("FramePrediccion: Error al dibujar barra para valor: " + parts[1]);
-                }
-            }
-        }
-        System.out.println("FramePrediccion: Dibujo de gráfica completado.");
+        ...
     }
+    */
 }

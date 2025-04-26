@@ -13,10 +13,6 @@ import codigo.productos;
 import codigo.productosd;
 import codigo.proveedores;
 import codigo.proveedoresd;
-import codigo.subproductos;
-import codigo.subproductosd;
-import codigo.trabajadores;
-import codigo.trabajadoresd;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -26,7 +22,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.RenderingHints;
@@ -41,6 +36,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import javax.swing.JPanel;
 import java.util.List;
@@ -54,15 +50,12 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 import static stocksmart.FontLoader.customFont;
 import static stocksmart.FontLoader.customFontBold;
 import static stocksmart.FontLoader.customFontBold2;
@@ -110,47 +103,44 @@ public class FrameProductos extends javax.swing.JFrame {
             }
         });
 
-        table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    int rowIndex = table1.getSelectedRow();
-                    if (rowIndex != -1) {
-                        btnBorrar.setEnabled(true);
-                        productos pro = listaProductos.get(rowIndex);
-                        byte[] imagenBytes = pro.getImagen();
-
-                        if (imagenBytes != null) {
-                            try {
-                                // Convierte el arreglo de bytes en una imagen
-                                ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenBytes);
-                                BufferedImage bufferedImage = ImageIO.read(inputStream);
-
-                                if (bufferedImage != null) {
-                                    // Escala la imagen al tamaño de jLabel_foto
-                                    ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
-                                            lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
-
-                                    lblFoto.setIcon(nuevaIcono);
-                                    lblFoto.setText("");
-                                } else {
-                                    lblFoto.setIcon(null);
-                                    lblFoto.setText("No se pudo cargar la imagen.");
-                                }
-                            } catch (IOException ex) {
-                                ex.printStackTrace();
+        table1.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
+            if (!e.getValueIsAdjusting()) {
+                int rowIndex = table1.getSelectedRow();
+                if (rowIndex != -1) {
+                    btnBorrar.setEnabled(true);
+                    productos pro1 = listaProductos.get(rowIndex);
+                    byte[] imagenBytes = pro1.getImagen();
+                    System.out.println("Imagen Bytes " + Arrays.toString(imagenBytes));
+                    if (imagenBytes != null) {
+                        try {
+                            // Convierte el arreglo de bytes en una imagen
+                            ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenBytes);
+                            BufferedImage bufferedImage = ImageIO.read(inputStream);
+                            System.out.println("InputStream" + inputStream);
+                            
+                            if (bufferedImage != null) {
+                                // Escala la imagen al tamaño de jLabel_foto
+                                ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
+                                        lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
+                                System.out.println(nuevaIcono);
+                                lblFoto.setIcon(nuevaIcono);
+                                lblFoto.setText("");
+                            } else {
                                 lblFoto.setIcon(null);
-                                lblFoto.setText("Error al cargar la imagen.");
+                                lblFoto.setText("No se pudo cargar la imagen.");
                             }
-                        } else {
+                        } catch (IOException ex) {
                             lblFoto.setIcon(null);
-                            lblFoto.setText("No hay imagen disponible.");
+                            lblFoto.setText("Error al cargar la imagen.");
                         }
                     } else {
-                        btnBorrar.setEnabled(false);
                         lblFoto.setIcon(null);
-                        lblFoto.setText("");
+                        lblFoto.setText("No hay imagen disponible.");
                     }
+                } else {
+                    btnBorrar.setEnabled(false);
+                    lblFoto.setIcon(null);
+                    lblFoto.setText("");
                 }
             }
         });
