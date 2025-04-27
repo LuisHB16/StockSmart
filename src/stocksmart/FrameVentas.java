@@ -770,7 +770,7 @@ public class FrameVentas extends javax.swing.JFrame {
         lblFoto.setText("Foto");
 
         lblPedido.setFont(customFontBold2);
-        lblPedido.setText("Venta");
+        lblPedido.setText("Pedido");
 
         btnRegresar.setBackground(new java.awt.Color(50, 130, 233));
         btnRegresar.setFont(customFontBold2);
@@ -792,7 +792,7 @@ public class FrameVentas extends javax.swing.JFrame {
             }
         });
 
-        btnPedido.setText("Pedido");
+        btnPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/shopping-cart (1).png"))); // NOI18N
         btnPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPedidoActionPerformed(evt);

@@ -1111,7 +1111,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnVenta">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Venta"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assests/icons/shopping-cart (1).png"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVentaActionPerformed"/>

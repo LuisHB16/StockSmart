@@ -1038,7 +1038,7 @@ public final class FramePedidos extends javax.swing.JFrame {
             }
         });
 
-        btnVenta.setText("Venta");
+        btnVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/shopping-cart (1).png"))); // NOI18N
         btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaActionPerformed(evt);

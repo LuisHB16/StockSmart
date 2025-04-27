@@ -272,6 +272,7 @@ public void ListarPedidos() {
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Gestion Pedidos");
 
+        btnGenerarPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/pdf.png"))); // NOI18N
         btnGenerarPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarPDFActionPerformed(evt);

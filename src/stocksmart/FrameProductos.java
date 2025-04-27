@@ -110,19 +110,19 @@ public class FrameProductos extends javax.swing.JFrame {
                     btnBorrar.setEnabled(true);
                     productos pro1 = listaProductos.get(rowIndex);
                     byte[] imagenBytes = pro1.getImagen();
-                    System.out.println("Imagen Bytes " + Arrays.toString(imagenBytes));
+                    
                     if (imagenBytes != null) {
                         try {
                             // Convierte el arreglo de bytes en una imagen
                             ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenBytes);
                             BufferedImage bufferedImage = ImageIO.read(inputStream);
-                            System.out.println("InputStream" + inputStream);
+                            
                             
                             if (bufferedImage != null) {
                                 // Escala la imagen al tamaño de jLabel_foto
                                 ImageIcon nuevaIcono = new ImageIcon(bufferedImage.getScaledInstance(
                                         lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
-                                System.out.println(nuevaIcono);
+                                
                                 lblFoto.setIcon(nuevaIcono);
                                 lblFoto.setText("");
                             } else {

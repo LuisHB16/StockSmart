@@ -746,7 +746,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="customFontBold2" type="code"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Venta"/>
+                <Property name="text" type="java.lang.String" value="Pedido"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnRegresar">
@@ -785,7 +785,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnPedido">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pedido"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assests/icons/shopping-cart (1).png"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPedidoActionPerformed"/>

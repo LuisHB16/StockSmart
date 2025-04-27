@@ -27,4 +27,8 @@ public class FontLoader {
             customFontBold2 = customFont.deriveFont(Font.PLAIN, 14f);
         }
     }
+
+    static void loadFonts() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

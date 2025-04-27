@@ -233,6 +233,7 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Reporte Devoluciones");
 
+        btnGenerarPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/pdf.png"))); // NOI18N
         btnGenerarPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarPDFActionPerformed(evt);

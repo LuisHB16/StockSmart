@@ -13,6 +13,7 @@ import stocksmart.FrameGestionPedidos;
 import stocksmart.FrameMovimientos;
 import stocksmart.FramePedidos;
 import stocksmart.FramePrediccion;
+import stocksmart.FramePrediccionNEW;
 import stocksmart.FrameProductos;
 import stocksmart.FrameProveedores;
 import stocksmart.FrameReporteDevoluciones;
@@ -43,7 +44,7 @@ public class FrameMenu extends javax.swing.JFrame {
     FrameReporteDevoluciones freportedvc=null;
     FrameGestionPedidos fgpedidos=null;
 
-    FramePrediccion fprediccion = null;
+    FramePrediccionNEW fprediccion = null;
     Font customFontBold = FontLoader.customFontBold;
     Font customFontBold3 = FontLoader.customFontBold3;
 
@@ -653,7 +654,7 @@ public class FrameMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (fprediccion == null ) {
-            fprediccion = new FramePrediccion();
+            fprediccion = new FramePrediccionNEW(this);
            
         } 
         fprediccion.setVisible(true);
