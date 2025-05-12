@@ -103,9 +103,10 @@ public final class FrameClientes extends javax.swing.JFrame {
     public void ListarClientes() {
         cliented proDAO = new cliented();
         clienteList = proDAO.listarClientes();
+       
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
         model.setRowCount(0);
-        for (int i = 1; i < clienteList.size(); i++) {
+        for (int i = 0; i < clienteList.size(); i++) {
             Object[] ob = new Object[6];
             ob[0] = clienteList.get(i).getId_C();
             ob[1] = clienteList.get(i).getNombre();
@@ -519,11 +520,11 @@ public final class FrameClientes extends javax.swing.JFrame {
             String apellidom = apmField.getText();
             String direccion = direccionField.getText();
             String telefonoStr = telefonoField.getText().replaceAll("[^0-9]", "");
-            String correo = "Null"; // Añadí inicialización para evitar errores
-            String contraseña = "Null"; // Añadí inicialización para evitar errores
+            String correo = ""; // Añadí inicialización para evitar errores
+            String contraseña = ""; // Añadí inicialización para evitar errores
             String status = "tienda"; // Añadí inicialización para evitar errores
 
-            if (nombre.isEmpty() || telefonoStr.isEmpty() || direccion.isEmpty() || correo.isEmpty()) {
+            if (nombre.isEmpty() || telefonoStr.isEmpty() || direccion.isEmpty() ) {
                 JOptionPane.showMessageDialog(null, "Ninguno de los campos puede estar vacío. Por favor, complete todos los campos.");
             } else if (telefonoStr.length() != 10) {
                 JOptionPane.showMessageDialog(null, "El número de teléfono debe tener 10 dígitos.");

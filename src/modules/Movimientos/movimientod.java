@@ -17,7 +17,7 @@ public class movimientod {
 
     public boolean agregarMovimiento(movimiento nuevoProducto) {
         String sql = "INSERT INTO movimientos (Movimiento, Fecha, Cantidad,Codigo, inventario_antes) VALUES (?, ?, ?, ?, ?)";
-
+        System.out.println(nuevoProducto.getInventario_antes());
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

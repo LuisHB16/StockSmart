@@ -172,6 +172,7 @@ public class FrameDevoluciones extends javax.swing.JFrame {
         btnCrearNota.setBackground(new java.awt.Color(50, 130, 233));
         btnCrearNota.setFont(customFontBold2);
         btnCrearNota.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrearNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/item-icon1.png"))); // NOI18N
         btnCrearNota.setText("Crear nota de crédito");
         btnCrearNota.setBorderPainted(false);
         btnCrearNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -223,11 +224,10 @@ public class FrameDevoluciones extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addGroup(pnlDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlDevolucionesLayout.createSequentialGroup()
-                            .addGap(8, 8, 8)
-                            .addComponent(btnCrearNota, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDevolucionesLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(btnCrearNota)))
                 .addContainerGap(68, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDevolucionesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

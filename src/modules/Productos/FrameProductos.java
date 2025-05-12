@@ -179,7 +179,7 @@ public class FrameProductos extends javax.swing.JFrame {
                 Object[] ob = new Object[11];
                 ob[0] = listaProductos.get(i).getClavealterna();
                 ob[1] = listaProductos.get(i).getNombre();
-                ob[2] = listaProductos.get(i).getExistencia() / formatoEncontrado.getFormato();
+                ob[2] = listaProductos.get(i).getExistencia() ;
                 ob[3] = listaProductos.get(i).getMarca();
                 ob[4] = listaProductos.get(i).getPrecio();
                 ob[5] = listaProductos.get(i).getGranel();
@@ -211,6 +211,7 @@ public class FrameProductos extends javax.swing.JFrame {
         // Obtener la lista de productos desde el DAO
         productosd proDAO = new productosd();
         listaProductos = proDAO.listarProductos();
+        System.out.println(listaProductos);
 
         // Obtener el modelo de la tabla
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
@@ -234,7 +235,7 @@ public class FrameProductos extends javax.swing.JFrame {
 
                 // Verificar si la unidad tiene un valor válido antes de realizar la división
                 if (formatoEncontrado.getFormato() != 0) {
-                    ob[2] = listaProductos.get(i).getExistencia() / formatoEncontrado.getFormato();
+                    ob[2] = listaProductos.get(i).getExistencia() ;
                 } else {
                     // Manejar la división por cero u otro valor no válido según sea necesario
                     ob[2] = "Valor no válido";
@@ -246,8 +247,8 @@ public class FrameProductos extends javax.swing.JFrame {
                 ob[6] = listaProductos.get(i).getUnidad();
                 ob[7] = listaProductos.get(i).getCategoria();
                 ob[8] = listaProductos.get(i).getUnidadC();
-                ob[9] = listaProductos.get(i).getExtMin();
-                ob[10] = listaProductos.get(i).getExtMax();
+                ob[9] = listaProductos.get(i).getExtMax();
+                ob[10] = listaProductos.get(i).getExtMin();
                 // Agregar la fila al modelo de la tabla
                 model.addRow(ob);
             }

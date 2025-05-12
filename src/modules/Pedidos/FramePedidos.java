@@ -290,7 +290,7 @@ public final class FramePedidos extends javax.swing.JFrame {
             // Actualiza el nombre y la existencia del producto
             txtNombreInventario.setText(String.valueOf(productoEncontrado.getNombre()));
             if (formatoEncontrado != null) {
-                double existenciaDivididaPorFormato = productoEncontrado.getExistencia() / formatoEncontrado.getFormato();
+                double existenciaDivididaPorFormato = productoEncontrado.getExistencia() ;
 
                 // Formatea el resultado según tus necesidades, por ejemplo, limitando a 2 decimales:
                 String resultadoFormateado = String.format("%.2f", existenciaDivididaPorFormato);

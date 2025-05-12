@@ -61,7 +61,7 @@ public class FrameVentas extends javax.swing.JFrame {
     double pago = 0.00;
     int cliente = 1;
     String Repartidor = "Sin Repartidor";
-    String Status = "Pedido";
+    String Status = "Venta";
     DefaultTableModel tmp;
     String item = "Vendedor por defecto"; // Agregado para almacenar el vendedor
     int selectedRow;
@@ -283,7 +283,7 @@ public class FrameVentas extends javax.swing.JFrame {
             // Actualiza el nombre y la existencia del producto
             txtNombreInventario.setText(String.valueOf(productoEncontrado.getNombre()));
             if (formatoEncontrado != null) {
-                double existenciaDivididaPorFormato = productoEncontrado.getExistencia() / formatoEncontrado.getFormato();
+                double existenciaDivididaPorFormato = productoEncontrado.getExistencia() ;
 
                 // Formatea el resultado según tus necesidades, por ejemplo, limitando a 2 decimales:
                 String resultadoFormateado = String.format("%.2f", existenciaDivididaPorFormato);
@@ -562,6 +562,7 @@ public class FrameVentas extends javax.swing.JFrame {
         btnBuscarVenta.setBackground(new java.awt.Color(50, 130, 233));
         btnBuscarVenta.setFont(customFontBold2);
         btnBuscarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/buscar-icon18.png"))); // NOI18N
         btnBuscarVenta.setText("Buscar");
         btnBuscarVenta.setBorderPainted(false);
         btnBuscarVenta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -611,8 +612,8 @@ public class FrameVentas extends javax.swing.JFrame {
                             .addGroup(pnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtBarcodeVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(boxVendedorVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(525, 525, 525)
-                            .addComponent(btnBuscarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(521, 521, 521)
+                            .addComponent(btnBuscarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(82, 82, 82))
         );
         pnlVentaLayout.setVerticalGroup(
@@ -994,7 +995,7 @@ public class FrameVentas extends javax.swing.JFrame {
                             venta();
                             detalle();
                             LimpiarTable();
-                            JOptionPane.showMessageDialog(null, "pedido realizado");
+                            JOptionPane.showMessageDialog(null, "Compra realizada");
                             TotalPagar();
                             limpiarProductosEncontrados();
 
@@ -1005,7 +1006,7 @@ public class FrameVentas extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Ingrese un monto válido para el dinero recibido");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "pedido cancelado");
+                    JOptionPane.showMessageDialog(null, "Compra cancelada");
                 }
             } else if (seleccion == 0) {
                 // Mostrar mensaje con el total a pagar en tarjeta
@@ -1020,11 +1021,11 @@ public class FrameVentas extends javax.swing.JFrame {
                     venta();
                     detalle();
                     LimpiarTable();
-                    JOptionPane.showMessageDialog(null, "pedido realizado con tarjeta");
+                    JOptionPane.showMessageDialog(null, "Compra realizada con tarjeta");
                     TotalPagar();
                     limpiarProductosEncontrados();
                 } else {
-                    JOptionPane.showMessageDialog(null, "pedido cancelada");
+                    JOptionPane.showMessageDialog(null, "Compra cancelada");
                 }
             }
         } else {

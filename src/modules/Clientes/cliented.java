@@ -24,7 +24,7 @@ public class cliented {
     ResultSet rs;
     
     public boolean RegistrarCliente(clientes pr){ 
-        String sql = "INSERT INTO clientes (Nombre, Apellido_P, Apellido_M, Direccion, Telefono, correo, Contraseña, status) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO clientes (Nombre, Apellido_P, Apellido_M, Direccion, Telefono, correo, ContraseÃ±a, status) VALUES (?,?,?,?,?,?,?,?)";
         try {
            con = cn.getConnection();
            ps = con.prepareStatement(sql);

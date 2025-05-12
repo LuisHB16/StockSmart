@@ -231,7 +231,7 @@ public final class FrameMovimientos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Movimiento", "Codigo", "Cantidad", "invantario antes", "Inventario despues", "Fecha"
+                "Movimiento", "Codigo", "Cantidad", "Inventario antes", "Inventario despues", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -269,20 +269,11 @@
                                               <Component id="lblSeleccionarCliente" min="-2" pref="250" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="btnClienteVenta" min="-2" pref="110" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="lblTotalVenta" min="-2" pref="176" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="btnCobrarVenta" min="-2" pref="110" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="btnClienteVenta" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="lblTotalVenta" alignment="1" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="btnCobrarVenta" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">

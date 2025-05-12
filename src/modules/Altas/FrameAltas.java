@@ -72,6 +72,15 @@ public final class FrameAltas extends javax.swing.JFrame {
                 model2.addRow(rowData);
                 
                 // Elimina la fila de la primera tabla utilizando el índice del modelo
+                String codigoProducto = (String) model1.getValueAt(selectedModelRow, 0);
+
+                // Busca el producto en productosDisponibles y añádelo a productosSeleccionados
+                for (productos producto : productosDisponibles) {
+                    if (producto.getCodigo().equals(codigoProducto)) {
+                        productosSeleccionados.add(producto);
+                        break;
+                    }
+                }
                 model1.removeRow(selectedModelRow);
             }
         });
@@ -141,7 +150,7 @@ public final class FrameAltas extends javax.swing.JFrame {
                 String codigo = table2.getValueAt(i, 0).toString();
                 System.out.println(codigo);
                 System.out.println(codigo);
-                int cantidad = Integer.parseInt(table2.getValueAt(i, 4).toString());
+              
                 Double cant = Double.valueOf(table2.getValueAt(i, 4).toString());
                 for (productos producto : productosSeleccionados) {
                     if (codigo == null ? producto.getCodigo() == null : codigo.equals(producto.getCodigo())) {
@@ -154,15 +163,16 @@ public final class FrameAltas extends javax.swing.JFrame {
                             }
                         }
                         
-                        cantidad = (int) (cantidad * formatoEncontrado.getFormato());
+                        
                         
                         inventario = producto.getExistencia();
+                        
                     }
                 }
                 
                 // Llama al nuevo método para actualizar la cantidad en la base de datos
-                if (p.actualizarCantidadProducto(codigo, cantidad)) {
-                    
+                if (p.actualizarCantidadProducto(codigo, cant)) {
+                    System.out.println(inventario + "INVE");
                     movimiento mo = new movimiento("Alta", fechaActual, cant, codigo, inventario);
                     m.agregarMovimiento(mo);
                     JOptionPane.showMessageDialog(null, "Productos actualizados correctamente.");
@@ -206,6 +216,8 @@ public final class FrameAltas extends javax.swing.JFrame {
             Unidad formatoEncontrado = null;
 
             for (Unidad unidad : listaUnidades) {
+                System.out.println(unidad.getUnidad());
+                System.out.println(producto.getUnidad());
                 if (unidad.getUnidad().equals(producto.getUnidadC())) {
                     formatoEncontrado = unidad;
                     break;
@@ -217,7 +229,7 @@ public final class FrameAltas extends javax.swing.JFrame {
             ob[1] = producto.getNombre();
             ob[2] = producto.getMarca();
             ob[3] = producto.getUnidadC();
-            ob[4] = producto.getExistencia() / formatoEncontrado.getFormato();
+            ob[4] = producto.getExistencia();
 
             model1.addRow(ob);
             productosDisponibles.add(producto);
