@@ -357,13 +357,13 @@ public List<productos> listarProductos2() {
         return pro;
     }
 
-    public boolean actualizarCantidadProducto(String codigo, int cantidadAAgregar) {
+    public boolean actualizarCantidadProducto(String codigo, double cantidadAAgregar) {
         String sql = "UPDATE producto SET Existencia = Existencia + ? WHERE Codigo = ?";
 
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, cantidadAAgregar);
+            ps.setDouble(1, cantidadAAgregar);
             ps.setString(2, codigo);
 
             int resultado = ps.executeUpdate();

@@ -164,7 +164,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonProductos.setIconTextGap(6);
         botonProductos.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonProductos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/inventory-icon-20.png"))); // NOI18N
+        botonProductos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/productos-icon20.png"))); // NOI18N
         botonProductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,7 +254,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonMovimientos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonMovimientos.setIconTextGap(6);
         botonMovimientos.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonMovimientos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/movimientos-icon24.png"))); // NOI18N
+        botonMovimientos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/movimientos-icon20.png"))); // NOI18N
         botonMovimientos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonMovimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,7 +272,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonCategorias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonCategorias.setIconTextGap(6);
         botonCategorias.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonCategorias.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/categoria-icon24.png"))); // NOI18N
+        botonCategorias.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/categoria-icon20.png"))); // NOI18N
         botonCategorias.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,7 +290,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonRDevoluciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonRDevoluciones.setIconTextGap(6);
         botonRDevoluciones.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonRDevoluciones.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporte-dev-icon24.png"))); // NOI18N
+        botonRDevoluciones.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/reporte-dev-icon20.png"))); // NOI18N
         botonRDevoluciones.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonRDevoluciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -308,7 +308,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonUnidades.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonUnidades.setIconTextGap(6);
         botonUnidades.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonUnidades.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/unidad-icon24.png"))); // NOI18N
+        botonUnidades.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/unidad-icon20.png"))); // NOI18N
         botonUnidades.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonUnidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,7 +326,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonSubproductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonSubproductos.setIconTextGap(6);
         botonSubproductos.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonSubproductos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/subproducto-icon24.png"))); // NOI18N
+        botonSubproductos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/subproducto-icon20.png"))); // NOI18N
         botonSubproductos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonSubproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -344,7 +344,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonAltas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonAltas.setIconTextGap(6);
         botonAltas.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonAltas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/altas-icon24.png"))); // NOI18N
+        botonAltas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/altas-icon20.png"))); // NOI18N
         botonAltas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonAltas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,7 +362,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonPrediccion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonPrediccion.setIconTextGap(6);
         botonPrediccion.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonPrediccion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/devolucion-icon24.png"))); // NOI18N
+        botonPrediccion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/prediccion-icon20.png"))); // NOI18N
         botonPrediccion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonPrediccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,7 +380,7 @@ public class FrameMenu extends javax.swing.JFrame {
         botonDevoluciones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonDevoluciones.setIconTextGap(6);
         botonDevoluciones.setMargin(new java.awt.Insets(2, 14, 25, 14));
-        botonDevoluciones.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/devolucion-icon24.png"))); // NOI18N
+        botonDevoluciones.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/devolucion-icon20.png"))); // NOI18N
         botonDevoluciones.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonDevoluciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -508,7 +508,7 @@ public class FrameMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVentasActionPerformed
-        // TODO add your handling code here:
+        
         if (this.fventas == null) {
             if(fpedidos == null){
                 this.fpedidos = new FramePedidos(this,fventas);
@@ -521,7 +521,7 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_botonVentasActionPerformed
 
     private void botonPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedidosActionPerformed
-        // TODO add your handling code here:
+        
         if (this.fpedidos == null) {
             
             if(this.fventas == null){
@@ -532,47 +532,52 @@ public class FrameMenu extends javax.swing.JFrame {
         }
         this.fpedidos.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonPedidosActionPerformed
 
     private void botonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientesActionPerformed
-        // TODO add your handling code here:
+        
         if (this.fclientes == null) {
             this.fclientes = new FrameClientes(this);
         }
         this.fclientes.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonClientesActionPerformed
 
     private void botonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductosActionPerformed
-        // TODO add your handling code here:
+        
         if (this.fproductos == null) {
             this.fproductos = new FrameProductos(this);
         }
         this.fproductos.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonProductosActionPerformed
 
     private void botonProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProveedoresActionPerformed
-        // TODO add your handling code here:
+        
         if (this.fproveedores == null) {
             this.fproveedores = new FrameProveedores(this);
         }
         this.fproveedores.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonProveedoresActionPerformed
 
     private void botonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUsuariosActionPerformed
-        // TODO add your handling code here:
+        
         if (this.ftrabajadores == null) {
             this.ftrabajadores = new FrameTrabajadores(this);
         }
         this.ftrabajadores.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonUsuariosActionPerformed
 
     private void botonReportePedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportePedidosActionPerformed
-        // TODO add your handling code here:
-         if (this.fgpedidos == null) {
+        
+        if (this.fgpedidos == null) {
             this.fgpedidos = new FrameGestionPedidos(this);
         }
         this.fgpedidos.setVisible(true);
@@ -581,36 +586,37 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_botonReportePedidosActionPerformed
 
     private void botonReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReporteVentasActionPerformed
-        // TODO add your handling code here:
+        
         if (this.freporteventas == null) {
             this.freporteventas = new FrameReporteVentas(this);
         }
         this.freporteventas.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonReporteVentasActionPerformed
 
     private void botonMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMovimientosActionPerformed
-        // TODO add your handling code here:
+        
         if (this.fmovimientos == null) {
             this.fmovimientos = new FrameMovimientos(this);
         }
         this.fmovimientos.setVisible(true);
         this.setVisible(false);
 
-
     }//GEN-LAST:event_botonMovimientosActionPerformed
 
     private void botonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCategoriasActionPerformed
-        // TODO add your handling code here:
+        
         if (this.fcategorias == null) {
             this.fcategorias = new FrameCategoria(this);
         }
         this.fcategorias.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonCategoriasActionPerformed
 
     private void botonRDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRDevolucionesActionPerformed
-        // TODO add your handling code here:
+        
         if (this.freportedvc == null) {
             this.freportedvc = new FrameReporteDevoluciones(this);
         }
@@ -620,27 +626,26 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRDevolucionesActionPerformed
 
     private void botonUnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnidadesActionPerformed
-        // TODO add your handling code here:
+        
         if (this.funidades == null) {
             this.funidades = new FrameUnidades(this);
         }
         this.funidades.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonUnidadesActionPerformed
 
     private void botonSubproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSubproductosActionPerformed
-        // TODO add your handling code here:
+        
         if (this.fsubproductos == null) {
             this.fsubproductos = new FrameSubproductos(this);
         }
         this.fsubproductos.setVisible(true);
         this.setVisible(false);
 
-
     }//GEN-LAST:event_botonSubproductosActionPerformed
 
     private void botonAltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltasActionPerformed
-        // TODO add your handling code here:
 
         if (this.faltas == null) {
             this.faltas = new FrameAltas(this);
@@ -651,19 +656,18 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAltasActionPerformed
 
     private void botonPrediccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrediccionActionPerformed
-        // TODO add your handling code here:
-
+        
         if (fprediccion == null ) {
             fprediccion = new FramePrediccionNEW(this);
            
         } 
         fprediccion.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_botonPrediccionActionPerformed
 
     private void botonDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDevolucionesActionPerformed
-        // TODO add your handling code here:
-
+        
         if (this.fdevoluciones == null) {
             try {
                 this.fdevoluciones = new FrameDevoluciones(this);

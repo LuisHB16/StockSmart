@@ -172,6 +172,7 @@ public class FrameDevoluciones extends javax.swing.JFrame {
         btnCrearNota.setBackground(new java.awt.Color(50, 130, 233));
         btnCrearNota.setFont(customFontBold2);
         btnCrearNota.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrearNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/icons/item-icon1.png"))); // NOI18N
         btnCrearNota.setText("Crear nota de crédito");
         btnCrearNota.setBorderPainted(false);
         btnCrearNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -220,33 +221,31 @@ public class FrameDevoluciones extends javax.swing.JFrame {
         pnlDevolucionesLayout.setHorizontalGroup(
             pnlDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDevolucionesLayout.createSequentialGroup()
-                .addGroup(pnlDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDevolucionesLayout.createSequentialGroup()
-                        .addGap(1096, 1096, 1096)
-                        .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDevolucionesLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDevolucionesLayout.createSequentialGroup()
-                        .addGap(456, 456, 456)
-                        .addComponent(lblTitulo))
-                    .addGroup(pnlDevolucionesLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(btnCrearNota, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addGroup(pnlDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDevolucionesLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(btnCrearNota)))
+                .addContainerGap(68, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDevolucionesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(391, 391, 391))
         );
         pnlDevolucionesLayout.setVerticalGroup(
             pnlDevolucionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDevolucionesLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(49, 49, 49)
                 .addComponent(lblTitulo)
                 .addGap(30, 30, 30)
                 .addComponent(btnCrearNota, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         btnCrearNota.setIcon(new PlusIcon(18, 18, Color.WHITE));
@@ -283,8 +282,9 @@ public class FrameDevoluciones extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnMenuBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(pnlDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(147, 147, 147))
         );
         pnlFrameLayout.setVerticalGroup(
             pnlFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +311,7 @@ public class FrameDevoluciones extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 1342, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -72,6 +72,15 @@ public final class FrameAltas extends javax.swing.JFrame {
                 model2.addRow(rowData);
                 
                 // Elimina la fila de la primera tabla utilizando el índice del modelo
+                String codigoProducto = (String) model1.getValueAt(selectedModelRow, 0);
+
+                // Busca el producto en productosDisponibles y añádelo a productosSeleccionados
+                for (productos producto : productosDisponibles) {
+                    if (producto.getCodigo().equals(codigoProducto)) {
+                        productosSeleccionados.add(producto);
+                        break;
+                    }
+                }
                 model1.removeRow(selectedModelRow);
             }
         });
@@ -141,7 +150,7 @@ public final class FrameAltas extends javax.swing.JFrame {
                 String codigo = table2.getValueAt(i, 0).toString();
                 System.out.println(codigo);
                 System.out.println(codigo);
-                int cantidad = Integer.parseInt(table2.getValueAt(i, 4).toString());
+              
                 Double cant = Double.valueOf(table2.getValueAt(i, 4).toString());
                 for (productos producto : productosSeleccionados) {
                     if (codigo == null ? producto.getCodigo() == null : codigo.equals(producto.getCodigo())) {
@@ -154,15 +163,16 @@ public final class FrameAltas extends javax.swing.JFrame {
                             }
                         }
                         
-                        cantidad = (int) (cantidad * formatoEncontrado.getFormato());
+                        
                         
                         inventario = producto.getExistencia();
+                        
                     }
                 }
                 
                 // Llama al nuevo método para actualizar la cantidad en la base de datos
-                if (p.actualizarCantidadProducto(codigo, cantidad)) {
-                    
+                if (p.actualizarCantidadProducto(codigo, cant)) {
+                    System.out.println(inventario + "INVE");
                     movimiento mo = new movimiento("Alta", fechaActual, cant, codigo, inventario);
                     m.agregarMovimiento(mo);
                     JOptionPane.showMessageDialog(null, "Productos actualizados correctamente.");
@@ -206,6 +216,8 @@ public final class FrameAltas extends javax.swing.JFrame {
             Unidad formatoEncontrado = null;
 
             for (Unidad unidad : listaUnidades) {
+                System.out.println(unidad.getUnidad());
+                System.out.println(producto.getUnidad());
                 if (unidad.getUnidad().equals(producto.getUnidadC())) {
                     formatoEncontrado = unidad;
                     break;
@@ -217,7 +229,7 @@ public final class FrameAltas extends javax.swing.JFrame {
             ob[1] = producto.getNombre();
             ob[2] = producto.getMarca();
             ob[3] = producto.getUnidadC();
-            ob[4] = producto.getExistencia() / formatoEncontrado.getFormato();
+            ob[4] = producto.getExistencia();
 
             model1.addRow(ob);
             productosDisponibles.add(producto);
@@ -351,6 +363,7 @@ public final class FrameAltas extends javax.swing.JFrame {
         pnlAltas.setBackground(new java.awt.Color(255, 255, 255));
 
         lblNombre.setFont(customFontBold2);
+        lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblNombre.setText("Nombre");
 
         btnAgregar.setBackground(new java.awt.Color(50, 130, 233));
@@ -451,24 +464,23 @@ public final class FrameAltas extends javax.swing.JFrame {
             .addGroup(pnlAltasLayout.createSequentialGroup()
                 .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlAltasLayout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addGap(848, 848, 848)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlAltasLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlAltasLayout.createSequentialGroup()
-                                .addGap(771, 771, 771)
-                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlAltasLayout.createSequentialGroup()
                                 .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pnlAltasLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addComponent(scrollTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlAltasLayout.createSequentialGroup()
+                                .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addComponent(scrollTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         pnlAltasLayout.setVerticalGroup(
@@ -476,22 +488,19 @@ public final class FrameAltas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAltasLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(lblAltas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlAltasLayout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAltasLayout.createSequentialGroup()
+                        .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAltasLayout.createSequentialGroup()
                         .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNombre)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlAltasLayout.createSequentialGroup()
-                                .addGap(98, 98, 98)
-                                .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlAltasLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(scrollTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollTable2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
@@ -552,7 +561,7 @@ public final class FrameAltas extends javax.swing.JFrame {
                         .addComponent(stockSmartLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMenuBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(557, Short.MAX_VALUE))
+                .addContainerGap(561, Short.MAX_VALUE))
             .addComponent(pnlAltas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
