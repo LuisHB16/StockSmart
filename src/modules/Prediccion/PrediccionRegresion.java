@@ -1,6 +1,10 @@
 package modules.Prediccion;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -102,5 +106,20 @@ public class PrediccionRegresion {
             ex.printStackTrace();
         }
         return predicciones;
+    }
+    
+    public boolean eliminarPredicciones(Connection conn) {
+        System.out.println("PrediccionRegresion: Eliminando todas las predicciones de la base de datos...");
+        try {
+            String sql = "DELETE FROM predicciones";
+            Statement st = conn.createStatement();
+            int filasAfectadas = st.executeUpdate(sql);
+            System.out.println("PrediccionRegresion: Se eliminaron " + filasAfectadas + " predicciones de la base de datos.");
+            return true;
+        } catch (Exception ex) {
+            System.err.println("PrediccionRegresion: Error al eliminar las predicciones: " + ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        }
     }
 }

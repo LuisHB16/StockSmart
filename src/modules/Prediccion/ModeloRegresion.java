@@ -133,4 +133,26 @@ public class ModeloRegresion {
     public double getB0() { return b0; }
     public double getB1() { return b1; }
     public double getB2() { return b2; }
+    
+    public boolean eliminarModelo(Connection conn) {
+        System.out.println("ModeloRegresion: Eliminando todos los modelos de la base de datos...");
+        try {
+            String sql = "DELETE FROM model";
+            Statement st = conn.createStatement();
+            int filasAfectadas = st.executeUpdate(sql);
+            System.out.println("ModeloRegresion: Se eliminaron " + filasAfectadas + " modelos de la base de datos.");
+            
+            // Reiniciar los coeficientes y la fecha de entrenamiento
+            b0 = 0;
+            b1 = 0;
+            b2 = 0;
+            fechaEntrenamiento = null;
+            
+            return true;
+        } catch (Exception ex) {
+            System.err.println("ModeloRegresion: Error al eliminar los modelos: " + ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        }
+    }
 }

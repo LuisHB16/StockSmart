@@ -342,6 +342,7 @@ public final class FramePrediccionNEW extends javax.swing.JFrame {
         jLabelPrediccion = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         logoLoginIcon = new javax.swing.JLabel();
+        btnEliminarDatos = new javax.swing.JButton();
         btnMenuBack = new JPanel(){
             @Override
             protected void paintComponent(Graphics g) {
@@ -385,6 +386,20 @@ public final class FramePrediccionNEW extends javax.swing.JFrame {
 
         pnlFrame.setBackground(new java.awt.Color(50, 130, 233));
         pnlFrame.setMaximumSize(new java.awt.Dimension(1231, 716));
+        
+        btnEliminarDatos = new javax.swing.JButton();
+        btnEliminarDatos.setBackground(new java.awt.Color(204, 0, 0));
+        btnEliminarDatos.setFont(customFontBold2);
+        btnEliminarDatos.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarDatos.setText("Eliminar Datos");
+        btnEliminarDatos.setToolTipText("Elimina el modelo y las predicciones actuales");
+        btnEliminarDatos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnEliminarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarDatosActionPerformed(evt);
+            }
+        });
 
         stockSmartLoginLabel.setBackground(new java.awt.Color(255, 255, 255));
         stockSmartLoginLabel.setFont(customFontBold);
@@ -432,6 +447,10 @@ public final class FramePrediccionNEW extends javax.swing.JFrame {
                         .addGap(61, 61, 61)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAltasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         pnlAltasLayout.setVerticalGroup(
             pnlAltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,7 +461,9 @@ public final class FramePrediccionNEW extends javax.swing.JFrame {
                     .addComponent(jLabelPrediccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnEliminarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
@@ -511,8 +532,8 @@ public final class FramePrediccionNEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuBackMouseClicked
-        // TODO add your handling code here:
-        this.setVisible(false);
+        // Cerrar la ventana en lugar de solo ocultarla
+        this.dispose();
         this.fmenu.setVisible(true);
     }//GEN-LAST:event_btnMenuBackMouseClicked
 
@@ -526,10 +547,24 @@ public final class FramePrediccionNEW extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnMenuBackMouseExited
 
+    private void btnEliminarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDatosActionPerformed
+        // Confirmar con el usuario antes de eliminar
+        int confirmacion = javax.swing.JOptionPane.showConfirmDialog(this,
+            "¿Está seguro que desea eliminar el modelo y las predicciones actuales?\n" +
+            "Esta acción no se puede deshacer.",
+            "Confirmar eliminación",
+            javax.swing.JOptionPane.YES_NO_OPTION,
+            javax.swing.JOptionPane.WARNING_MESSAGE);
+        
+        if (confirmacion == javax.swing.JOptionPane.YES_OPTION) {
+            eliminarModeloYPredicciones();
+        }
+    }//GEN-LAST:event_btnEliminarDatosActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnMenuBack;
+    private javax.swing.JButton btnEliminarDatos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelPrediccion;
     private javax.swing.JPanel jPanel1;
@@ -539,4 +574,31 @@ public final class FramePrediccionNEW extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFrame;
     private javax.swing.JLabel stockSmartLoginLabel;
     // End of variables declaration//GEN-END:variables
+    
+    // Método para eliminar el modelo y las predicciones
+    private void eliminarModeloYPredicciones() {
+        System.out.println("FramePrediccionNEW: Iniciando eliminación de modelo y predicciones...");
+        
+        boolean modeloEliminado = modeloRegresion.eliminarModelo(conn);
+        boolean prediccionesEliminadas = prediccionRegresion.eliminarPredicciones(conn);
+        
+        if (modeloEliminado && prediccionesEliminadas) {
+            System.out.println("FramePrediccionNEW: Modelo y predicciones eliminados correctamente.");
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Modelo y predicciones eliminados correctamente.\nLa próxima vez que abra esta ventana se generarán nuevos datos.", 
+                "Eliminación exitosa", 
+                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            System.err.println("FramePrediccionNEW: Error al eliminar modelo y/o predicciones.");
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Hubo un error al eliminar los datos.\nConsulte el registro para más detalles.", 
+                "Error", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        
+        // Cerrar la ventana y volver al menú
+        this.dispose();
+        
+        this.fmenu.setVisible(true);
+    }
 }

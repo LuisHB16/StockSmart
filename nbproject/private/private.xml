@@ -3,17 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Clientes/cliented.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Ventas/ventad.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Productos/productosd.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Productos/FrameProductos.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Ventas/FrameVentas.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Movimientos/movimiento.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Inicio/FrameMenu.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Pedidos/FramePedidos.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Movimientos/FrameMovimientos.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Altas/FrameAltas.java</file>
-            <file>file:/C:/Users/luish/OneDrive/Documentos/WORKSPACES/final-proyecto/stocksmart/src/modules/Clientes/FrameClientes.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Prediccion/Prediccion.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Altas/FrameAltas.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Productos/productos.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Unidades/Unidadd.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/codigo/ConnectionDB.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Prediccion/FramePrediccionNEW.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Inicio/FrameMenu.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Prediccion/PrediccionRegresion.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Clientes/cliented.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Prediccion/ModeloRegresion.java</file>
+            <file>file:/C:/Users/alanm/OneDrive/Documentos/NetBeansProjects/StockSmart/src/modules/Ventas/FrameVentas.java</file>
         </group>
     </open-files>
 </project-private>
