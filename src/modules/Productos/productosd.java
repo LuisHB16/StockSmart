@@ -324,7 +324,7 @@ public List<productos> listarProductos2() {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
 
         return pro;
@@ -342,6 +342,7 @@ public List<productos> listarProductos2() {
                     pro.setNombre(rs.getString("Nombre"));
                     pro.setPrecio(rs.getDouble("Precio"));
                     pro.setExistencia(rs.getDouble("Existencia"));
+                    System.out.println("EXISTENCIA BuscarClave() " + rs.getDouble("Existencia"));
                     pro.setMarca(rs.getString("Marca"));
                     pro.setClavealterna(rs.getString("ClaveAlterna"));
                     pro.setGranel(rs.getString("Granel"));

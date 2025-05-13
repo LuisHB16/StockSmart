@@ -20,7 +20,14 @@ public class ModeloRegresion {
         try {
             // Obtener datos de ventas de los últimos 3 años
             System.out.println("ModeloRegresion: Obteniendo datos de ventas...");
-            String sql = "SELECT YEAR(Fecha) as anio, MONTH(Fecha) as mes, SUM(Total) as ventas FROM venta WHERE Fecha >= ? GROUP BY anio, mes ORDER BY anio, mes";
+String sql = "SELECT " +
+             "YEAR(STR_TO_DATE(Fecha, '%d/%m/%Y')) AS anio, " +
+             "MONTH(STR_TO_DATE(Fecha, '%d/%m/%Y')) AS mes, " +
+             "SUM(Total) AS ventas " +
+             "FROM venta " +
+             "WHERE STR_TO_DATE(Fecha, '%d/%m/%Y') >= ? " +
+             "GROUP BY anio, mes " +
+             "ORDER BY anio, mes";
             PreparedStatement ps = conn.prepareStatement(sql);
             LocalDate hace3anios = LocalDate.now().minusYears(3);
             ps.setString(1, hace3anios.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));

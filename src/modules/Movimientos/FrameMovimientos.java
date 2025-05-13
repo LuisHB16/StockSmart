@@ -72,7 +72,25 @@ public final class FrameMovimientos extends javax.swing.JFrame {
                         ob[1] = listaMovimiento.get(i).getCoidgo();
                         ob[2] = listaMovimiento.get(i).getCantidad();
                         ob[3] = listaMovimiento.get(i).getInventario_antes();
-                        ob[4] = listaMovimiento.get(i).getInventario_antes() + listaMovimiento.get(i).getCantidad();
+                        
+                        // Aplicar la misma lógica que en ListarMovimientos para calcular el inventario después
+                        if (null == listaMovimiento.get(i).getMovimiento()) {
+                            ob[4] = listaMovimiento.get(i).getInventario_antes() + (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
+                        } else // Utiliza equals para comparar cadenas en lugar de ==
+                        switch (listaMovimiento.get(i).getMovimiento()) {
+                            case "Devolucion":
+                            case "Alta":
+                                ob[4] = listaMovimiento.get(i).getInventario_antes() + (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
+                                break;
+                            case "Venta":
+                            case "Pedido":
+                                ob[4] = listaMovimiento.get(i).getInventario_antes() - (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
+                                break;
+                            default:
+                                ob[4] = listaMovimiento.get(i).getInventario_antes() + (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
+                                break;
+                        }
+                        
                         ob[5] = listaMovimiento.get(i).getFehca();
                         model.addRow(ob);
                     }
@@ -109,6 +127,7 @@ public final class FrameMovimientos extends javax.swing.JFrame {
                     break;
                 case "Venta":
                 case "Pedido":
+                    
                     ob[4] = listaMovimiento.get(i).getInventario_antes() - (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
                     break;
                 default:

@@ -123,7 +123,7 @@ DELIMITER ;;
     FROM venta
     WHERE Id_Ventas = NEW.Id_Ventas;
 
-    IF estatus_venta IN ('Venta') THEN
+    IF estatus_venta IN ('Venta', 'Pedido') THEN
         -- Intentar encontrar el producto directamente en la tabla producto
         SELECT Codigo INTO producto_codigo
         FROM producto

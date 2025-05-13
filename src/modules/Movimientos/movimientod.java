@@ -86,13 +86,24 @@ public class movimientod {
             vent.setInventario_antes(rs.getDouble("inventario_antes"));
 
             // Obtener el formato de la unidad asociada al código del producto
-            double formato = obtenerFormato(vent.getCoidgo());
+            String codigo = vent.getCoidgo();
+            System.out.println(codigo);
+            double formato = obtenerFormato(codigo);
+            System.out.println("FORMATO movimientod ListarDev Query a BD" + formato);
             vent.setFormato(formato);
 
             ListaVenta.add(vent);
         }
     } catch (SQLException e) {
-        System.out.println(e.toString());
+        System.out.println("Error en Listardev: " + e.toString());
+    } finally {
+        try {
+            if (con != null && !con.isClosed()) {
+                con.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar la conexión en Listardev: " + e.toString());
+        }
     }
 
     return ListaVenta;
@@ -100,46 +111,58 @@ public class movimientod {
 
 private double obtenerFormato(String codigoProducto) throws SQLException {
     String sqlSubproducto = "SELECT Unidad FROM subproducto WHERE clavealterna = ?";
-    String sqlProducto = "SELECT Unidad FROM producto WHERE Codigo = ?";
+    String sqlProducto = "SELECT Unidad FROM producto WHERE ClaveAlterna = ?";
     String sqlUnidad = "SELECT Formato FROM unidad WHERE Unidad = ?";
     
     double formato = 0.0;
+    String unidad = null;
 
-    try (PreparedStatement psSubproducto = con.prepareStatement(sqlSubproducto);
-         PreparedStatement psProducto = con.prepareStatement(sqlProducto)) {
+    // Primero intentamos obtener la unidad desde la tabla producto usando ClaveAlterna
+    try {
+        con = cn.getConnection(); // Aseguramos tener una conexión válida
+        PreparedStatement psProducto = con.prepareStatement(sqlProducto);
+        psProducto.setString(1, codigoProducto);
+        ResultSet rsProducto = psProducto.executeQuery();
 
-        // Intentar obtener la unidad desde subproducto
-        psSubproducto.setString(1, codigoProducto);
-        ResultSet rsSubproducto = psSubproducto.executeQuery();
+        if (rsProducto.next()) {
+            unidad = rsProducto.getString("Unidad");
+            System.out.println("Unidad encontrada en producto: " + unidad + " para código: " + codigoProducto);
+        } else {
+            // Si no se encuentra en producto, intentar en subproducto
+            PreparedStatement psSubproducto = con.prepareStatement(sqlSubproducto);
+            psSubproducto.setString(1, codigoProducto);
+            ResultSet rsSubproducto = psSubproducto.executeQuery();
 
-        if (rsSubproducto.next()) {
-            String unidad = rsSubproducto.getString("Unidad");
+            if (rsSubproducto.next()) {
+                unidad = rsSubproducto.getString("Unidad");
+                System.out.println("Unidad encontrada en subproducto: " + unidad + " para código: " + codigoProducto);
+            }
+        }
 
-            try (PreparedStatement psUnidad = con.prepareStatement(sqlUnidad)) {
-                psUnidad.setString(1, unidad);
-                ResultSet rsUnidad = psUnidad.executeQuery();
+        // Si encontramos una unidad, obtenemos su formato
+        if (unidad != null && !unidad.isEmpty()) {
+            PreparedStatement psUnidad = con.prepareStatement(sqlUnidad);
+            psUnidad.setString(1, unidad);
+            ResultSet rsUnidad = psUnidad.executeQuery();
 
-                if (rsUnidad.next()) {
-                    formato = rsUnidad.getDouble("Formato");
-                }
+            if (rsUnidad.next()) {
+                formato = rsUnidad.getDouble("Formato");
+                System.out.println("FORMATO ObetenerFormato() para " + codigoProducto + " con unidad " + unidad + ": " + formato);
+            } else {
+                System.out.println("No se encontró formato para la unidad: " + unidad);
             }
         } else {
-            // Si no se encuentra en subproducto, intentar obtener desde producto
-            psProducto.setString(1, codigoProducto);
-            ResultSet rsProducto = psProducto.executeQuery();
-
-            if (rsProducto.next()) {
-                String unidad = rsProducto.getString("Unidad");
-
-                try (PreparedStatement psUnidad = con.prepareStatement(sqlUnidad)) {
-                    psUnidad.setString(1, unidad);
-                    ResultSet rsUnidad = psUnidad.executeQuery();
-
-                    if (rsUnidad.next()) {
-                        formato = rsUnidad.getDouble("Formato");
-                    }
-                }
+            System.out.println("No se encontró unidad para el código: " + codigoProducto);
+        }
+    } catch (SQLException e) {
+        System.out.println("Error al obtener formato: " + e.toString());
+    } finally {
+        try {
+            if (con != null && !con.isClosed()) {
+                con.close();
             }
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar la conexión: " + e.toString());
         }
     }
 

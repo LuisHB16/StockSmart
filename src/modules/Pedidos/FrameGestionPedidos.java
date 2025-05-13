@@ -281,8 +281,11 @@ public void ListarPedidos() {
             }
         });
 
-        boxEstado.setEnabled(true
-        );
+        boxEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxEstadoActionPerformed(evt);
+            }
+        });
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -344,8 +347,10 @@ public void ListarPedidos() {
                             .addComponent(Estado))))
                 .addGap(18, 18, 18)
                 .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
+
+        boxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enviado", "Pedido", "Todos" }));
 
         logoLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assests/images/logoStockSmart50.png"))); // NOI18N
 
@@ -425,6 +430,10 @@ public void ListarPedidos() {
             pdf.pdfV(idVenta, v.getId_clientes(), v.getTotal(), v.getVendedor());
         }
     }//GEN-LAST:event_btnGenerarPDFActionPerformed
+
+    private void boxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxEstadoActionPerformed
 
     /**
      * @param args the command line arguments
