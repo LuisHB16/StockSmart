@@ -127,7 +127,6 @@ public final class FrameMovimientos extends javax.swing.JFrame {
                     break;
                 case "Venta":
                 case "Pedido":
-                    
                     ob[4] = listaMovimiento.get(i).getInventario_antes() - (listaMovimiento.get(i).getCantidad()*listaMovimiento.get(i).getFormato());
                     break;
                 default:

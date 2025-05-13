@@ -138,7 +138,7 @@ public final class FrameGestionPedidos extends javax.swing.JFrame {
         JPanel panel = new JPanel(new GridLayout(2, 2));
         panel.add(new JLabel("Estado:"));
         panel.add(estadoComboBox);
-        panel.add(new JLabel("Vendedor:"));
+        panel.add(new JLabel("Repartidor:"));
         panel.add(vendedoresComboBox);
 
         int resultado = JOptionPane.showConfirmDialog(this, panel, "Cambiar Estado", JOptionPane.OK_CANCEL_OPTION);
@@ -154,7 +154,8 @@ public final class FrameGestionPedidos extends javax.swing.JFrame {
             if("Venta".equals(nuevoEstado)){
                  vDAO.ListarDetallesVenta(idVenta);
                 for (detalleV detalle : vDAO.ListarDetallesVenta(idVenta)) {
-                    pro = p.BuscarClave(detalle.getCodigo());
+                    System.out.println("CODIGO " + detalle.getCodigo());
+                    pro = p.Buscarprocodigo(detalle.getCodigo());
                     Double existencia = pro.getExistencia();
                     if(existencia == null){
                         String Codigo=detalle.getCodigo();
@@ -170,8 +171,29 @@ public final class FrameGestionPedidos extends javax.swing.JFrame {
                     }
                 }
             }
+             if("Cancelado".equals(nuevoEstado)){
+                 vDAO.ListarDetallesVenta(idVenta);
+                for (detalleV detalle : vDAO.ListarDetallesVenta(idVenta)) {
+                    System.out.println("CODIGO " + detalle.getCodigo());
+                    pro = p.Buscarprocodigo(detalle.getCodigo());
+                    Double existencia = pro.getExistencia();
+                    if(existencia == null){
+                        String Codigo=detalle.getCodigo();
+                        pro = p.Buscarprocodigo3(detalle.getCodigo());
+                        pro = p.BuscarClave(pro.getCodigo());
+                        existencia = pro.getExistencia();
+                        movimiento mo = new movimiento("Devolucion", fechaActual, detalle.getCantidad(), Codigo, pro.getExistencia());
+                        m.agregarMovimiento(mo);
+                    }else{
+                        movimiento mo = new movimiento("Devolucion", fechaActual, detalle.getCantidad(), detalle.getCodigo(), pro.getExistencia());
+                        m.agregarMovimiento(mo);
+                        
+                    }
+                }
+            }
             
             boolean actualizacionExitosa = vDAO.actualizarEstado1(idVenta, nuevoEstado, nuevoVendedor);
+            System.out.println("ACT EXITOSA " + actualizacionExitosa);
             if (actualizacionExitosa) {
                 JOptionPane.showMessageDialog(this, "Estado actualizado con éxito.");
             } else {
@@ -213,6 +235,7 @@ public void ListarPedidos() {
         boxEstado = new javax.swing.JComboBox<>();
         scrollTable1 = new javax.swing.JScrollPane();
         table1 = new javax.swing.JTable();
+        btnEditar = new javax.swing.JButton();
         logoLoginIcon = new javax.swing.JLabel();
         btnMenuBack = new JPanel(){
             @Override
@@ -309,26 +332,35 @@ public void ListarPedidos() {
         table1.getTableHeader().setReorderingAllowed(false);
         scrollTable1.setViewportView(table1);
 
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlGestionPedidosLayout = new javax.swing.GroupLayout(pnlGestionPedidos);
         pnlGestionPedidos.setLayout(pnlGestionPedidosLayout);
         pnlGestionPedidosLayout.setHorizontalGroup(
             pnlGestionPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGestionPedidosLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(pnlGestionPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlGestionPedidosLayout.createSequentialGroup()
-                        .addComponent(btnGenerarPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(pnlGestionPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlGestionPedidosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Estado)
-                                .addGap(18, 18, 18)
-                                .addComponent(boxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlGestionPedidosLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGroup(pnlGestionPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlGestionPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlGestionPedidosLayout.createSequentialGroup()
+                            .addComponent(btnGenerarPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlGestionPedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnlGestionPedidosLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Estado)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(boxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlGestionPedidosLayout.createSequentialGroup()
+                                    .addGap(13, 13, 13)
+                                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))))))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         pnlGestionPedidosLayout.setVerticalGroup(
@@ -347,7 +379,9 @@ public void ListarPedidos() {
                             .addComponent(Estado))))
                 .addGap(18, 18, 18)
                 .addComponent(scrollTable1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         boxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enviado", "Pedido", "Todos" }));
@@ -435,6 +469,16 @@ public void ListarPedidos() {
         // TODO add your handling code here:
     }//GEN-LAST:event_boxEstadoActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        int selectedRow = table1.getSelectedRow();
+        if (selectedRow != -1) {
+            int idVenta = Integer.parseInt(table1.getValueAt(selectedRow, 0).toString());
+            mostrarDialogoCambiarEstado(idVenta);
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un pedido para editar", "Selección requerida", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,6 +486,7 @@ public void ListarPedidos() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Estado;
     private javax.swing.JComboBox<String> boxEstado;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGenerarPDF;
     private javax.swing.JPanel btnMenuBack;
     private javax.swing.JLabel jLabel1;

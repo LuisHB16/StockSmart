@@ -188,9 +188,9 @@ public int RegistrarDetalleVenta(detalleV dv) {
         }
         return cl;
     }
-            public List<venta> ListarPedido() {
+        public List<venta> ListarPedido() {
         List<venta> ListaVenta = new ArrayList<>();
-        String sql = "SELECT * FROM venta WHERE status = 'pedido' OR status = 'enviado'";
+        String sql = "SELECT * FROM venta WHERE status = 'pedido' OR status = 'enviado' ";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -298,7 +298,7 @@ public venta BuscarVenta1(int id){
     }
     public List<venta> Listardev() {
         List<venta> ListaVenta = new ArrayList<>();
-        String sql = "SELECT * FROM venta WHERE status IN ('cancelacion', 'devolucion')";
+        String sql = "SELECT * FROM venta WHERE status IN ('cancelado', 'devolucion')";
 
         try {
             con = cn.getConnection();

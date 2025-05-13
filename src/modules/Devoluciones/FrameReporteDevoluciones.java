@@ -86,23 +86,25 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
                         if (checkBoxVendedor.isSelected()) {
                             // Verificar si el CheckBox está seleccionado antes de filtrar por vendedor
                             if (boxVendedor.getSelectedItem().equals(listaVentas.get(i).getVendedor())) {
-                                Object[] ob = new Object[5];
+                                Object[] ob = new Object[6];
                                 ob[0] = listaVentas.get(i).getId_Ventas();
                                 ob[1] = listaVentas.get(i).getVendedor();
                                 ob[2] = listaVentas.get(i).getRepartidor();
                                 ob[3] = dateFormat.format(fechaVenta); // Formatear la fecha
                                 ob[4] = listaVentas.get(i).getTotal();
+                                ob[5] = listaVentas.get(i).getStatus();
 
                                 model.addRow(ob);
                             }
                         } else {
                             // Si el CheckBox no está seleccionado, no se filtra por vendedor
-                            Object[] ob = new Object[5];
+                            Object[] ob = new Object[6];
                             ob[0] = listaVentas.get(i).getId_Ventas();
                             ob[1] = listaVentas.get(i).getVendedor();
                             ob[2] = listaVentas.get(i).getRepartidor();
                             ob[3] = dateFormat.format(fechaVenta); // Formatear la fecha
                             ob[4] = listaVentas.get(i).getTotal();
+                            ob[5] = listaVentas.get(i).getStatus();
 
                             model.addRow(ob);
                         }
@@ -125,12 +127,13 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
         model.setRowCount(0);
 
         for (int i = 0; i < listaVentas.size(); i++) {
-            Object[] ob = new Object[5];
+            Object[] ob = new Object[6];
             ob[0] = listaVentas.get(i).getId_Ventas();
             ob[1] = listaVentas.get(i).getVendedor();
             ob[2] = listaVentas.get(i).getRepartidor();
             ob[3] = listaVentas.get(i).getFecha();
             ob[4] = listaVentas.get(i).getTotal();
+            ob[5] = listaVentas.get(i).getStatus();
 
             model.addRow(ob);
         }
@@ -250,11 +253,11 @@ public final class FrameReporteDevoluciones extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Folio", "Vendedor", "Repartidor", "Fecha", "Total"
+                "Folio", "Vendedor", "Repartidor", "Fecha", "Total", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false , false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

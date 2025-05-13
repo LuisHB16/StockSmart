@@ -327,16 +327,16 @@ public class FrameDevoluciones extends javax.swing.JFrame {
          detalleDAO.actualizarEstado2(folios, "devolucion",fechaActual);
      vDAO.ListarDetallesVenta(folios);
                 for (detalleV detalle : vDAO.ListarDetallesVenta(folios)) {
-                    System.out.println("CODIGO :   " +  detalle.getCodigo());
+                   
                     pro = p.Buscarprocodigo(detalle.getCodigo());
                     Double existencia = pro.getExistencia();
-                    System.out.println("EXISNTEICA ss" + existencia);
+                   
                     if(existencia == null){
                         String Codigo=detalle.getCodigo();
                         pro = p.Buscarprocodigo3(detalle.getCodigo());
                         
                         existencia = pro.getExistencia();
-                        System.out.println("EXISNTEICA if" + existencia);
+                        
                         movimiento mo = new movimiento("Devolucion", fechaActual, detalle.getCantidad(), Codigo, pro.getExistencia());
                         m.agregarMovimiento(mo);
                     }else{

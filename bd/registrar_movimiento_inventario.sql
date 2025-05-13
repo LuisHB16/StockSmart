@@ -12,7 +12,7 @@ BEGIN
     FROM venta
     WHERE Id_Ventas = NEW.Id_Ventas;
     
-    -- Obtener el código del producto
+    -- Obtener el código del producto y su existencia actual (inventario antes de la operación)
     SELECT Codigo, Existencia INTO producto_codigo, inventario_actual
     FROM producto
     WHERE ClaveAlterna = NEW.Codigo;
@@ -26,6 +26,7 @@ BEGIN
     END IF;
     
     -- Registrar el movimiento según el tipo de operación
+    -- Guardamos el inventario_actual como inventario_antes (valor antes de la operación)
     IF estatus_venta = 'Venta' THEN
         INSERT INTO movimientos(Movimiento, Fecha, Cantidad, Codigo, inventario_antes)
         VALUES ('Venta', DATE_FORMAT(CURDATE(), '%d/%m/%Y'), NEW.Cantidad, NEW.Codigo, inventario_actual);
