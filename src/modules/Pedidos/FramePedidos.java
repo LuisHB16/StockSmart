@@ -201,12 +201,40 @@ public final class FramePedidos extends javax.swing.JFrame {
     }
 
     private void agregarProducto(String codigo, String descripcion, double precioU, String granel, String unidad) {
-        DefaultTableModel model = (DefaultTableModel) table1Venta.getModel();
-        double cantidad = 1.0; // Puedes establecer la cantidad inicial como 1
-        double total = precioU * cantidad;
-        Object[] rowData = {codigo, descripcion, precioU, unidad, cantidad, total, granel};
-        model.addRow(rowData);
-        TotalPagar();
+        productos producto = proDAO.Buscarprocodigo(codigo);
+        if (producto != null) {
+            Unidad formatoEncontrado = null;
+            for (Unidad unidadObj : listaUnidades) {
+                if (unidadObj.getUnidad().equals(producto.getUnidad())) {
+                    formatoEncontrado = unidadObj;
+                    break;
+                }
+            }
+
+            if (formatoEncontrado != null) {
+                double maxCantidad = producto.getExistencia() * formatoEncontrado.getFormato();
+                if (maxCantidad <= 0) {
+                    JOptionPane.showMessageDialog(null, "El producto no está disponible para pedidos.");
+                    return;
+                }
+
+                double cantidad = 1.0; // Cantidad inicial
+                if (cantidad > maxCantidad) {
+                    JOptionPane.showMessageDialog(null, "La cantidad solicitada excede el stock disponible. Máximo permitido: " + maxCantidad);
+                    return;
+                }
+
+                double total = precioU * cantidad;
+                Object[] rowData = {codigo, descripcion, precioU, unidad, cantidad, total, granel};
+                DefaultTableModel model = (DefaultTableModel) table1Venta.getModel();
+                model.addRow(rowData);
+                TotalPagar();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró el formato para la unidad del producto.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró el producto.");
+        }
     }
 
     private void buscarProducto(String codigo) {
@@ -1236,6 +1264,35 @@ public final class FramePedidos extends javax.swing.JFrame {
     private void btnCobrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarVentaActionPerformed
         // TODO add your handling code here:
         if (table1Venta.getRowCount() > 0) {
+            for (int i = 0; i < table1Venta.getRowCount(); i++) {
+                String codigo = table1Venta.getValueAt(i, 0).toString();
+                double cantidad = Double.parseDouble(table1Venta.getValueAt(i, 4).toString());
+                productos producto = proDAO.Buscarprocodigo(codigo);
+
+                if (producto != null) {
+                    Unidad formatoEncontrado = null;
+                    for (Unidad unidadObj : listaUnidades) {
+                        if (unidadObj.getUnidad().equals(producto.getUnidad())) {
+                            formatoEncontrado = unidadObj;
+                            break;
+                        }
+                    }
+
+                    if (formatoEncontrado != null) {
+                        double maxCantidad = producto.getExistencia() * formatoEncontrado.getFormato();
+                        if (cantidad > maxCantidad) {
+                            JOptionPane.showMessageDialog(null, "La cantidad solicitada para el producto " + producto.getNombre() + " excede el stock disponible. Máximo permitido: " + maxCantidad);
+                            return;
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se encontró el formato para la unidad del producto " + producto.getNombre() + ".");
+                        return;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró el producto con código: " + codigo);
+                    return;
+                }
+            }
             String[] opcionesPago = {"Tarjeta", "Dinero"};
             int seleccion = JOptionPane.showOptionDialog(null, "Seleccione el método de pago", "Pago", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesPago, opcionesPago[0]);
 
